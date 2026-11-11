@@ -337,6 +337,78 @@ a.b.wa{background:#1FA855;color:#fff;font-weight:600}
 .tkseg button{flex:1;padding:8px 2px;border-radius:8px;font-size:15px}
 .tkseg button.on{background:#fff;font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.15)}
 .tkp textarea.in{font-family:var(--ui);font-size:16px;line-height:1.6;min-height:84px}
+
+/* v9: camps, quick camera */
+.tkv{grid-column:1/-1}
+.tkaddc{grid-column:1/-1;min-height:54px;align-items:center;justify-content:center;color:#0A4FA3;background:rgba(251,250,246,.72);border:1.5px dashed #7a5a30;border-radius:10px;font-family:var(--ui);font-size:15px;font-weight:600}
+.tkwd{display:flex;justify-content:space-between;gap:4px}
+.tkwd button{width:38px;height:38px;border-radius:50%;background:#E6E4DC;font-size:14px;flex:none}
+.tkwd button.on{background:var(--ink);color:var(--yellow);font-weight:700}
+.tkp .mini{font-size:14px;padding:8px 14px;border-radius:20px}
+.mini.wa{background:#1FA855;border-color:#1FA855;color:#fff;font-weight:700}
+.tkp .fld{color:#6b6a64}
+.tklog{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:.5px solid #E6E4DC;font-size:15px}
+.tklog:last-child{border-bottom:0}
+.tklog.sum{color:#6b6a64;font-size:14px}
+.tklog.sum b{color:var(--ink)}
+.fab.cam{background:var(--paper);right:calc(84px + env(safe-area-inset-right,0px))}
+body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
+
+/* v10: tables (like Excel) */
+.tabs{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tab,body.ar .tab{flex:1 0 auto;min-width:60px;padding:9px 9px 8px}
+.xed{background:#F4F3EF}
+.xbarr{display:flex;align-items:center}
+.xed .tkbar b,.ded .tkbar b{flex:1;min-width:0;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 6px}
+.xtb{display:flex;gap:5px;padding:6px 10px;overflow-x:auto;border-bottom:.5px solid #D3D1C7;scrollbar-width:none;flex:none}
+.xtb::-webkit-scrollbar,.xops::-webkit-scrollbar,.xtabs::-webkit-scrollbar{display:none}
+.xb{flex:none;min-width:36px;height:36px;padding:0 9px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;font-family:var(--ui);color:var(--ink);background:#fff;border:.5px solid #D3D1C7;transition:opacity .15s}
+.xb.on{background:var(--ink);color:var(--yellow);border-color:var(--ink)}
+.xb:active,.xtab:active,.xaddr:active{opacity:.5}
+.xA{font-weight:700;border-bottom:3px solid #C93B3A;line-height:1.05;padding:0 2px}
+.xsep{flex:none;width:1px;background:#D3D1C7;margin:6px 2px}
+.xfx,.xfind{display:flex;align-items:center;gap:8px;padding:6px 10px;border-bottom:.5px solid #D3D1C7;flex:none}
+.xfx span,.xfind span{font-size:12px;color:#6b6a64;min-width:40px;text-align:center;direction:ltr;font-family:var(--ui)}
+.xfx input,.xfind input{flex:1;min-width:0;height:36px;border:.5px solid #C9C7BE;border-radius:9px;background:#fff;padding:0 10px;font-size:16px;font-family:var(--ui);color:var(--ink);-webkit-appearance:none}
+.xfx input:focus,.xfind input:focus{outline:none;border:1.5px solid var(--blue)}
+.xops{display:flex;gap:5px;padding:5px 10px;overflow-x:auto;flex:none;border-bottom:.5px solid #D3D1C7;scrollbar-width:none}
+.xwrap{flex:1;overflow:auto;position:relative;background:#fff;-webkit-overflow-scrolling:touch}
+.xg{border-collapse:separate;border-spacing:0;table-layout:fixed;font-family:var(--ui);font-size:14px;color:var(--ink)}
+.xg th{position:sticky;top:0;z-index:2;background:#EFEDE6;font-weight:500;font-size:12px;color:#6b6a64;height:26px;padding:0;border-inline-end:.5px solid #C9C7BE;border-bottom:.5px solid #C9C7BE;text-align:center;-webkit-user-select:none;user-select:none}
+.xg tbody th{top:auto;inset-inline-start:0;z-index:1}
+.xg thead th.xc0{inset-inline-start:0;z-index:3}
+.xg td{height:36px;padding:0 6px;border-inline-end:.5px solid #C9C7BE;border-bottom:.5px solid #C9C7BE;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;unicode-bidi:plaintext;text-align:start;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.xg td.sel{background-image:linear-gradient(rgba(10,122,255,.14),rgba(10,122,255,.14))}
+.xg td.hit{background-image:linear-gradient(rgba(242,225,76,.8),rgba(242,225,76,.8))}
+.xg td.act{outline:2px solid var(--blue);outline-offset:-2px}
+.xg td.cur{outline:2.5px solid #E24B4A;outline-offset:-2px}
+.xh{position:absolute;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:var(--blue);border:2.5px solid #fff;z-index:4;touch-action:none}
+.xh:after{content:"";position:absolute;inset:-12px}
+.xaddr{display:block;margin:12px;padding:9px 16px;border-radius:10px;background:#EFEDE6;color:#0A4FA3;font-family:var(--ui);font-size:14px}
+.xtabs{display:flex;gap:6px;padding:6px 10px calc(6px + env(safe-area-inset-bottom,0px));overflow-x:auto;border-top:.5px solid #D3D1C7;flex:none;scrollbar-width:none}
+.xtab{flex:none;padding:7px 13px;border-radius:9px;background:#E6E4DC;font-size:14px;font-family:var(--ui);color:var(--ink);max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.xtab.on{background:var(--ink);color:var(--yellow);font-weight:600}
+.sws2{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:6px 0}
+.sw2{width:44px;height:44px;border-radius:50%;border:1.5px solid #C9C7BE;font-size:16px;color:#6b6a64}
+.cmi svg{flex:none}
+
+/* v11: documents (like Word) */
+.ded{background:#E9E7E0}
+.ded .tkbar,.ded .xtb{background:#F4F3EF}
+.ded .xb small{font-size:11px}
+.dwrap{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px))}
+.dpage{min-height:100%;background:#fff;border-radius:4px;padding:22px 18px 90px;font-family:var(--ui);font-size:17px;line-height:1.75;color:#1b1b1a;outline:none;overflow-wrap:anywhere;position:relative;-webkit-user-select:text;user-select:text;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.dpage.empty:before{content:attr(data-ph);color:#a9a69c;position:absolute;pointer-events:none}
+.dpage div,.dpage p,.dpage h1,.dpage h2,.dpage li,.dpage blockquote{unicode-bidi:plaintext}
+.dpage h1{font-size:27px;font-weight:800;line-height:1.4;margin:.2em 0 .3em}
+.dpage h2{font-size:21px;font-weight:700;line-height:1.45;margin:.2em 0 .25em}
+.dpage ul,.dpage ol{padding-inline-start:28px;margin:.3em 0}
+.dpage img{max-width:100%;height:auto;display:block;margin:10px auto;border-radius:3px}
+#printArea{display:none}
+@media print{body.printing{background:#fff!important}body.printing>*{display:none!important}body.printing>#printArea{display:block!important;font-family:Arial,sans-serif;font-size:13pt;line-height:1.7;color:#000}#printArea img{max-width:100%}#printArea h1{font-size:22pt}#printArea h2{font-size:17pt}#printArea div,#printArea p,#printArea li,#printArea h1,#printArea h2{unicode-bidi:plaintext}}
+/* v12: photos from the gallery as well as the camera */
+.tkth.add{flex-direction:column;gap:3px;font-size:11px;font-family:var(--ui)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
@@ -378,14 +450,14 @@ const hosted=location.protocol==='https:'&&/github\.io|netlify|pages\.dev|vercel
 const S={get(k,d){try{const v=localStorage.getItem('pn_'+k);return v==null?d:JSON.parse(v)}catch(e){storeOK=false;return d}},set(k,v){try{localStorage.setItem('pn_'+k,JSON.stringify(v));return true}catch(e){storeOK=false;return false}},del(k){try{localStorage.removeItem('pn_'+k)}catch(e){}}};
 
 const L={
-en:{appName:'Pocket Notes',tagline:'STICK IT · KEEP IT',createPin:'Create your PIN',createSub:'CHOOSE 4 NUMBERS',confirmPin:'Confirm PIN',confirmSub:'TYPE IT AGAIN',enterPin:'Enter PIN',enterSub:'POCKET NOTES',wrong:'WRONG PIN · TRY AGAIN',mismatch:"PINS DON'T MATCH · START AGAIN",wait:'TOO MANY TRIES · WAIT {s}s',welcome:'WELCOME',currentPin:'Current PIN',currentSub:'TO CHANGE YOUR PIN',forgot:'Forgot PIN?',cancel:'Cancel',search:'Search a word…',tabs:['All','Notes','Money','Phones','Kitchen'],found:'{n} FOUND',none:'Nothing found for “{q}”. Try a shorter word.',emptyT:'Your board is empty',emptyB:'Tap the yellow + to stick your first card.',newCard:'New card',editCard:'Edit card',tNote:'Note',tMoney:'Expenses',tPhone:'Phone',noteText:'Note',notePh:'Write here…',important:'Important',title:'Title',titlePh:'Friday expenses',item:'Item',amount:'Amount',addRow:'+ Add line',total:'Total',name:'Name',namePh:'Abu Ahmad',number:'Phone number',save:'Done',board:'Board',writePh:'Write anything…\nFirst line is the title.\n\nFor expenses, tick “Expenses” above, then:\nBread 5\nGas 20\n\nA name and a number become a phone card.',del:'Delete',delSure:'Delete this card? This cannot be undone.',yesDel:'Yes, delete',keep:'Keep it',copy:'Copy',call:'Call',copied:'Copied',menu:'Menu',backup:'Back up my notes',backupHint:'Copy this text and keep it somewhere safe, for example send it to yourself on WhatsApp or email. If you lose your phone, you can paste it back in a new phone.',copyBackup:'Copy backup text',dlBackup:'Save as file',restore:'Restore from backup',restoreHint:'Paste your backup text, or choose your backup file. This replaces all cards on this phone.',restoreBtn:'Restore',restored:'RESTORED {n} CARDS',badBackup:"That backup text isn't valid. Copy the whole text and try again.",chooseFile:'Choose backup file',changePin:'Change PIN',lockNow:'Lock now',erase:'Erase everything',eraseSure:'This deletes all cards and the PIN on this phone. It cannot be undone. Back up first if you want to keep anything.',eraseBtn:'Yes, erase everything',forgotSure:'Without the PIN, the only way in is to erase everything and start fresh. If you saved a backup, you can restore it after.',saved:'SAVED',deleted:'DELETED',pinChanged:'PIN CHANGED',langOther:'عربي',errNote:'Write something first.',errMoney:'Add at least one line with an amount.',errPhone:'Add a name and a number.',lblNote:'NOTE',lblMoney:'MONEY',lblPhone:'PHONE',lblKitchen:'KITCHEN',ex:'EXAMPLE',currency:'Currency',close:'Close',storeWarn:"This browser isn't saving your notes (it may be in private mode). Cards will disappear when you close it.",about:'Your notes are saved only on this phone. Nobody else can see them.',wall:'Make it my wallpaper',studio:'Wallpaper',wCards:'CARDS ON THE WALLPAPER',wMax:'{n} / 6',wBg:'BACKGROUND',bgN:{cork:'Cork',mat:'Mat',paper:'Paper',night:'Night'},wStk:'STICKERS · TAP TO STICK',wNoStk:'Remove stickers',wSave:'Save picture',wHow:'<b>After saving:</b> open Settings → Wallpaper → Add New Wallpaper → Photos, and choose the picture.',wHold:'Press and hold the picture, then tap “Save to Photos”.',wFit:'Some cards did not fit. Choose fewer cards or shorter ones.',wPick:'Choose at least one card.',wMore:'+{n} more lines',stTodo:'Not its turn yet',stDone:'Finished',stLabel:'Change status',addPhoto:'Add a photo',photoFail:"Couldn't add that photo.",remind:'Remind me',remTitle:'Reminder',remDay:'Day',remTime:'Time',remRemove:'Remove reminder',remPast:'Choose a time in the future.',remHow:'Your iPhone will open “Add to Calendar”. Tap “Add” once and it will alert you on time, even with the app closed.',remNoCal:'Reminder saved. The phone alert works in the installed app.',remDue:'Reminder',remShare:'Nothing opened? Send it as a file',ok:'OK',share:'Share',shareImg:'Share as picture',selMore:'Select several cards',nSel:'{n} selected',delN:'Delete {n} cards? This cannot be undone.',copiedShare:'Text copied. Paste it anywhere.',wa:'Send on WhatsApp',copyTxt:'Copy the text',tkMonth:'MONTH SUMMARY',tkDays:'days',tkPots:'pots',tkEmptyT:'Nothing recorded yet',tkEmptyB:'Tap + to record today.',tkToday:'Kitchen record',tkDate:'Date',tkDish:'Dish',tkPotsN:'Number of pots',tkIngs:'Ingredients (change any number)',tkPer:'Per pot',tkTot:'Total',tkAddIng:'Add ingredient',tkPlace:'Distribution place',tkPics:'Photos',tkRate:'Food quality',tkNote:'Notes',tkNotePh:'Anything to note about today',tkMake:'Create report',tkRepT:'Report ready',tkSendPics:'Send photos and report ({n})',tkPicsNo:'Report copied. Sending photos works in the installed app.',tkNewDish:'New dish',tkNewPlace:'New place',tkNewIng:'New ingredient',tkName:'Name',tkUnit:'Unit',add:'Add',tkDelDay:'Delete this record? This cannot be undone.',tkSumT:'Kitchen summary',tkUnits:['kg','L','g','pcs']},
-ar:{appName:'ملاحظاتي',tagline:'ألصقها واحفظها',createPin:'أنشئ رمز الدخول',createSub:'اختر ٤ أرقام',confirmPin:'تأكيد الرمز',confirmSub:'اكتبه مرة ثانية',enterPin:'أدخل الرمز',enterSub:'ملاحظاتي',wrong:'رمز خاطئ · حاول مرة ثانية',mismatch:'الرمزان غير متطابقين · ابدأ من جديد',wait:'محاولات كثيرة · انتظر {s} ثانية',welcome:'أهلاً بك',currentPin:'الرمز الحالي',currentSub:'لتغيير الرمز',forgot:'نسيت الرمز؟',cancel:'إلغاء',search:'ابحث عن كلمة…',tabs:['الكل','ملاحظات','مصاريف','أرقام','التكية'],found:'وُجد {n}',none:'لا شيء بكلمة «{q}». جرّب كلمة أقصر.',emptyT:'اللوحة فارغة',emptyB:'اضغط + الأصفر لتلصق أول بطاقة.',newCard:'بطاقة جديدة',editCard:'تعديل البطاقة',tNote:'ملاحظة',tMoney:'مصاريف',tPhone:'رقم هاتف',noteText:'الملاحظة',notePh:'اكتب هنا…',important:'مهم',title:'العنوان',titlePh:'مصاريف الجمعة',item:'الغرض',amount:'المبلغ',addRow:'+ سطر جديد',total:'المجموع',name:'الاسم',namePh:'أبو أحمد',number:'رقم الهاتف',save:'تم',board:'اللوحة',writePh:'اكتب أي شيء…\nالسطر الأول هو العنوان.\n\nللمصاريف اختر «مصاريف» فوق، ثم اكتب:\nخبز ٥\nغاز ٢٠\n\nالاسم مع الرقم يصير بطاقة هاتف.',del:'حذف',delSure:'حذف هذه البطاقة؟ لا يمكن التراجع.',yesDel:'نعم، احذف',keep:'إبقاء',copy:'نسخ',call:'اتصال',copied:'تم النسخ',menu:'القائمة',backup:'نسخة احتياطية',backupHint:'انسخ هذا النص واحفظه في مكان آمن، مثلاً أرسله لنفسك على واتساب أو الإيميل. إذا ضاع هاتفك، تلصقه في الهاتف الجديد.',copyBackup:'نسخ النص الاحتياطي',dlBackup:'حفظ كملف',restore:'استرجاع النسخة',restoreHint:'الصق النص الاحتياطي أو اختر الملف. هذا يستبدل كل البطاقات على هذا الهاتف.',restoreBtn:'استرجاع',restored:'تم استرجاع {n} بطاقة',badBackup:'النص غير صحيح. انسخ النص كاملاً وحاول مرة ثانية.',chooseFile:'اختر ملف النسخة',changePin:'تغيير الرمز',lockNow:'قفل الآن',erase:'مسح كل شيء',eraseSure:'سيتم حذف كل البطاقات والرمز من هذا الهاتف. لا يمكن التراجع. خذ نسخة احتياطية أولاً.',eraseBtn:'نعم، امسح كل شيء',forgotSure:'بدون الرمز، الطريقة الوحيدة هي مسح كل شيء والبدء من جديد. إذا عندك نسخة احتياطية تقدر تسترجعها بعدها.',saved:'تم الحفظ',deleted:'تم الحذف',pinChanged:'تم تغيير الرمز',langOther:'English',errNote:'اكتب شيئاً أولاً.',errMoney:'أضف سطراً واحداً على الأقل فيه مبلغ.',errPhone:'أضف الاسم والرقم.',lblNote:'ملاحظة',lblMoney:'مصاريف',lblPhone:'هاتف',lblKitchen:'تكية',ex:'مثال',currency:'العملة',close:'إغلاق',storeWarn:'المتصفح لا يحفظ ملاحظاتك (قد يكون في الوضع الخاص). ستختفي البطاقات عند الإغلاق.',about:'ملاحظاتك محفوظة على هذا الهاتف فقط. لا أحد غيرك يراها.',wall:'اجعلها خلفية للهاتف',studio:'استوديو الخلفية',wCards:'البطاقات على الخلفية',wMax:'{n} / ٦',wBg:'شكل الخلفية',bgN:{cork:'فلين',mat:'أخضر',paper:'ورق',night:'كحلي'},wStk:'ستيكرات · اضغط لتلصق',wNoStk:'إزالة الستيكرات',wSave:'حفظ الصورة',wHow:'<b>بعد الحفظ:</b> افتح الإعدادات ← خلفية الشاشة ← إضافة خلفية جديدة ← الصور، واختر الصورة.',wHold:'اضغط مطولاً على الصورة، ثم اختر «حفظ في الصور».',wFit:'بعض البطاقات ما اتسعت. اختر بطاقات أقل أو أقصر.',wPick:'اختر بطاقة واحدة على الأقل.',wMore:'+{n} سطر',stTodo:'لسا ما اجا دورها',stDone:'انتهيت منها',stLabel:'تغيير الحالة',addPhoto:'إضافة صورة',photoFail:'تعذّرت إضافة الصورة.',remind:'ذكّرني',remTitle:'تذكير',remDay:'اليوم',remTime:'الساعة',remRemove:'إزالة التذكير',remPast:'اختر وقتاً في المستقبل.',remHow:'سيفتح الآيفون نافذة «إضافة إلى التقويم». اضغط «إضافة» مرة واحدة ليرنّ التنبيه في وقته حتى لو التطبيق مسكّر.',remNoCal:'تم حفظ التذكير. تنبيه الهاتف يعمل في النسخة المثبّتة.',remDue:'تذكير',remShare:'ما فتحت النافذة؟ أرسله كملف',ok:'تمام',share:'مشاركة',shareImg:'مشاركة كصورة',selMore:'تحديد أكثر من بطاقة',nSel:'{n} محددة',delN:'حذف {n} بطاقة؟ لا يمكن التراجع.',copiedShare:'تم نسخ النص. الصقه في أي مكان.',wa:'إرسال على واتساب',copyTxt:'نسخ النص',tkMonth:'ملخص الشهر',tkDays:'يوم',tkPots:'قدر',tkEmptyT:'لا يوجد تسجيل بعد',tkEmptyB:'اضغط + لتسجيل تكية اليوم.',tkToday:'تسجيل التكية',tkDate:'التاريخ',tkDish:'الطبخة',tkPotsN:'عدد القدور',tkIngs:'المواد (غيّر أي رقم)',tkPer:'للقدر',tkTot:'الإجمالي',tkAddIng:'إضافة مادة',tkPlace:'مكان التوزيع',tkPics:'صور التوزيع',tkRate:'جودة الطعام',tkNote:'ملاحظات',tkNotePh:'اكتب أي ملاحظة عن اليوم',tkMake:'إنشاء التقرير',tkRepT:'التقرير جاهز',tkSendPics:'إرسال الصور والتقرير ({n})',tkPicsNo:'تم نسخ التقرير. إرسال الصور يعمل في النسخة المثبّتة.',tkNewDish:'طبخة جديدة',tkNewPlace:'مكان جديد',tkNewIng:'مادة جديدة',tkName:'الاسم',tkUnit:'الوحدة',add:'إضافة',tkDelDay:'حذف هذا التسجيل؟ لا يمكن التراجع.',tkSumT:'ملخص التكية',tkUnits:['كجم','لتر','جرام','حبة']}
+en:{appName:'Pocket Notes',tagline:'STICK IT · KEEP IT',createPin:'Create your PIN',createSub:'CHOOSE 4 NUMBERS',confirmPin:'Confirm PIN',confirmSub:'TYPE IT AGAIN',enterPin:'Enter PIN',enterSub:'POCKET NOTES',wrong:'WRONG PIN · TRY AGAIN',mismatch:"PINS DON'T MATCH · START AGAIN",wait:'TOO MANY TRIES · WAIT {s}s',welcome:'WELCOME',currentPin:'Current PIN',currentSub:'TO CHANGE YOUR PIN',forgot:'Forgot PIN?',cancel:'Cancel',search:'Search a word…',tabs:['All','Notes','Money','Phones','Kitchen','Tables','Docs'],found:'{n} FOUND',none:'Nothing found for “{q}”. Try a shorter word.',emptyT:'Your board is empty',emptyB:'Tap the yellow + to stick your first card.',newCard:'New card',editCard:'Edit card',tNote:'Note',tMoney:'Expenses',tPhone:'Phone',noteText:'Note',notePh:'Write here…',important:'Important',title:'Title',titlePh:'Friday expenses',item:'Item',amount:'Amount',addRow:'+ Add line',total:'Total',name:'Name',namePh:'Abu Ahmad',number:'Phone number',save:'Done',board:'Board',writePh:'Write anything…\nFirst line is the title.\n\nFor expenses, tick “Expenses” above, then:\nBread 5\nGas 20\n\nA name and a number become a phone card.',del:'Delete',delSure:'Delete this card? This cannot be undone.',yesDel:'Yes, delete',keep:'Keep it',copy:'Copy',call:'Call',copied:'Copied',menu:'Menu',backup:'Back up my notes',backupHint:'Copy this text and keep it somewhere safe, for example send it to yourself on WhatsApp or email. If you lose your phone, you can paste it back in a new phone.',copyBackup:'Copy backup text',dlBackup:'Save as file',restore:'Restore from backup',restoreHint:'Paste your backup text, or choose your backup file. This replaces all cards on this phone.',restoreBtn:'Restore',restored:'RESTORED {n} CARDS',badBackup:"That backup text isn't valid. Copy the whole text and try again.",chooseFile:'Choose backup file',changePin:'Change PIN',lockNow:'Lock now',erase:'Erase everything',eraseSure:'This deletes all cards and the PIN on this phone. It cannot be undone. Back up first if you want to keep anything.',eraseBtn:'Yes, erase everything',forgotSure:'Without the PIN, the only way in is to erase everything and start fresh. If you saved a backup, you can restore it after.',saved:'SAVED',deleted:'DELETED',pinChanged:'PIN CHANGED',langOther:'عربي',errNote:'Write something first.',errMoney:'Add at least one line with an amount.',errPhone:'Add a name and a number.',lblNote:'NOTE',lblMoney:'MONEY',lblPhone:'PHONE',lblKitchen:'KITCHEN',ex:'EXAMPLE',currency:'Currency',close:'Close',storeWarn:"This browser isn't saving your notes (it may be in private mode). Cards will disappear when you close it.",about:'Your notes are saved only on this phone. Nobody else can see them.',wall:'Make it my wallpaper',studio:'Wallpaper',wCards:'CARDS ON THE WALLPAPER',wMax:'{n} / 6',wBg:'BACKGROUND',bgN:{cork:'Cork',mat:'Mat',paper:'Paper',night:'Night'},wStk:'STICKERS · TAP TO STICK',wNoStk:'Remove stickers',wSave:'Save picture',wHow:'<b>After saving:</b> open Settings → Wallpaper → Add New Wallpaper → Photos, and choose the picture.',wHold:'Press and hold the picture, then tap “Save to Photos”.',wFit:'Some cards did not fit. Choose fewer cards or shorter ones.',wPick:'Choose at least one card.',wMore:'+{n} more lines',stTodo:'Not its turn yet',stDone:'Finished',stLabel:'Change status',addPhoto:'Add a photo',photoFail:"Couldn't add that photo.",remind:'Remind me',remTitle:'Reminder',remDay:'Day',remTime:'Time',remRemove:'Remove reminder',remPast:'Choose a time in the future.',remHow:'Your iPhone will open “Add to Calendar”. Tap “Add” once and it will alert you on time, even with the app closed.',remNoCal:'Reminder saved. The phone alert works in the installed app.',remDue:'Reminder',remShare:'Nothing opened? Send it as a file',ok:'OK',share:'Share',shareImg:'Share as picture',selMore:'Select several cards',nSel:'{n} selected',delN:'Delete {n} cards? This cannot be undone.',copiedShare:'Text copied. Paste it anywhere.',wa:'Send on WhatsApp',copyTxt:'Copy the text',tkMonth:'MONTH SUMMARY',tkDays:'days',tkPots:'pots',tkEmptyT:'Nothing recorded yet',tkEmptyB:'Tap + to record today.',tkToday:'Kitchen record',tkDate:'Date',tkDish:'Dish',tkPotsN:'Number of pots',tkIngs:'Ingredients (change any number)',tkPer:'Per pot',tkTot:'Total',tkAddIng:'Add ingredient',tkPlace:'Distribution place',tkPics:'Photos',tkRate:'Food quality',tkNote:'Notes',tkNotePh:'Anything to note about today',tkMake:'Create report',tkRepT:'Report ready',tkSendPics:'Send photos and report ({n})',tkPicsNo:'Report copied. Sending photos works in the installed app.',tkNewDish:'New dish',tkNewPlace:'New place',tkNewIng:'New ingredient',tkName:'Name',tkUnit:'Unit',add:'Add',tkDelDay:'Delete this record? This cannot be undone.',tkSumT:'Kitchen summary',tkUnits:['kg','L','g','pcs'],tkVDays:'Daily log',tkVCamps:'Camps',tkTodayC:'TODAY',tkTodayTag:'TODAY',lblCamp:'CAMP',cRep:'Representative',cRepName:'Representative name',cWaHint:'For WhatsApp, write the number with its country code (for example +970 or +972).',cDays:'Distribution days',cCount:'Numbers',cPeople:'People',cFam:'Families',cLog:'Log (filled in from the daily record)',cLogEmpty:'No distributions recorded yet.',cMonth:'This month',cAll:'All time',cAdd:'Add camp',cNew:'New camp',cName:'Camp name',cDel:'Delete this camp? The daily records stay as they are.',cDelB:'Delete camp',cRem:'Weekly reminder',cRemHow:'Your iPhone will alert you at this time on every distribution day of this camp. Tap “Add” once in the calendar window.',cRemNeed:'Choose the distribution days first.',cNameNeed:'Write the camp name.',cDup:'There is already a camp with this name.',camAdded:'Added to today ({n})',waShort:'WhatsApp',wdS:['S','M','T','W','T','F','S'],wdL:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],lblSheet:'TABLE',lblDoc:'DOCUMENT',fReady:'File ready',fShare:'Share',fSave:'Save on this phone',fNoSave:'Saving and sharing files works in the installed app.',fRename:'Rename',fDelete:'Delete',fDelSure:'Delete “{n}”? This cannot be undone.',fFull:'Storage is full.',xNew:'New table',xOpen:'Open an Excel file',xEmptyT:'No tables yet',xEmptyB:'Tap + for a new table, or open an Excel file.',xLoading:'Working…',xLibFail:'The Excel tool could not load. Open the app once while online.',xBad:'This file could not be read.',xCut:'The file is very large; only part of it is shown.',xSheetN:'sheets',xRows:'{n} rows',xFindPh:'Search for a name…',xNoHit:'No match',xRowUp:'Insert row above',xRowDn:'Insert row below',xColR:'Insert column right',xColL:'Insert column left',xMerge:'Merge cells',xUnmerge:'Unmerge',xCopy:'Copy',xPaste:'Paste',xClear:'Clear contents',xDelRow:'Delete row',xDelCol:'Delete column',xAsFile:'Excel file',xAsPic:'Picture of the table',xDir:'Flip table direction',xTextC:'Text colour',xFillC:'Cell colour',xNoFill:'No colour',xSumHint:'Select cells with numbers, then tap Σ.',xDelSheet:'Delete sheet',xDelSheetSure:'Delete this sheet and everything in it?',xLast:'The only sheet cannot be deleted.',xNothing:'The table is empty.',xNoClip:'Nothing to paste. Copy cells first.',xAddRows:'10 rows',xAddSheet:'Add sheet',xBackL:'Tables',xInPh:'Tap a cell, then write here',xPicCut:'The table is long; the picture shows its first part.',xMaxC:'No more columns can be added.',dEmptyT:'No documents yet',dEmptyB:'Tap + to write a new document.',dNew:'New document',dBackL:'Documents',dPh:'Write here…',dAsText:'Share as text',dAsWord:'Word file',dPrint:'Print / PDF',dNoPrint:'Printing works in the installed app.',dH1:'Title',dH2:'Heading',dP:'Text',dHi:'Highlight',dNoHi:'No highlight',tkGallery:'Gallery',tkShoot:'Camera',tkAddPics:'Add photos from the gallery'},
+ar:{appName:'ملاحظاتي',tagline:'ألصقها واحفظها',createPin:'أنشئ رمز الدخول',createSub:'اختر ٤ أرقام',confirmPin:'تأكيد الرمز',confirmSub:'اكتبه مرة ثانية',enterPin:'أدخل الرمز',enterSub:'ملاحظاتي',wrong:'رمز خاطئ · حاول مرة ثانية',mismatch:'الرمزان غير متطابقين · ابدأ من جديد',wait:'محاولات كثيرة · انتظر {s} ثانية',welcome:'أهلاً بك',currentPin:'الرمز الحالي',currentSub:'لتغيير الرمز',forgot:'نسيت الرمز؟',cancel:'إلغاء',search:'ابحث عن كلمة…',tabs:['الكل','ملاحظات','مصاريف','أرقام','التكية','جداول','مستندات'],found:'وُجد {n}',none:'لا شيء بكلمة «{q}». جرّب كلمة أقصر.',emptyT:'اللوحة فارغة',emptyB:'اضغط + الأصفر لتلصق أول بطاقة.',newCard:'بطاقة جديدة',editCard:'تعديل البطاقة',tNote:'ملاحظة',tMoney:'مصاريف',tPhone:'رقم هاتف',noteText:'الملاحظة',notePh:'اكتب هنا…',important:'مهم',title:'العنوان',titlePh:'مصاريف الجمعة',item:'الغرض',amount:'المبلغ',addRow:'+ سطر جديد',total:'المجموع',name:'الاسم',namePh:'أبو أحمد',number:'رقم الهاتف',save:'تم',board:'اللوحة',writePh:'اكتب أي شيء…\nالسطر الأول هو العنوان.\n\nللمصاريف اختر «مصاريف» فوق، ثم اكتب:\nخبز ٥\nغاز ٢٠\n\nالاسم مع الرقم يصير بطاقة هاتف.',del:'حذف',delSure:'حذف هذه البطاقة؟ لا يمكن التراجع.',yesDel:'نعم، احذف',keep:'إبقاء',copy:'نسخ',call:'اتصال',copied:'تم النسخ',menu:'القائمة',backup:'نسخة احتياطية',backupHint:'انسخ هذا النص واحفظه في مكان آمن، مثلاً أرسله لنفسك على واتساب أو الإيميل. إذا ضاع هاتفك، تلصقه في الهاتف الجديد.',copyBackup:'نسخ النص الاحتياطي',dlBackup:'حفظ كملف',restore:'استرجاع النسخة',restoreHint:'الصق النص الاحتياطي أو اختر الملف. هذا يستبدل كل البطاقات على هذا الهاتف.',restoreBtn:'استرجاع',restored:'تم استرجاع {n} بطاقة',badBackup:'النص غير صحيح. انسخ النص كاملاً وحاول مرة ثانية.',chooseFile:'اختر ملف النسخة',changePin:'تغيير الرمز',lockNow:'قفل الآن',erase:'مسح كل شيء',eraseSure:'سيتم حذف كل البطاقات والرمز من هذا الهاتف. لا يمكن التراجع. خذ نسخة احتياطية أولاً.',eraseBtn:'نعم، امسح كل شيء',forgotSure:'بدون الرمز، الطريقة الوحيدة هي مسح كل شيء والبدء من جديد. إذا عندك نسخة احتياطية تقدر تسترجعها بعدها.',saved:'تم الحفظ',deleted:'تم الحذف',pinChanged:'تم تغيير الرمز',langOther:'English',errNote:'اكتب شيئاً أولاً.',errMoney:'أضف سطراً واحداً على الأقل فيه مبلغ.',errPhone:'أضف الاسم والرقم.',lblNote:'ملاحظة',lblMoney:'مصاريف',lblPhone:'هاتف',lblKitchen:'تكية',ex:'مثال',currency:'العملة',close:'إغلاق',storeWarn:'المتصفح لا يحفظ ملاحظاتك (قد يكون في الوضع الخاص). ستختفي البطاقات عند الإغلاق.',about:'ملاحظاتك محفوظة على هذا الهاتف فقط. لا أحد غيرك يراها.',wall:'اجعلها خلفية للهاتف',studio:'استوديو الخلفية',wCards:'البطاقات على الخلفية',wMax:'{n} / ٦',wBg:'شكل الخلفية',bgN:{cork:'فلين',mat:'أخضر',paper:'ورق',night:'كحلي'},wStk:'ستيكرات · اضغط لتلصق',wNoStk:'إزالة الستيكرات',wSave:'حفظ الصورة',wHow:'<b>بعد الحفظ:</b> افتح الإعدادات ← خلفية الشاشة ← إضافة خلفية جديدة ← الصور، واختر الصورة.',wHold:'اضغط مطولاً على الصورة، ثم اختر «حفظ في الصور».',wFit:'بعض البطاقات ما اتسعت. اختر بطاقات أقل أو أقصر.',wPick:'اختر بطاقة واحدة على الأقل.',wMore:'+{n} سطر',stTodo:'لسا ما اجا دورها',stDone:'انتهيت منها',stLabel:'تغيير الحالة',addPhoto:'إضافة صورة',photoFail:'تعذّرت إضافة الصورة.',remind:'ذكّرني',remTitle:'تذكير',remDay:'اليوم',remTime:'الساعة',remRemove:'إزالة التذكير',remPast:'اختر وقتاً في المستقبل.',remHow:'سيفتح الآيفون نافذة «إضافة إلى التقويم». اضغط «إضافة» مرة واحدة ليرنّ التنبيه في وقته حتى لو التطبيق مسكّر.',remNoCal:'تم حفظ التذكير. تنبيه الهاتف يعمل في النسخة المثبّتة.',remDue:'تذكير',remShare:'ما فتحت النافذة؟ أرسله كملف',ok:'تمام',share:'مشاركة',shareImg:'مشاركة كصورة',selMore:'تحديد أكثر من بطاقة',nSel:'{n} محددة',delN:'حذف {n} بطاقة؟ لا يمكن التراجع.',copiedShare:'تم نسخ النص. الصقه في أي مكان.',wa:'إرسال على واتساب',copyTxt:'نسخ النص',tkMonth:'ملخص الشهر',tkDays:'يوم',tkPots:'قدر',tkEmptyT:'لا يوجد تسجيل بعد',tkEmptyB:'اضغط + لتسجيل تكية اليوم.',tkToday:'تسجيل التكية',tkDate:'التاريخ',tkDish:'الطبخة',tkPotsN:'عدد القدور',tkIngs:'المواد (غيّر أي رقم)',tkPer:'للقدر',tkTot:'الإجمالي',tkAddIng:'إضافة مادة',tkPlace:'مكان التوزيع',tkPics:'صور التوزيع',tkRate:'جودة الطعام',tkNote:'ملاحظات',tkNotePh:'اكتب أي ملاحظة عن اليوم',tkMake:'إنشاء التقرير',tkRepT:'التقرير جاهز',tkSendPics:'إرسال الصور والتقرير ({n})',tkPicsNo:'تم نسخ التقرير. إرسال الصور يعمل في النسخة المثبّتة.',tkNewDish:'طبخة جديدة',tkNewPlace:'مكان جديد',tkNewIng:'مادة جديدة',tkName:'الاسم',tkUnit:'الوحدة',add:'إضافة',tkDelDay:'حذف هذا التسجيل؟ لا يمكن التراجع.',tkSumT:'ملخص التكية',tkUnits:['كجم','لتر','جرام','حبة'],tkVDays:'السجل اليومي',tkVCamps:'المخيمات',tkTodayC:'توزيع اليوم',tkTodayTag:'اليوم',lblCamp:'مخيم',cRep:'المندوب',cRepName:'اسم المندوب',cWaHint:'للواتساب اكتب الرقم مع مقدمة الدولة (مثلاً +970 أو +972).',cDays:'أيام التوزيع',cCount:'الأعداد',cPeople:'عدد الأفراد',cFam:'عدد العائلات',cLog:'السجل (ينكتب لحاله من تسجيل التكية)',cLogEmpty:'لا يوجد توزيع مسجّل بعد.',cMonth:'هذا الشهر',cAll:'المجموع الكلي',cAdd:'إضافة مخيم',cNew:'مخيم جديد',cName:'اسم المخيم',cDel:'حذف هذا المخيم؟ سجل التكية اليومي يبقى كما هو.',cDelB:'حذف المخيم',cRem:'تذكير أسبوعي',cRemHow:'ينبّهك الآيفون في هذا الوقت كل يوم توزيع لهذا المخيم. اضغط «إضافة» مرة واحدة في نافذة التقويم.',cRemNeed:'اختر أيام التوزيع أولاً.',cNameNeed:'اكتب اسم المخيم.',cDup:'يوجد مخيم بهذا الاسم.',camAdded:'انضافت لتسجيل اليوم ({n})',waShort:'واتساب',wdS:['ح','ن','ث','ر','خ','ج','س'],wdL:['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'],lblSheet:'جدول',lblDoc:'مستند',fReady:'الملف جاهز',fShare:'مشاركة',fSave:'حفظ على الهاتف',fNoSave:'حفظ ومشاركة الملفات يعمل في النسخة المثبّتة.',fRename:'تغيير الاسم',fDelete:'حذف',fDelSure:'حذف «{n}»؟ لا يمكن التراجع.',fFull:'مساحة الحفظ ممتلئة.',xNew:'جدول جديد',xOpen:'فتح ملف إكسل',xEmptyT:'لا توجد جداول بعد',xEmptyB:'اضغط + لجدول جديد، أو افتح ملف إكسل.',xLoading:'لحظة…',xLibFail:'تعذّر تحميل أداة الإكسل. افتح التطبيق مرة والإنترنت شغّال.',xBad:'تعذّرت قراءة هذا الملف.',xCut:'الملف كبير جداً، عُرض جزء منه فقط.',xSheetN:'أوراق',xRows:'{n} صف',xFindPh:'ابحث عن اسم…',xNoHit:'لا نتائج',xRowUp:'إضافة صف فوق',xRowDn:'إضافة صف تحت',xColR:'إضافة عمود يمين',xColL:'إضافة عمود يسار',xMerge:'دمج الخانات',xUnmerge:'إلغاء الدمج',xCopy:'نسخ',xPaste:'لصق',xClear:'مسح المحتوى',xDelRow:'حذف الصف',xDelCol:'حذف العمود',xAsFile:'ملف إكسل',xAsPic:'صورة للجدول',xDir:'عكس اتجاه الجدول',xTextC:'لون الخط',xFillC:'لون الخانة',xNoFill:'بدون لون',xSumHint:'اختر خانات فيها أرقام ثم اضغط Σ.',xDelSheet:'حذف الورقة',xDelSheetSure:'حذف هذه الورقة بكل ما فيها؟',xLast:'لا يمكن حذف الورقة الوحيدة.',xNothing:'الجدول فارغ.',xNoClip:'لا يوجد شيء للصق. انسخ خانات أولاً.',xAddRows:'١٠ صفوف',xAddSheet:'إضافة ورقة',xBackL:'الجداول',xInPh:'اضغط خانة ثم اكتب هنا',xPicCut:'الجدول طويل، الصورة فيها أوله فقط.',xMaxC:'لا يمكن إضافة أعمدة أكثر.',dEmptyT:'لا توجد مستندات بعد',dEmptyB:'اضغط + لتكتب مستنداً جديداً.',dNew:'مستند جديد',dBackL:'المستندات',dPh:'اكتب هنا…',dAsText:'مشاركة كنص',dAsWord:'ملف وورد',dPrint:'طباعة / PDF',dNoPrint:'الطباعة تعمل في النسخة المثبّتة.',dH1:'عنوان كبير',dH2:'عنوان',dP:'نص',dHi:'تظليل',dNoHi:'بدون تظليل',tkGallery:'المعرض',tkShoot:'تصوير',tkAddPics:'إضافة صور من المعرض'}
 };
 let lang=S.get('lang',(navigator.language||'').startsWith('ar')?'ar':'en');
 const t=(k,v)=>{let s=L[lang][k];if(v)for(const x in v)s=s.replace('{'+x+'}',v[x]);return s};
 let items=S.get('items',null);
 let cur=S.get('cur','₪');
-let tab=0,query='';
+let tab=0,query='',lastTab=0;
 let migrate=true;
 
 function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.classList.toggle('ar',lang==='ar');
@@ -404,7 +476,7 @@ function paint(){[...$('#dots').children].forEach((d,i)=>d.className='d'+(i<pin.
 function sub(txt,cls){const e=$('#lt2');e.textContent=txt;e.className='lt2'+(cls?' '+cls:'')}
 function lockText(){const m={create:['createPin','createSub'],confirm:['confirmPin','confirmSub'],enter:['enterPin','enterSub'],verify:['currentPin','currentSub']}[mode];$('#lt1').textContent=t(m[0]);sub(t(m[1]));$('#forgotBtn').hidden=!(mode==='enter');$('#cancelPin').hidden=!(changing);}
 let changing=false;
-function showLock(m){document.querySelectorAll('.writer,.studio,.cmov,.selbar,.tkp').forEach(e=>e.remove());selMode=false;selSet.clear();$('#fab').hidden=false;mode=m;pin='';paint();$('#dots').className='dots';$('#app').hidden=true;$('#lock').hidden=false;$('#ov').hidden=true;lockText();}
+function showLock(m){FL.forEach(f=>{try{f()}catch(e){}});FL.clear();document.querySelectorAll('.writer,.studio,.cmov,.selbar,.tkp').forEach(e=>e.remove());selMode=false;selSet.clear();$('#fab').hidden=false;mode=m;pin='';paint();$('#dots').className='dots';$('#app').hidden=true;$('#lock').hidden=false;$('#ov').hidden=true;lockText();}
 function bad(msg){busy=true;const d=$('#dots');d.className='dots err shake';sub(msg,'err');setTimeout(()=>{d.className='dots';pin='';paint();busy=false},650)}
 async function done(){
  if(mode==='create'){first=pin;mode='confirm';pin='';paint();lockText();return}
@@ -494,9 +566,11 @@ function card(it){
 
 function render(){
  const list=(items||[]).slice().sort((a,b)=>b.ts-a.ts);
- const counts=[list.length,...['note','money','phone'].map(ty=>list.filter(i=>i.type===ty).length),tk.days.length];
+ const counts=[list.length,...['note','money','phone'].map(ty=>list.filter(i=>i.type===ty).length),tk.days.length,fx.filter(x=>x.kind==='sheet').length,fx.filter(x=>x.kind==='doc').length];
  $('#tabs').innerHTML=t('tabs').map((n,i)=>`<button class="tab ${i===tab?'on':''}" role="tab" aria-selected="${i===tab}" data-t="${i}">${n}<i>${counts[i]}</i></button>`).join('');
- if(tab===4){tkHome();$('#qx').hidden=!query;$('#storeWarn').hidden=storeOK;selBar();return}
+ const onTab=$('#tabs .tab.on');if(onTab&&onTab.scrollIntoView&&tab!==lastTab){lastTab=tab;try{onTab.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}}
+ if(tab===4){tkHome();$('#qx').hidden=!query;$('#storeWarn').hidden=storeOK;selBar();camShow();return}
+ if(tab===5||tab===6){filesHome(tab===5?'sheet':'doc');$('#qx').hidden=!query;$('#storeWarn').hidden=storeOK;selBar();camShow();return}
  let show=tab?list.filter(i=>i.type===typeOfTab[tab]):list;
  const q=norm(query.trim());
  if(q)show=show.filter(i=>norm(textOf(i)).includes(q));
@@ -505,7 +579,7 @@ function render(){
  $('#qx').hidden=!query;
  $('#storeWarn').hidden=storeOK;
  if(selMode)document.querySelectorAll('#grid .cd[data-id]').forEach(c=>{const on=selSet.has(c.dataset.id);c.classList.toggle('sel',on);const m=document.createElement('span');m.className='selc'+(on?' on':'');m.innerHTML=CHK(13);c.appendChild(m)});
- selBar();
+ selBar();camShow();
 }
 $('#tabs').onclick=e=>{const b=e.target.closest('.tab');if(b){tab=+b.dataset.t;selMode=false;selSet.clear();render()}};
 $('#q').addEventListener('input',e=>{query=e.target.value;render()});
@@ -514,6 +588,12 @@ $('#grid').addEventListener('click',async e=>{
  const tm=e.target.closest('[data-tkm]');if(tm){tkOff=Math.min(0,tkOff+(+tm.dataset.tkm));render();return}
  if(e.target.closest('[data-tks]')){shareRaw(tkSummary());return}
  const tdy=e.target.closest('[data-day]');if(tdy){tkOpen(tdy.dataset.day);return}
+ const tv=e.target.closest('[data-tkv]');if(tv){tkView=tv.dataset.tkv;render();return}
+ const tcp=e.target.closest('[data-camp]');if(tcp){tkCampOpen(tcp.dataset.camp);return}
+ if(e.target.closest('[data-addcamp]')){tkCampOpen(null);return}
+ if(e.target.closest('[data-tkopen]')){tkOpen();return}
+ const fcd=e.target.closest('[data-file]');if(fcd){if(fcd.dataset.kind==='doc')docOpen(fcd.dataset.file);else sheetOpen(fcd.dataset.file);return}
+ if(e.target.closest('[data-openx]')){$('#xF').click();return}
  if(lpHit){lpHit=false;e.preventDefault();return}
  if(selMode){const sc=e.target.closest('.cd[data-id]');e.preventDefault();if(sc){const id=sc.dataset.id;if(selSet.has(id))selSet.delete(id);else selSet.add(id);render()}return}
  const pn=e.target.closest('[data-pin]');if(pn){e.stopPropagation();const it=items.find(i=>i.id===pn.dataset.pin);if(it){if(it.st==='todo')it.st='done';else if(it.st==='done')delete it.st;else it.st='todo';save();render()}return}
@@ -623,7 +703,7 @@ function editor(it){
  w.querySelector('#wBack').onclick=finish;
  const del=w.querySelector('#wDel');if(del)del.onclick=()=>{pg.blur();confirmSheet(t('del'),t('delSure'),t('yesDel'),()=>{drop();items=items.filter(i=>i.id!==it.id);save();close();render();toast(t('deleted'))})};
 }
-$('#fab').onclick=()=>tab===4?tkOpen():editor(null);
+$('#fab').onclick=()=>tab===4?(tkView==='camps'?tkCampOpen(null):tkOpen()):tab===5?sheetNew():tab===6?docNew():editor(null);
 
 /* ---------- wallpaper studio ---------- */
 const WP_W=1125,WP_H=2436,STK=['⭐','📌','❤️','☕','🌿'];
@@ -708,8 +788,8 @@ $('#wallBtn').onclick=wallpaper;
 const TKM=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'],TKME=['January','February','March','April','May','June','July','August','September','October','November','December'];
 function tkDefault(){const base=[{n:'الأرز',u:'كجم',q:20},{n:'الزيت',u:'لتر',q:2.5},{n:'البصل',u:'كجم',q:2},{n:'الثوم',u:'كجم',q:.3},{n:'البهارات',u:'كجم',q:.7}];const cp=()=>base.map(x=>({...x}));
  return{dishes:[{id:uid(),name:'أرز كبسة',ings:cp()},{id:uid(),name:'كبسة بلحمة',ings:[...cp(),{n:'اللحمة',u:'كجم',q:0}]}],places:['مواصي خانيونس'],days:[]}}
-let tk=S.get('tk',null);if(!tk||!Array.isArray(tk.days)||!Array.isArray(tk.dishes)||!tk.dishes.length)tk=tkDefault();if(!Array.isArray(tk.places))tk.places=[];
-let tkOff=0;
+let tk=S.get('tk',null);if(!tk||!Array.isArray(tk.days)||!Array.isArray(tk.dishes)||!tk.dishes.length)tk=tkDefault();tkFix();
+let tkOff=0,tkView='days';
 function tkSave(){if(!S.set('tk',tk))$('#storeWarn').hidden=false}
 const q2=x=>String(Math.round((+x||0)*100)/100);
 const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
@@ -736,32 +816,88 @@ function tkSummary(){const m=tkMonthData(),A=lang==='ar';if(!m.days.length)retur
  return [t('tkSumT')+' '+(A?TKM:TKME)[m.md.getMonth()]+' '+m.md.getFullYear(),'',(A?'عدد أيام التوزيع: ':'Distribution days: ')+m.days.length,(A?'عدد القدور: ':'Pots: ')+m.pots,'',A?'المواد المستخدمة:':'Ingredients used:',...m.tot.map(x=>x.n+': '+q2(x.v)+' '+x.u)].join('\n')}
 function tkCard(d){const l=lang==='ar'?'ar':'en',ps=(d.places||[]).map(x=>x.n).join('، '),pics=(d.imgs||[]).filter(i=>IMG[i]);
  return `<div class="cd tape tkd${dirOf(d.dish)==='rtl'?' arx':''}" role="button" tabindex="0" data-day="${d.id}" style="transform:rotate(${rot(d.id)}deg)"><div class="lb">${t('lblKitchen')}<u>${esc(tkDate(d.date,l).replace(/ \d{4}$/,''))}</u></div><div class="big">${hl(potsW(d.pots,tkLang(d)))}</div><div class="hand sm">${hl(d.dish)}${ps?'\n'+hl(ps):''}</div>${pics.length?`<div class="tkmini">${pics.slice(0,4).map(i=>`<img alt="" src="${IMG[i]}">`).join('')}</div>`:''}${d.rate?`<div class="tkbadge">${rateName(d.rate,l)}</div>`:''}</div>`}
-function tkHome(){const A=lang==='ar',m=tkMonthData(),q=norm(query.trim());
+function tkFix(){if(!Array.isArray(tk.places))tk.places=[];if(!Array.isArray(tk.camps))tk.camps=[];tk.places.forEach(n=>{if(!tk.camps.some(c=>c.name===n))tk.camps.push(campNew(n))});tk.places=[]}
+function campNew(n){return{id:uid(),name:n||'',rep:'',phone:'',days:[],people:'',fam:''}}
+function tkToday(){const wd=new Date().getDay();return tk.camps.filter(c=>(c.days||[]).indexOf(wd)>-1)}
+function tkNewDay(){const last=tk.days.slice().sort(tkSort)[0],sch=tkToday();const dish=(last&&tk.dishes.some(x=>x.name===last.dish))?last.dish:tk.dishes[0].name;const ds=tk.dishes.find(x=>x.name===dish);
+ return{id:uid(),ts:Date.now(),date:ymd(new Date()),dish,pots:last?last.pots:5,ings:clone(ds?ds.ings:[]),places:sch.length?sch.map(c=>({n:c.name,p:0})):(last?clone(last.places||[]):[]),rate:0,note:'',imgs:[]}}
+function campPots(c,d){const ps=d.places||[],x=ps.find(y=>y.n===c.name);if(!x)return 0;return x.p||(ps.length===1?d.pots:0)}
+function campLog(c){return tk.days.filter(d=>(d.places||[]).some(y=>y.n===c.name)).sort(tkSort).map(d=>({d,p:campPots(c,d)}))}
+function camShow(){const c=$('#cam');if(c)c.hidden=!(tab===4&&tkView==='days'&&!selMode)}
+async function tkSnap(f){try{const data=await shrink(f);const td=ymd(new Date());let d=tk.days.find(x=>x.date===td);if(!d){d=tkNewDay();tk.days.push(d)}const pid=uid();putImg(pid,data);if(!d.imgs)d.imgs=[];d.imgs.push(pid);tkSave();render();toast(t('camAdded',{n:d.imgs.length}))}catch(e){toast(t('photoFail'))}}
+function waNum(n){let x=telOf(n).replace(/^\+/,'');if(x.indexOf('00')===0)x=x.slice(2);else if(x.charAt(0)==='0')x='970'+x.slice(1);return x}
+function calHand(ics){if(!ics)return;if(!hosted){toast(t('remNoCal'));return}toCal(ics);
+ const s2=sheet(`<h2>${t('remTitle')}</h2><p class="hint">${t('remHow')}</p><button class="b" id="rmSh">${t('remShare')}</button><button class="b pri" id="rmOk">${t('ok')}</button>`);s2.querySelector('#rmOk').onclick=closeSheet;s2.querySelector('#rmSh').onclick=()=>shareCal(ics)}
+function icsWeekly(c,hh,mm){const now=new Date();let dt=null;for(let k=0;k<8;k++){const x=new Date(now.getFullYear(),now.getMonth(),now.getDate()+k,hh,mm,0);if(c.days.indexOf(x.getDay())>-1&&x>now){dt=x;break}}if(!dt)return '';
+ const p2=n=>String(n).padStart(2,'0'),loc=x=>x.getFullYear()+p2(x.getMonth()+1)+p2(x.getDate())+'T'+p2(x.getHours())+p2(x.getMinutes())+'00',e=x=>String(x||'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/([,;])/g,'\\$1');
+ const z=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,''),BY=['SU','MO','TU','WE','TH','FR','SA'],title=(lang==='ar'?'تكية: ':'Kitchen: ')+c.name;
+ return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Pocket Notes//Camp//AR','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:camp-'+c.id+'-'+Date.now()+'@pocket-notes','DTSTAMP:'+z,'DTSTART:'+loc(dt),'DTEND:'+loc(new Date(dt.getTime()+30*60000)),'RRULE:FREQ=WEEKLY;BYDAY='+c.days.slice().sort().map(d=>BY[d]).join(','),'SUMMARY:'+e(title),'DESCRIPTION:'+e([c.rep,c.phone].filter(Boolean).join(' - ')),'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+e(title),'TRIGGER:PT0M','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n')}
+function tkHome(){const A=lang==='ar',l=A?'ar':'en',q=norm(query.trim());
+ const seg=`<div class="tkseg tkv"><button class="${tkView==='days'?'on':''}" data-tkv="days">${t('tkVDays')}</button><button class="${tkView==='camps'?'on':''}" data-tkv="camps">${t('tkVCamps')}</button></div>`;
+ $('#info').innerHTML='';
+ if(tkView==='camps'){const today=tkToday().map(c=>c.id),mk=ymd(new Date()).slice(0,7);let cs=tk.camps.slice();
+  if(q)cs=cs.filter(c=>norm([c.name,c.rep,c.phone,String(c.phone||'').replace(/\s/g,'')].join(' ')).includes(q));
+  cs.sort((x,y)=>(today.indexOf(y.id)>-1)-(today.indexOf(x.id)>-1)||x.name.localeCompare(y.name));
+  $('#grid').innerHTML=seg+cs.map(c=>{const mp=campLog(c).filter(x=>x.d.date.slice(0,7)===mk).reduce((n,x)=>n+(x.p||0),0),dz=(c.days||[]).slice().sort().map(k=>t('wdL')[k]).join(' · ');
+   return `<div class="cd tape tkd${dirOf(c.name)==='rtl'?' arx':''}" role="button" tabindex="0" data-camp="${c.id}" style="transform:rotate(${rot(c.id)}deg)"><div class="lb">${t('lblCamp')}${today.indexOf(c.id)>-1?`<u class="ex">${t('tkTodayTag')}</u>`:''}</div><div class="big">${hl(c.name)}</div><div class="hand sm">${[c.rep?hl(c.rep):'',esc(dz)].filter(Boolean).join('\n')}</div>${mp?`<div class="tkbadge">${t('cMonth')}: ${potsW(mp,l)}</div>`:''}</div>`}).join('')+(q&&!cs.length?`<div class="empty"><b>${esc(t('none',{q:query.trim()}))}</b></div>`:'')+(q?'':`<button class="cd tkaddc" data-addcamp="1">+ ${t('cAdd')}</button>`);
+  return}
+ const m=tkMonthData(),tc=tkToday();
  const shown=q?tk.days.filter(d=>norm([d.dish,d.note,(d.places||[]).map(x=>x.n).join(' '),tkDate(d.date,'ar'),tkDate(d.date,'en')].join(' ')).includes(q)).sort(tkSort):m.days;
+ const todayCard=(!q&&tkOff===0&&tc.length)?`<div class="cd tape wide arx" role="button" tabindex="0" data-tkopen="1"><div class="lb">${t('tkTodayC')} · ${t('wdL')[new Date().getDay()]}</div><div class="big">${tc.map(c=>esc(c.name)).join('، ')}</div></div>`:'';
  const sum=q?'':`<div class="cd tape idx wide"><div class="lb">${t('tkMonth')}<span class="tknav"><button class="mini" data-tkm="-1" aria-label="prev">${A?'›':'‹'}</button><b>${(A?TKM:TKME)[m.md.getMonth()]} ${m.md.getFullYear()}</b><button class="mini" data-tkm="1" aria-label="next" ${tkOff>=0?'disabled':''}>${A?'‹':'›'}</button></span></div><div class="tkstat"><div><b>${m.days.length}</b><span>${t('tkDays')}</span></div><div><b>${m.pots}</b><span>${t('tkPots')}</span></div></div>${m.tot.map(x=>`<div class="row"><span>${esc(x.n)}</span><span>${q2(x.v)} ${esc(x.u)}</span></div>`).join('')}${m.days.length?`<div class="pact"><button class="mini" data-tks="1">${t('share')}</button></div>`:''}</div>`;
- $('#info').innerHTML=q&&shown.length?`<span class="info">${t('found',{n:shown.length})}</span>`:'';
- $('#grid').innerHTML=sum+(shown.length?shown.map(tkCard).join(''):(q?`<div class="empty"><b>${esc(t('none',{q:query.trim()}))}</b></div>`:`<div class="empty tape"><b>${t('tkEmptyT')}</b>${t('tkEmptyB')}</div>`))}
+ if(q&&shown.length)$('#info').innerHTML=`<span class="info">${t('found',{n:shown.length})}</span>`;
+ $('#grid').innerHTML=seg+todayCard+sum+(shown.length?shown.map(tkCard).join(''):(q?`<div class="empty"><b>${esc(t('none',{q:query.trim()}))}</b></div>`:`<div class="empty tape"><b>${t('tkEmptyT')}</b>${t('tkEmptyB')}</div>`))}
+function tkCampOpen(id){const orig=id?tk.camps.find(x=>x.id===id):null;const c=orig?clone(orig):campNew('');if(!Array.isArray(c.days))c.days=[];
+ const A=lang==='ar',l=A?'ar':'en',order=A?[6,0,1,2,3,4,5]:[0,1,2,3,4,5,6];
+ const w=document.createElement('div');w.className='tkp';
+ w.innerHTML=`<div class="tkbar"><button class="sbt" id="cBack">${t('cancel')}</button><b>${orig?esc(orig.name):t('cNew')}</b><button class="sbt" id="cSave" style="font-weight:700">${t('save')}</button></div><div class="tkb" id="cB"></div>`;
+ document.body.appendChild(w);const B=w.querySelector('#cB');
+ const fit=()=>{const vv=window.visualViewport;if(vv){w.style.height=vv.height+'px';w.style.top=vv.offsetTop+'px'}};fit();window.visualViewport&&visualViewport.addEventListener('resize',fit);
+ const log=orig?campLog(orig):[],mk=ymd(new Date()).slice(0,7),mp=log.filter(x=>x.d.date.slice(0,7)===mk).reduce((n,x)=>n+(x.p||0),0),ap=log.reduce((n,x)=>n+(x.p||0),0);
+ const dl=x=>{const a=x.split('-').map(Number);return t('wdL')[new Date(a[0],a[1]-1,a[2]).getDay()]+' '+tkDate(x,l).replace(/ \d{4}$/,'')};
+ B.innerHTML=`<div class="tkl">${t('cName')}</div><input class="in" id="cN" dir="auto" autocomplete="off" value="${esc(c.name)}">
+ <div class="tkl">${t('cRep')}</div><div class="tkc"><input class="in" id="cR" dir="auto" autocomplete="off" placeholder="${esc(t('cRepName'))}" value="${esc(c.rep||'')}"><input class="in" id="cP" type="tel" inputmode="tel" dir="ltr" autocomplete="off" placeholder="059 000 0000" style="margin-top:8px" value="${esc(c.phone||'')}"><div class="pact" id="cLinks" style="margin-top:10px"></div><p class="hint" style="margin-top:8px">${t('cWaHint')}</p></div>
+ <div class="tkl">${t('cDays')}</div><div class="tkc tkwd" id="cW">${order.map(k=>`<button class="${c.days.indexOf(k)>-1?'on':''}" data-wd="${k}" aria-label="${t('wdL')[k]}">${t('wdS')[k]}</button>`).join('')}</div>
+ <div class="tkl">${t('cCount')}</div><div class="tkc" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><label class="fld">${t('cPeople')}<input class="tki" id="cPe" type="number" inputmode="numeric" min="0" value="${esc(c.people||'')}"></label><label class="fld">${t('cFam')}<input class="tki" id="cFa" type="number" inputmode="numeric" min="0" value="${esc(c.fam||'')}"></label></div>
+ <div class="tkl">${t('cRem')}</div><div class="tkc"><div class="tkpl"><input class="in" type="time" id="cT" value="07:00" style="width:auto;flex:1"><button class="b" id="cRm" style="flex:none">${t('remind')}</button></div><p class="hint" style="margin-top:6px">${t('cRemHow')}</p></div>
+ ${orig?`<div class="tkl">${t('cLog')}</div><div class="tkc">${log.length?log.slice(0,90).map(x=>`<div class="tklog"><span>${esc(dl(x.d.date))}</span><b>${x.p?potsW(x.p,l):'—'}</b></div>`).join('')+`<div class="tklog sum"><span>${t('cMonth')}</span><b>${potsW(mp,l)}</b></div><div class="tklog sum"><span>${t('cAll')}</span><b>${potsW(ap,l)}</b></div>`:`<p class="hint">${t('cLogEmpty')}</p>`}</div><button class="b dng" id="cDel" style="width:100%;margin-top:18px">${t('cDelB')}</button>`:''}`;
+ function links(){const tel=telOf(c.phone);B.querySelector('#cLinks').innerHTML=tel.replace(/\D/g,'').length>=7?`<a class="mini call" href="tel:${esc(tel)}"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z" fill="currentColor"/></svg>${t('call')}</a><a class="mini wa" href="https://wa.me/${esc(waNum(c.phone))}" target="_blank" rel="noopener">${t('waShort')}</a>`:''}
+ links();
+ function close(){window.visualViewport&&visualViewport.removeEventListener('resize',fit);w.classList.remove('open');setTimeout(()=>w.remove(),400);render()}
+ B.addEventListener('input',e=>{const x=e.target;if(x.id==='cN')c.name=x.value;else if(x.id==='cR')c.rep=x.value;else if(x.id==='cP'){c.phone=x.value;links()}else if(x.id==='cPe')c.people=x.value;else if(x.id==='cFa')c.fam=x.value});
+ B.addEventListener('click',e=>{const x=e.target.closest('button');if(!x)return;
+  if(x.dataset.wd!==undefined){const k=+x.dataset.wd,i=c.days.indexOf(k);if(i>-1)c.days.splice(i,1);else c.days.push(k);x.classList.toggle('on',i<0)}
+  else if(x.id==='cRm'){if(!c.days.length){toast(t('cRemNeed'));return}if(!c.name.trim()){toast(t('cNameNeed'));return}const tm=(B.querySelector('#cT').value||'07:00').split(':');calHand(icsWeekly({...c,name:c.name.trim()},+tm[0]||0,+tm[1]||0))}
+  else if(x.id==='cDel')confirmSheet(t('cDelB'),t('cDel'),t('yesDel'),()=>{tk.camps=tk.camps.filter(y=>y.id!==c.id);tkSave();close();toast(t('deleted'))})});
+ w.querySelector('#cBack').onclick=close;
+ w.querySelector('#cSave').onclick=()=>{const nm=c.name.trim();if(!nm){toast(t('cNameNeed'));return}if(tk.camps.some(y=>y.id!==c.id&&y.name===nm)){toast(t('cDup'));return}
+  c.name=nm;c.rep=String(c.rep||'').trim();c.phone=c.phone?prettyNum(c.phone)||String(c.phone).trim():'';c.days.sort();
+  if(orig&&orig.name!==nm)tk.days.forEach(d=>(d.places||[]).forEach(y=>{if(y.n===orig.name)y.n=nm}));
+  const i=tk.camps.findIndex(y=>y.id===c.id);if(i>-1)tk.camps[i]=c;else tk.camps.push(c);tkSave();close();toast(t('saved'))};
+ requestAnimationFrame(()=>w.classList.add('open'))}
+(function(){const b=document.createElement('button');b.className='fab cam';b.id='cam';b.hidden=true;b.setAttribute('aria-label','Camera');b.innerHTML='<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.5-2.5h7L17 8h3v11H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+ const f=document.createElement('input');f.type='file';f.accept='image/*';f.setAttribute('capture','environment');f.hidden=true;f.id='camF';$('#app').appendChild(b);$('#app').appendChild(f);b.onclick=()=>f.click();f.onchange=()=>{const x=f.files&&f.files[0];f.value='';if(x)tkSnap(x)}})();
 function dataFile(data,name){const b=atob(String(data).split(',')[1]||''),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return new File([u],name,{type:'image/jpeg'})}
 function tkOpen(id){
  let orig=id?tk.days.find(x=>x.id===id):null;
  if(!id){const td=ymd(new Date());orig=tk.days.find(x=>x.date===td)||null}
  let isNew=!orig;const last=tk.days.slice().sort(tkSort)[0];
  const ingsFor=name=>{const ds=tk.dishes.find(x=>x.name===name);return clone(ds?ds.ings:[])};
- const d=orig?clone(orig):{id:uid(),ts:Date.now(),date:ymd(new Date()),dish:(last&&tk.dishes.some(x=>x.name===last.dish))?last.dish:tk.dishes[0].name,pots:last?last.pots:5,ings:[],places:last?clone(last.places||[]):[],rate:0,note:'',imgs:[]};
- if(isNew)d.ings=ingsFor(d.dish);if(!d.imgs)d.imgs=[];if(!d.places)d.places=[];
+ const d=orig?clone(orig):tkNewDay();
+ if(!d.imgs)d.imgs=[];if(!d.places)d.places=[];
  const added=[];let removed=[];
  const w=document.createElement('div');w.className='tkp';
- w.innerHTML=`<div class="tkbar"><button class="sbt" id="kBack">${t('cancel')}</button><b>${t('tkToday')}</b><button class="sbt" id="kSave" style="font-weight:700">${t('save')}</button></div><div class="tkb" id="kB"></div><input type="file" id="kF" accept="image/*" multiple hidden>`;
- document.body.appendChild(w);const B=w.querySelector('#kB'),F=w.querySelector('#kF');
+ w.innerHTML=`<div class="tkbar"><button class="sbt" id="kBack">${t('cancel')}</button><b>${t('tkToday')}</b><button class="sbt" id="kSave" style="font-weight:700">${t('save')}</button></div><div class="tkb" id="kB"></div><input type="file" id="kF" accept="image/*" multiple hidden><input type="file" id="kC" accept="image/*" capture="environment" hidden>`;
+ document.body.appendChild(w);const B=w.querySelector('#kB'),F=w.querySelector('#kF'),C=w.querySelector('#kC');let reopen=false;
  const fit=()=>{const vv=window.visualViewport;if(vv){w.style.height=vv.height+'px';w.style.top=vv.offsetTop+'px'}};fit();window.visualViewport&&visualViewport.addEventListener('resize',fit);
  function draw(){const multi=d.places.length>1;
   B.innerHTML=`<div class="tkl">${t('tkDate')}</div><input class="in" type="date" id="kD" value="${d.date}">
   <div class="tkl">${t('tkDish')}</div><div class="chipsx">${tk.dishes.map(x=>`<button class="tkch ${x.name===d.dish?'on':''}" data-dish="${esc(x.name)}">${esc(x.name)}</button>`).join('')}<button class="tkch" data-add="dish" aria-label="${t('tkNewDish')}">+</button></div>
   <div class="tkl">${t('tkPotsN')}</div><div class="tkc tkrow"><button class="tkst" data-p="-1" aria-label="-">−</button><b id="kN">${d.pots}</b><button class="tkst" data-p="1" aria-label="+">+</button></div>
   <div class="tkl">${t('tkIngs')}</div><div class="tkc"><div class="tkg"><span></span><span class="tkh">${t('tkPer')}</span><span class="tkh">${t('tkTot')}</span><span></span>${d.ings.map((i,k)=>`<span class="tkn">${esc(i.n)} <small>${esc(i.u)}</small></span><input class="tki" type="number" inputmode="decimal" step="any" min="0" data-a="${k}" value="${q2(i.q)}" aria-label="${esc(i.n)} ${t('tkPer')}"><input class="tki tot" type="number" inputmode="decimal" step="any" min="0" data-b="${k}" value="${q2(i.q*d.pots)}" aria-label="${esc(i.n)} ${t('tkTot')}"><button class="tkx" data-ri="${k}" aria-label="${t('del')}">✕</button>`).join('')}</div><button class="tkadd" data-add="ing">+ ${t('tkAddIng')}</button></div>
-  <div class="tkl">${t('tkPlace')}</div><div class="chipsx">${tk.places.map(x=>`<button class="tkch ${d.places.some(y=>y.n===x)?'on':''}" data-place="${esc(x)}">${esc(x)}</button>`).join('')}<button class="tkch" data-add="place" aria-label="${t('tkNewPlace')}">+</button></div>
+  <div class="tkl">${t('tkPlace')}</div><div class="chipsx">${tk.camps.map(c=>c.name).map(x=>`<button class="tkch ${d.places.some(y=>y.n===x)?'on':''}" data-place="${esc(x)}">${esc(x)}</button>`).join('')}<button class="tkch" data-add="place" aria-label="${t('tkNewPlace')}">+</button></div>
   ${multi?`<div class="tkc" style="margin-top:8px">${d.places.map((x,k)=>`<div class="tkpl"><span>${esc(x.n)}</span><input class="tki" style="width:84px" type="number" inputmode="numeric" min="0" data-pp="${k}" value="${x.p||''}" placeholder="${t('tkPots')}"></div>`).join('')}</div>`:''}
-  <div class="tkl">${t('tkPics')}</div><div class="tkths">${d.imgs.filter(i=>IMG[i]).map(i=>`<span class="tkth"><img alt="" src="${IMG[i]}"><button data-rp="${i}" aria-label="${t('del')}">✕</button></span>`).join('')}<button class="tkth add" data-add="pic" aria-label="${t('addPhoto')}">+</button></div>
+  <div class="tkl">${t('tkPics')}</div><div class="tkths">${d.imgs.filter(i=>IMG[i]).map(i=>`<span class="tkth"><img alt="" src="${IMG[i]}"><button data-rp="${i}" aria-label="${t('del')}">✕</button></span>`).join('')}<button class="tkth add" data-add="pic" aria-label="${t('tkAddPics')}">${IC.pic}<span>${t('tkGallery')}</span></button><button class="tkth add" data-add="cam" aria-label="${t('tkShoot')}"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.5-2.5h7L17 8h3v11H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="1.9"/></svg><span>${t('tkShoot')}</span></button></div>
   <div class="tkl">${t('tkRate')}</div><div class="tkseg">${[1,2,3].map(r=>`<button class="${d.rate===r?'on':''}" data-rate="${r}">${rateName(r,lang==='ar'?'ar':'en')}</button>`).join('')}</div>
   <div class="tkl">${t('tkNote')}</div><textarea class="in" id="kT" dir="auto" rows="3" placeholder="${esc(t('tkNotePh'))}">${esc(d.note||'')}</textarea>
   <button class="b pri" id="kR" style="width:100%;margin-top:18px">${t('tkMake')}</button>${isNew?'':`<button class="b dng" id="kDel" style="width:100%;margin-top:10px">${t('del')}</button>`}`}
@@ -780,8 +916,9 @@ function tkOpen(id){
   else if(ds.rp){d.imgs=d.imgs.filter(i=>i!==ds.rp);removed.push(ds.rp);draw()}
   else if(ds.rate){const r=+ds.rate;d.rate=d.rate===r?0:r;draw()}
   else if(ds.add==='pic')F.click();
+  else if(ds.add==='cam')C.click();
   else if(ds.add==='dish')ask(t('tkNewDish'),false,v=>{if(!tk.dishes.some(y=>y.name===v))tk.dishes.push({id:uid(),name:v,ings:clone(d.ings)});d.dish=v;tkSave();draw()});
-  else if(ds.add==='place')ask(t('tkNewPlace'),false,v=>{if(tk.places.indexOf(v)<0)tk.places.push(v);if(!d.places.some(y=>y.n===v))d.places.push({n:v,p:0});tkSave();draw()});
+  else if(ds.add==='place')ask(t('tkNewPlace'),false,v=>{if(!tk.camps.some(c=>c.name===v))tk.camps.push(campNew(v));if(!d.places.some(y=>y.n===v))d.places.push({n:v,p:0});tkSave();draw()});
   else if(ds.add==='ing')ask(t('tkNewIng'),true,(v,u)=>{d.ings.push({n:v,u,q:0});draw()});
   else if(x.id==='kR')report();
   else if(x.id==='kDel')confirmSheet(t('del'),t('tkDelDay'),t('yesDel'),()=>{(orig&&orig.imgs||[]).concat(added).forEach(delImg);tk.days=tk.days.filter(y=>y.id!==d.id);tkSave();close();toast(t('deleted'))})});
@@ -791,13 +928,14 @@ function tkOpen(id){
   else if(ds.pp!==undefined){d.places[+ds.pp].p=isFinite(v)&&v>0?Math.round(v):0}
   else if(x.id==='kT')d.note=x.value;
   else if(x.id==='kD'&&x.value)d.date=x.value});
- F.onchange=async()=>{const fs=[...(F.files||[])];F.value='';let bad=false;for(const f of fs){try{const data=await shrink(f);const pid=uid();putImg(pid,data);added.push(pid);d.imgs.push(pid)}catch(e){bad=true}}draw();if(bad)toast(t('photoFail'))};
+ const take=async inp=>{const fs=[...(inp.files||[])];inp.value='';let bad=false;for(const f of fs){try{const data=await shrink(f);const pid=uid();putImg(pid,data);added.push(pid);d.imgs.push(pid)}catch(e){bad=true}}draw();if(bad)toast(t('photoFail'));const ro=reopen&&!$('#ov').hidden;reopen=false;if(ro)report()};F.onchange=()=>take(F);C.onchange=()=>take(C);
  function commit(){d.pots=Math.max(1,d.pots|0);const i=tk.days.findIndex(y=>y.id===d.id);if(i>-1)tk.days[i]=clone(d);else tk.days.push(clone(d));
   const ds=tk.dishes.find(y=>y.name===d.dish);if(ds)ds.ings=clone(d.ings);removed.forEach(delImg);removed=[];added.length=0;orig=tk.days.find(y=>y.id===d.id);tkSave()}
  function close(){window.visualViewport&&visualViewport.removeEventListener('resize',fit);w.classList.remove('open');setTimeout(()=>w.remove(),400);render()}
  function report(){commit();if(isNew){isNew=false}render();const pics=d.imgs.filter(i=>IMG[i]);
-  const s=sheet(`<h2>${t('tkRepT')}</h2><textarea class="in" id="rpT" dir="auto" style="min-height:200px;font-family:var(--ui);font-size:15px;line-height:1.7">${esc(tkReport(d))}</textarea>${pics.length?`<button class="b pri" id="rpP">${t('tkSendPics',{n:pics.length})}</button>`:''}<a class="b wa" id="rpW" href="https://wa.me/" target="_blank" rel="noopener">${t('wa')}</a><button class="b" id="rpC">${t('copyTxt')}</button><button class="b" id="iClose">${t('close')}</button>`);
+  const s=sheet(`<h2>${t('tkRepT')}</h2>${pics.length?`<div class="tkmini" style="flex-wrap:wrap">${pics.slice(0,14).map(i=>`<img alt="" src="${IMG[i]}">`).join('')}</div>`:''}<textarea class="in" id="rpT" dir="auto" style="min-height:200px;font-family:var(--ui);font-size:15px;line-height:1.7">${esc(tkReport(d))}</textarea>${pics.length?`<button class="b pri" id="rpP">${t('tkSendPics',{n:pics.length})}</button>`:''}<button class="b" id="rpA">${t('tkAddPics')}</button><a class="b wa" id="rpW" href="https://wa.me/" target="_blank" rel="noopener">${t('wa')}</a><button class="b" id="rpC">${t('copyTxt')}</button><button class="b" id="iClose">${t('close')}</button>`);
   const cur=()=>s.querySelector('#rpT').value;
+  s.querySelector('#rpA').onclick=()=>{reopen=true;F.click()};
   s.querySelector('#iClose').onclick=closeSheet;
   s.querySelector('#rpW').addEventListener('click',e=>{e.currentTarget.href='https://wa.me/?text='+encodeURIComponent(cur())});
   s.querySelector('#rpC').onclick=async()=>{try{await navigator.clipboard.writeText(cur());toast(t('copied'))}catch(e){const a=s.querySelector('#rpT');a.focus();a.select()}};
@@ -866,6 +1004,334 @@ function ctxMenu(cd){const it=items.find(i=>i.id===cd.dataset.id);if(!it||docume
  window.addEventListener('scroll',stop,{passive:true});
  g.addEventListener('contextmenu',e=>{const cd=e.target.closest('.cd[data-id]');if(!cd)return;e.preventDefault();if(!selMode&&!lpHit){stop();ctxMenu(cd)}})})();
 
+/* ---------- files kept on this phone: tables (like Excel) and documents (like Word) ---------- */
+let fx=S.get('files',[]);if(!Array.isArray(fx))fx=[];
+let fdb=null;const FL=new Set();
+const fdbReady=new Promise(res=>{try{const r=indexedDB.open('pocketnotes-files',1);r.onupgradeneeded=()=>r.result.createObjectStore('files');r.onsuccess=()=>{fdb=r.result;res()};r.onerror=()=>res();r.onblocked=()=>res()}catch(e){res()}});
+function fileGet(id){return fdbReady.then(()=>new Promise(res=>{const ls=()=>{try{const v=localStorage.getItem('pn_file_'+id);res(v?JSON.parse(v):null)}catch(e){res(null)}};if(!fdb)return ls();try{const q=fdb.transaction('files').objectStore('files').get(id);q.onsuccess=()=>{if(q.result){try{res(JSON.parse(q.result))}catch(e){res(null)}}else ls()};q.onerror=ls}catch(e){ls()}}))}
+function safeHtml(h){try{const d=new DOMParser().parseFromString('<div>'+String(h||'')+'</div>','text/html');d.querySelectorAll('script,style,iframe,object,embed,link,meta,form,input,button,textarea,select').forEach(e=>e.remove());d.querySelectorAll('*').forEach(e=>{[...e.attributes].forEach(a=>{const n=a.name.toLowerCase();if(n.indexOf('on')===0||((n==='href'||n==='src')&&/^\s*javascript:/i.test(a.value)))e.removeAttribute(a.name)})});return d.body.firstChild?d.body.firstChild.innerHTML:''}catch(e){return esc(h)}}
+function fileInfo(o){if(o.kind==='doc'){const d=document.createElement('div');d.innerHTML=safeHtml(o.html||'').replace(/<\/(div|p|h1|h2|li)>|<br\s*\/?>/gi,' $&');return (d.textContent||'').replace(/\s+/g,' ').trim().slice(0,90)}
+ const sh=o.sheets&&o.sheets[0];if(!sh)return '';let mr=-1;Object.keys(sh.cells||{}).forEach(k=>{const c=sh.cells[k];if(c.v!=null&&c.v!==''){const r=+k.split(',')[0];if(r>mr)mr=r}});return t('xRows',{n:mr+1})+(o.sheets.length>1?' · '+o.sheets.length+' '+t('xSheetN'):'')}
+function filePut(o){o.ts=Date.now();let js;try{js=JSON.stringify(o)}catch(e){return}let ok=false;if(fdb){try{fdb.transaction('files','readwrite').objectStore('files').put(js,o.id);ok=true}catch(e){}}
+ if(!ok){try{localStorage.setItem('pn_file_'+o.id,js)}catch(e){storeOK=false;toast(t('fFull'))}}
+ const i=fx.findIndex(x=>x.id===o.id),meta={id:o.id,kind:o.kind,name:o.name,ts:o.ts,info:fileInfo(o)};if(i>-1)fx[i]=meta;else fx.push(meta);S.set('files',fx)}
+function fileDel(id){if(fdb){try{fdb.transaction('files','readwrite').objectStore('files').delete(id)}catch(e){}}try{localStorage.removeItem('pn_file_'+id)}catch(e){}fx=fx.filter(x=>x.id!==id);S.set('files',fx)}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)FL.forEach(f=>{try{f()}catch(e){}})});
+function askText(title,val,cb,okLabel){const s=sheet(`<h2>${esc(title)}</h2><input class="in" id="aN" dir="auto" autocomplete="off" value="${esc(val||'')}"><div class="acts"><button class="b" id="aNo">${t('cancel')}</button><button class="b pri" id="aOk">${esc(okLabel||t('save'))}</button></div>`);
+ const inp=s.querySelector('#aN');setTimeout(()=>{try{inp.focus();inp.select()}catch(e){}},350);s.querySelector('#aNo').onclick=closeSheet;const go=()=>{const v=inp.value.trim();if(!v)return;closeSheet();cb(v)};s.querySelector('#aOk').onclick=go;inp.addEventListener('keydown',e=>{if(e.key==='Enter')go()})}
+function popMenu(r,rows,cb,fromLongPress){const m=document.createElement('div');m.className='cmov';m.innerHTML=`<div class="cmenu" role="menu" style="max-height:72vh;overflow-y:auto">${rows.map(x=>`<button class="cmi ${x.dng?'dng':''}" data-a="${x.a}" role="menuitem"><span>${esc(x.t)}</span>${x.i||''}</button>`).join('')}</div>`;document.body.appendChild(m);
+ const box=m.firstElementChild,bw=box.offsetWidth,bh=box.offsetHeight,vw=window.innerWidth,vh=window.innerHeight;let top=r.bottom+6;if(top+bh>vh-12)top=r.top-bh-6;top=Math.max(12,Math.min(top,vh-bh-12));let left=lang==='ar'?r.right-bw:r.left;left=Math.max(10,Math.min(left,vw-bw-10));
+ box.style.top=top+'px';box.style.left=left+'px';box.style.transformOrigin=(lang==='ar'?'right ':'left ')+'top';requestAnimationFrame(()=>m.classList.add('open'));
+ let armed=!fromLongPress;m.addEventListener('pointerdown',()=>{armed=true});m.addEventListener('contextmenu',e=>e.preventDefault());
+ m.addEventListener('click',e=>{if(!armed)return;const b=e.target.closest('[data-a]');m.classList.remove('open');setTimeout(()=>m.remove(),200);if(b)cb(b.dataset.a)})}
+function fileReady(file){let can=false;try{can=!!(navigator.canShare&&navigator.canShare({files:[file]}))}catch(e){}
+ const s=sheet(`<h2>${t('fReady')}</h2><p class="hint" style="text-align:center;font-size:15px;color:var(--ink)" dir="auto">${esc(file.name)}</p>${can?`<button class="b pri" id="fS">${t('fShare')}</button>`:''}${hosted?`<button class="b" id="fD">${t('fSave')}</button>`:''}${(!can&&!hosted)?`<p class="hint">${t('fNoSave')}</p>`:''}<button class="b" id="iClose">${t('close')}</button>`);
+ s.querySelector('#iClose').onclick=closeSheet;const a=s.querySelector('#fS');if(a)a.onclick=()=>{navigator.share({files:[file]}).then(closeSheet).catch(()=>{})};
+ const d=s.querySelector('#fD');if(d)d.onclick=()=>{try{const u=URL.createObjectURL(file),l=document.createElement('a');l.href=u;l.download=file.name;document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}catch(e){}}}
+async function shareCanvas(cv,title,name){const blob=await new Promise(r=>{try{cv.toBlob(r,'image/png')}catch(e){r(null)}});let file=null;
+ if(blob&&window.File&&navigator.canShare){try{const f=new File([blob],(name||'pocket-notes')+'.png',{type:'image/png'});if(navigator.canShare({files:[f]}))file=f}catch(e){}}
+ let url='';try{url=cv.toDataURL('image/png')}catch(e){}
+ const s=sheet(`<h2>${esc(title)}</h2><img class="wimg" src="${url}" alt="">${file?`<button class="b pri" id="iShare">${t('share')}</button>`:`<p class="hint">${t('wHold')}</p>`}<button class="b" id="iClose">${t('close')}</button>`);
+ s.querySelector('#iClose').onclick=closeSheet;const sb=s.querySelector('#iShare');if(sb)sb.onclick=()=>{navigator.share({files:[file]}).then(closeSheet).catch(()=>{})}}
+const ICN={find:'<svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',more:'<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.9" fill="currentColor"/><circle cx="12" cy="12" r="1.9" fill="currentColor"/><circle cx="19" cy="12" r="1.9" fill="currentColor"/></svg>',fill:'<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" fill="#F2E14C" stroke="currentColor" stroke-width="1.8"/></svg>',grid:'<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM4 12h16M12 4v16" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>',align:'<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',narrow:'<svg width="20" height="18" viewBox="0 0 26 24" aria-hidden="true"><path d="M3 12h7M7 8l4 4-4 4M23 12h-7M19 8l-4 4 4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>',wide:'<svg width="20" height="18" viewBox="0 0 26 24" aria-hidden="true"><path d="M12 12H3M7 8l-4 4 4 4M14 12h9M19 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>',xls:'<svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9 12l6 6M15 12l-6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>'};
+
+/* ----- spreadsheet engine ----- */
+const XCW=96,XCH=150,XMAXR=20000,XMAXC=120;
+const colName=c=>{let s='';c++;while(c>0){const m=(c-1)%26;s=String.fromCharCode(65+m)+s;c=(c-m-1)/26}return s};
+const colIdx=s=>{let n=0;for(let i=0;i<s.length;i++)n=n*26+(s.charCodeAt(i)-64);return n-1};
+function xlNum(v){if(typeof v==='number')return v;const s=latin(String(v==null?'':v)).replace(/[,٬]/g,'').replace(/٫/g,'.').trim();if(s===''||!/^-?\d*\.?\d+(e[+-]?\d+)?%?$/i.test(s))return NaN;return s.charAt(s.length-1)==='%'?parseFloat(s)/100:parseFloat(s)}
+const fmtN=v=>{if(typeof v!=='number')return String(v);if(!isFinite(v))return '#ERR';return String(parseFloat(v.toPrecision(12)))};
+const xlDark=h=>{const n=parseInt(String(h).slice(1),16);return ((n>>16&255)*299+(n>>8&255)*587+(n&255)*114)/1000<128};
+function xlCss(cell){const s=cell&&cell.s;if(!s)return '';let o='';if(s.b)o+='font-weight:700;';if(s.f)o+='background-color:'+s.f+';';if(s.c)o+='color:'+s.c+';';else if(s.f&&xlDark(s.f))o+='color:#fff;';if(s.a)o+='text-align:'+(s.a==='c'?'center':s.a==='r'?'right':'left')+';';if(s.bd)o+='box-shadow:inset 0 0 0 1px #1b1b1a;';return o}
+const XFN=['SUM','AVERAGE','AVG','MIN','MAX','COUNT','COUNTA','ROUND','ABS'];
+function xlEval(sh){const memo={},busy={};
+ const num=v=>{if(typeof v==='number')return v;if(typeof v==='string'&&v.charAt(0)==='#')throw v;const n=xlNum(v);return isNaN(n)?0:n};
+ function val(r,c){const k=r+','+c;if(k in memo)return memo[k];const cell=sh.cells[k];if(!cell||cell.v==null||cell.v==='')return memo[k]='';const raw=String(cell.v);if(raw.charAt(0)!=='='||raw.length<2)return memo[k]=raw;
+  if(busy[k])throw '#CYCLE';busy[k]=1;let out;try{out=calc(raw.slice(1))}catch(e){out=typeof e==='string'?e:'#ERR'}busy[k]=0;return memo[k]=out}
+ function calc(src){src=latin(src).toUpperCase().replace(/\s+/g,'').replace(/×/g,'*').replace(/÷/g,'/').replace(/[؛;،]/g,',').replace(/\$/g,'');let i=0;const pk=()=>src.charAt(i);
+  function expr(){let v=term();while(pk()==='+'||pk()==='-'){const o=src.charAt(i++),b=term();v=o==='+'?num(v)+num(b):num(v)-num(b)}return v}
+  function term(){let v=fac();while(pk()==='*'||pk()==='/'){const o=src.charAt(i++),b=fac();if(o==='*')v=num(v)*num(b);else{const d=num(b);if(d===0)throw '#DIV/0';v=num(v)/d}}return v}
+  function fac(){if(pk()==='-'){i++;return -num(fac())}if(pk()==='+'){i++;return num(fac())}let v=atom();if(pk()==='%'){i++;v=num(v)/100}if(pk()==='^'){i++;v=Math.pow(num(v),num(fac()))}return v}
+  function atom(){if(pk()==='('){i++;const v=expr();if(pk()!==')')throw '#ERR';i++;return v}
+   const rest=src.slice(i);let m=/^\d*\.?\d+/.exec(rest);if(m){i+=m[0].length;return parseFloat(m[0])}
+   m=/^([A-Z]{1,3})(\d{1,6})/.exec(rest);if(m&&rest.charAt(m[0].length)!=='('){i+=m[0].length;if(pk()===':')throw '#ERR';return val(+m[2]-1,colIdx(m[1]))}
+   m=/^[A-Z]+/.exec(rest);if(m&&rest.charAt(m[0].length)==='('){i+=m[0].length+1;const args=[];if(pk()!==')'){args.push(arg());while(pk()===','){i++;args.push(arg())}}if(pk()!==')')throw '#ERR';i++;return fn(m[0],args)}
+   throw '#ERR'}
+  function arg(){const m=/^([A-Z]{1,3})(\d{1,6}):([A-Z]{1,3})(\d{1,6})/.exec(src.slice(i));if(m){i+=m[0].length;const r1=Math.min(+m[2],+m[4])-1,r2=Math.max(+m[2],+m[4])-1,c1=Math.min(colIdx(m[1]),colIdx(m[3])),c2=Math.max(colIdx(m[1]),colIdx(m[3])),out=[];for(let r=r1;r<=Math.min(r2,sh.nr-1);r++)for(let c=c1;c<=Math.min(c2,sh.nc-1);c++)out.push(val(r,c));return{list:out}}return expr()}
+  function fn(name,args){const flat=[];args.forEach(a=>{if(a&&a.list)a.list.forEach(v=>flat.push(v));else flat.push(a)});const nums=[];flat.forEach(v=>{if(typeof v==='number')nums.push(v);else if(typeof v==='string'&&v.charAt(0)==='#')throw v;else if(v!==''){const n=xlNum(v);if(!isNaN(n))nums.push(n)}});
+   const sum=()=>nums.reduce((a,b)=>a+b,0);
+   switch(name){case 'SUM':return sum();case 'AVERAGE':case 'AVG':if(!nums.length)throw '#DIV/0';return sum()/nums.length;case 'MIN':return nums.length?nums.reduce((a,b)=>Math.min(a,b)):0;case 'MAX':return nums.length?nums.reduce((a,b)=>Math.max(a,b)):0;case 'COUNT':return nums.length;case 'COUNTA':return flat.filter(v=>v!=='').length;
+    case 'ROUND':{const d=Math.pow(10,flat.length>1?num(flat[1]):0);return Math.round(num(flat[0])*d)/d}case 'ABS':return Math.abs(num(flat[0]));default:throw '#NAME?'}}
+  const v=expr();if(i<src.length)throw '#ERR';return v}
+ return val}
+function xlOkF(f){f=String(f).replace(/\$/g,'').toUpperCase();if(!/^[A-Z0-9+\-*\/^().,:%\s]+$/.test(f))return null;const fns=f.match(/[A-Z]+(?=\()/g)||[];if(fns.some(n=>XFN.indexOf(n)<0))return null;return '='+f.replace(/\s+/g,'')}
+function xlShift(f,axis,at,d){let bad=false;
+ const one=(col,row,isStart,isEnd)=>{let c=colIdx(col),r=+row-1,v=axis==='r'?r:c;if(d>0){if(v>=at)v++}else{if(v>at)v--;else if(v===at){if(isEnd)v--;else if(!isStart)return null}}if(v<0)return null;return axis==='r'?[col+(v+1),v]:[colName(v)+row,v]};
+ const out=f.replace(/([A-Z]{1,3})(\d{1,6}):([A-Z]{1,3})(\d{1,6})|([A-Z]{1,3})(\d{1,6})(?!\()/g,(m,a,b,c,e,g,h)=>{if(a){const s1=one(a,b,true,false),s2=one(c,e,false,true);if(!s1||!s2||s2[1]<s1[1]){bad=true;return m}return s1[0]+':'+s2[0]}const s=one(g,h,false,false);if(!s){bad=true;return m}return s[0]});
+ return bad?null:out}
+function xlMove(f,dr,dc){let bad=false;const o=f.replace(/([A-Z]{1,3})(\d{1,6})(?!\()/g,(m,a,b)=>{const c=colIdx(a)+dc,r=+b-1+dr;if(c<0||r<0){bad=true;return m}return colName(c)+(r+1)});return bad?'#REF!':o}
+function xlStruct(sh,axis,at,d){const nc={};Object.keys(sh.cells).forEach(k=>{const p=k.split(','),r=+p[0],c=+p[1];let v=axis==='r'?r:c;if(d<0&&v===at)return;if(v>=at+(d<0?1:0))v+=d;nc[axis==='r'?v+','+c:r+','+v]=sh.cells[k]});
+ Object.keys(nc).forEach(k=>{const cell=nc[k];if(typeof cell.v==='string'&&cell.v.charAt(0)==='='&&cell.v.length>1){const f=xlShift(cell.v.toUpperCase(),axis,at,d);cell.v=f===null?'#REF!':f}});sh.cells=nc;
+ sh.merges=(sh.merges||[]).map(m=>{let s=axis==='r'?m.r:m.c,n=axis==='r'?m.rs:m.cs;if(d>0){if(at<=s)s++;else if(at<s+n)n++}else{if(at<s)s--;else if(at<s+n)n--}if(n<1)return null;const o={r:m.r,c:m.c,rs:m.rs,cs:m.cs};if(axis==='r'){o.r=s;o.rs=n}else{o.c=s;o.cs=n}return(o.rs>1||o.cs>1)?o:null}).filter(Boolean);
+ if(axis==='c'){const cw={};Object.keys(sh.cw||{}).forEach(k=>{let v=+k;if(d<0&&v===at)return;if(v>=at+(d<0?1:0))v+=d;cw[v]=sh.cw[k]});sh.cw=cw;sh.nc=Math.max(1,sh.nc+d)}else sh.nr=Math.max(1,sh.nr+d)}
+function sheetCanvas(sh){const ev=xlEval(sh);let mr=-1,mc=-1;const use=(r,c)=>{if(r>mr)mr=r;if(c>mc)mc=c};
+ Object.keys(sh.cells).forEach(k=>{const cell=sh.cells[k],p=k.split(',');if((cell.v!=null&&cell.v!=='')||(cell.s&&(cell.s.f||cell.s.bd)))use(+p[0],+p[1])});
+ (sh.merges||[]).forEach(m=>{if(m.r<=mr&&m.c<=mc)use(m.r+m.rs-1,m.c+m.cs-1)});if(mr<0)return null;mc=Math.min(mc,29);
+ const RH=38,P=22,xs=[0];for(let c=0;c<=mc;c++)xs.push(xs[c]+((sh.cw&&sh.cw[c])||XCW));const TW=xs[mc+1];let cut=false;const maxR=Math.max(1,Math.floor(13e6/(TW+P*2)/RH)-2);if(mr+1>maxR){mr=maxR-1;cut=true}
+ const TH=(mr+1)*RH,SC=(TW+P*2)*(TH+P*2)*4>13e6?1:2,cv=document.createElement('canvas');cv.width=(TW+P*2)*SC;cv.height=(TH+P*2)*SC;cv.dataset.cut=cut?'1':'';
+ const g=cv.getContext('2d');g.scale(SC,SC);g.fillStyle='#fff';g.fillRect(0,0,TW+P*2,TH+P*2);
+ const cov={},mgm={};(sh.merges||[]).forEach(m=>{mgm[m.r+','+m.c]=m;for(let r=m.r;r<m.r+m.rs;r++)for(let c=m.c;c<m.c+m.cs;c++)if(r!==m.r||c!==m.c)cov[r+','+c]=1});
+ const boxes=[];for(let r=0;r<=mr;r++)for(let c=0;c<=mc;c++){const k=r+','+c;if(cov[k])continue;const m=mgm[k],cs=m?Math.min(m.cs,mc-c+1):1,rs=m?Math.min(m.rs,mr-r+1):1,wd=xs[c+cs]-xs[c];boxes.push({r,c,x:sh.rtl?P+TW-xs[c+cs]:P+xs[c],y:P+r*RH,w:wd,h:rs*RH,cell:sh.cells[k]})}
+ boxes.forEach(b=>{const s=b.cell&&b.cell.s;if(s&&s.f){g.fillStyle=s.f;g.fillRect(b.x,b.y,b.w,b.h)}});
+ g.lineWidth=.6;g.strokeStyle='#C9C7BE';boxes.forEach(b=>g.strokeRect(b.x,b.y,b.w,b.h));
+ g.lineWidth=1.4;g.strokeStyle='#1b1b1a';boxes.forEach(b=>{if(b.cell&&b.cell.s&&b.cell.s.bd)g.strokeRect(b.x,b.y,b.w,b.h)});
+ g.textBaseline='middle';boxes.forEach(b=>{let v;try{v=ev(b.r,b.c)}catch(e){v='#ERR'}const tx=typeof v==='number'?fmtN(v):String(v);if(!tx)return;const s=(b.cell&&b.cell.s)||{},dr=dirOf(tx),rt=dr?dr==='rtl':!!sh.rtl;
+  g.save();g.beginPath();g.rect(b.x+1,b.y+1,b.w-2,b.h-2);g.clip();g.font=(s.b?'700 ':'500 ')+'15px Cairo, -apple-system, "Segoe UI", sans-serif';g.fillStyle=s.c||(s.f&&xlDark(s.f)?'#fff':'#1b1b1a');try{g.direction=dr==='rtl'?'rtl':'ltr'}catch(e){}
+  const al=s.a||(rt?'r':'l');g.textAlign=al==='c'?'center':al==='r'?'right':'left';g.fillText(tx,al==='c'?b.x+b.w/2:al==='r'?b.x+b.w-7:b.x+7,b.y+b.h/2+1);g.restore()});
+ return cv}
+let xlsxP=null;
+function loadXLSX(){if(window.XLSX)return Promise.resolve(window.XLSX);if(!xlsxP)xlsxP=new Promise((res,rej)=>{const srcs=['xlsx.min.js','https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.min.js'];(function go(i){if(window.XLSX)return res(window.XLSX);if(i>=srcs.length){xlsxP=null;return rej(new Error('xlsx'))}const sc=document.createElement('script');sc.src=srcs[i];sc.onload=()=>{if(window.XLSX)res(window.XLSX);else go(i+1)};sc.onerror=()=>go(i+1);document.head.appendChild(sc)})(0)});return xlsxP}
+async function xlsxImport(file){toast(t('xLoading'));let X;try{X=await loadXLSX()}catch(e){toast(t('xLibFail'));return}
+ let wbk;try{const buf=await file.arrayBuffer();wbk=X.read(new Uint8Array(buf),{type:'array',cellStyles:true,cellFormula:true,cellNF:true,cellText:true,codepage:65001})}catch(e){toast(t('xBad'));return}
+ const rtlAll=!!(wbk.Workbook&&wbk.Workbook.Views&&wbk.Workbook.Views[0]&&wbk.Workbook.Views[0].RTL);
+ const o={id:uid(),kind:'sheet',name:String(file.name||t('xNew')).replace(/\.[^.]+$/,''),ts:Date.now(),act:0,sheets:[]};let cut=false;
+ (wbk.SheetNames||[]).forEach(nm=>{const ws=wbk.Sheets[nm];if(!ws)return;const sh={name:nm,nr:30,nc:8,cells:{},merges:[],cw:{},rtl:rtlAll};
+  if(ws['!ref']){const rg=X.utils.decode_range(ws['!ref']);let R=rg.e.r+1,C=rg.e.c+1;if(R>XMAXR){R=XMAXR;cut=true}if(C>XMAXC){C=XMAXC;cut=true}sh.nr=Math.max(R+5,20);sh.nc=Math.min(XMAXC,Math.max(C+1,6));let ar=0,la=0;
+   Object.keys(ws).forEach(a=>{if(a.charAt(0)==='!')return;const p=X.utils.decode_cell(a);if(p.r>=R||p.c>=C)return;const cl=ws[a];let v='';const fo=cl.f?xlOkF(cl.f):null;
+    if(fo)v=fo;else if(cl.t==='n'){const z=String(cl.z||'');v=(cl.w&&((X.SSF&&X.SSF.is_date&&X.SSF.is_date(z))||z.indexOf('%')>-1))?String(cl.w).trim():fmtN(cl.v)}
+    else if(cl.t==='b')v=cl.v?'TRUE':'FALSE';else if(cl.t==='e'||cl.t==='d')v=String(cl.w||cl.v||'');else if(cl.t==='z')v='';else v=cl.v==null?'':String(cl.v);
+    const cell={};if(v!==''){cell.v=v;if(cl.t==='s'&&!isNaN(xlNum(v)))cell.tx=1;const dr=dirOf(v);if(dr==='rtl')ar++;else if(dr==='ltr')la++}
+    const st=cl.s;if(st&&st.patternType==='solid'&&st.fgColor&&st.fgColor.rgb){const hex='#'+String(st.fgColor.rgb).slice(-6).toLowerCase();if(/^#[0-9a-f]{6}$/.test(hex)&&hex!=='#ffffff')cell.s={f:hex}}
+    if(cell.v!==undefined||cell.s)sh.cells[p.r+','+p.c]=cell});
+   (ws['!merges']||[]).forEach(m=>{if(m.s.r<R&&m.s.c<C){const rs=Math.min(m.e.r,R-1)-m.s.r+1,cs=Math.min(m.e.c,C-1)-m.s.c+1;if(rs>1||cs>1)sh.merges.push({r:m.s.r,c:m.s.c,rs,cs})}});
+   (ws['!cols']||[]).forEach((cw,i)=>{if(cw&&i<C&&!cw.hidden){const px=cw.wpx||(cw.wch?Math.round(cw.wch*7+5):0);if(px)sh.cw[i]=Math.max(44,Math.min(360,Math.round(px)))}});
+   if(!rtlAll&&ar>la)sh.rtl=true}
+  o.sheets.push(sh)});
+ if(!o.sheets.length){toast(t('xBad'));return}
+ filePut(o);render();sheetOpen(o.id,o);if(cut)setTimeout(()=>toast(t('xCut')),900)}
+async function xlsxFile(wb){const X=await loadXLSX(),out=X.utils.book_new(),used={};
+ wb.sheets.forEach((sh,si)=>{const ev=xlEval(sh),ws={};let mr=0,mc=0;
+  Object.keys(sh.cells).forEach(k=>{const cell=sh.cells[k],p=k.split(','),r=+p[0],c=+p[1],raw=cell.v==null?'':String(cell.v),hasS=!!(cell.s&&Object.keys(cell.s).length);if(raw===''&&!hasS)return;let o;
+   if(raw.charAt(0)==='='&&raw.length>1){let v;try{v=ev(r,c)}catch(e){v='#ERR'}o=typeof v==='number'&&isFinite(v)?{t:'n',v,f:raw.slice(1)}:{t:'s',v:String(v),f:raw.slice(1)}}
+   else{const tr=latin(raw).trim(),n=xlNum(raw);if(raw!==''&&!cell.tx&&!isNaN(n)&&!/^0\d/.test(tr)&&!/^\+/.test(tr)&&!/%$/.test(tr)&&tr.replace(/\D/g,'').length<=15)o={t:'n',v:n};else o={t:'s',v:raw}}
+   if(hasS){const st=cell.s,xs={};if(st.b)xs.font={bold:true};if(st.c){xs.font=xs.font||{};xs.font.color={rgb:st.c.slice(1).toUpperCase()}}if(st.f){xs.fill={patternType:'solid',fgColor:{rgb:st.f.slice(1).toUpperCase()}};if(!st.c&&xlDark(st.f)){xs.font=xs.font||{};xs.font.color={rgb:'FFFFFF'}}}if(st.a)xs.alignment={horizontal:st.a==='c'?'center':st.a==='r'?'right':'left'};if(st.bd){const b={style:'thin',color:{rgb:'000000'}};xs.border={top:b,bottom:b,left:b,right:b}}o.s=xs}
+   ws[X.utils.encode_cell({r,c})]=o;if(r>mr)mr=r;if(c>mc)mc=c});
+  ws['!ref']=X.utils.encode_range({s:{r:0,c:0},e:{r:mr,c:mc}});
+  if(sh.merges&&sh.merges.length)ws['!merges']=sh.merges.map(m=>({s:{r:m.r,c:m.c},e:{r:m.r+m.rs-1,c:m.c+m.cs-1}}));
+  const cols=[];for(let c=0;c<=mc;c++)cols.push({wpx:(sh.cw&&sh.cw[c])||XCW});ws['!cols']=cols;
+  let nm=String(sh.name||'').replace(/[\\\/\?\*\[\]:]/g,' ').trim().slice(0,28)||('Sheet'+(si+1));while(used[nm])nm=nm.slice(0,26)+' '+(si+1);used[nm]=1;X.utils.book_append_sheet(out,ws,nm)});
+ if(wb.sheets[0]&&wb.sheets[0].rtl)out.Workbook={Views:[{RTL:true}]};
+ const data=X.write(out,{bookType:'xlsx',type:'array'});return new File([data],String(wb.name||'table').replace(/[\\\/:*?"<>|]/g,' ').trim()+'.xlsx',{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})}
+function sheetBlank(n,rtl){return{name:(lang==='ar'?'ورقة ':'Sheet ')+n,nr:30,nc:8,cells:{},merges:[],cw:{},rtl:!!rtl}}
+function sheetNew(){const o={id:uid(),kind:'sheet',name:t('xNew'),ts:Date.now(),act:0,sheets:[sheetBlank(1,lang==='ar')]};filePut(o);render();sheetOpen(o.id,o)}
+async function sheetOpen(id,pre){const wb=pre||await fileGet(id);if(!wb||!Array.isArray(wb.sheets)||!wb.sheets.length){toast(t('xBad'));return}
+ if(!(wb.act>=0&&wb.act<wb.sheets.length))wb.act=0;
+ const w=document.createElement('div');w.className='tkp xed';
+ const tb=(a,inner,label)=>`<button class="xb" data-t="${a}" aria-label="${esc(label)}">${inner}</button>`;
+ w.innerHTML=`<div class="tkbar"><button class="sbt" id="xBack">‹ ${t('xBackL')}</button><b id="xName" dir="auto">${esc(wb.name)}</b><span class="xbarr"><button class="sbi" id="xFind" aria-label="find">${ICN.find}</button><button class="sbi" id="xMoreB" aria-label="${t('menu')}">${ICN.more}</button></span></div>
+ <div class="xtb" id="xTb">${tb('b','<b>B</b>','Bold')}${tb('c','<span class="xA">A</span>',t('xTextC'))}${tb('f',ICN.fill,t('xFillC'))}${tb('bd',ICN.grid,'Borders')}${tb('a',ICN.align,'Align')}<i class="xsep"></i>${tb('sum','Σ','Sum')}${tb('w-',ICN.narrow,'Narrower')}${tb('w+',ICN.wide,'Wider')}<i class="xsep"></i>${tb('undo','↶','Undo')}</div>
+ <div class="xfx"><span id="xRef">A1</span><input id="xIn" dir="auto" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="next" placeholder="${esc(t('xInPh'))}"></div>
+ <div class="xfind" id="xFd" hidden><input id="xQ" type="search" dir="auto" autocomplete="off" enterkeyhint="search" placeholder="${esc(t('xFindPh'))}"><span id="xCnt"></span><button class="xb" id="xPrev" aria-label="previous">‹</button><button class="xb" id="xNext" aria-label="next">›</button></div>
+ <div class="xops" id="xOps" hidden>${['=','+','-','*','/','(',')',':',','].map(o=>`<button class="xb" data-o="${o}">${o}</button>`).join('')}</div>
+ <div class="xwrap" id="xW"><table class="xg" id="xG"></table><div class="xh" id="xH" hidden></div><button class="xaddr" id="xAddR">+ ${t('xAddRows')}</button></div>
+ <div class="xtabs" id="xTabs"></div>`;
+ document.body.appendChild(w);
+ const $$=q=>w.querySelector(q),G=$$('#xG'),W=$$('#xW'),H=$$('#xH'),In=$$('#xIn'),Ref=$$('#xRef'),Ops=$$('#xOps'),Fd=$$('#xFd'),Q=$$('#xQ');
+ const fit=()=>{const vv=window.visualViewport;if(vv){w.style.height=vv.height+'px';w.style.top=vv.offsetTop+'px'}};fit();window.visualViewport&&visualViewport.addEventListener('resize',fit);
+ let sel={r:0,c:0,r2:0,c2:0},ev=null,cov={},mg={},shown=0,painted=[],hitTds=[],undo=[],snap=true,blurAt=0,lp=false,lpT=0,lpXY=null,drag=false,clip=null,hits=[],hi=-1,saveT=0,changed=false,gone=false,findT=0;
+ const cur=()=>wb.sheets[wb.act];
+ const save=()=>{clearTimeout(saveT);saveT=0;if(!gone)filePut(wb)};
+ const dirty=()=>{changed=true;clearTimeout(saveT);saveT=setTimeout(save,700)};
+ const flush=()=>{if(saveT)save()};FL.add(flush);
+ const rng=()=>({r1:Math.min(sel.r,sel.r2),r2:Math.max(sel.r,sel.r2),c1:Math.min(sel.c,sel.c2),c2:Math.max(sel.c,sel.c2)});
+ const disp=(r,c)=>{let v;try{v=ev(r,c)}catch(e){v=typeof e==='string'?e:'#ERR'}return typeof v==='number'?fmtN(v):String(v)};
+ function prep(){const sh=cur();if(!sh.cells)sh.cells={};if(!sh.merges)sh.merges=[];if(!sh.cw)sh.cw={};sh.nr=Math.max(1,sh.nr|0);sh.nc=Math.max(1,sh.nc|0);ev=xlEval(sh);cov={};mg={};sh.merges.forEach(m=>{mg[m.r+','+m.c]=m;for(let r=m.r;r<m.r+m.rs;r++)for(let c=m.c;c<m.c+m.cs;c++)if(r!==m.r||c!==m.c)cov[r+','+c]=1})}
+ function rowHtml(r){const sh=cur();let h='<tr><th data-hr="'+r+'">'+(r+1)+'</th>';for(let c=0;c<sh.nc;c++){const k=r+','+c;if(cov[k])continue;const m=mg[k],st=xlCss(sh.cells[k]);h+='<td data-r="'+r+'" data-c="'+c+'"'+(m?(m.rs>1?' rowspan="'+m.rs+'"':'')+(m.cs>1?' colspan="'+m.cs+'"':''):'')+(st?' style="'+st+'"':'')+'>'+esc(disp(r,c))+'</td>'}return h+'</tr>'}
+ function more(upTo){const sh=cur(),end=Math.min(sh.nr,upTo===undefined?shown+XCH:Math.max(shown,upTo+1));if(end<=shown)return;let h='';for(let r=shown;r<end;r++)h+=rowHtml(r);G.tBodies[0].insertAdjacentHTML('beforeend',h);shown=end;if(hits.length)paintHits()}
+ const tdAt=(r,c)=>{const tr=G.tBodies[0]&&G.tBodies[0].rows[r];if(!tr)return null;const cs=tr.cells;for(let i=1;i<cs.length;i++)if(+cs[i].dataset.c===c)return cs[i];return null};
+ function build(keep){const sh=cur();prep();const sx=W.scrollLeft,sy=W.scrollTop,had=shown;W.dir=G.dir=sh.rtl?'rtl':'ltr';let tw=38,cg='<colgroup><col style="width:38px">';for(let c=0;c<sh.nc;c++){const x=sh.cw[c]||XCW;tw+=x;cg+='<col style="width:'+x+'px">'}
+  let hd='<thead><tr><th class="xc0"></th>';for(let c=0;c<sh.nc;c++)hd+='<th data-hc="'+c+'">'+colName(c)+'</th>';G.style.width=tw+'px';G.innerHTML=cg+'</colgroup>'+hd+'</tr></thead><tbody></tbody>';shown=0;painted=[];hitTds=[];
+  more((keep?Math.max(XCH,had):XCH)-1);if(keep){W.scrollLeft=sx;W.scrollTop=sy}else{W.scrollTop=0;W.scrollLeft=0}
+  sel.r=Math.min(sel.r,sh.nr-1);sel.r2=Math.min(sel.r2,sh.nr-1);sel.c=Math.min(sel.c,sh.nc-1);sel.c2=Math.min(sel.c2,sh.nc-1);paintHits();paint();tabs()}
+ function placeH(){const R=rng(),td=tdAt(R.r2,R.c2)||tdAt(sel.r,sel.c);if(!td){H.hidden=true;return}H.hidden=false;const a=td.getBoundingClientRect(),b=W.getBoundingClientRect();H.style.left=((cur().rtl?a.left:a.right)-b.left+W.scrollLeft)+'px';H.style.top=(a.bottom-b.top+W.scrollTop)+'px'}
+ function paint(keepInput){painted.forEach(td=>td.classList.remove('sel','act'));painted=[];const R=rng(),n=(R.r2-R.r1+1)*(R.c2-R.c1+1);
+  if(n>1&&n<=6000)for(let r=R.r1;r<=Math.min(R.r2,shown-1);r++)for(let c=R.c1;c<=R.c2;c++){const td=tdAt(r,c);if(td){td.classList.add('sel');painted.push(td)}}
+  const a=tdAt(sel.r,sel.c);if(a){a.classList.add('act');painted.push(a)}
+  Ref.textContent=colName(sel.c)+(sel.r+1)+(n>1?':'+colName(sel.c2)+(sel.r2+1):'');
+  if(!keepInput){const cell=cur().cells[sel.r+','+sel.c];In.value=cell&&cell.v!=null?String(cell.v):'';snap=true}
+  placeH()}
+ function anchor(r,c){if(!cov[r+','+c])return[r,c];const m=cur().merges.find(x=>r>=x.r&&r<x.r+x.rs&&c>=x.c&&c<x.c+x.cs);return m?[m.r,m.c]:[r,c]}
+ function setSel(r,c){const a=anchor(r,c);sel={r:a[0],c:a[1],r2:a[0],c2:a[1]};paint()}
+ function setRaw(r,c,v){const sh=cur(),k=r+','+c;let cell=sh.cells[k];if(v===''||v==null){if(cell){delete cell.v;delete cell.tx;if(!cell.s||!Object.keys(cell.s).length)delete sh.cells[k]}}else{if(!cell)cell=sh.cells[k]={};cell.v=v;delete cell.tx}}
+ function refresh(){const sh=cur();ev=xlEval(sh);const a=tdAt(sel.r,sel.c);if(a)a.textContent=disp(sel.r,sel.c);Object.keys(sh.cells).forEach(k=>{const cell=sh.cells[k];if(typeof cell.v==='string'&&cell.v.charAt(0)==='='){const p=k.split(','),td=+p[0]<shown?tdAt(+p[0],+p[1]):null;if(td)td.textContent=disp(+p[0],+p[1])}})}
+ function pushUndo(){try{const j=JSON.stringify(cur());if(j.length>4e6)undo=[];undo.push(j);if(undo.length>25)undo.shift()}catch(e){}}
+ function norm1(){const cell=cur().cells[sel.r+','+sel.c];if(cell&&typeof cell.v==='string'&&cell.v.charAt(0)==='='&&cell.v.length>1){const f='='+latin(cell.v.slice(1)).toUpperCase().replace(/\s+/g,'').replace(/×/g,'*').replace(/÷/g,'/').replace(/[؛;،]/g,',');if(f!==cell.v){cell.v=f;refresh();dirty()}}}
+ function ins(tx){const a=In.selectionStart==null?In.value.length:In.selectionStart,z=In.selectionEnd==null?a:In.selectionEnd;In.value=In.value.slice(0,a)+tx+In.value.slice(z);const p=a+tx.length;try{In.focus();In.setSelectionRange(p,p)}catch(e){}onInput()}
+ function onInput(){if(snap){pushUndo();snap=false}setRaw(sel.r,sel.c,In.value);refresh();dirty()}
+ In.addEventListener('focus',()=>{Ops.hidden=false});
+ In.addEventListener('blur',()=>{blurAt=Date.now();setTimeout(()=>{if(document.activeElement!==In)Ops.hidden=true},300);norm1()});
+ In.addEventListener('input',onInput);
+ In.addEventListener('keydown',e=>{if(e.key!=='Enter')return;e.preventDefault();norm1();const sh=cur(),r=sel.r+((mg[sel.r+','+sel.c]||{}).rs||1);if(r>=sh.nr){if(sh.nr>=XMAXR)return;pushUndo();sh.nr=r+1;build(true)}more(r);setSel(r,sel.c);const td=tdAt(sel.r,sel.c);if(td)td.scrollIntoView({block:'nearest',inline:'nearest'})});
+ Ops.addEventListener('pointerdown',e=>{const b=e.target.closest('[data-o]');if(!b)return;e.preventDefault();ins(b.dataset.o)});
+ const fxMode=()=>{if(In.value.charAt(0)!=='='||!(document.activeElement===In||Date.now()-blurAt<400))return false;const p=In.selectionStart==null?In.value.length:In.selectionStart;return '=+-*/(,:^×÷'.indexOf(In.value.charAt(p-1))>-1&&p>0};
+ G.addEventListener('click',e=>{if(lp){lp=false;return}const hc=e.target.closest('th[data-hc]'),hr=e.target.closest('th[data-hr]'),td=e.target.closest('td[data-r]'),sh=cur();
+  if(hc){norm1();const c=+hc.dataset.hc;sel={r:0,c,r2:sh.nr-1,c2:c};paint();return}
+  if(hr){norm1();const r=+hr.dataset.hr;sel={r,c:0,r2:r,c2:sh.nc-1};paint();return}
+  if(!td)return;const r=+td.dataset.r,c=+td.dataset.c;
+  if(fxMode()&&(r!==sel.r||c!==sel.c)){ins(colName(c)+(r+1));return}
+  if(r===sel.r&&c===sel.c&&sel.r2===r&&sel.c2===c){In.focus();return}
+  norm1();setSel(r,c)});
+ const stopLp=()=>clearTimeout(lpT);
+ G.addEventListener('pointerdown',e=>{lp=false;stopLp();const td=e.target.closest('td[data-r]');if(!td)return;lpXY=[e.clientX,e.clientY];lpT=setTimeout(()=>{lp=true;try{navigator.vibrate&&navigator.vibrate(8)}catch(x){}cellMenu(td)},480)});
+ G.addEventListener('pointermove',e=>{if(lpXY&&Math.hypot(e.clientX-lpXY[0],e.clientY-lpXY[1])>10)stopLp()});
+ ['pointerup','pointercancel','pointerleave'].forEach(v=>G.addEventListener(v,stopLp));
+ W.addEventListener('scroll',()=>{stopLp();if(W.scrollTop+W.clientHeight>W.scrollHeight-500)more()},{passive:true});
+ G.addEventListener('contextmenu',e=>{const td=e.target.closest('td[data-r]');if(td){e.preventDefault();if(!lp){stopLp();cellMenu(td)}}});
+ H.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();drag=true;try{H.setPointerCapture(e.pointerId)}catch(x){}});
+ H.addEventListener('pointermove',e=>{if(!drag)return;const st=document.elementsFromPoint(e.clientX,e.clientY);let td=null;for(let i=0;i<st.length;i++){if(st[i].tagName==='TD'&&G.contains(st[i])){td=st[i];break}}if(!td)return;const r=+td.dataset.r,c=+td.dataset.c;if(r!==sel.r2||c!==sel.c2){sel.r2=r;sel.c2=c;paint(true)}});
+ const endDrag=()=>{drag=false};H.addEventListener('pointerup',endDrag);H.addEventListener('pointercancel',endDrag);
+ function copyStyleRow(from,to){const sh=cur();for(let c=0;c<sh.nc;c++){const s=sh.cells[from+','+c];if(s&&s.s&&Object.keys(s.s).length){const k=to+','+c;(sh.cells[k]=sh.cells[k]||{}).s=clone(s.s)}}}
+ function copyStyleCol(from,to){const sh=cur();Object.keys(sh.cells).forEach(k=>{const p=k.split(',');if(+p[1]!==from)return;const s=sh.cells[k];if(s.s&&Object.keys(s.s).length){const k2=p[0]+','+to;(sh.cells[k2]=sh.cells[k2]||{}).s=clone(s.s)}});if(sh.cw[from])sh.cw[to]=sh.cw[from]}
+ function doCopy(){const R=rng(),sh=cur(),rows=[],tsv=[];for(let r=R.r1;r<=R.r2;r++){const row=[],tr=[];for(let c=R.c1;c<=R.c2;c++){const cell=sh.cells[r+','+c];row.push(cell?clone(cell):null);tr.push(disp(r,c))}rows.push(row);tsv.push(tr.join('\t'))}clip={r:R.r1,c:R.c1,rows};try{navigator.clipboard.writeText(tsv.join('\n')).catch(()=>{})}catch(e){}toast(t('copied'))}
+ async function doPaste(){const sh=cur();let rows=null,rel=null;if(clip){rows=clip.rows;rel=[sel.r-clip.r,sel.c-clip.c]}else{let tx='';try{tx=await navigator.clipboard.readText()}catch(e){}if(tx)rows=tx.replace(/\r/g,'').replace(/\n$/,'').split('\n').map(l=>l.split('\t').map(v=>v===''?null:{v}))}
+  if(!rows||!rows.length){toast(t('xNoClip'));return}pushUndo();
+  rows.forEach((row,i)=>row.forEach((cell,j)=>{const r=sel.r+i,c=sel.c+j;if(c>=XMAXC||r>=XMAXR)return;if(r>=sh.nr)sh.nr=r+1;if(c>=sh.nc)sh.nc=c+1;const k=r+','+c;if(!cell){delete sh.cells[k];return}const n=clone(cell);if(rel&&typeof n.v==='string'&&n.v.charAt(0)==='='&&n.v.length>1)n.v=xlMove(n.v.toUpperCase(),rel[0],rel[1]);sh.cells[k]=n}));
+  sel.r2=Math.min(sh.nr-1,sel.r+rows.length-1);sel.c2=Math.min(sh.nc-1,sel.c+rows[0].length-1);build(true);dirty()}
+ function act(a){const sh=cur(),R=rng(),one=(r,c)=>{sel={r,c,r2:r,c2:c}};
+  if(a==='cp'){doCopy();return}if(a==='ps'){doPaste();return}
+  if((a==='cr'||a==='cl')&&sh.nc>=XMAXC){toast(t('xMaxC'));return}if((a==='ru'||a==='rd')&&sh.nr>=XMAXR)return;
+  pushUndo();
+  if(a==='ru'){xlStruct(sh,'r',R.r1,1);copyStyleRow(R.r1+1,R.r1);one(R.r1,sel.c)}
+  else if(a==='rd'){xlStruct(sh,'r',R.r2+1,1);copyStyleRow(R.r2,R.r2+1);one(R.r2+1,sel.c)}
+  else if(a==='cr'||a==='cl'){if((a==='cr')===!!sh.rtl){xlStruct(sh,'c',R.c1,1);copyStyleCol(R.c1+1,R.c1);one(sel.r,R.c1)}else{xlStruct(sh,'c',R.c2+1,1);copyStyleCol(R.c2,R.c2+1);one(sel.r,R.c2+1)}}
+  else if(a==='mg'){sh.merges=sh.merges.filter(m=>m.r+m.rs-1<R.r1||m.r>R.r2||m.c+m.cs-1<R.c1||m.c>R.c2);let keep=null;for(let r=R.r1;r<=R.r2;r++)for(let c=R.c1;c<=R.c2;c++){const cell=sh.cells[r+','+c];if(cell&&cell.v!=null&&cell.v!==''){if(keep===null)keep=cell.v;if(r!==R.r1||c!==R.c1){delete cell.v;delete cell.tx}}}
+   if(keep!==null)setRaw(R.r1,R.c1,keep);sh.merges.push({r:R.r1,c:R.c1,rs:R.r2-R.r1+1,cs:R.c2-R.c1+1});one(R.r1,R.c1)}
+  else if(a==='um'){sh.merges=sh.merges.filter(m=>!(m.r===sel.r&&m.c===sel.c))}
+  else if(a==='cl0'){for(let r=R.r1;r<=R.r2;r++)for(let c=R.c1;c<=R.c2;c++)setRaw(r,c,'')}
+  else if(a==='dr'){for(let r=Math.min(R.r2,sh.nr-1);r>=R.r1&&sh.nr>1;r--)xlStruct(sh,'r',r,-1);one(Math.min(R.r1,sh.nr-1),sel.c)}
+  else if(a==='dc'){for(let c=Math.min(R.c2,sh.nc-1);c>=R.c1&&sh.nc>1;c--)xlStruct(sh,'c',c,-1);one(sel.r,Math.min(R.c1,sh.nc-1))}
+  build(true);dirty()}
+ function cellMenu(td){const r=+td.dataset.r,c=+td.dataset.c,R0=rng();if(r<R0.r1||r>R0.r2||c<R0.c1||c>R0.c2){norm1();setSel(r,c)}const R=rng(),multi=R.r1!==R.r2||R.c1!==R.c2,m=mg[sel.r+','+sel.c];
+  const rows=[{a:'ru',t:t('xRowUp')},{a:'rd',t:t('xRowDn')},{a:'cr',t:t('xColR')},{a:'cl',t:t('xColL')}];if(multi)rows.push({a:'mg',t:t('xMerge')});else if(m)rows.push({a:'um',t:t('xUnmerge')});
+  rows.push({a:'cp',t:t('xCopy')},{a:'ps',t:t('xPaste')},{a:'cl0',t:t('xClear')},{a:'dr',t:t('xDelRow'),dng:1},{a:'dc',t:t('xDelCol'),dng:1});
+  popMenu(td.getBoundingClientRect(),rows,act,true)}
+ function eachSel(fn){const R=rng(),sh=cur();for(let r=R.r1;r<=R.r2;r++)for(let c=R.c1;c<=R.c2;c++){const k=r+','+c;if(cov[k])continue;const cell=sh.cells[k]=sh.cells[k]||{};cell.s=cell.s||{};fn(cell.s);if(!Object.keys(cell.s).length)delete cell.s;if((cell.v==null||cell.v==='')&&!cell.s)delete sh.cells[k];const td=r<shown?tdAt(r,c):null;if(td)td.style.cssText=xlCss(sh.cells[k])}}
+ function style(key,val){pushUndo();const a=cur().cells[sel.r+','+sel.c],has=a&&a.s&&a.s[key];
+  if(key==='b'||key==='bd')eachSel(s=>{if(has)delete s[key];else s[key]=1});
+  else if(key==='a'){const nx=has==='c'?(cur().rtl?'l':'r'):has?null:'c';eachSel(s=>{if(nx)s.a=nx;else delete s.a})}
+  else eachSel(s=>{if(val)s[key]=val;else delete s[key]});dirty()}
+ function palette(key){const cols=key==='c'?['#1b1b1a','#ffffff','#c93b3a','#0a63c9','#3b6d11','#854f0b','#6b6a64','#7f3fbf']:['','#1b1b1a','#f2e14c','#eaf3de','#e6f1fb','#fbe9e8','#ede8dc','#c0dd97','#b5d4f4','#f5c4b3'];
+  const s=sheet(`<h2>${t(key==='c'?'xTextC':'xFillC')}</h2><div class="sws2">${cols.map(x=>`<button class="sw2" data-x="${x}" style="background:${x||'#fff'}" aria-label="${x||t('xNoFill')}">${x?'':'✕'}</button>`).join('')}</div><button class="b" id="iClose">${t('close')}</button>`);
+  s.querySelector('#iClose').onclick=closeSheet;s.querySelector('.sws2').onclick=e=>{const b=e.target.closest('[data-x]');if(!b)return;closeSheet();const x=b.dataset.x;style(key,(!x||(key==='c'&&x==='#1b1b1a'))?null:x)}}
+ const isNum=(r,c)=>{let v;try{v=ev(r,c)}catch(e){return false}return typeof v==='number'||(v!==''&&!isNaN(xlNum(v)))};
+ function autosum(){const R=rng(),sh=cur(),A1=(r,c)=>colName(c)+(r+1);let done=false;norm1();pushUndo();
+  if(R.r1!==R.r2){const tr=R.r2+1;if(tr>=sh.nr)sh.nr=tr+1;for(let c=R.c1;c<=R.c2;c++)setRaw(tr,c,'=SUM('+A1(R.r1,c)+':'+A1(R.r2,c)+')');sel={r:tr,c:R.c1,r2:tr,c2:R.c2};done=true}
+  else if(R.c1!==R.c2){const tc=R.c2+1;if(tc>=sh.nc)sh.nc=Math.min(XMAXC,tc+1);if(tc<sh.nc){setRaw(R.r1,tc,'=SUM('+A1(R.r1,R.c1)+':'+A1(R.r1,R.c2)+')');sel={r:R.r1,c:tc,r2:R.r1,c2:tc};done=true}}
+  else{let r=sel.r-1;while(r>=0&&isNum(r,sel.c))r--;if(r<sel.r-1){setRaw(sel.r,sel.c,'=SUM('+A1(r+1,sel.c)+':'+A1(sel.r-1,sel.c)+')');done=true}else{let c=sel.c-1;while(c>=0&&isNum(sel.r,c))c--;if(c<sel.c-1){setRaw(sel.r,sel.c,'=SUM('+A1(sel.r,c+1)+':'+A1(sel.r,sel.c-1)+')');done=true}}}
+  if(!done){undo.pop();toast(t('xSumHint'));return}build(true);dirty()}
+ $$('#xTb').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;const a=b.dataset.t;
+  if(a==='b'||a==='bd'||a==='a')style(a);else if(a==='c'||a==='f')palette(a);else if(a==='sum')autosum();
+  else if(a==='w-'||a==='w+'){pushUndo();const R=rng(),sh=cur();for(let c=R.c1;c<=R.c2;c++)sh.cw[c]=Math.max(44,Math.min(360,(sh.cw[c]||XCW)+(a==='w+'?28:-28)));build(true);dirty()}
+  else if(a==='undo'){const j=undo.pop();if(j){try{wb.sheets[wb.act]=JSON.parse(j)}catch(x){return}build(true);dirty()}}});
+ $$('#xAddR').onclick=()=>{const sh=cur();if(sh.nr>=XMAXR)return;pushUndo();sh.nr=Math.min(XMAXR,sh.nr+10);more(sh.nr-1);dirty()};
+ function tabs(){$$('#xTabs').innerHTML=wb.sheets.map((s,i)=>`<button class="xtab ${i===wb.act?'on':''}" data-s="${i}" dir="auto">${esc(s.name)}</button>`).join('')+`<button class="xtab" data-s="+" aria-label="${t('xAddSheet')}">+</button>`}
+ function switched(){undo=[];sel={r:0,c:0,r2:0,c2:0};hits=[];hi=-1;build();dirty();if(!Fd.hidden)find()}
+ $$('#xTabs').onclick=e=>{const b=e.target.closest('[data-s]');if(!b)return;norm1();
+  if(b.dataset.s==='+'){wb.sheets.push(sheetBlank(wb.sheets.length+1,cur().rtl));wb.act=wb.sheets.length-1;switched();return}
+  const i=+b.dataset.s;if(i!==wb.act){wb.act=i;switched();return}
+  popMenu(b.getBoundingClientRect(),[{a:'rn',t:t('fRename')},{a:'dir',t:t('xDir')},{a:'del',t:t('xDelSheet'),dng:1}],a=>{
+   if(a==='rn')askText(t('fRename'),cur().name,v=>{cur().name=v.slice(0,40);tabs();dirty()});
+   else if(a==='dir'){cur().rtl=!cur().rtl;build();dirty()}
+   else if(wb.sheets.length<2)toast(t('xLast'));
+   else confirmSheet(t('xDelSheet'),t('xDelSheetSure'),t('yesDel'),()=>{wb.sheets.splice(wb.act,1);wb.act=Math.max(0,wb.act-1);switched()})})};
+ function paintHits(){hitTds.forEach(td=>td.classList.remove('hit','cur'));hitTds=[];hits.slice(0,800).forEach(h=>{if(h[0]<shown){const td=tdAt(h[0],h[1]);if(td){td.classList.add('hit');hitTds.push(td)}}})}
+ function go(i){if(!hits.length)return;hi=(i+hits.length)%hits.length;const h=hits[hi];if(h[0]>=shown)more(h[0]+20);hitTds.forEach(td=>td.classList.remove('cur'));setSel(h[0],h[1]);const td=tdAt(h[0],h[1]);if(td){td.classList.add('hit','cur');if(hitTds.indexOf(td)<0)hitTds.push(td);td.scrollIntoView({block:'center',inline:'center'})}$$('#xCnt').textContent=(hi+1)+' / '+hits.length}
+ function find(){const q=norm(Q.value.trim()),sh=cur();hits=[];hi=-1;if(q){Object.keys(sh.cells).forEach(k=>{if(cov[k])return;const p=k.split(',');if(norm(disp(+p[0],+p[1])).includes(q))hits.push([+p[0],+p[1]])});hits.sort((a,b)=>a[0]-b[0]||a[1]-b[1])}paintHits();if(hits.length)go(0);else $$('#xCnt').textContent=q?t('xNoHit'):''}
+ Q.addEventListener('input',()=>{clearTimeout(findT);findT=setTimeout(find,220)});
+ Q.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(hits.length)go(hi+1);else find()}});
+ $$('#xPrev').onclick=()=>go(hi-1);$$('#xNext').onclick=()=>go(hi+1);
+ $$('#xFind').onclick=()=>{const on=Fd.hidden;Fd.hidden=!on;$$('.xfx').hidden=on;if(on){setTimeout(()=>{try{Q.focus()}catch(e){}},50)}else{Q.value='';hits=[];hi=-1;paintHits();$$('#xCnt').textContent=''}};
+ function close(){norm1();window.visualViewport&&visualViewport.removeEventListener('resize',fit);clearTimeout(saveT);saveT=0;if(changed&&!gone)filePut(wb);FL.delete(flush);gone=true;w.classList.remove('open');setTimeout(()=>w.remove(),400);render()}
+ $$('#xBack').onclick=close;
+ const rename=()=>askText(t('fRename'),wb.name,v=>{wb.name=v.slice(0,80);$$('#xName').textContent=wb.name;changed=true;save()});
+ $$('#xName').onclick=rename;
+ $$('#xMoreB').onclick=e=>{norm1();popMenu(e.currentTarget.getBoundingClientRect(),[{a:'rn',t:t('fRename')},{a:'xl',t:t('xAsFile'),i:ICN.xls},{a:'pic',t:t('xAsPic'),i:IC.pic},{a:'dir',t:t('xDir')},{a:'del',t:t('fDelete'),dng:1,i:IC.del}],a=>{
+  if(a==='rn')rename();
+  else if(a==='xl'){flush();toast(t('xLoading'));xlsxFile(wb).then(fileReady).catch(()=>toast(t('xLibFail')))}
+  else if(a==='pic'){const cv=sheetCanvas(cur());if(!cv){toast(t('xNothing'));return}shareCanvas(cv,t('xAsPic'),wb.name);if(cv.dataset.cut)setTimeout(()=>toast(t('xPicCut')),700)}
+  else if(a==='dir'){cur().rtl=!cur().rtl;build();dirty()}
+  else confirmSheet(t('fDelete'),t('fDelSure',{n:wb.name}),t('yesDel'),()=>{gone=true;clearTimeout(saveT);saveT=0;fileDel(wb.id);close();toast(t('deleted'))})})};
+ build();requestAnimationFrame(()=>w.classList.add('open'))}
+function filesHome(kind){const q=norm(query.trim());let list=fx.filter(x=>x.kind===kind).sort((a,b)=>b.ts-a.ts);if(q)list=list.filter(x=>norm(x.name+' '+(x.info||'')).includes(q));
+ $('#info').innerHTML='';const sh=kind==='sheet';
+ $('#grid').innerHTML=(sh&&!q?`<button class="cd tkaddc" data-openx="1">${t('xOpen')}</button>`:'')+(list.length?list.map(x=>`<div class="cd tape wide tkd${dirOf(x.name)==='rtl'?' arx':''}" role="button" tabindex="0" data-file="${x.id}" data-kind="${x.kind}" style="transform:rotate(${(rot(x.id)/3).toFixed(1)}deg)"><div class="lb">${t(sh?'lblSheet':'lblDoc')}<u>${esc(dlabel(x.ts))}</u></div><div class="big">${hl(x.name)}</div>${x.info?`<div class="hand sm">${esc(x.info)}</div>`:''}</div>`).join(''):(q?`<div class="empty"><b>${esc(t('none',{q:query.trim()}))}</b></div>`:`<div class="empty tape"><b>${t(sh?'xEmptyT':'dEmptyT')}</b>${t(sh?'xEmptyB':'dEmptyB')}</div>`))}
+(function(){const f=document.createElement('input');f.type='file';f.id='xF';f.hidden=true;f.accept='.xlsx,.xlsm,.xls,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv';$('#app').appendChild(f);f.onchange=()=>{const x=f.files&&f.files[0];f.value='';if(x)xlsxImport(x)}})();
+
+/* ----- documents (like Word) ----- */
+const DCN={aR:'<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M10 12h10M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',aL:'<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',ul:'<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="7" r="1.6" fill="currentColor"/><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="5" cy="17" r="1.6" fill="currentColor"/><path d="M10 7h10M10 12h10M10 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',ol:'<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7h10M10 12h10M10 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><text x="2.5" y="9.5" font-size="7" font-family="Arial" fill="currentColor">1</text><text x="2.5" y="14.5" font-size="7" font-family="Arial" fill="currentColor">2</text><text x="2.5" y="19.5" font-size="7" font-family="Arial" fill="currentColor">3</text></svg>'};
+function docNew(){const o={id:uid(),kind:'doc',name:t('dNew'),ts:Date.now(),html:'',imgs:[]};filePut(o);render();docOpen(o.id,o)}
+async function docOpen(id,pre){const o=pre||await fileGet(id);if(!o||o.kind!=='doc'){toast(t('xBad'));return}
+ const w=document.createElement('div');w.className='tkp ded';
+ const tb=(a,inner,label)=>`<button class="xb" data-d="${a}" aria-label="${esc(label)}">${inner}</button>`;
+ w.innerHTML=`<div class="tkbar"><button class="sbt" id="dBack">‹ ${t('dBackL')}</button><b id="dName" dir="auto">${esc(o.name)}</b><span class="xbarr"><button class="sbi" id="dMoreB" aria-label="${t('menu')}">${ICN.more}</button></span></div>
+ <div class="xtb" id="dTb">${tb('bold','<b>B</b>','Bold')}${tb('italic','<i style="font-family:Georgia,serif">I</i>','Italic')}${tb('underline','<u>U</u>','Underline')}<i class="xsep"></i>${tb('h1','<b>'+t('dH1')+'</b>',t('dH1'))}${tb('h2',t('dH2'),t('dH2'))}${tb('p',t('dP'),t('dP'))}<i class="xsep"></i>${tb('fs-','A<small>−</small>','Smaller')}${tb('fs+','A<small>+</small>','Larger')}${tb('color','<span class="xA">A</span>',t('xTextC'))}${tb('hi',ICN.fill,t('dHi'))}<i class="xsep"></i>${tb('jr',DCN.aR,'Right')}${tb('jc',ICN.align,'Center')}${tb('jl',DCN.aL,'Left')}<i class="xsep"></i>${tb('ul',DCN.ul,'Bullets')}${tb('ol',DCN.ol,'Numbers')}${tb('img',IC.pic,t('addPhoto'))}<i class="xsep"></i>${tb('undo','↶','Undo')}${tb('redo','↷','Redo')}</div>
+ <div class="dwrap" id="dW"><div class="dpage" id="dPg" contenteditable="true" spellcheck="false" data-ph="${esc(t('dPh'))}"></div></div><input type="file" id="dF" accept="image/*" hidden>`;
+ document.body.appendChild(w);
+ const $$=q=>w.querySelector(q),pg=$$('#dPg'),F=$$('#dF'),TB=$$('#dTb');
+ const fit=()=>{const vv=window.visualViewport;if(vv){w.style.height=vv.height+'px';w.style.top=vv.offsetTop+'px'}};fit();window.visualViewport&&visualViewport.addEventListener('resize',fit);
+ pg.innerHTML=safeHtml(o.html||'');pg.querySelectorAll('img[data-i]').forEach(im=>{const d=IMG[im.dataset.i];if(d)im.src=d;else im.remove()});
+ let saved=null,saveT=0,changed=false,gone=false;const startImgs=(o.imgs||[]).slice(),added=[];
+ const html=()=>{const c=pg.cloneNode(true);c.querySelectorAll('img[data-i]').forEach(im=>im.removeAttribute('src'));return c.innerHTML};
+ const ids=()=>[].slice.call(pg.querySelectorAll('img[data-i]')).map(im=>im.dataset.i);
+ const look=()=>{const dr=dirOf(pg.innerText)||(lang==='ar'?'rtl':'ltr');pg.style.direction=dr;pg.classList.toggle('empty',!pg.textContent.trim()&&!pg.querySelector('img'))};
+ const save=()=>{clearTimeout(saveT);saveT=0;if(gone)return;o.html=html();o.imgs=ids();filePut(o)};
+ const dirty=()=>{changed=true;look();clearTimeout(saveT);saveT=setTimeout(save,800)};
+ const flush=()=>{if(saveT)save()};FL.add(flush);
+ const keep=()=>{const s=getSelection();if(s.rangeCount&&pg.contains(s.anchorNode))saved=s.getRangeAt(0).cloneRange()};
+ const restore=()=>{try{pg.focus()}catch(e){}if(saved){try{const s=getSelection();s.removeAllRanges();s.addRange(saved)}catch(e){}}};
+ function marks(){['bold','italic','underline'].forEach(c=>{let on=false;try{on=document.queryCommandState(c)}catch(e){}const b=$$('[data-d="'+c+'"]');if(b)b.classList.toggle('on',!!on)})}
+ const onSel=()=>{const s=getSelection();if(s.rangeCount&&pg.contains(s.anchorNode)){keep();marks()}};
+ document.addEventListener('selectionchange',onSel);
+ function X(cmd,val,css){restore();try{document.execCommand('styleWithCSS',false,css!==false)}catch(e){}let ok=false;try{ok=document.execCommand(cmd,false,val)}catch(e){}keep();marks();dirty();return ok}
+ const SZ=[12,14,17,20,24,30,38];
+ function resize(d){restore();const s=getSelection();if(!s.rangeCount||!pg.contains(s.anchorNode))return;let el=s.anchorNode;if(el.nodeType===3)el=el.parentNode;const px=parseFloat(getComputedStyle(el).fontSize)||17;let i=0;SZ.forEach((v,k)=>{if(Math.abs(v-px)<Math.abs(SZ[i]-px))i=k});const nx=SZ[Math.max(0,Math.min(SZ.length-1,i+d))];
+  if(s.isCollapsed){let blk=s.anchorNode;while(blk&&blk.parentNode!==pg&&blk!==pg)blk=blk.parentNode;if(blk&&blk!==pg&&blk.nodeType===1)blk.style.fontSize=nx+'px';else{try{document.execCommand('formatBlock',false,'div')}catch(e){}let b2=getSelection().anchorNode;while(b2&&b2.parentNode!==pg&&b2!==pg)b2=b2.parentNode;if(b2&&b2!==pg&&b2.nodeType===1)b2.style.fontSize=nx+'px'}dirty();return}
+  try{document.execCommand('styleWithCSS',false,false);document.execCommand('fontSize',false,'7')}catch(e){}
+  const made=[];pg.querySelectorAll('font[size="7"]').forEach(f=>{const sp=document.createElement('span');sp.style.fontSize=nx+'px';while(f.firstChild)sp.appendChild(f.firstChild);f.parentNode.replaceChild(sp,f);sp.querySelectorAll('span[style*="font-size"]').forEach(x=>{x.style.fontSize=''});made.push(sp)});
+  pg.querySelectorAll('span[style*="xxx-large"],span[style*="-webkit-xxx-large"]').forEach(sp=>{sp.style.fontSize=nx+'px';made.push(sp)});
+  if(made.length){try{const r=document.createRange(),z=made[made.length-1];r.setStart(made[0],0);r.setEnd(z,z.childNodes.length);s.removeAllRanges();s.addRange(r)}catch(e){}}keep();dirty()}
+ function pal(kind){const cols=kind==='color'?['#1b1b1a','#c93b3a','#0a63c9','#3b6d11','#854f0b','#6b6a64','#7f3fbf','#d4537e']:['','#f2e14c','#c0dd97','#b5d4f4','#f5c4b3','#eaf3de','#fbe9e8'];
+  const s=sheet(`<h2>${t(kind==='color'?'xTextC':'dHi')}</h2><div class="sws2">${cols.map(x=>`<button class="sw2" data-x="${x}" style="background:${x||'#fff'}" aria-label="${x||t('dNoHi')}">${x?'':'✕'}</button>`).join('')}</div><button class="b" id="iClose">${t('close')}</button>`);
+  s.querySelector('#iClose').onclick=closeSheet;s.querySelector('.sws2').onclick=e=>{const b=e.target.closest('[data-x]');if(!b)return;closeSheet();const x=b.dataset.x;if(kind==='color')X('foreColor',x);else if(!X('hiliteColor',x||'transparent'))X('backColor',x||'transparent')}}
+ TB.addEventListener('pointerdown',e=>{if(e.target.closest('[data-d]'))e.preventDefault()});
+ TB.addEventListener('click',e=>{const b=e.target.closest('[data-d]');if(!b)return;const a=b.dataset.d;
+  if(a==='bold'||a==='italic'||a==='underline'||a==='undo'||a==='redo')X(a);
+  else if(a==='h1'||a==='h2'||a==='p')X('formatBlock',a==='p'?'div':a);
+  else if(a==='fs-'||a==='fs+')resize(a==='fs+'?1:-1);
+  else if(a==='jr')X('justifyRight');else if(a==='jc')X('justifyCenter');else if(a==='jl')X('justifyLeft');
+  else if(a==='ul')X('insertUnorderedList');else if(a==='ol')X('insertOrderedList');
+  else if(a==='color'||a==='hi')pal(a);else if(a==='img'){keep();F.click()}});
+ F.onchange=async()=>{const f=F.files&&F.files[0];F.value='';if(!f)return;try{const data=await shrink(f),pid=uid();putImg(pid,data);added.push(pid);restore();const im=document.createElement('img');im.dataset.i=pid;im.src=data;im.alt='';
+   const s=getSelection();let blk=s.rangeCount&&pg.contains(s.anchorNode)?s.anchorNode:null;while(blk&&blk!==pg&&blk.parentNode!==pg)blk=blk.parentNode;if(blk&&blk!==pg)blk.parentNode.insertBefore(im,blk.nextSibling);else pg.appendChild(im);
+   const d=document.createElement('div');d.appendChild(document.createElement('br'));im.parentNode.insertBefore(d,im.nextSibling);try{const r=document.createRange();r.setStart(d,0);r.collapse(true);s.removeAllRanges();s.addRange(r)}catch(e){}keep();dirty();try{d.scrollIntoView({block:'nearest'})}catch(e){}}catch(e){toast(t('photoFail'))}};
+ pg.addEventListener('paste',e=>{e.preventDefault();const s=(e.clipboardData||window.clipboardData).getData('text/plain');document.execCommand('insertText',false,s)});
+ pg.addEventListener('input',dirty);
+ function wordFile(){const c=pg.cloneNode(true);c.querySelectorAll('img[data-i]').forEach(im=>{const d=IMG[im.dataset.i];if(d){im.setAttribute('src',d);im.removeAttribute('data-i');im.setAttribute('style','max-width:100%')}else im.remove()});
+  const doc='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>'+esc(o.name)+'</title><style>body{font-family:Arial,sans-serif;font-size:13pt;line-height:1.6}h1{font-size:22pt}h2{font-size:17pt}</style></head><body dir="'+(pg.style.direction||'rtl')+'">'+c.innerHTML+'</body></html>';
+  return new File(['﻿',doc],String(o.name||'document').replace(/[\\\/:*?"<>|]/g,' ').trim()+'.doc',{type:'application/msword'})}
+ function printDoc(){if(!hosted||!window.print){toast(t('dNoPrint'));return}let pa=$('#printArea');if(!pa){pa=document.createElement('div');pa.id='printArea';document.body.appendChild(pa)}pa.dir=pg.style.direction||'rtl';pa.innerHTML=pg.innerHTML;document.body.classList.add('printing');
+  const done=()=>{document.body.classList.remove('printing');pa.innerHTML='';window.removeEventListener('afterprint',done)};window.addEventListener('afterprint',done);setTimeout(()=>{try{window.print()}catch(e){done()}},80)}
+ function close(){document.removeEventListener('selectionchange',onSel);window.visualViewport&&visualViewport.removeEventListener('resize',fit);clearTimeout(saveT);saveT=0;
+  if(!gone){if(changed){o.html=html();o.imgs=ids();filePut(o)}const now=ids();startImgs.concat(added).filter(i=>now.indexOf(i)<0).forEach(delImg)}
+  FL.delete(flush);gone=true;try{pg.blur()}catch(e){}w.classList.remove('open');setTimeout(()=>w.remove(),400);render()}
+ $$('#dBack').onclick=close;
+ const rename=()=>askText(t('fRename'),o.name,v=>{o.name=v.slice(0,80);$$('#dName').textContent=o.name;changed=true;save()});
+ $$('#dName').onclick=rename;
+ $$('#dMoreB').onclick=e=>{keep();popMenu(e.currentTarget.getBoundingClientRect(),[{a:'rn',t:t('fRename')},{a:'txt',t:t('dAsText'),i:IC.share},{a:'doc',t:t('dAsWord'),i:ICN.xls},{a:'pr',t:t('dPrint')},{a:'del',t:t('fDelete'),dng:1,i:IC.del}],a=>{
+  if(a==='rn')rename();else if(a==='txt')shareRaw(String(pg.innerText||'').trim());else if(a==='doc'){let f=null;try{f=wordFile()}catch(x){}if(f)fileReady(f)}else if(a==='pr')printDoc();
+  else confirmSheet(t('fDelete'),t('fDelSure',{n:o.name}),t('yesDel'),()=>{gone=true;clearTimeout(saveT);saveT=0;startImgs.concat(added).forEach(delImg);fileDel(o.id);close();toast(t('deleted'))})})};
+ look();requestAnimationFrame(()=>w.classList.add('open'))}
+
 function menu(){
  const s=sheet(`<h2>${t('menu')}</h2><p class="hint">${t('about')}</p>
  <button class="mi" id="mWall">${t('wall')}</button>
@@ -886,8 +1352,8 @@ function menu(){
  s.querySelector('#mRestore').onclick=restoreSheet;
 }
 $('#menuBtn').onclick=menu;
-function backupText(){return 'POCKETNOTES1:'+btoa(unescape(encodeURIComponent(JSON.stringify({v:1,cur,items,tk}))))}
-function backupSheet(){const txt=backupText();
+function backupText(fl){return 'POCKETNOTES1:'+btoa(unescape(encodeURIComponent(JSON.stringify({v:1,cur,items,tk,files:fl||[]}))))}
+async function backupSheet(){const fl=(await Promise.all(fx.map(x=>fileGet(x.id)))).filter(Boolean);const txt=backupText(fl);
  const s=sheet(`<h2>${t('backup')}</h2><p class="hint">${t('backupHint')}</p><textarea class="in" id="bTxt" readonly style="font-family:var(--f-type);font-size:12px;min-height:90px;line-height:1.3">${esc(txt)}</textarea><div class="acts"><button class="b pri" id="bCopy">${t('copyBackup')}</button>${hosted?`<button class="b" id="bFile">${t('dlBackup')}</button>`:''}</div><button class="b" id="bClose">${t('close')}</button>`);
  s.querySelector('#bCopy').onclick=async()=>{try{await navigator.clipboard.writeText(txt);toast(t('copied'))}catch(e){const a=s.querySelector('#bTxt');a.focus();a.select()}};
  if(hosted)s.querySelector('#bFile').onclick=()=>{try{const b=new Blob([txt],{type:'text/plain'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='pocket-notes-backup-'+new Date().toISOString().slice(0,10)+'.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000)}catch(e){}};
@@ -897,8 +1363,8 @@ function restoreSheet(){
  const s=sheet(`<h2>${t('restore')}</h2><p class="hint">${t('restoreHint')}</p><textarea class="in" id="rTxt" style="font-family:var(--f-type);font-size:12px;min-height:90px;line-height:1.3" placeholder="POCKETNOTES1:…"></textarea><label class="b" style="text-align:center;flex:none">${t('chooseFile')}<input type="file" id="rFile" accept=".txt,text/plain" hidden></label><div class="err" id="rErr"></div><div class="acts"><button class="b" id="rCancel">${t('cancel')}</button><button class="b pri" id="rGo">${t('restoreBtn')}</button></div>`);
  s.querySelector('#rCancel').onclick=closeSheet;
  s.querySelector('#rFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{s.querySelector('#rTxt').value=r.result};r.readAsText(f)};
- s.querySelector('#rGo').onclick=()=>{const o=parseBackup(s.querySelector('#rTxt').value);if(!o){s.querySelector('#rErr').textContent=t('badBackup');return}items=o.items.filter(i=>i&&i.id&&i.type);if(o.cur){cur=o.cur;S.set('cur',cur)}if(o.tk&&Array.isArray(o.tk.days)&&Array.isArray(o.tk.dishes)){tk=o.tk;if(!Array.isArray(tk.places))tk.places=[];tkSave()}save();closeSheet();render();toast(t('restored',{n:items.length}))}}
-function eraseAll(){Object.keys(IMG).forEach(delImg);['items','pin','salt','fails','until','cur','tk'].forEach(S.del);tk=tkDefault();tkOff=0;items=null;cur='₪';fails=0;until=0;changing=false;query='';$('#q').value='';tab=0;showLock('create')}
+ s.querySelector('#rGo').onclick=()=>{const o=parseBackup(s.querySelector('#rTxt').value);if(!o){s.querySelector('#rErr').textContent=t('badBackup');return}items=o.items.filter(i=>i&&i.id&&i.type);if(o.cur){cur=o.cur;S.set('cur',cur)}if(o.tk&&Array.isArray(o.tk.days)&&Array.isArray(o.tk.dishes)){tk=o.tk;tkFix();tkSave()}if(Array.isArray(o.files))o.files.forEach(f=>{if(f&&f.id&&(f.kind==='sheet'||f.kind==='doc'))filePut(f)});save();closeSheet();render();toast(t('restored',{n:items.length}))}}
+function eraseAll(){Object.keys(IMG).forEach(delImg);fx.slice().forEach(x=>fileDel(x.id));['items','pin','salt','fails','until','cur','tk','files'].forEach(S.del);tk=tkDefault();tkFix();tkOff=0;tkView='days';items=null;cur='₪';fails=0;until=0;changing=false;query='';$('#q').value='';tab=0;showLock('create')}
 
 /* auto-lock after 60s away */
 let hiddenAt=0;
