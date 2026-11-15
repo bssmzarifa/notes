@@ -1,4 +1,4 @@
-const C='pocket-notes-v14';
+const C='pocket-notes-v15';
 const FILES=['./','index.html','manifest.json','icon-180.png','icon-192.png','icon-512.png','xlsx.min.js'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>Promise.all(FILES.map(f=>c.add(new Request(f,{cache:'reload'})).catch(()=>{})))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

@@ -473,7 +473,7 @@ const hosted=location.protocol==='https:'&&/github\.io|netlify|pages\.dev|vercel
 const S={get(k,d){try{const v=localStorage.getItem('pn_'+k);return v==null?d:JSON.parse(v)}catch(e){storeOK=false;return d}},set(k,v){try{localStorage.setItem('pn_'+k,JSON.stringify(v));if(SK.indexOf(k)>-1)dirty('k',k);return true}catch(e){storeOK=false;return false}},del(k){try{localStorage.removeItem('pn_'+k)}catch(e){}}};
 
 /* ---------- account + cloud copy (each person's notes are kept under their own account) ---------- */
-const FBCFG=/*FBCFG*/null/*FBEND*/;
+const FBCFG=/*FBCFG*/{apiKey:"AIzaSyBVpAuzlWrjU5_FXO5keMdmXB1XpndIOSs",authDomain:"pocket-notes-b6275.firebaseapp.com",projectId:"pocket-notes-b6275",storageBucket:"pocket-notes-b6275.firebasestorage.app",messagingSenderId:"905373943816",appId:"1:905373943816:web:681cd3a035833cbe0b69bd"}/*FBEND*/;
 const CLD={ok:!!(FBCFG&&FBCFG.apiKey&&FBCFG.projectId),state:''};
 var SK=['items','tk','files','cur'];
 var au=null,sq={k:{},i:{},f:{},x:0},synct={},syncn={},quiet=0,dseq=0,pushT=0,syncing=false;
