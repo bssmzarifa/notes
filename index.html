@@ -168,7 +168,7 @@ body.ar .slab{letter-spacing:0;font-size:13px}
 .chip{background:#2C2C2A;color:var(--cream);border:1.5px solid #444441;border-radius:20px;padding:7px 12px;font-size:13px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:6px}
 .chip.on{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
 .chip i{font-style:normal;font-weight:700}
-.sws{display:flex;gap:10px}
+.sws{display:flex;gap:8px}
 .sw{flex:1;height:52px;border-radius:8px;border:3px solid transparent;font-size:11px;color:#fff;display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .sw.on{border-color:var(--yellow)}
 .stks{display:flex;gap:8px;flex-wrap:wrap}
@@ -409,6 +409,28 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
 @media print{body.printing{background:#fff!important}body.printing>*{display:none!important}body.printing>#printArea{display:block!important;font-family:Arial,sans-serif;font-size:13pt;line-height:1.7;color:#000}#printArea img{max-width:100%}#printArea h1{font-size:22pt}#printArea h2{font-size:17pt}#printArea div,#printArea p,#printArea li,#printArea h1,#printArea h2{unicode-bidi:plaintext}}
 /* v12: photos from the gallery as well as the camera */
 .tkth.add{flex-direction:column;gap:3px;font-size:11px;font-family:var(--ui)}
+/* v13: several dishes a day, poor rating, account */
+.tkpart{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:.5px solid #E6E4DC}
+.tkpn{flex:1;min-width:0;font-size:16px;overflow-wrap:anywhere}
+.tkpart.on .tkpn{font-weight:700;color:#0A4FA3}
+.tkrow.sm{gap:12px;display:inline-flex;align-items:center}
+.tkrow.sm b{font-size:20px;min-width:26px}
+.tkrow.sm .tkst{width:32px;height:32px;font-size:19px}
+.tkdl{display:flex;justify-content:space-between;align-items:center;gap:8px;font-family:var(--ui);font-size:14px;border-bottom:.5px dashed #D3D1C7;padding:2px 0}
+.cd.arx .tkdl{font-family:var(--f-ar)}
+.tkdl span{min-width:0;overflow-wrap:anywhere;unicode-bidi:plaintext}
+.tkdl b{background:#FAEEDA;color:#633806;border-radius:10px;padding:0 8px;font-size:12px;flex:none}
+.tkbadge.bad{background:#FCEBEB;color:#A32D2D}
+.tkseg button.bad.on{background:#FCEBEB;color:#A32D2D}
+.tkch.iss.on{background:#FCEBEB;color:#791F1F;font-weight:600;box-shadow:inset 0 0 0 1.5px #F09595}
+.cloud{display:inline-flex;align-items:center;gap:7px;max-width:100%;font-family:var(--ui);font-size:12px;color:var(--ink);background:rgba(246,241,228,.94);border-radius:14px;padding:4px 12px;margin:0 0 8px;transition:opacity .15s}
+.cloud:active{opacity:.55}
+.cloud i{width:8px;height:8px;border-radius:50%;background:#888780;flex:none}
+.cloud.ok i{background:#3B6D11}.cloud.busy i{background:#EF9F27}.cloud.off i{background:#BA7517}.cloud.err i{background:#E24B4A}.cloud.no i{background:#0A7AFF}
+.cloud span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pbar{height:6px;background:#D3D1C7;border-radius:3px;overflow:hidden}
+.pbar i{display:block;height:100%;width:4%;background:#3B6D11;transition:width .3s}
+.acct .tkb{max-width:560px;width:100%;margin:0 auto}
 .sr{border-radius:16px;padding:0 12px;margin-bottom:8px;background:rgba(251,250,246,.92)}
 .sr input{height:32px;font-size:15px}
 .sr input::placeholder{font-size:14px}
@@ -466,6 +488,43 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
 .trow .amt{font-size:13px;font-weight:700;flex:none}
 .trchk{font-size:10px;color:#27500A;background:#EAF3DE;border-radius:999px;padding:1px 7px;display:inline-flex;align-items:center;gap:3px;margin-top:3px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* v18: my camp */
+.cmhead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cmhead b{display:block;font-family:var(--ui);font-size:17px;font-weight:700;color:#0C447C}
+.cmhead span{font-size:12px;color:#6b6a64}
+.cmchips{flex-wrap:nowrap;overflow-x:auto;grid-column:1/-1;margin:0 0 4px;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+.cmchips .tkpchip{flex:none;font-size:13px;padding:6px 12px}
+.cmchips small{font-size:11px;opacity:.75}
+.cmg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cmg>div{background:#E6F1FB;border-radius:12px;padding:10px 6px;text-align:center}
+.cmg>div.w{background:#FAEEDA}
+.cmg b{display:block;font-family:var(--ui);font-size:24px;font-weight:700;color:#0C447C;line-height:1.15}
+.cmg .w b{color:#854F0B}
+.cmg span{font-size:11px;color:#185FA5}.cmg .w span{color:#854F0B}
+.trow.tap{cursor:pointer}.trow.tap:active{opacity:.6}
+.trow.ghost{background:transparent;border:.5px dashed #B4B2A9}.trow.ghost b{font-weight:400;color:#888780}
+.trow.gotit{background:#EAF3DE}
+.trow .mini{flex:none;padding:4px 10px;font-size:12px}
+.cmtent{background:#E6E4DC;font-family:var(--ui);font-size:13px;font-weight:700;color:#444441}
+.cmtag{font-style:normal;display:inline-block;font-size:10px;padding:1px 7px;border-radius:999px;background:#E6E4DC;color:#444441;margin:3px 0 0 4px;flex:none}
+.cmtag.a{background:#FAEEDA;color:#633806}.cmtag.r{background:#FCEBEB;color:#791F1F}.cmtag.g{background:#EAF3DE;color:#27500A}
+.cmchk{width:24px;height:24px;border-radius:50%;border:1.5px solid #B4B2A9;flex:none;display:flex;align-items:center;justify-content:center;color:#fff}
+.cmchk.on{background:#3B6D11;border-color:#3B6D11}
+.cm2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.in.cmin{min-height:0;font-size:15px;padding:8px 10px}
+textarea.in.cmin{min-height:60px}
+.cmmap{display:flex;flex-direction:column;gap:6px;max-height:42vh;overflow-y:auto}
+.cmmr{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px}
+.cmmr span{flex:1;min-width:0;overflow-wrap:anywhere}
+.cmmr select.in{width:52%;min-height:0;padding:6px 8px;font-size:13px}
+.cmcode{font-family:var(--ui);font-size:38px;font-weight:700;letter-spacing:8px;text-align:center;color:#0C447C;background:#E6F1FB;border-radius:14px;padding:12px 0;direction:ltr}
+.cmcode.sm{font-size:16px;letter-spacing:2px;padding:6px 0}
+.cmrep{white-space:pre-wrap;font-size:14px;line-height:1.7;background:#FAFAF5;border-radius:12px;padding:10px 12px}
+.cmdays{display:flex;flex-wrap:wrap;gap:6px}.cmdays .tkpchip{padding:5px 10px;font-size:13px}
+.cmseg button{flex:1}
+.cmgrid .cd,.cmgrid .tkpchip,.cmgrid .mini{font-family:var(--ui)}
+.cmgrid .trow,.cmgrid .cmrep,.cmgrid .hint,.cmgrid .rphead,.cmgrid .cmhead{text-align:start}
 </style>
 
 </head>
@@ -486,6 +545,7 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
       <button class="hbtn" id="wallBtn" aria-label="Wallpaper"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="8.5" y="9" width="7" height="6" fill="currentColor"/></svg></button><button class="hbtn" id="langBtn"></button>
       <button class="hbtn" id="menuBtn" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
     </div>
+    <button id="cloud" class="cloud" hidden><i></i><span></span></button>
     <div id="storeWarn" class="warn" hidden></div>
     <label class="sr"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#7c7a73" stroke-width="2.2"/><path d="M15.5 15.5 21 21" stroke="#7c7a73" stroke-width="2.2" stroke-linecap="round"/></svg><input id="q" type="search" autocomplete="off" enterkeyhint="search"><button id="qx" class="mini" hidden>✕</button></label>
     <div class="tabs" id="tabs" role="tablist"></div>
@@ -503,11 +563,47 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let storeOK=true;
 const hosted=location.protocol==='https:'&&/github\.io|netlify|pages\.dev|vercel/.test(location.host);
-const S={get(k,d){try{const v=localStorage.getItem('pn_'+k);return v==null?d:JSON.parse(v)}catch(e){storeOK=false;return d}},set(k,v){try{localStorage.setItem('pn_'+k,JSON.stringify(v));return true}catch(e){storeOK=false;return false}},del(k){try{localStorage.removeItem('pn_'+k)}catch(e){}}};
+const S={get(k,d){try{const v=localStorage.getItem('pn_'+k);return v==null?d:JSON.parse(v)}catch(e){storeOK=false;return d}},set(k,v){try{localStorage.setItem('pn_'+k,JSON.stringify(v));if(SK.indexOf(k)>-1)dirty('k',k);return true}catch(e){storeOK=false;return false}},del(k){try{localStorage.removeItem('pn_'+k)}catch(e){}}};
+
+/* ---------- account + cloud copy (each person's notes are kept under their own account) ---------- */
+const FBCFG=/*FBCFG*/{apiKey:"AIzaSyBVpAuzlWrjU5_FXO5keMdmXB1XpndIOSs",authDomain:"pocket-notes-b6275.firebaseapp.com",projectId:"pocket-notes-b6275",storageBucket:"pocket-notes-b6275.firebasestorage.app",messagingSenderId:"905373943816",appId:"1:905373943816:web:681cd3a035833cbe0b69bd"}/*FBEND*/;
+const CLD={ok:!!(FBCFG&&FBCFG.apiKey&&FBCFG.projectId),state:''};
+var SK=['items','tk','files','cur','camp'];
+var au=null,sq={k:{},i:{},f:{},x:0},synct={},syncn={},quiet=0,dseq=0,pushT=0,syncing=false;
+try{au=JSON.parse(localStorage.getItem('pn_auth')||'null');const q0=JSON.parse(localStorage.getItem('pn_syncq')||'null');if(q0&&q0.k&&q0.i&&q0.f)sq=q0;synct=JSON.parse(localStorage.getItem('pn_synct')||'{}')||{};syncn=JSON.parse(localStorage.getItem('pn_syncn')||'{}')||{}}catch(e){}
+function lsSet(k,v){try{localStorage.setItem('pn_'+k,JSON.stringify(v))}catch(e){}}
+function sqSave(){lsSet('syncq',sq)}
+function dirty(kind,id,op){if(!CLD.ok||quiet||!au)return;sq[kind][id]=(op||'p')+(++dseq)+'.'+Date.now();if(kind==='i')sq.x=1;sqSave();kick()}
+function kick(ms){clearTimeout(pushT);pushT=setTimeout(()=>syncNow(),ms||2500)}
+function pendN(){return Object.keys(sq.k).length+Object.keys(sq.i).length+Object.keys(sq.f).length}
+async function authCall(ep,body){let r;try{r=await fetch('https://identitytoolkit.googleapis.com/v1/accounts:'+ep+'?key='+FBCFG.apiKey,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})}catch(e){throw new Error('NET')}
+ const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error((j.error&&j.error.message)||'ERR');return j}
+async function tok(){if(!au)throw new Error('NOAUTH');if(au.it&&au.exp>Date.now()+60000)return au.it;
+ let r;try{r=await fetch('https://securetoken.googleapis.com/v1/token?key='+FBCFG.apiKey,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=refresh_token&refresh_token='+encodeURIComponent(au.rt)})}catch(e){throw new Error('NET')}
+ const j=await r.json().catch(()=>({}));
+ if(!r.ok){if(/TOKEN_EXPIRED|USER_DISABLED|USER_NOT_FOUND|INVALID_REFRESH_TOKEN/.test((j.error&&j.error.message)||'')){au=null;S.del('auth');cloudUI()}throw new Error('TOK')}
+ au.it=j.id_token;au.rt=j.refresh_token||au.rt;au.exp=Date.now()+(+j.expires_in||3600)*1000;lsSet('auth',au);return au.it}
+const FSN=()=>'projects/'+FBCFG.projectId+'/databases/(default)/documents';
+const FSB=()=>'https://firestore.googleapis.com/v1/'+FSN();
+const dpath=(col,id)=>'/users/'+au.uid+'/'+col+'/'+id;
+async function fsReq(method,url,body){const tk_=await tok();let r;try{r=await fetch(url,{method,headers:{'Authorization':'Bearer '+tk_,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined})}catch(e){throw new Error('NET')}
+ if(r.status===404)return null;if(!r.ok)throw new Error('FS'+r.status);return r.json().catch(()=>({}))}
+const CHN=300000;
+function chunks(str){const out=[];let i=0;while(i<str.length){let e=Math.min(str.length,i+CHN);if(e<str.length){const c=str.charCodeAt(e-1);if(c>=0xD800&&c<=0xDBFF)e--}out.push(str.slice(i,e));i=e}if(!out.length)out.push('');return out}
+async function putBig(col,id,str,t){const ch=chunks(str),n=ch.length;
+ for(let i=n-1;i>=0;i--)await fsReq('PATCH',FSB()+dpath(col,i?id+'_c'+i:id),{fields:i?{s:{stringValue:ch[i]}}:{s:{stringValue:ch[0]},t:{integerValue:String(t)},n:{integerValue:String(n)}}});
+ const key=col+'/'+id,old=syncn[key]||1;for(let i=n;i<old;i++)await fsReq('DELETE',FSB()+dpath(col,id+'_c'+i));if(n>1)syncn[key]=n;else delete syncn[key];lsSet('syncn',syncn)}
+async function delBig(col,id){const key=col+'/'+id,old=syncn[key]||1;for(let i=old-1;i>=1;i--)await fsReq('DELETE',FSB()+dpath(col,id+'_c'+i));await fsReq('DELETE',FSB()+dpath(col,id));delete syncn[key];lsSet('syncn',syncn)}
+async function getDocs(col,ids,mask){const out={};for(let i=0;i<ids.length;i+=6){const part=ids.slice(i,i+6),body={documents:part.map(id=>FSN()+dpath(col,id))};if(mask)body.mask={fieldPaths:mask};
+  const j=await fsReq('POST',FSB()+':batchGet',body);(Array.isArray(j)?j:[]).forEach(x=>{if(x&&x.found){out[x.found.name.split('/').pop()]=x.found.fields||{}}})}return out}
+const fStr=f=>(f&&f.s&&f.s.stringValue)||'',fInt=(f,k)=>+(f&&f[k]&&f[k].integerValue||0);
+async function getBig(col,id,head){const f=head||(await getDocs(col,[id]))[id];if(!f)return null;let s=fStr(f);const n=fInt(f,'n')||1;
+ if(n>1){const ids=[];for(let i=1;i<n;i++)ids.push(id+'_c'+i);const m=await getDocs(col,ids);for(let i=1;i<n;i++){const c=m[id+'_c'+i];if(!c)return null;s+=fStr(c)}syncn[col+'/'+id]=n;lsSet('syncn',syncn)}
+ return{s,t:fInt(f,'t')}}
 
 const L={
-en:{appName:'Pocket Notes',tagline:'STICK IT · KEEP IT',createPin:'Create your PIN',createSub:'CHOOSE 4 NUMBERS',confirmPin:'Confirm PIN',confirmSub:'TYPE IT AGAIN',enterPin:'Enter PIN',enterSub:'POCKET NOTES',wrong:'WRONG PIN · TRY AGAIN',mismatch:"PINS DON'T MATCH · START AGAIN",wait:'TOO MANY TRIES · WAIT {s}s',welcome:'WELCOME',currentPin:'Current PIN',currentSub:'TO CHANGE YOUR PIN',forgot:'Forgot PIN?',cancel:'Cancel',search:'Search a word…',tabs:['All','Notes','Money','Phones','Kitchen','Tables','Docs'],found:'{n} FOUND',none:'Nothing found for “{q}”. Try a shorter word.',emptyT:'Your board is empty',emptyB:'Tap the yellow + to stick your first card.',newCard:'New card',editCard:'Edit card',tNote:'Note',tMoney:'Expenses',tPhone:'Phone',noteText:'Note',notePh:'Write here…',important:'Important',title:'Title',titlePh:'Friday expenses',item:'Item',amount:'Amount',addRow:'+ Add line',total:'Total',name:'Name',namePh:'Abu Ahmad',number:'Phone number',save:'Done',board:'Board',writePh:'Write anything…\nFirst line is the title.\n\nFor expenses, tick “Expenses” above, then:\nBread 5\nGas 20\n\nA name and a number become a phone card.',del:'Delete',delSure:'Delete this card? This cannot be undone.',yesDel:'Yes, delete',keep:'Keep it',copy:'Copy',call:'Call',copied:'Copied',menu:'Menu',backup:'Back up my notes',backupHint:'Copy this text and keep it somewhere safe, for example send it to yourself on WhatsApp or email. If you lose your phone, you can paste it back in a new phone.',copyBackup:'Copy backup text',dlBackup:'Save as file',restore:'Restore from backup',restoreHint:'Paste your backup text, or choose your backup file. This replaces all cards on this phone.',restoreBtn:'Restore',restored:'RESTORED {n} CARDS',badBackup:"That backup text isn't valid. Copy the whole text and try again.",chooseFile:'Choose backup file',changePin:'Change PIN',lockNow:'Lock now',erase:'Erase everything',eraseSure:'This deletes all cards and the PIN on this phone. It cannot be undone. Back up first if you want to keep anything.',eraseBtn:'Yes, erase everything',forgotSure:'Without the PIN, the only way in is to erase everything and start fresh. If you saved a backup, you can restore it after.',saved:'SAVED',deleted:'DELETED',pinChanged:'PIN CHANGED',langOther:'عربي',errNote:'Write something first.',errMoney:'Add at least one line with an amount.',errPhone:'Add a name and a number.',lblNote:'NOTE',lblMoney:'MONEY',lblPhone:'PHONE',lblKitchen:'KITCHEN',ex:'EXAMPLE',currency:'Currency',close:'Close',storeWarn:"This browser isn't saving your notes (it may be in private mode). Cards will disappear when you close it.",about:'Your notes are saved only on this phone. Nobody else can see them.',wall:'Make it my wallpaper',studio:'Wallpaper',wCards:'CARDS ON THE WALLPAPER',wMax:'{n} / 6',wBg:'BACKGROUND',bgN:{cork:'Cork',mat:'Mat',paper:'Paper',night:'Night'},wStk:'STICKERS · TAP TO STICK',wNoStk:'Remove stickers',wSave:'Save picture',wHow:'<b>After saving:</b> open Settings → Wallpaper → Add New Wallpaper → Photos, and choose the picture.',wHold:'Press and hold the picture, then tap “Save to Photos”.',wFit:'Some cards did not fit. Choose fewer cards or shorter ones.',wPick:'Choose at least one card.',wMore:'+{n} more lines',stTodo:'Not its turn yet',stDone:'Finished',stLabel:'Change status',addPhoto:'Add a photo',photoFail:"Couldn't add that photo.",remind:'Remind me',remTitle:'Reminder',remDay:'Day',remTime:'Time',remRemove:'Remove reminder',remPast:'Choose a time in the future.',remHow:'Your iPhone will open “Add to Calendar”. Tap “Add” once and it will alert you on time, even with the app closed.',remNoCal:'Reminder saved. The phone alert works in the installed app.',remDue:'Reminder',remShare:'Nothing opened? Send it as a file',ok:'OK',share:'Share',shareImg:'Share as picture',selMore:'Select several cards',nSel:'{n} selected',delN:'Delete {n} cards? This cannot be undone.',copiedShare:'Text copied. Paste it anywhere.',wa:'Send on WhatsApp',copyTxt:'Copy the text',tkMonth:'MONTH SUMMARY',tkDays:'days',tkPots:'pots',tkEmptyT:'Nothing recorded yet',tkEmptyB:'Tap + to record today.',tkToday:'Kitchen record',tkDate:'Date',tkDish:'Dish',tkPotsN:'Number of pots',tkIngs:'Ingredients (change any number)',tkPer:'Per pot',tkTot:'Total',tkAddIng:'Add ingredient',tkPlace:'Distribution place',tkPics:'Photos',tkRate:'Food quality',tkNote:'Notes',tkNotePh:'Anything to note about today',tkMake:'Create report',tkRepT:'Report ready',tkSendPics:'Send photos and report ({n})',tkPicsNo:'Report copied. Sending photos works in the installed app.',tkNewDish:'New dish',tkNewPlace:'New place',tkNewIng:'New ingredient',tkName:'Name',tkUnit:'Unit',add:'Add',tkDelDay:'Delete this record? This cannot be undone.',tkSumT:'Kitchen summary',tkUnits:['kg','L','g','pcs'],tkVDays:'Daily log',tkVCamps:'Camps',tkTodayC:'TODAY',tkTodayTag:'TODAY',lblCamp:'CAMP',cRep:'Representative',cRepName:'Representative name',cWaHint:'For WhatsApp, write the number with its country code (for example +970 or +972).',cDays:'Distribution days',cCount:'Numbers',cPeople:'People',cFam:'Families',cLog:'Log (filled in from the daily record)',cLogEmpty:'No distributions recorded yet.',cMonth:'This month',cAll:'All time',cAdd:'Add camp',cNew:'New camp',cName:'Camp name',cDel:'Delete this camp? The daily records stay as they are.',cDelB:'Delete camp',cRem:'Weekly reminder',cRemHow:'Your iPhone will alert you at this time on every distribution day of this camp. Tap “Add” once in the calendar window.',cRemNeed:'Choose the distribution days first.',cNameNeed:'Write the camp name.',cDup:'There is already a camp with this name.',camAdded:'Added to today ({n})',waShort:'WhatsApp',wdS:['S','M','T','W','T','F','S'],wdL:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],lblSheet:'TABLE',lblDoc:'DOCUMENT',fReady:'File ready',fShare:'Share',fSave:'Save on this phone',fNoSave:'Saving and sharing files works in the installed app.',fRename:'Rename',fDelete:'Delete',fDelSure:'Delete “{n}”? This cannot be undone.',fFull:'Storage is full.',xNew:'New table',xOpen:'Open an Excel file',xEmptyT:'No tables yet',xEmptyB:'Tap + for a new table, or open an Excel file.',xLoading:'Working…',xLibFail:'The Excel tool could not load. Open the app once while online.',xBad:'This file could not be read.',xCut:'The file is very large; only part of it is shown.',xSheetN:'sheets',xRows:'{n} rows',xFindPh:'Search for a name…',xNoHit:'No match',xRowUp:'Insert row above',xRowDn:'Insert row below',xColR:'Insert column right',xColL:'Insert column left',xMerge:'Merge cells',xUnmerge:'Unmerge',xCopy:'Copy',xPaste:'Paste',xClear:'Clear contents',xDelRow:'Delete row',xDelCol:'Delete column',xAsFile:'Excel file',xAsPic:'Picture of the table',xDir:'Flip table direction',xTextC:'Text colour',xFillC:'Cell colour',xNoFill:'No colour',xSumHint:'Select cells with numbers, then tap Σ.',xDelSheet:'Delete sheet',xDelSheetSure:'Delete this sheet and everything in it?',xLast:'The only sheet cannot be deleted.',xNothing:'The table is empty.',xNoClip:'Nothing to paste. Copy cells first.',xAddRows:'10 rows',xAddSheet:'Add sheet',xBackL:'Tables',xInPh:'Tap a cell, then write here',xPicCut:'The table is long; the picture shows its first part.',xMaxC:'No more columns can be added.',dEmptyT:'No documents yet',dEmptyB:'Tap + to write a new document.',dNew:'New document',dBackL:'Documents',dPh:'Write here…',dAsText:'Share as text',dAsWord:'Word file',dPrint:'Print / PDF',dNoPrint:'Printing works in the installed app.',dH1:'Title',dH2:'Heading',dP:'Text',dHi:'Highlight',dNoHi:'No highlight',tkGallery:'Gallery',tkShoot:'Camera',tkAddPics:'Add photos from the gallery',tkStep1:'① Send photos ({n})',tkStep2:'② Send report text',tkTwoStep:'WhatsApp drops photos when sent with text. Send the photos first, then the text.',tkShareDay:'Share report and photos',tkEditDay:'Open and edit',tkWithPhotos:'Send report with photos ({n})',tkTextOnly:'Send text only',tkCombined:'The photos are sent together with the report as their caption. If WhatsApp drops the text, tap “copy text” and paste it.',tkVReport:'Reports',tkShareReport:'Share the report',tkShareText:'Share as text',tkSharePic:'Share as picture',cActivity:'This camp',cVisits:'visits',cLast:'Last visit',cTopDish:'Most-cooked dish',cLog2:'What they received each time',cShareAct:'Share camp activity',tkVCampaign:'Campaign'},
-ar:{appName:'ملاحظاتي',tagline:'ألصقها واحفظها',createPin:'أنشئ رمز الدخول',createSub:'اختر ٤ أرقام',confirmPin:'تأكيد الرمز',confirmSub:'اكتبه مرة ثانية',enterPin:'أدخل الرمز',enterSub:'ملاحظاتي',wrong:'رمز خاطئ · حاول مرة ثانية',mismatch:'الرمزان غير متطابقين · ابدأ من جديد',wait:'محاولات كثيرة · انتظر {s} ثانية',welcome:'أهلاً بك',currentPin:'الرمز الحالي',currentSub:'لتغيير الرمز',forgot:'نسيت الرمز؟',cancel:'إلغاء',search:'ابحث عن كلمة…',tabs:['الكل','ملاحظات','مصاريف','أرقام','التكية','جداول','مستندات'],found:'وُجد {n}',none:'لا شيء بكلمة «{q}». جرّب كلمة أقصر.',emptyT:'اللوحة فارغة',emptyB:'اضغط + الأصفر لتلصق أول بطاقة.',newCard:'بطاقة جديدة',editCard:'تعديل البطاقة',tNote:'ملاحظة',tMoney:'مصاريف',tPhone:'رقم هاتف',noteText:'الملاحظة',notePh:'اكتب هنا…',important:'مهم',title:'العنوان',titlePh:'مصاريف الجمعة',item:'الغرض',amount:'المبلغ',addRow:'+ سطر جديد',total:'المجموع',name:'الاسم',namePh:'أبو أحمد',number:'رقم الهاتف',save:'تم',board:'اللوحة',writePh:'اكتب أي شيء…\nالسطر الأول هو العنوان.\n\nللمصاريف اختر «مصاريف» فوق، ثم اكتب:\nخبز ٥\nغاز ٢٠\n\nالاسم مع الرقم يصير بطاقة هاتف.',del:'حذف',delSure:'حذف هذه البطاقة؟ لا يمكن التراجع.',yesDel:'نعم، احذف',keep:'إبقاء',copy:'نسخ',call:'اتصال',copied:'تم النسخ',menu:'القائمة',backup:'نسخة احتياطية',backupHint:'انسخ هذا النص واحفظه في مكان آمن، مثلاً أرسله لنفسك على واتساب أو الإيميل. إذا ضاع هاتفك، تلصقه في الهاتف الجديد.',copyBackup:'نسخ النص الاحتياطي',dlBackup:'حفظ كملف',restore:'استرجاع النسخة',restoreHint:'الصق النص الاحتياطي أو اختر الملف. هذا يستبدل كل البطاقات على هذا الهاتف.',restoreBtn:'استرجاع',restored:'تم استرجاع {n} بطاقة',badBackup:'النص غير صحيح. انسخ النص كاملاً وحاول مرة ثانية.',chooseFile:'اختر ملف النسخة',changePin:'تغيير الرمز',lockNow:'قفل الآن',erase:'مسح كل شيء',eraseSure:'سيتم حذف كل البطاقات والرمز من هذا الهاتف. لا يمكن التراجع. خذ نسخة احتياطية أولاً.',eraseBtn:'نعم، امسح كل شيء',forgotSure:'بدون الرمز، الطريقة الوحيدة هي مسح كل شيء والبدء من جديد. إذا عندك نسخة احتياطية تقدر تسترجعها بعدها.',saved:'تم الحفظ',deleted:'تم الحذف',pinChanged:'تم تغيير الرمز',langOther:'English',errNote:'اكتب شيئاً أولاً.',errMoney:'أضف سطراً واحداً على الأقل فيه مبلغ.',errPhone:'أضف الاسم والرقم.',lblNote:'ملاحظة',lblMoney:'مصاريف',lblPhone:'هاتف',lblKitchen:'تكية',ex:'مثال',currency:'العملة',close:'إغلاق',storeWarn:'المتصفح لا يحفظ ملاحظاتك (قد يكون في الوضع الخاص). ستختفي البطاقات عند الإغلاق.',about:'ملاحظاتك محفوظة على هذا الهاتف فقط. لا أحد غيرك يراها.',wall:'اجعلها خلفية للهاتف',studio:'استوديو الخلفية',wCards:'البطاقات على الخلفية',wMax:'{n} / ٦',wBg:'شكل الخلفية',bgN:{cork:'فلين',mat:'أخضر',paper:'ورق',night:'كحلي'},wStk:'ستيكرات · اضغط لتلصق',wNoStk:'إزالة الستيكرات',wSave:'حفظ الصورة',wHow:'<b>بعد الحفظ:</b> افتح الإعدادات ← خلفية الشاشة ← إضافة خلفية جديدة ← الصور، واختر الصورة.',wHold:'اضغط مطولاً على الصورة، ثم اختر «حفظ في الصور».',wFit:'بعض البطاقات ما اتسعت. اختر بطاقات أقل أو أقصر.',wPick:'اختر بطاقة واحدة على الأقل.',wMore:'+{n} سطر',stTodo:'لسا ما اجا دورها',stDone:'انتهيت منها',stLabel:'تغيير الحالة',addPhoto:'إضافة صورة',photoFail:'تعذّرت إضافة الصورة.',remind:'ذكّرني',remTitle:'تذكير',remDay:'اليوم',remTime:'الساعة',remRemove:'إزالة التذكير',remPast:'اختر وقتاً في المستقبل.',remHow:'سيفتح الآيفون نافذة «إضافة إلى التقويم». اضغط «إضافة» مرة واحدة ليرنّ التنبيه في وقته حتى لو التطبيق مسكّر.',remNoCal:'تم حفظ التذكير. تنبيه الهاتف يعمل في النسخة المثبّتة.',remDue:'تذكير',remShare:'ما فتحت النافذة؟ أرسله كملف',ok:'تمام',share:'مشاركة',shareImg:'مشاركة كصورة',selMore:'تحديد أكثر من بطاقة',nSel:'{n} محددة',delN:'حذف {n} بطاقة؟ لا يمكن التراجع.',copiedShare:'تم نسخ النص. الصقه في أي مكان.',wa:'إرسال على واتساب',copyTxt:'نسخ النص',tkMonth:'ملخص الشهر',tkDays:'يوم',tkPots:'قدر',tkEmptyT:'لا يوجد تسجيل بعد',tkEmptyB:'اضغط + لتسجيل تكية اليوم.',tkToday:'تسجيل التكية',tkDate:'التاريخ',tkDish:'الطبخة',tkPotsN:'عدد القدور',tkIngs:'المواد (غيّر أي رقم)',tkPer:'للقدر',tkTot:'الإجمالي',tkAddIng:'إضافة مادة',tkPlace:'مكان التوزيع',tkPics:'صور التوزيع',tkRate:'جودة الطعام',tkNote:'ملاحظات',tkNotePh:'اكتب أي ملاحظة عن اليوم',tkMake:'إنشاء التقرير',tkRepT:'التقرير جاهز',tkSendPics:'إرسال الصور والتقرير ({n})',tkPicsNo:'تم نسخ التقرير. إرسال الصور يعمل في النسخة المثبّتة.',tkNewDish:'طبخة جديدة',tkNewPlace:'مكان جديد',tkNewIng:'مادة جديدة',tkName:'الاسم',tkUnit:'الوحدة',add:'إضافة',tkDelDay:'حذف هذا التسجيل؟ لا يمكن التراجع.',tkSumT:'ملخص التكية',tkUnits:['كجم','لتر','جرام','حبة'],tkVDays:'السجل اليومي',tkVCamps:'المخيمات',tkTodayC:'توزيع اليوم',tkTodayTag:'اليوم',lblCamp:'مخيم',cRep:'المندوب',cRepName:'اسم المندوب',cWaHint:'للواتساب اكتب الرقم مع مقدمة الدولة (مثلاً +970 أو +972).',cDays:'أيام التوزيع',cCount:'الأعداد',cPeople:'عدد الأفراد',cFam:'عدد العائلات',cLog:'السجل (ينكتب لحاله من تسجيل التكية)',cLogEmpty:'لا يوجد توزيع مسجّل بعد.',cMonth:'هذا الشهر',cAll:'المجموع الكلي',cAdd:'إضافة مخيم',cNew:'مخيم جديد',cName:'اسم المخيم',cDel:'حذف هذا المخيم؟ سجل التكية اليومي يبقى كما هو.',cDelB:'حذف المخيم',cRem:'تذكير أسبوعي',cRemHow:'ينبّهك الآيفون في هذا الوقت كل يوم توزيع لهذا المخيم. اضغط «إضافة» مرة واحدة في نافذة التقويم.',cRemNeed:'اختر أيام التوزيع أولاً.',cNameNeed:'اكتب اسم المخيم.',cDup:'يوجد مخيم بهذا الاسم.',camAdded:'انضافت لتسجيل اليوم ({n})',waShort:'واتساب',wdS:['ح','ن','ث','ر','خ','ج','س'],wdL:['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'],lblSheet:'جدول',lblDoc:'مستند',fReady:'الملف جاهز',fShare:'مشاركة',fSave:'حفظ على الهاتف',fNoSave:'حفظ ومشاركة الملفات يعمل في النسخة المثبّتة.',fRename:'تغيير الاسم',fDelete:'حذف',fDelSure:'حذف «{n}»؟ لا يمكن التراجع.',fFull:'مساحة الحفظ ممتلئة.',xNew:'جدول جديد',xOpen:'فتح ملف إكسل',xEmptyT:'لا توجد جداول بعد',xEmptyB:'اضغط + لجدول جديد، أو افتح ملف إكسل.',xLoading:'لحظة…',xLibFail:'تعذّر تحميل أداة الإكسل. افتح التطبيق مرة والإنترنت شغّال.',xBad:'تعذّرت قراءة هذا الملف.',xCut:'الملف كبير جداً، عُرض جزء منه فقط.',xSheetN:'أوراق',xRows:'{n} صف',xFindPh:'ابحث عن اسم…',xNoHit:'لا نتائج',xRowUp:'إضافة صف فوق',xRowDn:'إضافة صف تحت',xColR:'إضافة عمود يمين',xColL:'إضافة عمود يسار',xMerge:'دمج الخانات',xUnmerge:'إلغاء الدمج',xCopy:'نسخ',xPaste:'لصق',xClear:'مسح المحتوى',xDelRow:'حذف الصف',xDelCol:'حذف العمود',xAsFile:'ملف إكسل',xAsPic:'صورة للجدول',xDir:'عكس اتجاه الجدول',xTextC:'لون الخط',xFillC:'لون الخانة',xNoFill:'بدون لون',xSumHint:'اختر خانات فيها أرقام ثم اضغط Σ.',xDelSheet:'حذف الورقة',xDelSheetSure:'حذف هذه الورقة بكل ما فيها؟',xLast:'لا يمكن حذف الورقة الوحيدة.',xNothing:'الجدول فارغ.',xNoClip:'لا يوجد شيء للصق. انسخ خانات أولاً.',xAddRows:'١٠ صفوف',xAddSheet:'إضافة ورقة',xBackL:'الجداول',xInPh:'اضغط خانة ثم اكتب هنا',xPicCut:'الجدول طويل، الصورة فيها أوله فقط.',xMaxC:'لا يمكن إضافة أعمدة أكثر.',dEmptyT:'لا توجد مستندات بعد',dEmptyB:'اضغط + لتكتب مستنداً جديداً.',dNew:'مستند جديد',dBackL:'المستندات',dPh:'اكتب هنا…',dAsText:'مشاركة كنص',dAsWord:'ملف وورد',dPrint:'طباعة / PDF',dNoPrint:'الطباعة تعمل في النسخة المثبّتة.',dH1:'عنوان كبير',dH2:'عنوان',dP:'نص',dHi:'تظليل',dNoHi:'بدون تظليل',tkGallery:'المعرض',tkShoot:'تصوير',tkAddPics:'إضافة صور من المعرض',tkStep1:'① إرسال الصور ({n})',tkStep2:'② إرسال نص التقرير',tkTwoStep:'واتساب يرمي الصور لما تنبعث مع النص. ابعث الصور أول؋ بعدين النص.',tkShareDay:'مشاركة التقرير والصور',tkEditDay:'فتح وتعديل',tkWithPhotos:'إرسال التقرير مع الصور ({n})',tkTextOnly:'إرسال النص فقط',tkCombined:'الصور بتنبعث ومعها التقرير كتعليق عليها. إذا واتساب ما حفظ النص؋ اضغط «نسخ النص» والصقه.',tkVReport:'التقارير',tkShareReport:'مشاركة التقرير',tkShareText:'مشاركة كنص',tkSharePic:'مشاركة كصورة',cActivity:'نشاط المخيم',cVisits:'زيارة',cLast:'آخر زيارة',cTopDish:'الطبخة الأكثر',cLog2:'شو أخذوا كل مرة',cShareAct:'مشاركة نشاط المخيم',tkVCampaign:'الحملة'}
+en:{tkStep1:"① Send photos ({n})",tkStep2:"② Send report text",tkTwoStep:"WhatsApp drops photos when sent with text. Send the photos first, then the text.",tkShareDay:"Share report and photos",tkEditDay:"Open and edit",tkWithPhotos:"Send report with photos ({n})",tkTextOnly:"Send text only",tkCombined:"The photos are sent together with the report as their caption. If WhatsApp drops the text, tap “copy text” and paste it.",tkVReport:"Reports",tkShareReport:"Share the report",tkShareText:"Share as text",tkSharePic:"Share as picture",cActivity:"This camp",cVisits:"visits",cLast:"Last visit",cTopDish:"Most-cooked dish",cLog2:"What they received each time",cShareAct:"Share camp activity",tkVCampaign:"Campaign",appName:'Pocket Notes',tagline:'STICK IT · KEEP IT',createPin:'Create your PIN',createSub:'CHOOSE 4 NUMBERS',confirmPin:'Confirm PIN',confirmSub:'TYPE IT AGAIN',enterPin:'Enter PIN',enterSub:'POCKET NOTES',wrong:'WRONG PIN · TRY AGAIN',mismatch:"PINS DON'T MATCH · START AGAIN",wait:'TOO MANY TRIES · WAIT {s}s',welcome:'WELCOME',currentPin:'Current PIN',currentSub:'TO CHANGE YOUR PIN',forgot:'Forgot PIN?',cancel:'Cancel',search:'Search a word…',tabs:['All','Notes','Money','Phones','Kitchen','Tables','Docs','My camp'],found:'{n} FOUND',none:'Nothing found for “{q}”. Try a shorter word.',emptyT:'Your board is empty',emptyB:'Tap the yellow + to stick your first card.',newCard:'New card',editCard:'Edit card',tNote:'Note',tMoney:'Expenses',tPhone:'Phone',noteText:'Note',notePh:'Write here…',important:'Important',title:'Title',titlePh:'Friday expenses',item:'Item',amount:'Amount',addRow:'+ Add line',total:'Total',name:'Name',namePh:'Abu Ahmad',number:'Phone number',save:'Done',board:'Board',writePh:'Write anything…\nFirst line is the title.\n\nFor expenses, tick “Expenses” above, then:\nBread 5\nGas 20\n\nA name and a number become a phone card.',del:'Delete',delSure:'Delete this card? This cannot be undone.',yesDel:'Yes, delete',keep:'Keep it',copy:'Copy',call:'Call',copied:'Copied',menu:'Menu',backup:'Back up my notes',backupHint:'Copy this text and keep it somewhere safe, for example send it to yourself on WhatsApp or email. If you lose your phone, you can paste it back in a new phone.',copyBackup:'Copy backup text',dlBackup:'Save as file',restore:'Restore from backup',restoreHint:'Paste your backup text, or choose your backup file. This replaces all cards on this phone.',restoreBtn:'Restore',restored:'RESTORED {n} CARDS',badBackup:"That backup text isn't valid. Copy the whole text and try again.",chooseFile:'Choose backup file',changePin:'Change PIN',lockNow:'Lock now',erase:'Erase everything',eraseSure:'This deletes all cards and the PIN on this phone. It cannot be undone. Back up first if you want to keep anything.',eraseBtn:'Yes, erase everything',forgotSure:'Without the PIN, the only way in is to erase everything and start fresh. If you saved a backup, you can restore it after.',saved:'SAVED',deleted:'DELETED',pinChanged:'PIN CHANGED',langOther:'عربي',errNote:'Write something first.',errMoney:'Add at least one line with an amount.',errPhone:'Add a name and a number.',lblNote:'NOTE',lblMoney:'MONEY',lblPhone:'PHONE',lblKitchen:'KITCHEN',ex:'EXAMPLE',currency:'Currency',close:'Close',storeWarn:"This browser isn't saving your notes (it may be in private mode). Cards will disappear when you close it.",about:'Your notes are saved on this phone, and in your account when you are signed in. Nobody else can see them.',wall:'Make it my wallpaper',studio:'Wallpaper',wCards:'CARDS ON THE WALLPAPER',wMax:'{n} / 6',wBg:'BACKGROUND',bgN:{cork:'Cork',mat:'Mat',paper:'Paper',pink:'Pink',night:'Night'},wStk:'STICKERS · TAP TO STICK',wNoStk:'Remove stickers',wSave:'Save picture',wHow:'<b>After saving:</b> open Settings → Wallpaper → Add New Wallpaper → Photos, and choose the picture.',wHold:'Press and hold the picture, then tap “Save to Photos”.',wFit:'Some cards did not fit. Choose fewer cards or shorter ones.',wPick:'Choose at least one card.',wMore:'+{n} more lines',stTodo:'Not its turn yet',stDone:'Finished',stLabel:'Change status',addPhoto:'Add a photo',photoFail:"Couldn't add that photo.",remind:'Remind me',remTitle:'Reminder',remDay:'Day',remTime:'Time',remRemove:'Remove reminder',remPast:'Choose a time in the future.',remHow:'Your iPhone will open “Add to Calendar”. Tap “Add” once and it will alert you on time, even with the app closed.',remNoCal:'Reminder saved. The phone alert works in the installed app.',remDue:'Reminder',remShare:'Nothing opened? Send it as a file',ok:'OK',share:'Share',shareImg:'Share as picture',selMore:'Select several cards',nSel:'{n} selected',delN:'Delete {n} cards? This cannot be undone.',copiedShare:'Text copied. Paste it anywhere.',wa:'Send on WhatsApp',copyTxt:'Copy the text',tkMonth:'MONTH SUMMARY',tkDays:'days',tkPots:'pots',tkEmptyT:'Nothing recorded yet',tkEmptyB:'Tap + to record today.',tkToday:'Kitchen record',tkDate:'Date',tkDish:'Dish',tkPotsN:'Number of pots',tkIngs:'Ingredients (change any number)',tkPer:'Per pot',tkTot:'Total',tkAddIng:'Add ingredient',tkPlace:'Distribution place',tkPics:'Photos',tkRate:'Food quality',tkNote:'Notes',tkNotePh:'Anything to note about today',tkMake:'Create report',tkRepT:'Report ready',tkSendPics:'Send photos and report ({n})',tkPicsNo:'Report copied. Sending photos works in the installed app.',tkNewDish:'New dish',tkNewPlace:'New place',tkNewIng:'New ingredient',tkName:'Name',tkUnit:'Unit',add:'Add',tkDelDay:'Delete this record? This cannot be undone.',tkSumT:'Kitchen summary',tkUnits:['kg','L','g','pcs'],tkVDays:'Daily log',tkVCamps:'Camps',tkTodayC:'TODAY',tkTodayTag:'TODAY',lblCamp:'CAMP',cRep:'Representative',cRepName:'Representative name',cWaHint:'For WhatsApp, write the number with its country code (for example +970 or +972).',cDays:'Distribution days',cCount:'Numbers',cPeople:'People',cFam:'Families',cLog:'Log (filled in from the daily record)',cLogEmpty:'No distributions recorded yet.',cMonth:'This month',cAll:'All time',cAdd:'Add camp',cNew:'New camp',cName:'Camp name',cDel:'Delete this camp? The daily records stay as they are.',cDelB:'Delete camp',cRem:'Weekly reminder',cRemHow:'The calendar will alert you at this time on every distribution day of this camp.',remG:'Add to Google Calendar',remI:'Add to iPhone Calendar',remHow2:'Choose where to save the reminder so it alerts you on time, even with the app closed. Google Calendar is the most reliable.',cRemNeed:'Choose the distribution days first.',cNameNeed:'Write the camp name.',cDup:'There is already a camp with this name.',camAdded:'Added to today ({n})',waShort:'WhatsApp',wdS:['S','M','T','W','T','F','S'],wdL:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],lblSheet:'TABLE',lblDoc:'DOCUMENT',fReady:'File ready',fShare:'Share',fSave:'Save on this phone',fNoSave:'Saving and sharing files works in the installed app.',fRename:'Rename',fDelete:'Delete',fDelSure:'Delete “{n}”? This cannot be undone.',fFull:'Storage is full.',xNew:'New table',xOpen:'Open an Excel file',xEmptyT:'No tables yet',xEmptyB:'Tap + for a new table, or open an Excel file.',xLoading:'Working…',xLibFail:'The Excel tool could not load. Open the app once while online.',xBad:'This file could not be read.',xCut:'The file is very large; only part of it is shown.',xSheetN:'sheets',xRows:'{n} rows',xFindPh:'Search for a name…',xNoHit:'No match',xRowUp:'Insert row above',xRowDn:'Insert row below',xColR:'Insert column right',xColL:'Insert column left',xMerge:'Merge cells',xUnmerge:'Unmerge',xCopy:'Copy',xPaste:'Paste',xClear:'Clear contents',xDelRow:'Delete row',xDelCol:'Delete column',xAsFile:'Excel file',xAsPic:'Picture of the table',xDir:'Flip table direction',xTextC:'Text colour',xFillC:'Cell colour',xNoFill:'No colour',xSumHint:'Select cells with numbers, then tap Σ.',xDelSheet:'Delete sheet',xDelSheetSure:'Delete this sheet and everything in it?',xLast:'The only sheet cannot be deleted.',xNothing:'The table is empty.',xNoClip:'Nothing to paste. Copy cells first.',xAddRows:'10 rows',xAddSheet:'Add sheet',xBackL:'Tables',xInPh:'Tap a cell, then write here',xPicCut:'The table is long; the picture shows its first part.',xMaxC:'No more columns can be added.',dEmptyT:'No documents yet',dEmptyB:'Tap + to write a new document.',dNew:'New document',dBackL:'Documents',dPh:'Write here…',dAsText:'Share as text',dAsWord:'Word file',dPrint:'Print / PDF',dNoPrint:'Printing works in the installed app.',dH1:'Title',dH2:'Heading',dP:'Text',dHi:'Highlight',dNoHi:'No highlight',tkGallery:'Gallery',tkShoot:'Camera',tkAddPics:'Add photos from the gallery',tkPartsT:'Dishes and pots',tkAddPart:'Add another dish',tkPotsAll:'Total pots',tkDishSel:'Dish (for the selected line)',tkIssT:'What was the problem? (choose any)',tkIssues:['Rice undercooked','Not enough salt','Too salty','Burnt','Not enough food','Too little meat','Arrived cold','Families complained'],tkNewIss:'Another problem',tkNoteBad:'Write what happened, for example which camp complained',aUpT:'Create account',aInT:'Sign in',aUpH:'Only once. Your notes and photos are saved under your name, so they are not lost if the phone changes.',aInH:'Sign in and all your notes come back on this phone.',aName:'User name',aEmail:'Email',aPass:'Password (6 characters or more)',aUpB:'Create account',aInB:'Sign in',aHave:'I have an account · Sign in',aNew:'No account yet · Create one',aForgot:'Forgot password?',aLater:'Later',aFgSent:'We sent a message to your email to change the password.',aFgNeed:'Write your email first.',eExists:'This email already has an account. Tap “Sign in”.',eCred:'The email or password is wrong.',eWeak:'The password needs at least 6 characters.',eEmail:'Write a correct email.',eNet:'No internet. Try again when it is back.',eMany:'Too many tries. Wait a little and try again.',eOff:'Accounts are not switched on yet.',eGen:'Something went wrong. Try again.',eNameNeed:'Write a user name.',clNo:'Save your notes under your name',clOk:'Saved in your account',clBusy:'Saving to your account…',clOff:'No internet · saved on this phone',clErr:'Could not save to the account · tap to retry',clPend:'{n} waiting to upload',syUp:'Uploading your notes to your account…',syDown:'Bringing your notes from your account…',syDone:'Everything is saved in your account',syFail:'Not finished. It continues by itself when the internet is back.',acT:'Account',acSync:'Save now',acOut:'Sign out',acOutSure:'Your notes stay on this phone and in your account. Signing out stops saving to the account.',acOutPend:'{n} changes are not uploaded yet. If you sign out now they may not reach the account.',acLast:'Last saved',acOther:'This phone had notes from another account. They were replaced with your account.'},
+ar:{tkStep1:"① إرسال الصور ({n})",tkStep2:"② إرسال نص التقرير",tkTwoStep:"واتساب يرمي الصور لما تنبعث مع النص. ابعث الصور أول؋ بعدين النص.",tkShareDay:"مشاركة التقرير والصور",tkEditDay:"فتح وتعديل",tkWithPhotos:"إرسال التقرير مع الصور ({n})",tkTextOnly:"إرسال النص فقط",tkCombined:"الصور بتنبعث ومعها التقرير كتعليق عليها. إذا واتساب ما حفظ النص؋ اضغط «نسخ النص» والصقه.",tkVReport:"التقارير",tkShareReport:"مشاركة التقرير",tkShareText:"مشاركة كنص",tkSharePic:"مشاركة كصورة",cActivity:"نشاط المخيم",cVisits:"زيارة",cLast:"آخر زيارة",cTopDish:"الطبخة الأكثر",cLog2:"شو أخذوا كل مرة",cShareAct:"مشاركة نشاط المخيم",tkVCampaign:"الحملة",appName:'ملاحظاتي',tagline:'ألصقها واحفظها',createPin:'أنشئ رمز الدخول',createSub:'اختر ٤ أرقام',confirmPin:'تأكيد الرمز',confirmSub:'اكتبه مرة ثانية',enterPin:'أدخل الرمز',enterSub:'ملاحظاتي',wrong:'رمز خاطئ · حاول مرة ثانية',mismatch:'الرمزان غير متطابقين · ابدأ من جديد',wait:'محاولات كثيرة · انتظر {s} ثانية',welcome:'أهلاً بك',currentPin:'الرمز الحالي',currentSub:'لتغيير الرمز',forgot:'نسيت الرمز؟',cancel:'إلغاء',search:'ابحث عن كلمة…',tabs:['الكل','ملاحظات','مصاريف','أرقام','التكية','جداول','مستندات','مخيمي'],found:'وُجد {n}',none:'لا شيء بكلمة «{q}». جرّب كلمة أقصر.',emptyT:'اللوحة فارغة',emptyB:'اضغط + الأصفر لتلصق أول بطاقة.',newCard:'بطاقة جديدة',editCard:'تعديل البطاقة',tNote:'ملاحظة',tMoney:'مصاريف',tPhone:'رقم هاتف',noteText:'الملاحظة',notePh:'اكتب هنا…',important:'مهم',title:'العنوان',titlePh:'مصاريف الجمعة',item:'الغرض',amount:'المبلغ',addRow:'+ سطر جديد',total:'المجموع',name:'الاسم',namePh:'أبو أحمد',number:'رقم الهاتف',save:'تم',board:'اللوحة',writePh:'اكتب أي شيء…\nالسطر الأول هو العنوان.\n\nللمصاريف اختر «مصاريف» فوق، ثم اكتب:\nخبز ٥\nغاز ٢٠\n\nالاسم مع الرقم يصير بطاقة هاتف.',del:'حذف',delSure:'حذف هذه البطاقة؟ لا يمكن التراجع.',yesDel:'نعم، احذف',keep:'إبقاء',copy:'نسخ',call:'اتصال',copied:'تم النسخ',menu:'القائمة',backup:'نسخة احتياطية',backupHint:'انسخ هذا النص واحفظه في مكان آمن، مثلاً أرسله لنفسك على واتساب أو الإيميل. إذا ضاع هاتفك، تلصقه في الهاتف الجديد.',copyBackup:'نسخ النص الاحتياطي',dlBackup:'حفظ كملف',restore:'استرجاع النسخة',restoreHint:'الصق النص الاحتياطي أو اختر الملف. هذا يستبدل كل البطاقات على هذا الهاتف.',restoreBtn:'استرجاع',restored:'تم استرجاع {n} بطاقة',badBackup:'النص غير صحيح. انسخ النص كاملاً وحاول مرة ثانية.',chooseFile:'اختر ملف النسخة',changePin:'تغيير الرمز',lockNow:'قفل الآن',erase:'مسح كل شيء',eraseSure:'سيتم حذف كل البطاقات والرمز من هذا الهاتف. لا يمكن التراجع. خذ نسخة احتياطية أولاً.',eraseBtn:'نعم، امسح كل شيء',forgotSure:'بدون الرمز، الطريقة الوحيدة هي مسح كل شيء والبدء من جديد. إذا عندك نسخة احتياطية تقدر تسترجعها بعدها.',saved:'تم الحفظ',deleted:'تم الحذف',pinChanged:'تم تغيير الرمز',langOther:'English',errNote:'اكتب شيئاً أولاً.',errMoney:'أضف سطراً واحداً على الأقل فيه مبلغ.',errPhone:'أضف الاسم والرقم.',lblNote:'ملاحظة',lblMoney:'مصاريف',lblPhone:'هاتف',lblKitchen:'تكية',ex:'مثال',currency:'العملة',close:'إغلاق',storeWarn:'المتصفح لا يحفظ ملاحظاتك (قد يكون في الوضع الخاص). ستختفي البطاقات عند الإغلاق.',about:'ملاحظاتك محفوظة على هذا الهاتف، وفي حسابك إذا سجّلت الدخول. لا أحد غيرك يراها.',wall:'اجعلها خلفية للهاتف',studio:'استوديو الخلفية',wCards:'البطاقات على الخلفية',wMax:'{n} / ٦',wBg:'شكل الخلفية',bgN:{cork:'فلين',mat:'أخضر',paper:'ورق',pink:'وردي',night:'كحلي'},wStk:'ستيكرات · اضغط لتلصق',wNoStk:'إزالة الستيكرات',wSave:'حفظ الصورة',wHow:'<b>بعد الحفظ:</b> افتح الإعدادات ← خلفية الشاشة ← إضافة خلفية جديدة ← الصور، واختر الصورة.',wHold:'اضغط مطولاً على الصورة، ثم اختر «حفظ في الصور».',wFit:'بعض البطاقات ما اتسعت. اختر بطاقات أقل أو أقصر.',wPick:'اختر بطاقة واحدة على الأقل.',wMore:'+{n} سطر',stTodo:'لسا ما اجا دورها',stDone:'انتهيت منها',stLabel:'تغيير الحالة',addPhoto:'إضافة صورة',photoFail:'تعذّرت إضافة الصورة.',remind:'ذكّرني',remTitle:'تذكير',remDay:'اليوم',remTime:'الساعة',remRemove:'إزالة التذكير',remPast:'اختر وقتاً في المستقبل.',remHow:'سيفتح الآيفون نافذة «إضافة إلى التقويم». اضغط «إضافة» مرة واحدة ليرنّ التنبيه في وقته حتى لو التطبيق مسكّر.',remNoCal:'تم حفظ التذكير. تنبيه الهاتف يعمل في النسخة المثبّتة.',remDue:'تذكير',remShare:'ما فتحت النافذة؟ أرسله كملف',ok:'تمام',share:'مشاركة',shareImg:'مشاركة كصورة',selMore:'تحديد أكثر من بطاقة',nSel:'{n} محددة',delN:'حذف {n} بطاقة؟ لا يمكن التراجع.',copiedShare:'تم نسخ النص. الصقه في أي مكان.',wa:'إرسال على واتساب',copyTxt:'نسخ النص',tkMonth:'ملخص الشهر',tkDays:'يوم',tkPots:'قدر',tkEmptyT:'لا يوجد تسجيل بعد',tkEmptyB:'اضغط + لتسجيل تكية اليوم.',tkToday:'تسجيل التكية',tkDate:'التاريخ',tkDish:'الطبخة',tkPotsN:'عدد القدور',tkIngs:'المواد (غيّر أي رقم)',tkPer:'للقدر',tkTot:'الإجمالي',tkAddIng:'إضافة مادة',tkPlace:'مكان التوزيع',tkPics:'صور التوزيع',tkRate:'جودة الطعام',tkNote:'ملاحظات',tkNotePh:'اكتب أي ملاحظة عن اليوم',tkMake:'إنشاء التقرير',tkRepT:'التقرير جاهز',tkSendPics:'إرسال الصور والتقرير ({n})',tkPicsNo:'تم نسخ التقرير. إرسال الصور يعمل في النسخة المثبّتة.',tkNewDish:'طبخة جديدة',tkNewPlace:'مكان جديد',tkNewIng:'مادة جديدة',tkName:'الاسم',tkUnit:'الوحدة',add:'إضافة',tkDelDay:'حذف هذا التسجيل؟ لا يمكن التراجع.',tkSumT:'ملخص التكية',tkUnits:['كجم','لتر','جرام','حبة'],tkVDays:'السجل اليومي',tkVCamps:'المخيمات',tkTodayC:'توزيع اليوم',tkTodayTag:'اليوم',lblCamp:'مخيم',cRep:'المندوب',cRepName:'اسم المندوب',cWaHint:'للواتساب اكتب الرقم مع مقدمة الدولة (مثلاً +970 أو +972).',cDays:'أيام التوزيع',cCount:'الأعداد',cPeople:'عدد الأفراد',cFam:'عدد العائلات',cLog:'السجل (ينكتب لحاله من تسجيل التكية)',cLogEmpty:'لا يوجد توزيع مسجّل بعد.',cMonth:'هذا الشهر',cAll:'المجموع الكلي',cAdd:'إضافة مخيم',cNew:'مخيم جديد',cName:'اسم المخيم',cDel:'حذف هذا المخيم؟ سجل التكية اليومي يبقى كما هو.',cDelB:'حذف المخيم',cRem:'تذكير أسبوعي',cRemHow:'ينبّهك التقويم في هذا الوقت كل يوم توزيع لهذا المخيم.',remG:'أضف إلى تقويم Google',remI:'أضف إلى تقويم الآيفون',remHow2:'اختر وين ينحفظ التذكير حتى يرنّ في وقته حتى لو التطبيق مسكّر. تقويم Google هو الأضمن.',cRemNeed:'اختر أيام التوزيع أولاً.',cNameNeed:'اكتب اسم المخيم.',cDup:'يوجد مخيم بهذا الاسم.',camAdded:'انضافت لتسجيل اليوم ({n})',waShort:'واتساب',wdS:['ح','ن','ث','ر','خ','ج','س'],wdL:['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'],lblSheet:'جدول',lblDoc:'مستند',fReady:'الملف جاهز',fShare:'مشاركة',fSave:'حفظ على الهاتف',fNoSave:'حفظ ومشاركة الملفات يعمل في النسخة المثبّتة.',fRename:'تغيير الاسم',fDelete:'حذف',fDelSure:'حذف «{n}»؟ لا يمكن التراجع.',fFull:'مساحة الحفظ ممتلئة.',xNew:'جدول جديد',xOpen:'فتح ملف إكسل',xEmptyT:'لا توجد جداول بعد',xEmptyB:'اضغط + لجدول جديد، أو افتح ملف إكسل.',xLoading:'لحظة…',xLibFail:'تعذّر تحميل أداة الإكسل. افتح التطبيق مرة والإنترنت شغّال.',xBad:'تعذّرت قراءة هذا الملف.',xCut:'الملف كبير جداً، عُرض جزء منه فقط.',xSheetN:'أوراق',xRows:'{n} صف',xFindPh:'ابحث عن اسم…',xNoHit:'لا نتائج',xRowUp:'إضافة صف فوق',xRowDn:'إضافة صف تحت',xColR:'إضافة عمود يمين',xColL:'إضافة عمود يسار',xMerge:'دمج الخانات',xUnmerge:'إلغاء الدمج',xCopy:'نسخ',xPaste:'لصق',xClear:'مسح المحتوى',xDelRow:'حذف الصف',xDelCol:'حذف العمود',xAsFile:'ملف إكسل',xAsPic:'صورة للجدول',xDir:'عكس اتجاه الجدول',xTextC:'لون الخط',xFillC:'لون الخانة',xNoFill:'بدون لون',xSumHint:'اختر خانات فيها أرقام ثم اضغط Σ.',xDelSheet:'حذف الورقة',xDelSheetSure:'حذف هذه الورقة بكل ما فيها؟',xLast:'لا يمكن حذف الورقة الوحيدة.',xNothing:'الجدول فارغ.',xNoClip:'لا يوجد شيء للصق. انسخ خانات أولاً.',xAddRows:'١٠ صفوف',xAddSheet:'إضافة ورقة',xBackL:'الجداول',xInPh:'اضغط خانة ثم اكتب هنا',xPicCut:'الجدول طويل، الصورة فيها أوله فقط.',xMaxC:'لا يمكن إضافة أعمدة أكثر.',dEmptyT:'لا توجد مستندات بعد',dEmptyB:'اضغط + لتكتب مستنداً جديداً.',dNew:'مستند جديد',dBackL:'المستندات',dPh:'اكتب هنا…',dAsText:'مشاركة كنص',dAsWord:'ملف وورد',dPrint:'طباعة / PDF',dNoPrint:'الطباعة تعمل في النسخة المثبّتة.',dH1:'عنوان كبير',dH2:'عنوان',dP:'نص',dHi:'تظليل',dNoHi:'بدون تظليل',tkGallery:'المعرض',tkShoot:'تصوير',tkAddPics:'إضافة صور من المعرض',tkPartsT:'الطبخات وعدد القدور',tkAddPart:'إضافة طبخة ثانية',tkPotsAll:'مجموع القدور',tkDishSel:'نوع الطبخة (للسطر المحدد)',tkIssT:'شو كانت المشكلة؟ (اختر أكثر من وحدة)',tkIssues:['الرز مش مستوي','ناقص ملح','مالح زيادة','محروق','الكمية قليلة','اللحمة قليلة','وصل بارد','الأهالي اشتكوا'],tkNewIss:'مشكلة أخرى',tkNoteBad:'اكتب شو صار، مثلاً أي مخيم اشتكى',aUpT:'إنشاء حساب',aInT:'تسجيل الدخول',aUpH:'مرة واحدة فقط. ملاحظاتك وصورك تنحفظ باسمك، وما تضيع لو تغيّر الهاتف.',aInH:'ادخل بحسابك وكل ملاحظاتك ترجع على هذا الهاتف.',aName:'اسم المستخدم',aEmail:'الإيميل',aPass:'كلمة السر (٦ أحرف أو أكثر)',aUpB:'إنشاء الحساب',aInB:'دخول',aHave:'عندي حساب · تسجيل الدخول',aNew:'ما عندي حساب · إنشاء حساب',aForgot:'نسيت كلمة السر؟',aLater:'لاحقاً',aFgSent:'أرسلنا رسالة على إيميلك لتغيير كلمة السر.',aFgNeed:'اكتب إيميلك أولاً.',eExists:'هذا الإيميل له حساب. اضغط «تسجيل الدخول».',eCred:'الإيميل أو كلمة السر غير صحيحة.',eWeak:'كلمة السر لازم ٦ أحرف على الأقل.',eEmail:'اكتب إيميل صحيح.',eNet:'لا يوجد إنترنت. جرّب لما يرجع.',eMany:'محاولات كثيرة. انتظر قليلاً وجرّب.',eOff:'تسجيل الحسابات غير مفعّل بعد.',eGen:'صار خطأ. جرّب مرة ثانية.',eNameNeed:'اكتب اسم المستخدم.',clNo:'احفظ ملاحظاتك باسمك',clOk:'محفوظ في حسابك',clBusy:'جاري الحفظ في حسابك…',clOff:'بدون إنترنت · محفوظ على الهاتف',clErr:'تعذّر الحفظ في الحساب · اضغط للمحاولة',clPend:'{n} بانتظار الرفع',syUp:'جاري رفع ملاحظاتك لحسابك…',syDown:'جاري إحضار ملاحظاتك من حسابك…',syDone:'كل شيء محفوظ في حسابك',syFail:'لم تكتمل. تكمل لحالها لما يرجع الإنترنت.',acT:'الحساب',acSync:'احفظ الآن',acOut:'تسجيل الخروج',acOutSure:'ملاحظاتك تبقى على هذا الهاتف وفي حسابك. تسجيل الخروج يوقف الحفظ في الحساب.',acOutPend:'في {n} تغييرات لم تُرفع بعد. إذا خرجت الآن قد لا تصل للحساب.',acLast:'آخر حفظ',acOther:'كان على هذا الهاتف ملاحظات حساب آخر. تم استبدالها بحسابك.'}
 };
 let lang=S.get('lang',(navigator.language||'').startsWith('ar')?'ar':'en');
 const t=(k,v)=>{let s=L[lang][k];if(v)for(const x in v)s=s.replace('{'+x+'}',v[x]);return s};
@@ -532,7 +628,7 @@ function paint(){[...$('#dots').children].forEach((d,i)=>d.className='d'+(i<pin.
 function sub(txt,cls){const e=$('#lt2');e.textContent=txt;e.className='lt2'+(cls?' '+cls:'')}
 function lockText(){const m={create:['createPin','createSub'],confirm:['confirmPin','confirmSub'],enter:['enterPin','enterSub'],verify:['currentPin','currentSub']}[mode];$('#lt1').textContent=t(m[0]);sub(t(m[1]));$('#forgotBtn').hidden=!(mode==='enter');$('#cancelPin').hidden=!(changing);}
 let changing=false;
-function showLock(m){FL.forEach(f=>{try{f()}catch(e){}});FL.clear();document.querySelectorAll('.writer,.studio,.cmov,.selbar,.tkp').forEach(e=>e.remove());selMode=false;selSet.clear();$('#fab').hidden=false;mode=m;pin='';paint();$('#dots').className='dots';$('#app').hidden=true;$('#lock').hidden=false;$('#ov').hidden=true;lockText();}
+function showLock(m){FL.forEach(f=>{try{f()}catch(e){}});FL.clear();document.querySelectorAll('.writer,.studio,.cmov,.selbar,.tkp').forEach(e=>{if(!e.classList.contains('acct')||au)e.remove()});selMode=false;selSet.clear();$('#fab').hidden=false;mode=m;pin='';paint();$('#dots').className='dots';$('#app').hidden=true;$('#lock').hidden=false;$('#ov').hidden=true;lockText();}
 function bad(msg){busy=true;const d=$('#dots');d.className='dots err shake';sub(msg,'err');setTimeout(()=>{d.className='dots';pin='';paint();busy=false},650)}
 async function done(){
  if(mode==='create'){first=pin;mode='confirm';pin='';paint();lockText();return}
@@ -577,8 +673,8 @@ function loadImgs(){return new Promise(res=>{
  try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.indexOf('pn_img_')===0)IMG[k.slice(7)]=localStorage.getItem(k)}}catch(e){}
  if(!idb)return res();
  try{const rq=idb.transaction('imgs').objectStore('imgs').openCursor();rq.onsuccess=()=>{const c=rq.result;if(c){IMG[c.key]=c.value;c.continue()}else res()};rq.onerror=()=>res()}catch(e){res()}})}
-function putImg(id,data){IMG[id]=data;if(idb){try{idb.transaction('imgs','readwrite').objectStore('imgs').put(data,id);return}catch(e){}}try{localStorage.setItem('pn_img_'+id,data)}catch(e){storeOK=false}}
-function delImg(id){delete IMG[id];if(idb){try{idb.transaction('imgs','readwrite').objectStore('imgs').delete(id)}catch(e){}}try{localStorage.removeItem('pn_img_'+id)}catch(e){}}
+function putImg(id,data){IMG[id]=data;dirty('i',id,'p');if(idb){try{idb.transaction('imgs','readwrite').objectStore('imgs').put(data,id);return}catch(e){}}try{localStorage.setItem('pn_img_'+id,data)}catch(e){storeOK=false}}
+function delImg(id){delete IMG[id];dirty('i',id,'d');if(idb){try{idb.transaction('imgs','readwrite').objectStore('imgs').delete(id)}catch(e){}}try{localStorage.removeItem('pn_img_'+id)}catch(e){}}
 function shrink(file){return new Promise((res,rej)=>{const u=URL.createObjectURL(file);const im=new Image();
  im.onload=()=>{try{const M=1100,k=Math.min(1,M/Math.max(im.naturalWidth,im.naturalHeight));const c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.naturalWidth*k));c.height=Math.max(1,Math.round(im.naturalHeight*k));c.getContext('2d').drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.72))}catch(e){rej(e)}URL.revokeObjectURL(u)};
  im.onerror=()=>{URL.revokeObjectURL(u);rej(new Error('img'))};im.src=u})}
@@ -587,6 +683,9 @@ const BELL=s=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" aria-hidden="
 function remLabel(ts){try{return new Date(ts).toLocaleString(lang==='ar'?'ar':'en-GB',{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'})}catch(e){return ''}}
 function icsOf(id,title,body,ts){const z=d=>new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');const e=x=>String(x||'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/([,;])/g,'\\$1');
  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Pocket Notes//Reminder//AR','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:'+id+'-'+ts+'@pocket-notes','DTSTAMP:'+z(Date.now()),'DTSTART:'+z(ts),'DTEND:'+z(ts+15*60000),'SUMMARY:'+e(title),'DESCRIPTION:'+e(body),'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+e(title),'TRIGGER:PT0M','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n')}
+function gcalUrl(title,body,ts,recur){const z=d=>new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title||'')+'&dates='+z(ts)+'/'+z(ts+15*60000)+'&details='+encodeURIComponent((body?body+'\n\n':'')+'Pocket Notes')+(recur?'&recur='+encodeURIComponent(recur):'')}
+function calPick(ics,gurl,head){const s2=sheet(`<h2>${t('remTitle')}</h2>${head||''}<p class="hint">${t('remHow2')}</p><a class="b pri" id="rmG" href="${esc(gurl)}" target="_blank" rel="noopener" style="background:#1A73E8">${t('remG')}</a><button class="b" id="rmI">${t('remI')}</button><button class="b" id="rmOk">${t('ok')}</button>`);
+ s2.querySelector('#rmOk').onclick=closeSheet;s2.querySelector('#rmG').addEventListener('click',()=>setTimeout(closeSheet,400));s2.querySelector('#rmI').onclick=async()=>{if(!(await shareCal(ics)))toCal(ics)}}
 function toCal(ics){try{const a=document.createElement('a');a.href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);a.download='reminder.ics';document.body.appendChild(a);a.click();a.remove();return true}catch(e){return false}}
 async function shareCal(ics){try{const f=new File([ics],'reminder.ics',{type:'text/calendar'});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});return true}}catch(e){}return false}
 function checkDue(){if(!items||$('#app').hidden||!$('#ov').hidden||document.querySelector('.writer,.studio,.tkp'))return;const now=Date.now();const it=items.find(i=>i.rem&&i.rem<=now&&i.rd!==i.rem);if(!it)return;it.rd=it.rem;save();
@@ -622,10 +721,12 @@ function card(it){
 
 function render(){
  const list=(items||[]).slice().sort((a,b)=>b.ts-a.ts);
- const counts=[list.length,...['note','money','phone'].map(ty=>list.filter(i=>i.type===ty).length),tk.days.length,fx.filter(x=>x.kind==='sheet').length,fx.filter(x=>x.kind==='doc').length];
+ const counts=[list.length,...['note','money','phone'].map(ty=>list.filter(i=>i.type===ty).length),tk.days.length,fx.filter(x=>x.kind==='sheet').length,fx.filter(x=>x.kind==='doc').length,camp?camp.fam.filter(x=>!x.del).length:0];
  $('#tabs').innerHTML=t('tabs').map((n,i)=>`<button class="tab ${i===tab?'on':''}" role="tab" aria-selected="${i===tab}" data-t="${i}">${n}<i>${counts[i]}</i></button>`).join('');
  const onTab=$('#tabs .tab.on');if(onTab&&onTab.scrollIntoView&&tab!==lastTab){lastTab=tab;try{onTab.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}}
- if(tab===4){tkHome();$('#qx').hidden=!query;$('#storeWarn').hidden=storeOK;selBar();camShow();return}
+ if(tab===4){tkHome();$('#qx').hidden=!query;$('#storeWarn').hidden=storeOK;markSel();selBar();camShow();return}
+ $('#grid').classList.toggle('cmgrid',tab===7);
+ if(tab===7){$('#qx').hidden=!query;$('#storeWarn').hidden=storeOK;selBar();camShow();campHome();return}
  if(tab===5||tab===6){filesHome(tab===5?'sheet':'doc');$('#qx').hidden=!query;$('#storeWarn').hidden=storeOK;selBar();camShow();return}
  let show=tab?list.filter(i=>i.type===typeOfTab[tab]):list;
  const q=norm(query.trim());
@@ -634,14 +735,19 @@ function render(){
  $('#grid').innerHTML=show.length?show.map(card).join(''):(q?`<div class="empty"><b>${esc(t('none',{q:query.trim()}))}</b></div>`:`<div class="empty tape"><b>${t('emptyT')}</b>${t('emptyB')}</div>`);
  $('#qx').hidden=!query;
  $('#storeWarn').hidden=storeOK;
- if(selMode)document.querySelectorAll('#grid .cd[data-id]').forEach(c=>{const on=selSet.has(c.dataset.id);c.classList.toggle('sel',on);const m=document.createElement('span');m.className='selc'+(on?' on':'');m.innerHTML=CHK(13);c.appendChild(m)});
- selBar();camShow();
+ markSel();selBar();camShow();
 }
 function navAnim(){const g=$('#grid');if(g){g.classList.remove('anim');void g.offsetWidth;g.classList.add('anim');setTimeout(()=>g.classList.remove('anim'),560)}}
+function markSel(){if(selMode)document.querySelectorAll('#grid .cd[data-id],#grid .cd[data-day]').forEach(c=>{const on=selSet.has(c.dataset.id||c.dataset.day);c.classList.toggle('sel',on);const m=document.createElement('span');m.className='selc'+(on?' on':'');m.innerHTML=CHK(13);c.appendChild(m)})}
+const isDay=x=>!!(x&&x.date&&x.ings);
+function anyCard(id){return (items||[]).find(i=>i.id===id)||tk.days.find(d=>d.id===id)}
+function selList(){return (items||[]).filter(i=>selSet.has(i.id)).concat(tk.days.filter(d=>selSet.has(d.id)).sort(tkSort))}
 $('#tabs').onclick=e=>{const b=e.target.closest('.tab');if(b){tab=+b.dataset.t;selMode=false;selSet.clear();render();navAnim()}};
 $('#q').addEventListener('input',e=>{query=e.target.value;render()});
 $('#qx').onclick=()=>{query='';$('#q').value='';render();$('#q').focus()};
 $('#grid').addEventListener('click',async e=>{
+ if(lpHit){lpHit=false;e.preventDefault();return}
+ if(selMode){const sc=e.target.closest('.cd[data-id],.cd[data-day]');if(sc){e.preventDefault();const id=sc.dataset.id||sc.dataset.day;if(selSet.has(id))selSet.delete(id);else selSet.add(id);render();return}if(tab!==4){e.preventDefault();return}}
  const tm=e.target.closest('[data-tkm]');if(tm){tkOff=Math.min(0,tkOff+(+tm.dataset.tkm));render();return}
  if(e.target.closest('[data-tks]')){shareRaw(tkSummary());return}
  if(e.target.closest('[data-rshare]')){tkReportShare();return}
@@ -659,16 +765,14 @@ $('#grid').addEventListener('click',async e=>{
  if(e.target.closest('[data-tkopen]')){tkOpen();return}
  const fcd=e.target.closest('[data-file]');if(fcd){if(fcd.dataset.kind==='doc')docOpen(fcd.dataset.file);else sheetOpen(fcd.dataset.file);return}
  if(e.target.closest('[data-openx]')){$('#xF').click();return}
- if(lpHit){lpHit=false;e.preventDefault();return}
- if(selMode){const sc=e.target.closest('.cd[data-id]');e.preventDefault();if(sc){const id=sc.dataset.id;if(selSet.has(id))selSet.delete(id);else selSet.add(id);render()}return}
  const pn=e.target.closest('[data-pin]');if(pn){e.stopPropagation();const it=items.find(i=>i.id===pn.dataset.pin);if(it){if(it.st==='todo')it.st='done';else if(it.st==='done')delete it.st;else it.st='todo';save();render()}return}
  const c=e.target.closest('[data-copy]');if(c){e.stopPropagation();const v=c.dataset.copy;try{await navigator.clipboard.writeText(v);toast(t('copied'))}catch(err){const n=c.closest('.cd').querySelector('.num');const rg=document.createRange();rg.selectNodeContents(n);const s=getSelection();s.removeAllRanges();s.addRange(rg)}return}
  if(e.target.closest('a'))return;
  const cd=e.target.closest('.cd[data-id]');if(cd)editor(items.find(i=>i.id===cd.dataset.id))});
 $('#grid').addEventListener('keydown',e=>{if(e.key!=='Enter')return;if(e.target.matches('div.cd[data-id]'))editor(items.find(i=>i.id===e.target.dataset.id));else if(e.target.matches('[data-day]'))tkOpen(e.target.dataset.day);else if(e.target.matches('[data-crcpt]'))campDonation(e.target.dataset.crcpt)});
 
-function fixOld(){if(!migrate||!items)return;migrate=false;let ch=false;items=items.map(it=>{if(it.type==='phone'){const n=prettyNum(it.num);const nm=String(it.name||'').replace(/[.:،,\-–]+$/,'').trim();if(n!==it.num||nm!==it.name){ch=true;return{...it,num:n,name:nm||n}}}return it});if(ch)save()}
-function openApp(msg){fixOld();$('#lock').hidden=true;$('#app').hidden=false;render();if(msg)toast(msg);setTimeout(checkDue,600)}
+function fixOld(){if(!migrate||!items)return;migrate=false;let ch=false;items=items.map(it=>{if(it.type==='money'&&(it.rows||[]).some(r=>!r.a&&/[0-9٠-٩]/.test(r.n))){const c=classify(it.src||srcOf(it),'money');if(c&&c.type==='money'&&sum(c)>sum(it)){ch=true;return{...it,title:it.src?c.title:it.title,rows:c.rows}}}if(it.type==='phone'){const n=prettyNum(it.num);const nm=String(it.name||'').replace(/[.:،,\-–]+$/,'').trim();if(n!==it.num||nm!==it.name){ch=true;return{...it,num:n,name:nm||n}}}return it});if(ch)save()}
+function openApp(msg){fixOld();$('#lock').hidden=true;$('#app').hidden=false;render();if(msg)toast(msg);setTimeout(checkDue,600);cloudUI();if(CLD.ok){if(!au&&!S.get('acctLater',0))setTimeout(()=>{if(!$('#app').hidden&&$('#ov').hidden)acctScreen('up')},700);else if(au)kick(900)}}
 
 /* ---------- sheets ---------- */
 const ov=$('#ov');
@@ -685,9 +789,14 @@ const VEX=['وقود','ورق','وجب','ورد','وساد','وزن','وصل','�
 const CURR='₪|شيكل|شيقل|شواكل|\\$|دولار|€|يورو|jod|دينار|try|tl|ليرة|ليره|egp|جنيه|nis|ils';
 const MONEYW=/مصاريف|مصروف|مصروفات|حساب|فاتور|اغراض|أغراض|مشتريات|expens|spent|shopping|bill|cost/i;
 function cleanItem(n){n=String(n).replace(/[،,:=\-–+.؛;]+/g,' ').replace(/\s+/g,' ').trim();n=n.replace(/^و\s+/,'');if(/^و[ء-ي]{2,}/.test(n)&&!VEX.some(w=>n.startsWith(w)))n=n.slice(1);return n.trim()}
-function pairsOf(line){const re=new RegExp('([^\\d]*?)\\s*(\\d+(?:[.,]\\d+)?)\\s*('+CURR+')?(?=[\\s،,.؛;]|$)','gi');const out=[];let m,last=0,cur=false;
- while((m=re.exec(line))){if(!m[0]){re.lastIndex++;continue}const n=cleanItem(m[1]);if(!/[A-Za-zء-ي]/.test(n))return null;out.push({n,a:m[2].replace(',','.')});if(m[3])cur=true;last=re.lastIndex}
- if(!out.length)return null;const tail=line.slice(last).replace(new RegExp('^\\s*('+CURR+')','i'),'').replace(/[\s،,.؛;]/g,'');if(tail)return null;return{out,cur}}
+const UNITW=/^(حبه|حبة|حبات|حبّات|قطعه|قطعة|قطع|كيلو|كيلوات|كيلوغرام|كغ|كجم|كلغ|غرام|جرام|غم|لتر|لترات|علبه|علبة|علب|كرتونه|كرتونة|كراتين|ربطه|ربطة|ربطات|كيس|اكياس|أكياس|رغيف|ارغفة|أرغفة|صحن|صحون|kg|kgs|kilo|kilos|g|gr|gram|grams|l|lt|litre|liter|liters|pc|pcs|piece|pieces|pack|packs|adet|tane|paket|kutu|litre)$/i;
+function pairsOf(line){const re=new RegExp('([^\\d]*?)\\s*(\\d+(?:[.,]\\d+)?)\\s*('+CURR+')?(?=[\\s،,.؛;]|$)','gi');const out=[];let m,last=0,cur=false,qty='';
+ while((m=re.exec(line))){if(!m[0]){re.lastIndex++;continue}const n=cleanItem(m[1]),a=m[2].replace(',','.');
+  if(!/[A-Za-zء-ي]/.test(n)){if(!out.length&&!qty&&!n&&!m[3]){qty=a;last=re.lastIndex;continue}return null}
+  if(UNITW.test(n)&&out.length&&!qty){const pv=out[out.length-1];pv.n=pv.n+' '+pv.a+' '+n;pv.a=a}
+  else{out.push({n:(qty?qty+' ':'')+n,a});qty=''}
+  if(m[3])cur=true;last=re.lastIndex}
+ if(!out.length||qty)return null;const tail=line.slice(last).replace(new RegExp('^\\s*('+CURR+')','i'),'').replace(/[\s،,.؛;]/g,'');if(tail)return null;return{out,cur}}
 function prettyNum(n){const d=latin(n).replace(/[^\d+]/g,'');if(/^0\d{9}$/.test(d))return d.slice(0,3)+' '+d.slice(3,6)+' '+d.slice(6);if(/^\+\d{11,12}$/.test(d))return d.slice(0,4)+' '+d.slice(4,6)+' '+d.slice(6,9)+' '+d.slice(9);return d}
 const telOf=n=>latin(n).replace(/[^\d+]/g,'');
 function classify(raw,kind){
@@ -746,10 +855,7 @@ function editor(it){
   s.querySelector('#rmGo').onclick=()=>{const ts=new Date(s.querySelector('#rmD').value+'T'+s.querySelector('#rmT').value).getTime();
    if(!isFinite(ts)||ts<=Date.now()){s.querySelector('#rmE').textContent=t('remPast');return}
    rem=ts;upd();const lines=txt().split('\n').map(x=>x.trim()).filter(l=>l&&!MK.test(l));const ics=icsOf(it?it.id:'new',headOf(),lines.slice(1).join('\n'),ts);
-   if(!hosted){closeSheet();toast(t('remNoCal'));return}
-   toCal(ics);
-   const s2=sheet(`<h2>${t('remTitle')}</h2><p class="hint" style="font-size:16px;color:var(--ink)">${esc(remLabel(ts))}</p><p class="hint">${t('remHow')}</p><button class="b" id="rmSh">${t('remShare')}</button><button class="b pri" id="rmOk">${t('ok')}</button>`);
-   s2.querySelector('#rmOk').onclick=closeSheet;s2.querySelector('#rmSh').onclick=()=>shareCal(ics)}};
+   calPick(ics,gcalUrl(headOf(),lines.slice(1).join('\n'),ts),`<p class="hint" style="font-size:16px;color:var(--ink);text-align:center">${esc(remLabel(ts))}</p>`)}};
  upd();
  pg.focus();
  if(!isNew){const r=document.createRange();r.selectNodeContents(pg);r.collapse(false);const sel=getSelection();sel.removeAllRanges();sel.addRange(r)}
@@ -768,7 +874,7 @@ function editor(it){
  w.querySelector('#wBack').onclick=finish;
  const del=w.querySelector('#wDel');if(del)del.onclick=()=>{pg.blur();confirmSheet(t('del'),t('delSure'),t('yesDel'),()=>{drop();items=items.filter(i=>i.id!==it.id);save();close();render();toast(t('deleted'))})};
 }
-$('#fab').onclick=()=>tab===4?(tkView==='camps'?tkCampOpen(null):tkOpen(null,true)):tab===5?sheetNew():tab===6?docNew():editor(null);
+$('#fab').onclick=()=>tab===7?cmAdd():tab===4?(tkView==='camps'?tkCampOpen(null):tkOpen(null,true)):tab===5?sheetNew():tab===6?docNew():editor(null);
 
 /* ---------- wallpaper studio ---------- */
 const WP_W=1125,WP_H=2436,STK=['⭐','📌','❤️','☕','🌿'];
@@ -778,10 +884,12 @@ function drawBg(c,bg){const W=WP_W,H=WP_H,r=rnd(11);
  if(bg==='cork'){c.fillStyle='#C69C6D';c.fillRect(0,0,W,H);for(let i=0;i<14000;i++){c.fillStyle=r()<.5?'rgba(120,80,40,.32)':'rgba(240,210,160,.38)';c.beginPath();c.arc(r()*W,r()*H,1.4+r()*3.2,0,7);c.fill()}}
  else if(bg==='mat'){c.fillStyle='#1F5C58';c.fillRect(0,0,W,H);for(let x=0,k=0;x<=W;x+=75,k++){c.strokeStyle=k%5?'rgba(93,202,165,.22)':'rgba(93,202,165,.45)';c.lineWidth=k%5?2:4;c.beginPath();c.moveTo(x,0);c.lineTo(x,H);c.stroke()}for(let y=0,k=0;y<=H;y+=75,k++){c.strokeStyle=k%5?'rgba(93,202,165,.22)':'rgba(93,202,165,.45)';c.lineWidth=k%5?2:4;c.beginPath();c.moveTo(0,y);c.lineTo(W,y);c.stroke()}}
  else if(bg==='paper'){c.fillStyle='#EDE8DC';c.fillRect(0,0,W,H);c.strokeStyle='rgba(55,138,221,.22)';c.lineWidth=3;for(let y=120;y<H;y+=72){c.beginPath();c.moveTo(0,y);c.lineTo(W,y);c.stroke()}c.strokeStyle='rgba(226,75,74,.45)';c.lineWidth=4;const mx=lang==='ar'?W-110:110;c.beginPath();c.moveTo(mx,0);c.lineTo(mx,H);c.stroke()}
+ else if(bg==='pink'){c.fillStyle='#E9A3BC';c.fillRect(0,0,W,H);for(let y=0,k=0;y<H+60;y+=60,k++)for(let x=(k%2)*30;x<W+60;x+=60){c.fillStyle='rgba(255,255,255,.4)';c.beginPath();c.arc(x,y,5,0,7);c.fill()}for(let i=0;i<70;i++){const x=r()*W,y=r()*H,s=10+r()*16;c.save();c.translate(x,y);c.rotate((r()-.5)*.8);c.fillStyle='rgba(153,53,86,.16)';c.beginPath();c.moveTo(0,s*.3);c.bezierCurveTo(0,0,-s*.5,0,-s*.5,s*.3);c.bezierCurveTo(-s*.5,s*.6,0,s*.8,0,s);c.bezierCurveTo(0,s*.8,s*.5,s*.6,s*.5,s*.3);c.bezierCurveTo(s*.5,0,0,0,0,s*.3);c.fill();c.restore()}}
  else{c.fillStyle='#26215C';c.fillRect(0,0,W,H);for(let i=0;i<260;i++){c.fillStyle=`rgba(255,255,240,${.25+r()*.6})`;c.beginPath();c.arc(r()*W,r()*H,1+r()*3.5,0,7);c.fill()}}}
 function wrapText(c,text,maxW){const out=[];String(text).split('\n').forEach(par=>{const words=par.split(/\s+/).filter(Boolean);let line='';words.forEach(w=>{const tst=line?line+' '+w:w;if(c.measureText(tst).width<=maxW||!line)line=tst;else{out.push(line);line=w}});if(line)out.push(line)});return out}
 function fonts(){const ar=lang==='ar';return ar?{lb:'500 30px Cairo, Tahoma, sans-serif',ti:'800 50px Cairo, Tahoma, sans-serif',bd:'600 40px Cairo, Tahoma, sans-serif',tot:'800 42px Cairo, Tahoma, sans-serif',lh:66,tlh:76}:{lb:'30px "Special Elite", "Courier New", monospace',ti:'46px "Archivo Black", "Arial Black", sans-serif',bd:'42px "Special Elite", "Courier New", monospace',tot:'40px "Archivo Black", "Arial Black", sans-serif',lh:58,tlh:62}}
-function modelOf(it){if(it.type==='note'){const ls=String(it.text||'').split('\n');return{lbl:t('lblNote'),title:ls[0],body:ls.slice(1).join('\n'),red:it.imp}}
+function modelOf(it){if(isDay(it)){const l=tkLang(it);return{lbl:t('lblKitchen'),title:tkDate(it.date,l)+' · '+potsW(it.pots,l),body:tkReport(it).split('\n').slice(2).join('\n').trim(),red:it.rate===4}}
+ if(it.type==='note'){const ls=String(it.text||'').split('\n');return{lbl:t('lblNote'),title:ls[0],body:ls.slice(1).join('\n'),red:it.imp}}
  if(it.type==='money')return{lbl:t('lblMoney'),title:it.title,rows:(it.rows||[]).map(r=>[r.n,r.a?fmt(toNum(r.a))+' '+cur:'']),total:fmt(sum(it))+' '+cur,red:true};
  return{lbl:t('lblPhone'),title:it.name,num:it.num}}
 function layoutCard(c,m,w,full){const F=fonts(),pad=34,iw=w-pad*2,L={m,w};c.font=F.ti;L.tl=wrapText(c,m.title,iw);if(!full)L.tl=L.tl.slice(0,3);c.font=F.bd;
@@ -823,7 +931,7 @@ function wallpaper(){
  w.innerHTML=`<div class="sbar"><button class="wback" id="sBack">‹ ${t('board')}</button><h2>${t('studio')}</h2></div>
  <div class="wframe"><canvas id="wcv" width="${WP_W}" height="${WP_H}"></canvas><div class="wclock"><small id="wDate"></small><b>9:41</b></div></div>
  <div class="slab"><span>${t('wCards')}</span><span id="wCount"></span></div><div class="chips" id="wChips"></div><p class="wnote" id="wNote"></p>
- <div class="slab"><span>${t('wBg')}</span></div><div class="sws" id="wSws">${['cork','mat','paper','night'].map(b=>`<button class="sw" data-b="${b}" style="background:${{cork:'#C69C6D',mat:'#1F5C58',paper:'#EDE8DC;color:#1b1b1a;text-shadow:none',night:'#26215C'}[b]}">${t('bgN')[b]}</button>`).join('')}</div>
+ <div class="slab"><span>${t('wBg')}</span></div><div class="sws" id="wSws">${['cork','mat','paper','pink','night'].map(b=>`<button class="sw" data-b="${b}" style="background:${{cork:'#C69C6D',mat:'#1F5C58',paper:'#EDE8DC;color:#1b1b1a;text-shadow:none',pink:'#E9A3BC',night:'#26215C'}[b]}">${t('bgN')[b]}</button>`).join('')}</div>
  <div class="slab"><span>${t('wStk')}</span></div><div class="stks" id="wStk">${STK.map(e=>`<button class="stk" data-e="${e}">${e}</button>`).join('')}<button class="stk txt" id="wNoStk">${t('wNoStk')}</button></div>
  <button class="wsave" id="wSave">${t('wSave')}</button><p class="whow">${t('wHow')}</p>`;
  document.body.appendChild(w);requestAnimationFrame(()=>w.classList.add('open'));
@@ -861,38 +969,44 @@ const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+Stri
 const clone=o=>JSON.parse(JSON.stringify(o));
 function tkDate(x,l){const a=String(x).split('-').map(Number);return a[2]+' '+(l==='ar'?TKM:TKME)[a[1]-1]+' '+a[0]}
 function potsW(n,l){if(l!=='ar')return n+(n===1?' pot':' pots');return n===1?'قدر واحد':n===2?'قدرين':(n>=3&&n<=10)?n+' قدور':n+' قدر'}
-const rateName=(r,l)=>(l==='ar'?['متوسط','جيد','ممتاز']:['Fair','Good','Excellent'])[r-1]||'';
+const rateName=(r,l)=>({1:['متوسط','Fair'],2:['جيد','Good'],3:['ممتاز','Excellent'],4:['سيء','Poor']}[r]||['',''])[l==='ar'?0:1];
+function tkParts(d){return (Array.isArray(d.parts)&&d.parts.length)?d.parts:[{dish:d.dish,pots:d.pots,ings:d.ings||[]}]}
 const tkLang=d=>dirOf(d.dish)==='ltr'?'en':'ar';
 const tkSort=(a,b)=>b.date.localeCompare(a.date)||b.ts-a.ts;
-function tkReport(d){const l=tkLang(d),A=l==='ar';
+function tkReport(d){const l=tkLang(d),A=l==='ar',P=tkParts(d);
  const per=i=>(i.q>0&&i.q<1&&i.u==='كجم')?q2(i.q*1000)+' جرام':(i.q>0&&i.q<1&&i.u==='kg')?q2(i.q*1000)+' g':q2(i.q)+' '+i.u;
- const o=[(A?'التاريخ: ':'Date: ')+tkDate(d.date,l),'',(A?'إجمالي: ':'Total: ')+potsW(d.pots,l)+' '+d.dish+'.'];
- const ing=d.ings.filter(i=>i.q>0);
- if(ing.length){o.push(A?'الكميات المستخدمة (لكل قدر والإجمالي):':'Quantities used (per pot and total):');ing.forEach(i=>o.push(A?`${i.n}: ${per(i)} لكل قدر (الإجمالي: ${q2(i.q*d.pots)} ${i.u}).`:`${i.n}: ${per(i)} per pot (total: ${q2(i.q*d.pots)} ${i.u}).`))}
+ const ingL=p=>(p.ings||[]).filter(i=>i.q>0).map(i=>A?`${i.n}: ${per(i)} لكل قدر (الإجمالي: ${q2(i.q*p.pots)} ${i.u}).`:`${i.n}: ${per(i)} per pot (total: ${q2(i.q*p.pots)} ${i.u}).`);
+ const o=[(A?'التاريخ: ':'Date: ')+tkDate(d.date,l),''];
+ if(P.length<2){o.push((A?'إجمالي: ':'Total: ')+potsW(d.pots,l)+' '+P[0].dish+'.');const g=ingL(P[0]);if(g.length){o.push(A?'الكميات المستخدمة (لكل قدر والإجمالي):':'Quantities used (per pot and total):');g.forEach(x=>o.push(x))}}
+ else{o.push((A?'إجمالي: ':'Total: ')+potsW(d.pots,l)+'.');o.push(A?'الطبخات:':'Dishes:');P.forEach(p=>o.push('- '+p.dish+': '+potsW(p.pots,l)));
+  P.forEach(p=>{const g=ingL(p);if(g.length){o.push('',(A?'كميات ':'Quantities for ')+p.dish+' ('+potsW(p.pots,l)+'):');g.forEach(x=>o.push(x))}});o.push('')}
  const ps=d.places||[];if(ps.length){o.push(A?'مكان التوزيع:':'Distribution place:');ps.forEach(x=>o.push(x.n+(ps.length>1&&x.p?' ('+potsW(x.p,l)+')':'')))}
  if(d.rate)o.push((A?'جودة الطعام: ':'Food quality: ')+rateName(d.rate,l));
+ const iss=d.issues||[];if(iss.length){o.push(A?'⚠️ ملاحظات على الطعام:':'⚠️ Problems with the food:');iss.forEach(x=>o.push('• '+x))}
  if(d.note&&d.note.trim())o.push((A?'ملاحظات: ':'Notes: ')+d.note.trim());
+ if(d.rate===4)o.push('',A?'نرجو مراجعة الطبخ وتعديله في الأيام القادمة، جزاكم الله خيراً.':'Please review the cooking and adjust it in the coming days. Thank you.');
  return o.join('\n')}
 function tkMonthData(){const now=new Date(),md=new Date(now.getFullYear(),now.getMonth()+tkOff,1),key=ymd(md).slice(0,7);
  const days=tk.days.filter(d=>d.date.slice(0,7)===key).sort(tkSort),tot={};
- days.forEach(d=>d.ings.forEach(i=>{if(i.q>0){const k=i.n+'|'+i.u;tot[k]=(tot[k]||0)+i.q*d.pots}}));
+ days.forEach(d=>tkParts(d).forEach(p=>(p.ings||[]).forEach(i=>{if(i.q>0){const k=i.n+'|'+i.u;tot[k]=(tot[k]||0)+i.q*p.pots}})));
  return{md,days,pots:days.reduce((a,d)=>a+d.pots,0),tot:Object.keys(tot).map(k=>({n:k.split('|')[0],u:k.split('|')[1],v:tot[k]}))}}
 function tkSummary(){const m=tkMonthData(),A=lang==='ar';if(!m.days.length)return '';
  return [t('tkSumT')+' '+(A?TKM:TKME)[m.md.getMonth()]+' '+m.md.getFullYear(),'',(A?'عدد أيام التوزيع: ':'Distribution days: ')+m.days.length,(A?'عدد القدور: ':'Pots: ')+m.pots,'',A?'المواد المستخدمة:':'Ingredients used:',...m.tot.map(x=>x.n+': '+q2(x.v)+' '+x.u)].join('\n')}
-function tkCard(d){const l=lang==='ar'?'ar':'en',ps=(d.places||[]).map(x=>x.n).join('، '),pics=(d.imgs||[]).filter(i=>IMG[i]);
- return `<div class="cd tape tkd${dirOf(d.dish)==='rtl'?' arx':''}" role="button" tabindex="0" data-day="${d.id}" style="transform:rotate(${rot(d.id)}deg)"><div class="lb">${t('lblKitchen')}<u>${esc(tkDate(d.date,l).replace(/ \d{4}$/,''))}</u></div><div class="big">${hl(potsW(d.pots,tkLang(d)))}</div><div class="hand sm">${hl(d.dish)}${ps?'\n'+hl(ps):''}</div>${pics.length?`<div class="tkmini">${pics.slice(0,4).map(i=>`<img alt="" src="${IMG[i]}">`).join('')}</div>`:''}${d.rate?`<div class="tkbadge">${rateName(d.rate,l)}</div>`:''}</div>`}
+function tkCard(d){const l=lang==='ar'?'ar':'en',ps=(d.places||[]).map(x=>x.n).join('، '),pics=(d.imgs||[]).filter(i=>IMG[i]),P=tkParts(d);
+ const mid=P.length>1?P.map(p=>`<div class="tkdl"><span>${hl(p.dish)}</span><b>${p.pots}</b></div>`).join('')+(ps?`<div class="hand sm">${hl(ps)}</div>`:''):`<div class="hand sm">${hl(P[0].dish)}${ps?'\n'+hl(ps):''}</div>`;
+ return `<div class="cd tape tkd${dirOf(d.dish)==='rtl'?' arx':''}" role="button" tabindex="0" data-day="${d.id}" style="transform:rotate(${rot(d.id)}deg)"><div class="lb">${t('lblKitchen')}<u>${esc(tkDate(d.date,l).replace(/ \d{4}$/,''))}</u></div><div class="big">${hl(potsW(d.pots,tkLang(d)))}</div>${mid}${pics.length?`<div class="tkmini">${pics.slice(0,4).map(i=>`<img alt="" src="${IMG[i]}">`).join('')}</div>`:''}${d.rate?`<div class="tkbadge${d.rate===4?' bad':''}">${rateName(d.rate,l)}</div>`:''}</div>`}
 function tkFix(){if(!Array.isArray(tk.places))tk.places=[];if(!Array.isArray(tk.camps))tk.camps=[];campFix();tk.places.forEach(n=>{if(!tk.camps.some(c=>c.name===n))tk.camps.push(campNew(n))});tk.places=[]}
 function campNew(n){return{id:uid(),name:n||'',rep:'',phone:'',days:[],people:'',fam:''}}
 function tkToday(){const wd=new Date().getDay();return tk.camps.filter(c=>(c.days||[]).indexOf(wd)>-1)}
-function tkNewDay(){const last=tk.days.slice().sort(tkSort)[0],sch=tkToday();const dish=(last&&tk.dishes.some(x=>x.name===last.dish))?last.dish:tk.dishes[0].name;const ds=tk.dishes.find(x=>x.name===dish);
+function tkNewDay(){const last=tk.days.slice().sort(tkSort)[0],sch=tkToday();const ld=last?tkParts(last)[0].dish:'';const dish=(ld&&tk.dishes.some(x=>x.name===ld))?ld:tk.dishes[0].name;const ds=tk.dishes.find(x=>x.name===dish);
  return{id:uid(),ts:Date.now(),date:ymd(new Date()),dish,pots:last?last.pots:5,ings:clone(ds?ds.ings:[]),places:sch.length?sch.map(c=>({n:c.name,p:0})):(last?clone(last.places||[]):[]),rate:0,note:'',imgs:[]}}
 function campPots(c,d){const ps=d.places||[],x=ps.find(y=>y.n===c.name);if(!x)return 0;return x.p||(ps.length===1?d.pots:0)}
 function campLog(c){return tk.days.filter(d=>(d.places||[]).some(y=>y.n===c.name)).sort(tkSort).map(d=>({d,p:campPots(c,d)}))}
 function camShow(){const c=$('#cam');if(c)c.hidden=!(tab===4&&tkView==='days'&&!selMode)}
 async function tkSnap(f){try{const data=await shrink(f);const td=ymd(new Date());let d=tk.days.find(x=>x.date===td);if(!d){d=tkNewDay();tk.days.push(d)}const pid=uid();putImg(pid,data);if(!d.imgs)d.imgs=[];d.imgs.push(pid);tkSave();render();toast(t('camAdded',{n:d.imgs.length}))}catch(e){toast(t('photoFail'))}}
 function waNum(n){let x=telOf(n).replace(/^\+/,'');if(x.indexOf('00')===0)x=x.slice(2);else if(x.charAt(0)==='0')x='970'+x.slice(1);return x}
-function calHand(ics){if(!ics)return;if(!hosted){toast(t('remNoCal'));return}toCal(ics);
- const s2=sheet(`<h2>${t('remTitle')}</h2><p class="hint">${t('remHow')}</p><button class="b" id="rmSh">${t('remShare')}</button><button class="b pri" id="rmOk">${t('ok')}</button>`);s2.querySelector('#rmOk').onclick=closeSheet;s2.querySelector('#rmSh').onclick=()=>shareCal(ics)}
+function calHand(ics,gurl){if(!ics)return;calPick(ics,gurl||'https://calendar.google.com/')}
+function gWeekly(c,hh,mm){const now=new Date();let dt=null;for(let k=0;k<8;k++){const x=new Date(now.getFullYear(),now.getMonth(),now.getDate()+k,hh,mm,0);if(c.days.indexOf(x.getDay())>-1&&x>now){dt=x;break}}if(!dt)return '';const BY=['SU','MO','TU','WE','TH','FR','SA'];return gcalUrl((lang==='ar'?'تكية: ':'Kitchen: ')+c.name,[c.rep,c.phone].filter(Boolean).join(' - '),dt.getTime(),'RRULE:FREQ=WEEKLY;BYDAY='+c.days.slice().sort().map(d=>BY[d]).join(','))}
 function icsWeekly(c,hh,mm){const now=new Date();let dt=null;for(let k=0;k<8;k++){const x=new Date(now.getFullYear(),now.getMonth(),now.getDate()+k,hh,mm,0);if(c.days.indexOf(x.getDay())>-1&&x>now){dt=x;break}}if(!dt)return '';
  const p2=n=>String(n).padStart(2,'0'),loc=x=>x.getFullYear()+p2(x.getMonth()+1)+p2(x.getDate())+'T'+p2(x.getHours())+p2(x.getMinutes())+'00',e=x=>String(x||'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/([,;])/g,'\\$1');
  const z=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,''),BY=['SU','MO','TU','WE','TH','FR','SA'],title=(lang==='ar'?'تكية: ':'Kitchen: ')+c.name;
@@ -909,7 +1023,7 @@ function tkHome(){const A=lang==='ar',l=A?'ar':'en',q=norm(query.trim());
    return `<div class="cd tape tkd${dirOf(c.name)==='rtl'?' arx':''}" role="button" tabindex="0" data-camp="${c.id}" style="transform:rotate(${rot(c.id)}deg)"><div class="lb">${t('lblCamp')}${today.indexOf(c.id)>-1?`<u class="ex">${t('tkTodayTag')}</u>`:''}</div><div class="big">${hl(c.name)}</div><div class="hand sm">${[c.rep?hl(c.rep):'',esc(dz)].filter(Boolean).join('\n')}</div>${mp?`<div class="tkbadge">${t('cMonth')}: ${potsW(mp,l)}</div>`:''}</div>`}).join('')+(q&&!cs.length?`<div class="empty"><b>${esc(t('none',{q:query.trim()}))}</b></div>`:'')+(q?'':`<button class="cd tkaddc" data-addcamp="1">+ ${t('cAdd')}</button>`);
   return}
  const m=tkMonthData(),tc=tkToday();
- const shown=q?tk.days.filter(d=>norm([d.dish,d.note,(d.places||[]).map(x=>x.n).join(' '),tkDate(d.date,'ar'),tkDate(d.date,'en')].join(' ')).includes(q)).sort(tkSort):m.days;
+ const shown=q?tk.days.filter(d=>norm([d.dish,d.note,(d.issues||[]).join(' '),(d.places||[]).map(x=>x.n).join(' '),tkDate(d.date,'ar'),tkDate(d.date,'en')].join(' ')).includes(q)).sort(tkSort):m.days;
  const todayCard=(!q&&tkOff===0&&tc.length)?`<div class="cd tape wide arx" role="button" tabindex="0" data-tkopen="1"><div class="lb">${t('tkTodayC')} · ${t('wdL')[new Date().getDay()]}</div><div class="big">${tc.map(c=>esc(c.name)).join('، ')}</div></div>`:'';
  const sum=q?'':`<div class="cd tape idx wide"><div class="lb">${t('tkMonth')}<span class="tknav"><button class="mini" data-tkm="-1" aria-label="prev">${A?'›':'‹'}</button><b>${(A?TKM:TKME)[m.md.getMonth()]} ${m.md.getFullYear()}</b><button class="mini" data-tkm="1" aria-label="next" ${tkOff>=0?'disabled':''}>${A?'‹':'›'}</button></span></div><div class="tkstat"><div><b>${m.days.length}</b><span>${t('tkDays')}</span></div><div><b>${m.pots}</b><span>${t('tkPots')}</span></div></div>${m.tot.map(x=>`<div class="row"><span>${esc(x.n)}</span><span>${q2(x.v)} ${esc(x.u)}</span></div>`).join('')}${m.days.length?`<div class="pact"><button class="mini" data-tks="1">${t('share')}</button></div>`:''}</div>`;
  if(q&&shown.length)$('#info').innerHTML=`<span class="info">${t('found',{n:shown.length})}</span>`;
@@ -938,7 +1052,7 @@ function tkCampOpen(id){const orig=id?tk.camps.find(x=>x.id===id):null;const c=o
  B.addEventListener('click',e=>{const x=e.target.closest('button');if(!x)return;
   if(x.id==='cShare'){if(orig)campShare(orig);return}
   if(x.dataset.wd!==undefined){const k=+x.dataset.wd,i=c.days.indexOf(k);if(i>-1)c.days.splice(i,1);else c.days.push(k);x.classList.toggle('on',i<0)}
-  else if(x.id==='cRm'){if(!c.days.length){toast(t('cRemNeed'));return}if(!c.name.trim()){toast(t('cNameNeed'));return}const tm=(B.querySelector('#cT').value||'07:00').split(':');calHand(icsWeekly({...c,name:c.name.trim()},+tm[0]||0,+tm[1]||0))}
+  else if(x.id==='cRm'){if(!c.days.length){toast(t('cRemNeed'));return}if(!c.name.trim()){toast(t('cNameNeed'));return}const tm=(B.querySelector('#cT').value||'07:00').split(':');const cc={...c,name:c.name.trim()},hh=+tm[0]||0,mm=+tm[1]||0;calHand(icsWeekly(cc,hh,mm),gWeekly(cc,hh,mm))}
   else if(x.id==='cDel')confirmSheet(t('cDelB'),t('cDel'),t('yesDel'),()=>{tk.camps=tk.camps.filter(y=>y.id!==c.id);tkSave();close();toast(t('deleted'))})});
  w.querySelector('#cBack').onclick=close;
  w.querySelector('#cSave').onclick=()=>{const nm=c.name.trim();if(!nm){toast(t('cNameNeed'));return}if(tk.camps.some(y=>y.id!==c.id&&y.name===nm)){toast(t('cDup'));return}
@@ -948,15 +1062,7 @@ function tkCampOpen(id){const orig=id?tk.camps.find(x=>x.id===id):null;const c=o
  requestAnimationFrame(()=>w.classList.add('open'))}
 (function(){const b=document.createElement('button');b.className='fab cam';b.id='cam';b.hidden=true;b.setAttribute('aria-label','Camera');b.innerHTML='<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.5-2.5h7L17 8h3v11H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
  const f=document.createElement('input');f.type='file';f.accept='image/*';f.setAttribute('capture','environment');f.hidden=true;f.id='camF';$('#app').appendChild(b);$('#app').appendChild(f);b.onclick=()=>f.click();f.onchange=()=>{const x=f.files&&f.files[0];f.value='';if(x)tkSnap(x)}})();
-function tkDayMenu(cd){const d=tk.days.find(x=>x.id===cd.dataset.day);if(!d||document.querySelector('.cmov'))return;
- popMenu(cd.getBoundingClientRect(),[{a:'rep',t:t('tkShareDay'),i:IC.share},{a:'edit',t:t('tkEditDay')},{a:'del',t:t('del'),dng:1,i:IC.del}],a=>{
-  if(a==='rep')tkOpen(d.id,false,true);else if(a==='edit')tkOpen(d.id);else confirmSheet(t('del'),t('tkDelDay'),t('yesDel'),()=>{(d.imgs||[]).forEach(delImg);tk.days=tk.days.filter(y=>y.id!==d.id);tkSave();render();toast(t('deleted'))})},true)}
-(function(){const g=$('#grid');let t2=0,xy=null;const stop=()=>clearTimeout(t2);
- g.addEventListener('pointerdown',e=>{if(selMode)return;const cd=e.target.closest('[data-day]');if(!cd)return;xy=[e.clientX,e.clientY];
-  t2=setTimeout(()=>{try{navigator.vibrate&&navigator.vibrate(8)}catch(x){}const sw=ev=>ev.stopPropagation();g.addEventListener('click',sw,{capture:true,once:true});setTimeout(()=>{try{g.removeEventListener('click',sw,true)}catch(e){}},800);tkDayMenu(cd)},480)});
- g.addEventListener('pointermove',e=>{if(xy&&Math.hypot(e.clientX-xy[0],e.clientY-xy[1])>10)stop()});
- ['pointerup','pointercancel','pointerleave'].forEach(v=>g.addEventListener(v,stop));
- g.addEventListener('contextmenu',e=>{const cd=e.target.closest('[data-day]');if(cd){e.preventDefault();stop();tkDayMenu(cd)}})})();
+
 function dataFile(data,name){const b=atob(String(data).split(',')[1]||''),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return new File([u],name,{type:'image/jpeg'})}
 function tkOpen(id,fresh,auto){
  let orig=id?tk.days.find(x=>x.id===id):null;
@@ -964,22 +1070,26 @@ function tkOpen(id,fresh,auto){
  let isNew=!orig;const last=tk.days.slice().sort(tkSort)[0];
  const ingsFor=name=>{const ds=tk.dishes.find(x=>x.name===name);return clone(ds?ds.ings:[])};
  const d=orig?clone(orig):tkNewDay();
- if(!d.imgs)d.imgs=[];if(!d.places)d.places=[];
+ if(!d.imgs)d.imgs=[];if(!d.places)d.places=[];if(!Array.isArray(d.issues))d.issues=[];
+ d.parts=clone(tkParts(d)).map(p=>({dish:p.dish,pots:Math.max(1,p.pots|0),ings:p.ings||[]}));
+ let a=0;const P=()=>d.parts[a]||d.parts[0],total=()=>d.parts.reduce((n,p)=>n+p.pots,0);
+ const issList=()=>{const out=t('tkIssues').slice();(tk.issues||[]).concat(d.issues).forEach(x=>{if(out.indexOf(x)<0)out.push(x)});return out};
  const added=[];let removed=[];
  const w=document.createElement('div');w.className='tkp';
  w.innerHTML=`<div class="tkbar"><button class="sbt" id="kBack">${t('cancel')}</button><b>${t('tkToday')}</b><button class="sbt" id="kSave" style="font-weight:700">${t('save')}</button></div><div class="tkb" id="kB"></div><input type="file" id="kF" accept="image/*" multiple hidden><input type="file" id="kC" accept="image/*" capture="environment" hidden>`;
  document.body.appendChild(w);const B=w.querySelector('#kB'),F=w.querySelector('#kF'),C=w.querySelector('#kC');let reopen=false;
  const fit=()=>{const vv=window.visualViewport;if(vv){w.style.height=vv.height+'px';w.style.top=vv.offsetTop+'px'}};fit();window.visualViewport&&visualViewport.addEventListener('resize',fit);
- function draw(){const multi=d.places.length>1;
+ function draw(){const multi=d.places.length>1,many=d.parts.length>1,L=lang==='ar'?'ar':'en';if(a>=d.parts.length)a=0;const p=P();
   B.innerHTML=`<div class="tkl">${t('tkDate')}</div><input class="in" type="date" id="kD" value="${d.date}">
-  <div class="tkl">${t('tkDish')}</div><div class="chipsx">${tk.dishes.map(x=>`<button class="tkch ${x.name===d.dish?'on':''}" data-dish="${esc(x.name)}">${esc(x.name)}</button>`).join('')}<button class="tkch" data-add="dish" aria-label="${t('tkNewDish')}">+</button></div>
-  <div class="tkl">${t('tkPotsN')}</div><div class="tkc tkrow"><button class="tkst" data-p="-1" aria-label="-">−</button><b id="kN">${d.pots}</b><button class="tkst" data-p="1" aria-label="+">+</button></div>
-  <div class="tkl">${t('tkIngs')}</div><div class="tkc"><div class="tkg"><span></span><span class="tkh">${t('tkPer')}</span><span class="tkh">${t('tkTot')}</span><span></span>${d.ings.map((i,k)=>`<span class="tkn">${esc(i.n)} <small>${esc(i.u)}</small></span><input class="tki" type="number" inputmode="decimal" step="any" min="0" data-a="${k}" value="${q2(i.q)}" aria-label="${esc(i.n)} ${t('tkPer')}"><input class="tki tot" type="number" inputmode="decimal" step="any" min="0" data-b="${k}" value="${q2(i.q*d.pots)}" aria-label="${esc(i.n)} ${t('tkTot')}"><button class="tkx" data-ri="${k}" aria-label="${t('del')}">✕</button>`).join('')}</div><button class="tkadd" data-add="ing">+ ${t('tkAddIng')}</button></div>
+  <div class="tkl">${t('tkPartsT')}</div><div class="tkc">${d.parts.map((x,k)=>`<div class="tkpart${many&&k===a?' on':''}" data-part="${k}"><span class="tkpn">${esc(x.dish)}</span><span class="tkrow sm"><button class="tkst" data-p="-1" data-k="${k}" aria-label="-">−</button><b>${x.pots}</b><button class="tkst" data-p="1" data-k="${k}" aria-label="+">+</button></span>${many?`<button class="tkx" data-rpart="${k}" aria-label="${t('del')}">✕</button>`:''}</div>`).join('')}<button class="tkadd" data-add="part">+ ${t('tkAddPart')}</button>${many?`<div class="tklog sum"><span>${t('tkPotsAll')}</span><b>${potsW(total(),L)}</b></div>`:''}</div>
+  <div class="tkl">${many?t('tkDishSel'):t('tkDish')}</div><div class="chipsx">${tk.dishes.map(x=>`<button class="tkch ${x.name===p.dish?'on':''}" data-dish="${esc(x.name)}">${esc(x.name)}</button>`).join('')}<button class="tkch" data-add="dish" aria-label="${t('tkNewDish')}">+</button></div>
+  <div class="tkl">${t('tkIngs')}${many?' · '+esc(p.dish):''}</div><div class="tkc"><div class="tkg"><span></span><span class="tkh">${t('tkPer')}</span><span class="tkh">${t('tkTot')}</span><span></span>${p.ings.map((i,k)=>`<span class="tkn">${esc(i.n)} <small>${esc(i.u)}</small></span><input class="tki" type="number" inputmode="decimal" step="any" min="0" data-a="${k}" value="${q2(i.q)}" aria-label="${esc(i.n)} ${t('tkPer')}"><input class="tki tot" type="number" inputmode="decimal" step="any" min="0" data-b="${k}" value="${q2(i.q*p.pots)}" aria-label="${esc(i.n)} ${t('tkTot')}"><button class="tkx" data-ri="${k}" aria-label="${t('del')}">✕</button>`).join('')}</div><button class="tkadd" data-add="ing">+ ${t('tkAddIng')}</button></div>
   <div class="tkl">${t('tkPlace')}</div><div class="chipsx">${tk.camps.map(c=>c.name).map(x=>`<button class="tkch ${d.places.some(y=>y.n===x)?'on':''}" data-place="${esc(x)}">${esc(x)}</button>`).join('')}<button class="tkch" data-add="place" aria-label="${t('tkNewPlace')}">+</button></div>
   ${multi?`<div class="tkc" style="margin-top:8px">${d.places.map((x,k)=>`<div class="tkpl"><span>${esc(x.n)}</span><input class="tki" style="width:84px" type="number" inputmode="numeric" min="0" data-pp="${k}" value="${x.p||''}" placeholder="${t('tkPots')}"></div>`).join('')}</div>`:''}
   <div class="tkl">${t('tkPics')}</div><div class="tkths">${d.imgs.filter(i=>IMG[i]).map(i=>`<span class="tkth"><img alt="" src="${IMG[i]}"><button data-rp="${i}" aria-label="${t('del')}">✕</button></span>`).join('')}<button class="tkth add" data-add="pic" aria-label="${t('tkAddPics')}">${IC.pic}<span>${t('tkGallery')}</span></button><button class="tkth add" data-add="cam" aria-label="${t('tkShoot')}"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.5-2.5h7L17 8h3v11H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="1.9"/></svg><span>${t('tkShoot')}</span></button></div>
-  <div class="tkl">${t('tkRate')}</div><div class="tkseg">${[1,2,3].map(r=>`<button class="${d.rate===r?'on':''}" data-rate="${r}">${rateName(r,lang==='ar'?'ar':'en')}</button>`).join('')}</div>
-  <div class="tkl">${t('tkNote')}</div><textarea class="in" id="kT" dir="auto" rows="3" placeholder="${esc(t('tkNotePh'))}">${esc(d.note||'')}</textarea>
+  <div class="tkl">${t('tkRate')}</div><div class="tkseg">${[4,1,2,3].map(r=>`<button class="${r===4?'bad ':''}${d.rate===r?'on':''}" data-rate="${r}">${rateName(r,L)}</button>`).join('')}</div>
+  ${(d.rate===4||d.rate===1||d.issues.length)?`<div class="tkl">${t('tkIssT')}</div><div class="chipsx">${issList().map(x=>`<button class="tkch iss ${d.issues.indexOf(x)>-1?'on':''}" data-iss="${esc(x)}">${esc(x)}</button>`).join('')}<button class="tkch" data-add="iss" aria-label="${t('tkNewIss')}">+</button></div>`:''}
+  <div class="tkl">${t('tkNote')}</div><textarea class="in" id="kT" dir="auto" rows="3" placeholder="${esc(t(d.rate===4?'tkNoteBad':'tkNotePh'))}">${esc(d.note||'')}</textarea>
   <button class="b pri" id="kR" style="width:100%;margin-top:18px">${t('tkMake')}</button>${isNew?'':`<button class="b dng" id="kDel" style="width:100%;margin-top:10px">${t('del')}</button>`}`}
  function ask(title,withUnit,cb){const us=t('tkUnits');let u=us[0];
   const s=sheet(`<h2>${title}</h2><label class="fld">${t('tkName')}<input class="in" id="aN" dir="auto" autocomplete="off"></label>${withUnit?`<div class="fld">${t('tkUnit')}<div class="tkseg" id="aU">${us.map((x,k)=>`<button class="${k?'':'on'}" data-u="${x}">${x}</button>`).join('')}</div></div>`:''}<div class="acts"><button class="b" id="aNo">${t('cancel')}</button><button class="b pri" id="aOk">${t('add')}</button></div>`);
@@ -987,30 +1097,35 @@ function tkOpen(id,fresh,auto){
   if(withUnit)s.querySelector('#aU').onclick=e=>{const b=e.target.closest('[data-u]');if(!b)return;u=b.dataset.u;s.querySelectorAll('#aU button').forEach(x=>x.classList.toggle('on',x===b))};
   s.querySelector('#aNo').onclick=closeSheet;
   const go=()=>{const v=inp.value.trim();if(!v)return;closeSheet();cb(v,u)};s.querySelector('#aOk').onclick=go;inp.addEventListener('keydown',e=>{if(e.key==='Enter')go()})}
- const syncTot=()=>B.querySelectorAll('[data-b]').forEach(e=>{e.value=q2(d.ings[+e.dataset.b].q*d.pots)});
- B.addEventListener('click',e=>{const x=e.target.closest('button');if(!x)return;const ds=x.dataset;
-  if(ds.dish!==undefined){if(ds.dish!==d.dish){d.dish=ds.dish;d.ings=ingsFor(d.dish);draw()}}
-  else if(ds.p){d.pots=Math.max(1,Math.min(200,d.pots+(+ds.p)));B.querySelector('#kN').textContent=d.pots;syncTot()}
-  else if(ds.ri!==undefined){d.ings.splice(+ds.ri,1);draw()}
+ B.addEventListener('click',e=>{const pr=e.target.closest('[data-part]');if(pr&&!e.target.closest('button')){a=+pr.dataset.part;draw();return}
+  const x=e.target.closest('button');if(!x)return;const ds=x.dataset;
+  if(ds.dish!==undefined){const p=P();if(ds.dish!==p.dish){p.dish=ds.dish;p.ings=ingsFor(p.dish);draw()}}
+  else if(ds.p){const k=+ds.k,p=d.parts[k];if(p){p.pots=Math.max(1,Math.min(200,p.pots+(+ds.p)));a=k;draw()}}
+  else if(ds.rpart!==undefined){if(d.parts.length>1){d.parts.splice(+ds.rpart,1);a=0;draw()}}
+  else if(ds.ri!==undefined){P().ings.splice(+ds.ri,1);draw()}
   else if(ds.place!==undefined){const i=d.places.findIndex(y=>y.n===ds.place);if(i>-1)d.places.splice(i,1);else d.places.push({n:ds.place,p:0});draw()}
   else if(ds.rp){d.imgs=d.imgs.filter(i=>i!==ds.rp);removed.push(ds.rp);draw()}
-  else if(ds.rate){const r=+ds.rate;d.rate=d.rate===r?0:r;draw()}
+  else if(ds.rate){const r=+ds.rate;d.rate=d.rate===r?0:r;if(d.rate===2||d.rate===3)d.issues=[];draw()}
+  else if(ds.iss!==undefined){const i=d.issues.indexOf(ds.iss);if(i>-1)d.issues.splice(i,1);else d.issues.push(ds.iss);draw()}
   else if(ds.add==='pic')F.click();
   else if(ds.add==='cam')C.click();
-  else if(ds.add==='dish')ask(t('tkNewDish'),false,v=>{if(!tk.dishes.some(y=>y.name===v))tk.dishes.push({id:uid(),name:v,ings:clone(d.ings)});d.dish=v;tkSave();draw()});
+  else if(ds.add==='part'){const used=d.parts.map(y=>y.dish),nx=(tk.dishes.find(y=>used.indexOf(y.name)<0)||tk.dishes[0]).name;d.parts.push({dish:nx,pots:1,ings:ingsFor(nx)});a=d.parts.length-1;draw()}
+  else if(ds.add==='dish')ask(t('tkNewDish'),false,v=>{if(!tk.dishes.some(y=>y.name===v))tk.dishes.push({id:uid(),name:v,ings:clone(P().ings)});else P().ings=ingsFor(v);P().dish=v;tkSave();draw()});
   else if(ds.add==='place')ask(t('tkNewPlace'),false,v=>{if(!tk.camps.some(c=>c.name===v))tk.camps.push(campNew(v));if(!d.places.some(y=>y.n===v))d.places.push({n:v,p:0});tkSave();draw()});
-  else if(ds.add==='ing')ask(t('tkNewIng'),true,(v,u)=>{d.ings.push({n:v,u,q:0});draw()});
+  else if(ds.add==='ing')ask(t('tkNewIng'),true,(v,u)=>{P().ings.push({n:v,u,q:0});draw()});
+  else if(ds.add==='iss')ask(t('tkNewIss'),false,v=>{if(!Array.isArray(tk.issues))tk.issues=[];if(issList().indexOf(v)<0){tk.issues.push(v);tkSave()}if(d.issues.indexOf(v)<0)d.issues.push(v);draw()});
   else if(x.id==='kR')report();
   else if(x.id==='kDel')confirmSheet(t('del'),t('tkDelDay'),t('yesDel'),()=>{(orig&&orig.imgs||[]).concat(added).forEach(delImg);tk.days=tk.days.filter(y=>y.id!==d.id);tkSave();close();toast(t('deleted'))})});
- B.addEventListener('input',e=>{const x=e.target,ds=x.dataset,v=parseFloat(x.value);
-  if(ds.a!==undefined){const i=d.ings[+ds.a];i.q=isFinite(v)&&v>=0?v:0;B.querySelector(`[data-b="${ds.a}"]`).value=q2(i.q*d.pots)}
-  else if(ds.b!==undefined){const i=d.ings[+ds.b];i.q=isFinite(v)&&v>=0?v/d.pots:0;B.querySelector(`[data-a="${ds.b}"]`).value=q2(i.q)}
+ B.addEventListener('input',e=>{const x=e.target,ds=x.dataset,v=parseFloat(x.value),p=P();
+  if(ds.a!==undefined){const i=p.ings[+ds.a];i.q=isFinite(v)&&v>=0?v:0;B.querySelector(`[data-b="${ds.a}"]`).value=q2(i.q*p.pots)}
+  else if(ds.b!==undefined){const i=p.ings[+ds.b];i.q=isFinite(v)&&v>=0?v/p.pots:0;B.querySelector(`[data-a="${ds.b}"]`).value=q2(i.q)}
   else if(ds.pp!==undefined){d.places[+ds.pp].p=isFinite(v)&&v>0?Math.round(v):0}
   else if(x.id==='kT')d.note=x.value;
   else if(x.id==='kD'&&x.value)d.date=x.value});
  const take=async inp=>{const fs=[...(inp.files||[])];inp.value='';let bad=false;for(const f of fs){try{const data=await shrink(f);const pid=uid();putImg(pid,data);added.push(pid);d.imgs.push(pid)}catch(e){bad=true}}draw();if(bad)toast(t('photoFail'));const ro=reopen&&!$('#ov').hidden;reopen=false;if(ro)report()};F.onchange=()=>take(F);C.onchange=()=>take(C);
- function commit(){d.pots=Math.max(1,d.pots|0);const i=tk.days.findIndex(y=>y.id===d.id);if(i>-1)tk.days[i]=clone(d);else tk.days.push(clone(d));
-  const ds=tk.dishes.find(y=>y.name===d.dish);if(ds)ds.ings=clone(d.ings);removed.forEach(delImg);removed=[];added.length=0;orig=tk.days.find(y=>y.id===d.id);tkSave()}
+ function commit(){d.parts.forEach(p=>{p.pots=Math.max(1,p.pots|0)});d.pots=total();d.dish=d.parts.map(p=>p.dish).filter((v,k,s)=>s.indexOf(v)===k).join(' + ');d.ings=clone(d.parts[0].ings);if(d.rate===2||d.rate===3)d.issues=[];
+  const i=tk.days.findIndex(y=>y.id===d.id);if(i>-1)tk.days[i]=clone(d);else tk.days.push(clone(d));
+  d.parts.forEach(p=>{const ds=tk.dishes.find(y=>y.name===p.dish);if(ds)ds.ings=clone(p.ings)});removed.forEach(delImg);removed=[];added.length=0;orig=tk.days.find(y=>y.id===d.id);tkSave()}
  function close(){window.visualViewport&&visualViewport.removeEventListener('resize',fit);w.classList.remove('open');setTimeout(()=>w.remove(),400);render()}
  function report(){commit();if(isNew){isNew=false}render();const pics=d.imgs.filter(i=>IMG[i]);
   const s=sheet(`<h2>${t('tkRepT')}</h2>${pics.length?`<div class="tkmini" style="flex-wrap:wrap">${pics.slice(0,14).map(i=>`<img alt="" src="${IMG[i]}">`).join('')}</div>`:''}<textarea class="in" id="rpT" dir="auto" style="min-height:180px;font-family:var(--ui);font-size:15px;line-height:1.7">${esc(tkReport(d))}</textarea>${pics.length?`<p class="hint">${t('tkCombined')}</p>`:''}${pics.length?`<button class="b pri" id="rpP">${t('tkWithPhotos',{n:pics.length})}</button>`:''}<button class="b" id="rpA">${t('tkAddPics')}</button><a class="b wa" id="rpW" href="https://wa.me/" target="_blank" rel="noopener">${pics.length?t('tkTextOnly'):t('wa')}</a><button class="b" id="rpC">${t('copyTxt')}</button><button class="b" id="iClose">${t('close')}</button>`);
@@ -1030,7 +1145,7 @@ function tkOpen(id,fresh,auto){
 /* ---------- share, long-press menu, select several ---------- */
 let selMode=false,lpHit=false,lpT=0,lpXY=null;const selSet=new Set();
 const IC={share:'<svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M8 7l4-4 4 4M7 11H5v10h14V11h-2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>',pic:'<svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="8.5" cy="10" r="1.6" fill="currentColor"/><path d="M4 17l5-4 3.5 3 3-2.5L20 17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>',sel:'<svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8 12.5l2.8 2.8L16 9.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>',del:'<svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>'};
-function shareTextOf(it){if(it.type==='note')return it.text||'';if(it.type==='money')return [it.title,...(it.rows||[]).map(r=>r.a?r.n+': '+fmt(toNum(r.a))+' '+cur:r.n),t('total')+': '+fmt(sum(it))+' '+cur].join('\n');return it.name+'\n'+telOf(it.num)}
+function shareTextOf(it){if(isDay(it))return tkReport(it);if(it.type==='note')return it.text||'';if(it.type==='money')return [it.title,...(it.rows||[]).map(r=>r.a?r.n+': '+fmt(toNum(r.a))+' '+cur:r.n),t('total')+': '+fmt(sum(it))+' '+cur].join('\n');return it.name+'\n'+telOf(it.num)}
 function shareTxt(list){return shareRaw(list.map(shareTextOf).filter(Boolean).join('\n\n———\n\n'))}
 async function shareRaw(txt){if(!txt)return;
  if(navigator.share){try{await navigator.share({text:txt});return}catch(err){if(err&&err.name==='AbortError')return}}
@@ -1040,7 +1155,7 @@ async function shareRaw(txt){if(!txt)return;
 const loadIm=src=>new Promise(r=>{const im=new Image();im.onload=()=>r(im);im.onerror=()=>r(null);im.src=src});
 async function cardPicture(list){const W=1080,M=70,cw=W-M*2,tmp=document.createElement('canvas').getContext('2d');const bl=[];let H=M+16;
  for(const it of list){const L=layoutCard(tmp,modelOf(it),cw,true);bl.push({L,y:H});H+=L.h+50;
-  for(const id of(it.imgs||[])){if(!IMG[id])continue;const im=await loadIm(IMG[id]);if(!im)continue;const pw=cw-90,ph=Math.round(pw*im.naturalHeight/im.naturalWidth);bl.push({im,y:H,pw,ph});H+=ph+36+50}}
+  for(const id of(it.imgs||[]).slice(0,isDay(it)?6:99)){if(!IMG[id])continue;const im=await loadIm(IMG[id]);if(!im)continue;const pw=cw-90,ph=Math.round(pw*im.naturalHeight/im.naturalWidth);bl.push({im,y:H,pw,ph});H+=ph+36+50}}
  H+=M-34;const cv=document.createElement('canvas');cv.width=W;cv.height=H;const c=cv.getContext('2d');
  c.fillStyle='#C69C6D';c.fillRect(0,0,W,H);const r=rnd(7);for(let i=0;i<H*5;i++){c.fillStyle=r()<.5?'rgba(120,80,40,.32)':'rgba(240,210,160,.38)';c.beginPath();c.arc(r()*W,r()*H,1.4+r()*3.2,0,7);c.fill()}
  bl.forEach((b,k)=>{if(b.L)drawCard(c,b.L,M,b.y,k%2?.01:-.01,null);else{const x=M+45;c.save();c.shadowColor='rgba(0,0,0,.28)';c.shadowBlur=22;c.shadowOffsetY=10;c.fillStyle='#fff';c.fillRect(x-18,b.y,b.pw+36,b.ph+36);c.restore();c.drawImage(b.im,x,b.y+18,b.pw,b.ph)}});
@@ -1053,15 +1168,15 @@ async function sharePic(list){try{if(document.fonts&&document.fonts.load)await P
  let url='';try{url=cv.toDataURL('image/jpeg',.9)}catch(e){}
  const s=sheet(`<h2>${t('shareImg')}</h2><img class="wimg" src="${url}" alt="">${file?`<button class="b pri" id="iShare">${t('share')}</button>`:`<p class="hint">${t('wHold')}</p>`}<button class="b" id="iClose">${t('close')}</button>`);
  s.querySelector('#iClose').onclick=closeSheet;const sb=s.querySelector('#iShare');if(sb)sb.onclick=()=>{navigator.share({files:[file]}).then(closeSheet).catch(()=>{})}}
-function delCards(list){const ids=new Set(list.map(i=>i.id));list.forEach(i=>(i.imgs||[]).forEach(delImg));items=items.filter(i=>!ids.has(i.id));save()}
+function delCards(list){const ids=new Set(list.map(i=>i.id));list.forEach(i=>(i.imgs||[]).forEach(delImg));if(list.some(x=>!isDay(x))){items=items.filter(i=>!ids.has(i.id));save()}if(list.some(isDay)){tk.days=tk.days.filter(d=>!ids.has(d.id));tkSave()}}
 function endSel(){selMode=false;selSet.clear();render()}
 function selBar(){let b=$('#selbar');if(!selMode){if(b)b.remove();$('#fab').hidden=false;return}
  if(!b){b=document.createElement('div');b.id='selbar';b.className='selbar';document.body.appendChild(b);
-  b.addEventListener('click',e=>{const x=e.target.closest('[data-a]');if(!x)return;const a=x.dataset.a;if(a==='x'){endSel();return}const list=items.filter(i=>selSet.has(i.id));if(!list.length)return;
+  b.addEventListener('click',e=>{const x=e.target.closest('[data-a]');if(!x)return;const a=x.dataset.a;if(a==='x'){endSel();return}const list=selList();if(!list.length)return;
    if(a==='txt')shareTxt(list);else if(a==='pic')sharePic(list);else confirmSheet(t('del'),t('delN',{n:list.length}),t('yesDel'),()=>{delCards(list);endSel();toast(t('deleted'))})})}
  $('#fab').hidden=true;
  b.innerHTML=`<button class="sbt" data-a="x">${t('cancel')}</button><span class="sbn">${t('nSel',{n:selSet.size})}</span><button class="sbi" data-a="pic" aria-label="${t('shareImg')}">${IC.pic}</button><button class="sbi" data-a="txt" aria-label="${t('share')}">${IC.share}</button><button class="sbi dng" data-a="del" aria-label="${t('del')}">${IC.del}</button>`}
-function ctxMenu(cd){const it=items.find(i=>i.id===cd.dataset.id);if(!it||document.querySelector('.cmov'))return;
+function ctxMenu(cd){const it=anyCard(cd.dataset.id||cd.dataset.day);if(!it||document.querySelector('.cmov'))return;
  const m=document.createElement('div');m.className='cmov';
  const row=(a,k,cls)=>`<button class="cmi ${cls||''}" data-a="${a}" role="menuitem"><span>${t(k)}</span>${IC[a==='txt'?'share':a]}</button>`;
  m.innerHTML=`<div class="cmenu" role="menu">${row('txt','share')}${row('pic','shareImg')}${row('sel','selMore')}${row('del','del','dng')}</div>`;
@@ -1075,14 +1190,14 @@ function ctxMenu(cd){const it=items.find(i=>i.id===cd.dataset.id);if(!it||docume
  m.addEventListener('contextmenu',e=>e.preventDefault());
  m.addEventListener('click',e=>{if(!armed)return;const b=e.target.closest('[data-a]');cd.classList.remove('lift');m.classList.remove('open');setTimeout(()=>m.remove(),200);if(!b)return;const a=b.dataset.a;
   if(a==='txt')shareTxt([it]);else if(a==='pic')sharePic([it]);else if(a==='sel'){selMode=true;selSet.clear();selSet.add(it.id);render()}
-  else confirmSheet(t('del'),t('delSure'),t('yesDel'),()=>{delCards([it]);render();toast(t('deleted'))})})}
+  else confirmSheet(t('del'),t(isDay(it)?'tkDelDay':'delSure'),t('yesDel'),()=>{delCards([it]);render();toast(t('deleted'))})})}
 (function(){const g=$('#grid');const stop=()=>clearTimeout(lpT);
- g.addEventListener('pointerdown',e=>{lpHit=false;stop();if(selMode)return;const cd=e.target.closest('.cd[data-id]');if(!cd||e.target.closest('[data-pin],[data-copy],a'))return;lpXY=[e.clientX,e.clientY];
+ g.addEventListener('pointerdown',e=>{lpHit=false;stop();if(selMode)return;const cd=e.target.closest('.cd[data-id],.cd[data-day]');if(!cd||e.target.closest('[data-pin],[data-copy],a'))return;lpXY=[e.clientX,e.clientY];
   lpT=setTimeout(()=>{lpHit=true;try{navigator.vibrate&&navigator.vibrate(8)}catch(x){}ctxMenu(cd)},450)});
  g.addEventListener('pointermove',e=>{if(lpXY&&Math.hypot(e.clientX-lpXY[0],e.clientY-lpXY[1])>10)stop()});
  ['pointerup','pointercancel','pointerleave'].forEach(v=>g.addEventListener(v,stop));
  window.addEventListener('scroll',stop,{passive:true});
- g.addEventListener('contextmenu',e=>{const cd=e.target.closest('.cd[data-id]');if(!cd)return;e.preventDefault();if(!selMode&&!lpHit){stop();ctxMenu(cd)}})})();
+ g.addEventListener('contextmenu',e=>{const cd=e.target.closest('.cd[data-id],.cd[data-day]');if(!cd)return;e.preventDefault();if(!selMode&&!lpHit){stop();ctxMenu(cd)}})})();
 
 /* ---------- files kept on this phone: tables (like Excel) and documents (like Word) ---------- */
 let fx=S.get('files',[]);if(!Array.isArray(fx))fx=[];
@@ -1092,10 +1207,10 @@ function fileGet(id){return fdbReady.then(()=>new Promise(res=>{const ls=()=>{tr
 function safeHtml(h){try{const d=new DOMParser().parseFromString('<div>'+String(h||'')+'</div>','text/html');d.querySelectorAll('script,style,iframe,object,embed,link,meta,form,input,button,textarea,select').forEach(e=>e.remove());d.querySelectorAll('*').forEach(e=>{[...e.attributes].forEach(a=>{const n=a.name.toLowerCase();if(n.indexOf('on')===0||((n==='href'||n==='src')&&/^\s*javascript:/i.test(a.value)))e.removeAttribute(a.name)})});return d.body.firstChild?d.body.firstChild.innerHTML:''}catch(e){return esc(h)}}
 function fileInfo(o){if(o.kind==='doc'){const d=document.createElement('div');d.innerHTML=safeHtml(o.html||'').replace(/<\/(div|p|h1|h2|li)>|<br\s*\/?>/gi,' $&');return (d.textContent||'').replace(/\s+/g,' ').trim().slice(0,90)}
  const sh=o.sheets&&o.sheets[0];if(!sh)return '';let mr=-1;Object.keys(sh.cells||{}).forEach(k=>{const c=sh.cells[k];if(c.v!=null&&c.v!==''){const r=+k.split(',')[0];if(r>mr)mr=r}});return t('xRows',{n:mr+1})+(o.sheets.length>1?' · '+o.sheets.length+' '+t('xSheetN'):'')}
-function filePut(o){o.ts=Date.now();let js;try{js=JSON.stringify(o)}catch(e){return}let ok=false;if(fdb){try{fdb.transaction('files','readwrite').objectStore('files').put(js,o.id);ok=true}catch(e){}}
+function filePut(o){o.ts=Date.now();let js;try{js=JSON.stringify(o)}catch(e){return}dirty('f',o.id,'p');let ok=false;if(fdb){try{fdb.transaction('files','readwrite').objectStore('files').put(js,o.id);ok=true}catch(e){}}
  if(!ok){try{localStorage.setItem('pn_file_'+o.id,js)}catch(e){storeOK=false;toast(t('fFull'))}}
  const i=fx.findIndex(x=>x.id===o.id),meta={id:o.id,kind:o.kind,name:o.name,ts:o.ts,info:fileInfo(o)};if(i>-1)fx[i]=meta;else fx.push(meta);S.set('files',fx)}
-function fileDel(id){if(fdb){try{fdb.transaction('files','readwrite').objectStore('files').delete(id)}catch(e){}}try{localStorage.removeItem('pn_file_'+id)}catch(e){}fx=fx.filter(x=>x.id!==id);S.set('files',fx)}
+function fileDel(id){dirty('f',id,'d');if(fdb){try{fdb.transaction('files','readwrite').objectStore('files').delete(id)}catch(e){}}try{localStorage.removeItem('pn_file_'+id)}catch(e){}fx=fx.filter(x=>x.id!==id);S.set('files',fx)}
 document.addEventListener('visibilitychange',()=>{if(document.hidden)FL.forEach(f=>{try{f()}catch(e){}})});
 function askText(title,val,cb,okLabel){const s=sheet(`<h2>${esc(title)}</h2><input class="in" id="aN" dir="auto" autocomplete="off" value="${esc(val||'')}"><div class="acts"><button class="b" id="aNo">${t('cancel')}</button><button class="b pri" id="aOk">${esc(okLabel||t('save'))}</button></div>`);
  const inp=s.querySelector('#aN');setTimeout(()=>{try{inp.focus();inp.select()}catch(e){}},350);s.querySelector('#aNo').onclick=closeSheet;const go=()=>{const v=inp.value.trim();if(!v)return;closeSheet();cb(v)};s.querySelector('#aOk').onclick=go;inp.addEventListener('keydown',e=>{if(e.key==='Enter')go()})}
@@ -1419,8 +1534,8 @@ function tkPeriodDays(){const now=new Date();
  const md=new Date(now.getFullYear(),now.getMonth()+tkOff,1),key=ymd(md).slice(0,7);
  return{label:(lang==='ar'?TKM:TKME)[md.getMonth()]+' '+md.getFullYear(),days:tk.days.filter(d=>d.date.slice(0,7)===key)}}
 function tkStats(days){const tot={},dishes={},camps={},rates=[0,0,0];let pots=0;
- days.forEach(d=>{pots+=d.pots||0;if(d.dish)dishes[d.dish]=(dishes[d.dish]||0)+(d.pots||0);if(d.rate>0&&d.rate<4)rates[d.rate-1]++;
-  (d.ings||[]).forEach(i=>{if(i.q>0){const k=i.n+'|'+i.u;tot[k]=(tot[k]||0)+i.q*d.pots}});
+ days.forEach(d=>{pots+=d.pots||0;if(d.rate>0&&d.rate<4)rates[d.rate-1]++;
+  tkParts(d).forEach(p=>{if(p.dish)dishes[p.dish]=(dishes[p.dish]||0)+(p.pots||0);(p.ings||[]).forEach(i=>{if(i.q>0){const k=i.n+'|'+i.u;tot[k]=(tot[k]||0)+i.q*(p.pots||0)}})});
   const ps=d.places||[];ps.forEach(x=>{const p=x.p||(ps.length===1?d.pots:0);if(!camps[x.n])camps[x.n]={pots:0,visits:0};camps[x.n].pots+=p;camps[x.n].visits++})});
  return{days:days.length,pots,
   tot:Object.keys(tot).map(k=>({n:k.split('|')[0],u:k.split('|')[1],v:tot[k]})),
@@ -1584,6 +1699,7 @@ function wrapC(c,text,maxW,lh){const words=String(text).split(/\s+/),out=[];let 
 
 function menu(){
  const s=sheet(`<h2>${t('menu')}</h2><p class="hint">${t('about')}</p>
+ ${CLD.ok?`<button class="mi" id="mAcct">${t('acT')}${au?' · '+esc(au.name||au.email):''}</button>`:''}
  <button class="mi" id="mWall">${t('wall')}</button>
  <button class="mi" id="mBackup">${t('backup')}</button>
  <button class="mi" id="mRestore">${t('restore')}</button>
@@ -1600,9 +1716,10 @@ function menu(){
  s.querySelector('#mBackup').onclick=backupSheet;
  s.querySelector('#mWall').onclick=()=>{closeSheet();wallpaper()};
  s.querySelector('#mRestore').onclick=restoreSheet;
+ const ma=s.querySelector('#mAcct');if(ma)ma.onclick=()=>{closeSheet();setTimeout(acctTap,240)};
 }
 $('#menuBtn').onclick=menu;
-function backupText(fl){return 'POCKETNOTES1:'+btoa(unescape(encodeURIComponent(JSON.stringify({v:1,cur,items,tk,files:fl||[]}))))}
+function backupText(fl){return 'POCKETNOTES1:'+btoa(unescape(encodeURIComponent(JSON.stringify({v:1,cur,items,tk,camp,files:fl||[]}))))}
 async function backupSheet(){const fl=(await Promise.all(fx.map(x=>fileGet(x.id)))).filter(Boolean);const txt=backupText(fl);
  const s=sheet(`<h2>${t('backup')}</h2><p class="hint">${t('backupHint')}</p><textarea class="in" id="bTxt" readonly style="font-family:var(--f-type);font-size:12px;min-height:90px;line-height:1.3">${esc(txt)}</textarea><div class="acts"><button class="b pri" id="bCopy">${t('copyBackup')}</button>${hosted?`<button class="b" id="bFile">${t('dlBackup')}</button>`:''}</div><button class="b" id="bClose">${t('close')}</button>`);
  s.querySelector('#bCopy').onclick=async()=>{try{await navigator.clipboard.writeText(txt);toast(t('copied'))}catch(e){const a=s.querySelector('#bTxt');a.focus();a.select()}};
@@ -1613,18 +1730,406 @@ function restoreSheet(){
  const s=sheet(`<h2>${t('restore')}</h2><p class="hint">${t('restoreHint')}</p><textarea class="in" id="rTxt" style="font-family:var(--f-type);font-size:12px;min-height:90px;line-height:1.3" placeholder="POCKETNOTES1:…"></textarea><label class="b" style="text-align:center;flex:none">${t('chooseFile')}<input type="file" id="rFile" accept=".txt,text/plain" hidden></label><div class="err" id="rErr"></div><div class="acts"><button class="b" id="rCancel">${t('cancel')}</button><button class="b pri" id="rGo">${t('restoreBtn')}</button></div>`);
  s.querySelector('#rCancel').onclick=closeSheet;
  s.querySelector('#rFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{s.querySelector('#rTxt').value=r.result};r.readAsText(f)};
- s.querySelector('#rGo').onclick=()=>{const o=parseBackup(s.querySelector('#rTxt').value);if(!o){s.querySelector('#rErr').textContent=t('badBackup');return}items=o.items.filter(i=>i&&i.id&&i.type);if(o.cur){cur=o.cur;S.set('cur',cur)}if(o.tk&&Array.isArray(o.tk.days)&&Array.isArray(o.tk.dishes)){tk=o.tk;tkFix();tkSave()}if(Array.isArray(o.files))o.files.forEach(f=>{if(f&&f.id&&(f.kind==='sheet'||f.kind==='doc'))filePut(f)});save();closeSheet();render();toast(t('restored',{n:items.length}))}}
-function eraseAll(){Object.keys(IMG).forEach(delImg);fx.slice().forEach(x=>fileDel(x.id));['items','pin','salt','fails','until','cur','tk','files'].forEach(S.del);tk=tkDefault();tkFix();tkOff=0;tkView='days';items=null;cur='₪';fails=0;until=0;changing=false;query='';$('#q').value='';tab=0;showLock('create')}
+ s.querySelector('#rGo').onclick=()=>{const o=parseBackup(s.querySelector('#rTxt').value);if(!o){s.querySelector('#rErr').textContent=t('badBackup');return}items=o.items.filter(i=>i&&i.id&&i.type);if(o.cur){cur=o.cur;S.set('cur',cur)}if(o.tk&&Array.isArray(o.tk.days)&&Array.isArray(o.tk.dishes)){tk=o.tk;tkFix();tkSave()}if(o.camp&&typeof o.camp==='object'){camp=o.camp;cmFix();S.set('camp',camp)}if(Array.isArray(o.files))o.files.forEach(f=>{if(f&&f.id&&(f.kind==='sheet'||f.kind==='doc'))filePut(f)});save();closeSheet();render();toast(t('restored',{n:items.length}))}}
+function eraseAll(){quiet++;clearTimeout(pushT);Object.keys(IMG).forEach(delImg);fx.slice().forEach(x=>fileDel(x.id));quiet--;au=null;sq={k:{},i:{},f:{},x:0};synct={};syncn={};['auth','syncq','synct','syncn','lastUid','acctLater','lastSync'].forEach(S.del);cloudUI();['items','pin','salt','fails','until','cur','tk','files','camp'].forEach(S.del);camp=null;cmFix();tk=tkDefault();tkFix();tkOff=0;tkView='days';items=null;cur='₪';fails=0;until=0;changing=false;query='';$('#q').value='';tab=0;showLock('create')}
+
+/* ---------- account: sign in, first copy, quiet saving afterwards ---------- */
+function cloudUI(st){if(st)CLD.state=st;const c=$('#cloud');if(!c)return;if(!CLD.ok){c.hidden=true;return}c.hidden=false;
+ let cls='no',txt=t('clNo');
+ if(au){const s=CLD.state||(pendN()?'busy':'ok');cls=s;txt=s==='busy'?t('clBusy'):s==='off'?t('clOff'):s==='err'?t('clErr'):t('clOk');if(s==='ok'||s==='off')txt+=' · '+(au.name||au.email)}
+ c.className='cloud '+cls;c.lastElementChild.textContent=txt}
+function acctTap(){if(!CLD.ok)return;if(!au){acctScreen('up');return}
+ const ls=S.get('lastSync',0),n=pendN();
+ const s=sheet(`<h2>${t('acT')}</h2><div class="tkc"><div class="tklog"><span>${t('aName')}</span><b>${esc(au.name||'—')}</b></div><div class="tklog"><span>${t('aEmail')}</span><b dir="ltr" style="overflow-wrap:anywhere">${esc(au.email)}</b></div><div class="tklog sum"><span>${t('acLast')}</span><b>${ls?esc(remLabel(ls)):'—'}</b></div>${n?`<div class="tklog sum"><span>${t('clPend',{n})}</span><b></b></div>`:''}</div><button class="b pri" id="acS">${t('acSync')}</button><button class="b dng" id="acO">${t('acOut')}</button><button class="b" id="iClose">${t('close')}</button>`);
+ s.querySelector('#iClose').onclick=closeSheet;
+ s.querySelector('#acS').onclick=()=>{closeSheet();syncNow().then(ok=>toast(t(ok?'syDone':(navigator.onLine===false?'clOff':'syFail'))))};
+ s.querySelector('#acO').onclick=()=>confirmSheet(t('acOut'),pendN()?t('acOutPend',{n:pendN()}):t('acOutSure'),t('acOut'),()=>{clearTimeout(pushT);au=null;sq={k:{},i:{},f:{},x:0};synct={};['auth','syncq','synct','acctLater'].forEach(S.del);CLD.state='';cloudUI();acctScreen('in')})}
+$('#cloud').onclick=acctTap;
+function authErr(e){const m=String(e&&e.message||'');return t(m==='NET'?'eNet':/EMAIL_EXISTS/.test(m)?'eExists':/INVALID_LOGIN_CREDENTIALS|INVALID_PASSWORD|EMAIL_NOT_FOUND/.test(m)?'eCred':/WEAK_PASSWORD/.test(m)?'eWeak':/INVALID_EMAIL|MISSING_EMAIL/.test(m)?'eEmail':/TOO_MANY_ATTEMPTS/.test(m)?'eMany':/OPERATION_NOT_ALLOWED|CONFIGURATION_NOT_FOUND|API_KEY/i.test(m)?'eOff':'eGen')}
+function acctScreen(mode){if(!CLD.ok||document.querySelector('.acct'))return;let em='',busy=false;
+ const w=document.createElement('div');w.className='tkp acct';document.body.appendChild(w);
+ const fit=()=>{const vv=window.visualViewport;if(vv){w.style.height=vv.height+'px';w.style.top=vv.offsetTop+'px'}};fit();window.visualViewport&&visualViewport.addEventListener('resize',fit);
+ const close=()=>{window.visualViewport&&visualViewport.removeEventListener('resize',fit);w.classList.remove('open');setTimeout(()=>w.remove(),400)};
+ function draw(){const up=mode==='up';
+  w.innerHTML=`<div class="tkbar"><button class="sbt" id="aLater">${t('aLater')}</button><b>${t(up?'aUpT':'aInT')}</b><span style="min-width:48px"></span></div><div class="tkb"><p class="hint" style="margin:16px 4px 0;font-size:15px;line-height:1.7">${t(up?'aUpH':'aInH')}</p>
+  ${up?`<div class="tkl">${t('aName')}</div><input class="in" id="aNm" dir="auto" autocomplete="nickname" maxlength="40">`:''}
+  <div class="tkl">${t('aEmail')}</div><input class="in" id="aEm" type="email" inputmode="email" dir="ltr" autocomplete="email" autocapitalize="none" spellcheck="false" value="${esc(em)}">
+  <div class="tkl">${t('aPass')}</div><input class="in" id="aPw" type="password" dir="ltr" autocomplete="${up?'new-password':'current-password'}">
+  <div class="err" id="aErr" style="margin:10px 4px 0"></div>
+  <button class="b pri" id="aGo" style="width:100%;margin-top:14px">${t(up?'aUpB':'aInB')}</button>
+  <button class="tkadd" id="aSw" style="width:100%;text-align:center;padding-top:16px">${t(up?'aHave':'aNew')}</button>
+  ${up?'':`<button class="tkadd" id="aFg" style="width:100%;text-align:center">${t('aForgot')}</button>`}</div>`;
+  const E=x=>w.querySelector(x),err=m=>{E('#aErr').textContent=m||''};
+  E('#aLater').onclick=()=>{S.set('acctLater',Date.now());close();cloudUI()};
+  E('#aSw').onclick=()=>{em=E('#aEm').value.trim();mode=up?'in':'up';draw()};
+  const fg=E('#aFg');if(fg)fg.onclick=async()=>{const e1=E('#aEm').value.trim();if(!e1){err(t('aFgNeed'));return}try{await authCall('sendOobCode',{requestType:'PASSWORD_RESET',email:e1});err('');toast(t('aFgSent'))}catch(x){err(authErr(x))}};
+  w.querySelectorAll('input').forEach(i=>i.addEventListener('input',()=>err('')));
+  E('#aGo').onclick=async()=>{if(busy)return;const e1=E('#aEm').value.trim(),pw=E('#aPw').value,nm=up?E('#aNm').value.trim():'';
+   if(up&&!nm){err(t('eNameNeed'));return}if(!/^\S+@\S+\.\S+$/.test(e1)){err(t('eEmail'));return}if(pw.length<6){err(t('eWeak'));return}
+   busy=true;E('#aGo').style.opacity=.5;err('');
+   try{const j=await authCall(up?'signUp':'signInWithPassword',{email:e1,password:pw,returnSecureToken:true});
+    let name=nm||j.displayName||'';if(up&&nm){try{await authCall('update',{idToken:j.idToken,displayName:nm,returnSecureToken:false})}catch(x){}}
+    au={uid:j.localId,email:j.email||e1,name,rt:j.refreshToken,it:j.idToken,exp:Date.now()+(+j.expiresIn||3600)*1000};lsSet('auth',au);S.del('acctLater');
+    close();firstSync(up)}catch(x){busy=false;E('#aGo').style.opacity=1;err(authErr(x))}}}
+ draw();requestAnimationFrame(()=>w.classList.add('open'))}
+
+function reloadState(){items=S.get('items',items);cur=S.get('cur','₪');const k2=S.get('tk',null);if(k2&&Array.isArray(k2.days)&&Array.isArray(k2.dishes)&&k2.dishes.length){tk=k2;tkFix()}const f2=S.get('files',[]);fx=Array.isArray(f2)?f2:[];cmLoad();if(!$('#app').hidden)render()}
+function rawSet(k,str){try{localStorage.setItem('pn_'+k,str)}catch(e){storeOK=false}}
+function rawFile(id,js){return fdbReady.then(()=>new Promise(res=>{if(fdb){try{const tx=fdb.transaction('files','readwrite');tx.objectStore('files').put(js,id);tx.oncomplete=()=>res();tx.onerror=()=>res();return}catch(e){}}try{localStorage.setItem('pn_file_'+id,js)}catch(e){}res()}))}
+function wipeLocal(){quiet++;Object.keys(IMG).forEach(delImg);fx.slice().forEach(x=>fileDel(x.id));quiet--;['items','cur','tk','files','camp'].forEach(S.del);camp=null;cmFix();items=[];cur='₪';tk=tkDefault();tkFix();fx=[];sq={k:{},i:{},f:{},x:0};synct={};syncn={};sqSave();lsSet('synct',synct);lsSet('syncn',syncn)}
+let remoteFiles=null;
+function mergeKey(k,rs){let R=null,Lc=null;try{R=JSON.parse(rs)}catch(e){return true}try{const ls=localStorage.getItem('pn_'+k);Lc=ls==null?null:JSON.parse(ls)}catch(e){}
+ let out=R,diff=false;
+ if(k==='items'){const r=Array.isArray(R)?R:[],ids=new Set(r.map(i=>i.id)),extra=(Array.isArray(Lc)?Lc:[]).filter(i=>i&&i.id&&!ids.has(i.id)&&!(i.ex&&r.length));out=r.concat(extra);diff=extra.length>0}
+ else if(k==='tk'){if(R&&Array.isArray(R.days)&&Lc&&Array.isArray(Lc.days)&&Lc.days.length){const ids=new Set(R.days.map(d=>d.id)),ed=Lc.days.filter(d=>!ids.has(d.id)),cn=new Set((R.camps||[]).map(c=>c.name)),ec=(Lc.camps||[]).filter(c=>!cn.has(c.name)),dn=new Set((R.dishes||[]).map(c=>c.name)),ex=(Lc.dishes||[]).filter(c=>!dn.has(c.name));
+   out=Object.assign({},R,{days:R.days.concat(ed),camps:(R.camps||[]).concat(ec),dishes:(R.dishes||[]).concat(ex)});diff=!!(ed.length||ec.length||ex.length)}}
+ else if(k==='camp'){if(R&&typeof R==='object'){const base=Object.assign({},R,Lc||{}),M=cmMerge(Lc||{},R);Object.assign(base,{info:M.info,cols:M.cols});CM_KEYS.forEach(x=>base[x]=M[x]);out=base;diff=JSON.stringify(cmShared(M))!==JSON.stringify(cmShared(cmMerge({},R)))}}
+ else if(k==='files'){const r=Array.isArray(R)?R:[],m={};remoteFiles={};r.forEach(x=>{m[x.id]=x;remoteFiles[x.id]=x});(Array.isArray(Lc)?Lc:[]).forEach(x=>{if(x&&x.id&&(!m[x.id]||(x.ts||0)>(m[x.id].ts||0))){m[x.id]=x;diff=true}});out=Object.keys(m).map(i=>m[i])}
+ rawSet(k,JSON.stringify(out));return diff}
+function mark(kind,id,op){sq[kind][id]=(op||'p')+(++dseq)+'.'+Date.now();if(kind==='i')sq.x=1}
+async function pull(first,say){
+ const heads=await getDocs('kv',SK.concat(['imgidx']),['t','n']);let touched=false;remoteFiles=null;
+ for(const k of SK){const h=heads[k];
+  if(!h){if(first&&localStorage.getItem('pn_'+k)!=null)mark('k',k);continue}
+  if(first){const b=await getBig('kv',k);if(!b)continue;if(mergeKey(k,b.s))mark('k',k);else{delete sq.k[k];synct[k]=b.t}touched=true}
+  else if(!sq.k[k]&&fInt(h,'t')>(synct[k]||0)){const b=await getBig('kv',k);if(b){rawSet(k,b.s);synct[k]=b.t;touched=true}}}
+ lsSet('synct',synct);sqSave();if(touched)reloadState();
+ if(first||touched){let n=0;for(const m of fx.slice()){if(sq.f[m.id])continue;const loc=await fileGet(m.id),rm=first?(remoteFiles?remoteFiles[m.id]:null):m;
+   if(rm&&(!loc||(rm.ts||0)>(loc.ts||0))){const b=await getBig('file',m.id);if(b){await rawFile(m.id,b.s);say&&say('d',++n)}else if(loc&&first)mark('f',m.id)}
+   else if(first&&loc&&!rm)mark('f',m.id)}}
+ const ih=heads.imgidx;
+ if(ih&&(first||fInt(ih,'t')>(synct.imgidx||0))){const b=await getBig('kv','imgidx');let ridx=[];try{ridx=JSON.parse(b.s)||[]}catch(e){}
+  const need=ridx.filter(id=>!IMG[id]&&!sq.i[id]);let n=0;
+  for(let i=0;i<need.length;i+=4){const part=need.slice(i,i+4),m=await getDocs('img',part);for(const id of part){const f=m[id];if(!f)continue;const data=(fInt(f,'n')||1)>1?((await getBig('img',id,f))||{}).s:fStr(f);if(data){quiet++;putImg(id,data);quiet--;say&&say('d',++n)}}}
+  if(first){const rs=new Set(ridx);Object.keys(IMG).forEach(id=>{if(!rs.has(id))mark('i',id,'p')})}
+  synct.imgidx=b.t;lsSet('synct',synct);if(need.length&&!$('#app').hidden)render()}
+ else if(first&&!ih)Object.keys(IMG).forEach(id=>mark('i',id,'p'));
+ sqSave()}
+async function push(say){
+ const is=Object.keys(sq.i),fs=Object.keys(sq.f),ks=Object.keys(sq.k),total=is.length+fs.length+ks.length;let done=0;const step=()=>{done++;say&&say('u',done,total)};
+ for(const id of is){const v=sq.i[id];if(v.charAt(0)==='d'||!IMG[id])await delBig('img',id);else await putBig('img',id,IMG[id],Date.now());if(sq.i[id]===v){delete sq.i[id];sqSave()}step()}
+ for(const id of fs){const v=sq.f[id];if(v.charAt(0)==='d')await delBig('file',id);else{const o=await fileGet(id);if(o)await putBig('file',id,JSON.stringify(o),o.ts||Date.now())}if(sq.f[id]===v){delete sq.f[id];sqSave()}step()}
+ if(sq.x){const t0=Date.now();await putBig('kv','imgidx',JSON.stringify(Object.keys(IMG)),t0);synct.imgidx=t0;if(!Object.keys(sq.i).length){sq.x=0;sqSave()}}
+ for(const k of ks){const v=sq.k[k],str=localStorage.getItem('pn_'+k),t0=Date.now();if(str!=null){await putBig('kv',k,str,t0);synct[k]=t0}if(sq.k[k]===v){delete sq.k[k];sqSave()}step()}
+ lsSet('synct',synct)}
+async function syncNow(first,say){if(!CLD.ok||!au)return false;if(syncing){kick(4000);return false}
+ if(navigator.onLine===false){cloudUI('off');return false}
+ syncing=true;cloudUI('busy');let ok=false;
+ try{await imgsReady;await pull(!!first,say);await push(say);ok=true;lsSet('lastSync',Date.now());cloudUI('ok')}catch(e){cloudUI(navigator.onLine===false||String(e&&e.message)==='NET'?'off':'err')}
+ syncing=false;if(pendN()&&au)kick(ok?3000:45000);return ok}
+async function firstSync(isNew){const prev=S.get('lastUid','');let other=false;if(prev&&prev!==au.uid){wipeLocal();other=true;if(!$('#app').hidden)render()}lsSet('lastUid',au.uid);cloudUI('busy');
+ const s=sheet(`<h2>${t(isNew?'syUp':'syDown')}</h2><div class="pbar"><i id="pB"></i></div><p class="hint" id="pT" style="text-align:center;min-height:20px"></p>`);const g=ovGen;
+ const say=(kind,a,b)=>{if(g!==ovGen)return;const h2=s.querySelector('h2'),pb=s.querySelector('#pB'),pt=s.querySelector('#pT');if(kind==='u'){h2.textContent=t('syUp');pb.style.width=Math.max(4,Math.round(a/b*100))+'%';pt.textContent=a+' / '+b}else{h2.textContent=t('syDown');pt.textContent=String(a)}};
+ let ok=false;for(let k=0;k<4&&!ok;k++){ok=await syncNow(true,say);if(!ok&&syncing)await new Promise(r=>setTimeout(r,1500));else break}
+ if(g===ovGen)closeSheet();if(!$('#app').hidden)render();toast(t(ok?(other?'acOther':'syDone'):'syFail'))}
+window.addEventListener('online',()=>{if(au)kick(800)});
+window.addEventListener('offline',()=>{if(au)cloudUI('off')});
+setInterval(()=>{if(au&&!document.hidden&&(pendN()||Date.now()-S.get('lastSync',0)>600000))syncNow()},120000);
 
 /* auto-lock after 60s away */
 let hiddenAt=0;
-document.addEventListener('visibilitychange',()=>{if(document.hidden)hiddenAt=Date.now();else if(hiddenAt&&Date.now()-hiddenAt>60000&&S.get('pin','')&&!$('#app').hidden)showLock('enter');else checkDue()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)hiddenAt=Date.now();else if(hiddenAt&&Date.now()-hiddenAt>60000&&S.get('pin','')&&!$('#app').hidden)showLock('enter');else{checkDue();if(au&&!$('#app').hidden)kick(1200)}});
 
+
+/* ---------- مخيمي: camp representative tab (v18) ---------- */
+const X=(a,e)=>lang==='ar'?a:e;
+const CM_KEYS=['fam','com','org','dist','need','meet'];
+const CM_ROLES=['المندوب','نائب المندوب','أمين السجلات','مسؤول التوزيع','مسؤولة النساء','الشباب والنظافة والمي','الحالات الخاصة'];
+let camp=null,cmView='home',cmDistId='',cmBusy=false,cmLast=0,cmT=0,cmState='';
+function cmDefault(){return{v:1,info:{name:'مخيم منتزه الحياة',area:'مواصي خانيونس · جنوب النص',ts:1},cid:'',code:'',role:'admin',pend:'',pcode:'',cols:null,reqN:0,members:{},
+ fam:[],com:[{id:'c_rep',ts:1,name:'أبو ليلى',role:'المندوب',phone:''},{id:'c_dep',ts:1,name:'جبريل طبش',role:'نائب المندوب',phone:''}],org:[],dist:[],need:[],meet:[]}}
+function cmFix(){if(!camp||typeof camp!=='object')camp=cmDefault();const d=cmDefault();CM_KEYS.forEach(k=>{if(!Array.isArray(camp[k]))camp[k]=d[k]});if(!camp.info||typeof camp.info!=='object')camp.info=d.info;if(!camp.members||typeof camp.members!=='object')camp.members={};['cid','code','pend','pcode'].forEach(k=>{if(typeof camp[k]!=='string')camp[k]=''});if(!camp.role)camp.role='admin'}
+function cmLoad(){camp=S.get('camp',null);cmFix()}
+const cmL=k=>camp[k].filter(x=>x&&!x.del);
+const cmCan=()=>!camp.cid||camp.role!=='view';
+const cmNum=v=>{const n=parseInt(latin(String(v==null?'':v)).replace(/[^\d]/g,''),10);return isNaN(n)?0:n};
+const cmPhone=v=>{let d=latin(String(v==null?'':v)).replace(/\.0+$/,'').replace(/[^\d+]/g,'');if(/^5\d{8}$/.test(d))d='0'+d;return d};
+const cmId=v=>{let s=String(v==null?'':v).trim();if(typeof v==='number')s=String(Math.round(v));s=latin(s).replace(/\.0+$/,'');return s};
+const cmAr=n=>lang==='ar'?Number(n||0).toLocaleString('ar-EG'):String(n||0);
+function cmPut(k,rec){rec.ts=Date.now();const i=camp[k].findIndex(x=>x.id===rec.id);if(i>-1)camp[k][i]=rec;else camp[k].push(rec);cmSave()}
+function cmDel(k,id){const i=camp[k].findIndex(x=>x.id===id);if(i>-1)camp[k][i]={id,ts:Date.now(),del:1};cmSave()}
+function cmSave(){camp.lt=Date.now();if(!S.set('camp',camp))$('#storeWarn').hidden=false;cmTakiya();cmKick()}
+function cmTakiya(){try{if(!tk||!Array.isArray(tk.camps))return;const key=norm('منتزه الحياة'),c=tk.camps.find(x=>norm(x.name).includes(key));if(!c)return;const f=cmL('fam'),fam=String(f.length),ppl=String(f.reduce((a,x)=>a+cmNum(x.size),0));if(c.fam!==fam||c.people!==ppl){c.fam=fam;c.people=ppl;tkSave()}}catch(e){}}
+function cmStats(){const f=cmL('fam'),s=k=>f.reduce((a,x)=>a+cmNum(x[k]),0);
+ const wk=Date.now()-7*864e5;let mv=0;cmL('need').filter(n=>n.kind==='move'&&(n.ts0||n.ts)>wk).forEach(n=>mv+=(n.dir==='out'?-1:1)*(cmNum(n.n)||1));
+ return{fam:f.length,ppl:s('size'),u5:s('u5'),old:s('old'),preg:s('preg'),dis:s('dis'),noTent:f.filter(x=>!String(x.tent||'').trim()).length,open:cmL('need').filter(n=>n.st!=='done'&&n.kind!=='move').length,mv}}
+
+/* ---- merge (shared + account copy) ---- */
+function cmMergeList(a,b){const m={};(a||[]).concat(b||[]).forEach(x=>{if(!x||!x.id)return;const o=m[x.id];if(!o||(x.ts||0)>(o.ts||0))m[x.id]=x});return Object.keys(m).sort().map(k=>m[k])}
+function cmShared(c){const o={info:c.info,cols:c.cols||null};CM_KEYS.forEach(k=>o[k]=c[k]);return o}
+function cmMerge(L,R){const out=Object.assign({},L);CM_KEYS.forEach(k=>out[k]=cmMergeList(L&&L[k],R&&R[k]));const li=(L&&L.info)||{},ri=(R&&R.info)||{};out.info=(ri.ts||0)>(li.ts||0)?ri:li;out.cols=(R&&R.cols&&!(L&&L.cols))?R.cols:(L&&L.cols)||(R&&R.cols)||null;return out}
+
+/* ---- shared camp sync (Firestore) ---- */
+const cmP=p=>FSB()+'/'+p;
+const sv=v=>({stringValue:String(v==null?'':v)});
+const mapv=o=>({mapValue:{fields:Object.keys(o).reduce((a,k)=>{a[k]=sv(o[k]);return a},{})}});
+const unmap=f=>{const o={},m=(f&&f.mapValue&&f.mapValue.fields)||{};for(const k in m)o[k]=m[k].stringValue;return o};
+const cmOn=()=>CLD.ok&&!!au;
+function cmKick(ms){clearTimeout(cmT);if(camp&&(camp.cid||camp.pend)&&cmOn())cmT=setTimeout(()=>cmSync(),ms||2500)}
+function cmSt(s){cmState=s;const e=$('#cmSync');if(e){e.className='cloud '+({ok:'ok',busy:'busy',off:'off',err:'err'}[s]||'');e.querySelector('span').textContent=cmStText()}}
+function cmStText(){if(!camp.cid)return '';return {busy:X('بيتزامن مع اللجنة…','Syncing with committee…'),off:X('بدون نت · بيتزامن لما يرجع','Offline · will sync later'),err:X('ما زبط التزامن · اضغط للمحاولة','Sync failed · tap to retry')}[cmState]||X('متزامن مع اللجنة','Synced with committee')+(cmLast?' · '+new Date(cmLast).toLocaleTimeString(lang==='ar'?'ar':'en-GB',{hour:'numeric',minute:'2-digit'}):'')}
+async function cmSync(say){if(cmBusy||!cmOn()||!camp)return;if(!camp.cid&&!camp.pend)return;cmBusy=true;cmSt('busy');
+ try{
+  if(camp.pend){let m=null;try{m=await fsReq('GET',cmP('camps/'+camp.pend))}catch(e){if(e.message==='NET')throw e}
+   if(m&&m.fields&&unmap(m.fields.roles)[au.uid]){camp.cid=camp.pend;camp.code=camp.pcode;camp.pend='';camp.pcode='';toast(X('المندوب وافق على طلبك','Your request was approved'))}
+   else{cmBusy=false;cmSt('');if(say)toast(X('الطلب لسا بانتظار الموافقة','Still waiting for approval'));return}}
+  let meta=null;try{meta=await fsReq('GET',cmP('camps/'+camp.cid))}catch(e){if(!/FS403/.test(e.message))throw e}const roles=meta&&meta.fields?unmap(meta.fields.roles):{};
+  if(!roles[au.uid]){toast(X('ما عاد إلك وصول لهذا المخيم','You no longer have access to this camp'));camp.cid='';camp.role='admin';camp.code='';S.set('camp',camp);cmBusy=false;cmSt('');if(tab===7)render();return}
+  camp.role=roles[au.uid];camp.members=unmap(meta.fields.names);camp.mroles=roles;camp.code=(meta.fields.code&&meta.fields.code.stringValue)||camp.code;
+  for(let n=0;n<3;n++){const doc=await fsReq('GET',cmP('camps/'+camp.cid+'/data/main'));let R=null;if(doc&&doc.fields){try{R=JSON.parse(fStr(doc.fields))}catch(e){}}
+   const M=cmMerge(camp,R||{}),RN=cmMerge({},R||{});Object.assign(camp,M);
+   const same=R&&JSON.stringify(cmShared(M))===JSON.stringify(cmShared(RN));
+   if(same||camp.role==='view')break;
+   const body=JSON.stringify(cmShared(camp));if(body.length>950000){toast(X('الكشف كبير كثير للمزامنة','Camp data too large to sync'));break}
+   const pre=doc&&doc.updateTime?'?currentDocument.updateTime='+encodeURIComponent(doc.updateTime):'?currentDocument.exists=false';
+   try{await fsReq('PATCH',cmP('camps/'+camp.cid+'/data/main')+pre,{fields:{s:sv(body),t:{integerValue:String(Date.now())}}});break}catch(e){if(!/FS(400|409|412)/.test(e.message))throw e}}
+  if(camp.role==='admin'){try{const r=await fsReq('GET',cmP('camps/'+camp.cid+'/requests'));camp.reqs=((r&&r.documents)||[]).map(d=>({uid:d.name.split('/').pop(),name:(d.fields.name||{}).stringValue||'',email:(d.fields.email||{}).stringValue||''}));camp.reqN=camp.reqs.length}catch(e){}}
+  S.set('camp',camp);cmTakiya();cmLast=Date.now();cmSt('ok');if(say)toast(X('تمت المزامنة','Synced'));if(tab===7&&!document.querySelector('.cmov')&&ov.hidden)render()}
+ catch(e){cmSt(e.message==='NET'?'off':'err');if(say)toast(e.message==='NET'?X('ما في نت','No internet'):X('ما زبط، جرّب كمان شوي','Failed, try again'))}
+ finally{cmBusy=false}}
+setInterval(()=>{if(!document.hidden&&camp&&(camp.cid||camp.pend)&&!$('#app').hidden&&Date.now()-cmLast>(tab===7?60000:300000))cmSync()},30000);
+window.addEventListener('online',()=>cmKick(1500));
+function cmRand(){let s='';const a=new Uint32Array(6);try{crypto.getRandomValues(a)}catch(e){for(let i=0;i<6;i++)a[i]=Math.random()*1e9}for(let i=0;i<6;i++)s+=a[i]%10;return s.charAt(0)==='0'?'7'+s.slice(1):s}
+async function cmCreate(){if(!cmOn()){acctScreen('in');return}toast(X('بنجهّز المخيم المشترك…','Setting up shared camp…'));
+ try{let code='';for(let i=0;i<5;i++){const c=cmRand();const ex=await fsReq('GET',cmP('campcodes/'+c)).catch(e=>{if(e.message==='NET'||/FS403/.test(e.message))throw e;return 1});if(!ex){code=c;break}}if(!code)throw new Error('CODE');
+  const cid=(uid()+uid()).replace(/[^a-z0-9]/g,''),me=au.name||au.email||'';
+  await fsReq('PATCH',cmP('camps/'+cid)+'?currentDocument.exists=false',{fields:{owner:sv(au.uid),name:sv(camp.info.name),code:sv(code),roles:mapv({[au.uid]:'admin'}),names:mapv({[au.uid]:me})}});
+  await fsReq('PATCH',cmP('campcodes/'+code)+'?currentDocument.exists=false',{fields:{camp:sv(cid),owner:sv(au.uid)}});
+  camp.cid=cid;camp.code=code;camp.role='admin';S.set('camp',camp);await cmSync();render();cmShareCode()}
+ catch(e){toast(e.message==='NET'?X('بدها نت أول مرة','Needs internet the first time'):(/FS403/.test(e.message)?X('لازم تحدّث قواعد Firebase أول','Update the Firebase rules first'):X('ما زبط، جرّب كمان مرة','Failed, try again')))}}
+function cmShareCode(){const txt=X('انضم للجنة '+camp.info.name+' على تطبيق ملاحظاتي:\n١. افتح https://bssmzarifa.github.io/notes/ وثبّته\n٢. اعمل حساب\n٣. تبويب مخيمي ← انضم بكود ← اكتب '+camp.code,'Join the '+camp.info.name+' committee in Pocket Notes:\n1. Open https://bssmzarifa.github.io/notes/ and install it\n2. Create an account\n3. My camp tab → Join with code → '+camp.code);
+ const s=sheet(`<h2>${X('كود المخيم','Camp code')}</h2><div class="cmcode">${esc(camp.code)}</div><p class="hint">${X('ابعته لأعضاء اللجنة. كل واحد بيكتبه بتطبيقه، وأنت بتوافق عليه.','Send it to committee members. Each one types it in the app, then you approve them.')}</p><button class="b wa" id="kS">${X('إرسال الكود واتساب','Send code')}</button><button class="b" id="iClose">${t('close')}</button>`);
+ s.querySelector('#iClose').onclick=closeSheet;s.querySelector('#kS').onclick=()=>{closeSheet();shareRaw(txt)}}
+function cmJoinSheet(){if(!cmOn()){acctScreen('in');return}
+ const s=sheet(`<h2>${X('انضم لمخيم بكود','Join a camp')}</h2><p class="hint">${X('اطلب الكود من مندوب المخيم. بعد ما يوافق، كشف المخيم بيظهر عندك.','Ask the camp rep for the code. After approval the camp list appears here.')}</p><input class="in cmin" id="jC" inputmode="numeric" maxlength="6" dir="ltr" placeholder="483920" style="text-align:center;font-size:24px;letter-spacing:6px"><div class="err" id="jE"></div><div class="acts"><button class="b" id="jN">${t('cancel')}</button><button class="b pri" id="jY">${X('إرسال الطلب','Send request')}</button></div>`);
+ s.querySelector('#jN').onclick=closeSheet;
+ s.querySelector('#jY').onclick=async()=>{const code=latin(s.querySelector('#jC').value).replace(/\D/g,'');const er=s.querySelector('#jE');if(code.length!==6){er.textContent=X('الكود ٦ أرقام','The code is 6 digits');return}
+  try{const j=await fsReq('GET',cmP('campcodes/'+code));if(!j||!j.fields){er.textContent=X('ما في مخيم بهالكود','No camp with this code');return}const cid=j.fields.camp.stringValue;
+   await fsReq('PATCH',cmP('camps/'+cid+'/requests/'+au.uid),{fields:{name:sv(au.name||''),email:sv(au.email||''),t:{integerValue:String(Date.now())}}});
+   camp.pend=cid;camp.pcode=code;S.set('camp',camp);closeSheet();render();toast(X('انبعث الطلب للمندوب','Request sent'))}
+  catch(e){er.textContent=e.message==='NET'?X('ما في نت','No internet'):X('ما زبط، جرّب كمان مرة','Failed, try again')}}}
+async function cmMembers(){if(!camp.cid)return;await cmSync();const roles=camp.mroles||{},names=camp.members||{},me=au&&au.uid,adm=camp.role==='admin';
+ const rl=r=>({admin:X('مسؤول','Admin'),edit:X('بيعدّل','Can edit'),view:X('بس بيشوف','View only')}[r]||r);
+ const reqs=(camp.reqs||[]).map(r=>`<div class="trow"><div class="m"><b>${esc(r.name||r.email)}</b><span dir="ltr">${esc(r.email)}</span></div><button class="mini" data-ok="${esc(r.uid)}" data-r="edit">${X('يعدّل','Edit')}</button><button class="mini" data-ok="${esc(r.uid)}" data-r="view">${X('يشوف','View')}</button><button class="mini" data-no="${esc(r.uid)}">✕</button></div>`).join('');
+ const mem=Object.keys(roles).map(u=>`<div class="trow"><div class="m"><b>${esc(names[u]||u.slice(0,6))}${u===me?X(' (أنت)',' (you)'):''}</b><span>${rl(roles[u])}</span></div>${adm&&u!==me?`<button class="mini" data-rl="${esc(u)}">${X('تغيير','Change')}</button>`:''}</div>`).join('');
+ const s=sheet(`<h2>${X('أعضاء اللجنة على التطبيق','Committee members')}</h2>${adm?`<div class="cmcode sm">${X('الكود','Code')}: ${esc(camp.code)}</div>`:''}${reqs?`<div class="rphead">${X('طلبات انضمام','Join requests')}</div>${reqs}`:''}<div class="rphead">${X('الأعضاء','Members')}</div>${mem}${adm?`<button class="b wa" id="mC">${X('إرسال الكود','Send code')}</button>`:`<button class="b dng" id="mL">${X('اترك المخيم','Leave camp')}</button>`}<button class="b" id="iClose">${t('close')}</button>`);
+ s.querySelector('#iClose').onclick=closeSheet;const mc=s.querySelector('#mC');if(mc)mc.onclick=()=>{closeSheet();cmShareCode()};
+ const ml=s.querySelector('#mL');if(ml)ml.onclick=()=>confirmSheet(X('اترك المخيم','Leave camp'),X('الكشف بيضل على جوالك، بس ما عاد بيتزامن مع اللجنة.','The list stays on your phone but stops syncing.'),X('اترك','Leave'),()=>{camp.cid='';camp.code='';camp.role='admin';S.set('camp',camp);render()});
+ const setRoles=async(fn,msg)=>{try{const m=await fsReq('GET',cmP('camps/'+camp.cid));const R=unmap(m.fields.roles),N=unmap(m.fields.names);fn(R,N);await fsReq('PATCH',cmP('camps/'+camp.cid)+'?updateMask.fieldPaths=roles&updateMask.fieldPaths=names',{fields:{roles:mapv(R),names:mapv(N)}});toast(msg);closeSheet();cmMembers()}catch(e){toast(X('ما زبط، جرّب كمان مرة','Failed, try again'))}};
+ s.querySelectorAll('[data-ok]').forEach(b=>b.onclick=()=>{const u=b.dataset.ok,r=(camp.reqs||[]).find(x=>x.uid===u)||{};setRoles((R,N)=>{R[u]=b.dataset.r;N[u]=r.name||r.email||''},X('انضاف للجنة','Added')).then(()=>fsReq('DELETE',cmP('camps/'+camp.cid+'/requests/'+u)).catch(()=>{}))});
+ s.querySelectorAll('[data-no]').forEach(b=>b.onclick=async()=>{try{await fsReq('DELETE',cmP('camps/'+camp.cid+'/requests/'+b.dataset.no));toast(X('انرفض الطلب','Declined'));closeSheet();cmMembers()}catch(e){toast(X('ما زبط','Failed'))}});
+ s.querySelectorAll('[data-rl]').forEach(b=>b.onclick=()=>{const u=b.dataset.rl;const s2=sheet(`<h2>${esc(names[u]||'')}</h2><button class="b" data-x="admin">${rl('admin')}</button><button class="b" data-x="edit">${rl('edit')}</button><button class="b" data-x="view">${rl('view')}</button><button class="b dng" data-x="rm">${X('شيله من اللجنة','Remove')}</button><button class="b" id="iClose">${t('close')}</button>`);s2.querySelector('#iClose').onclick=()=>{closeSheet();cmMembers()};
+  s2.querySelectorAll('[data-x]').forEach(x=>x.onclick=()=>setRoles((R,N)=>{if(x.dataset.x==='rm'){delete R[u];delete N[u]}else R[u]=x.dataset.x},t('saved')))})}
+
+/* ---- Excel import / export ---- */
+const CM_F=[['hid2',['رقم الهوية2','رقم هوية الزوجه','هوية الزوجه','رقم هويه الزوجه']],['wife',['اسم الزوجه','الزوجه']],['size',['عدد الافراد','اجمالي عدد الافراد','عدد افراد','الافراد']],['phone',['رقم الجوال','الجوال','جوال','رقم الهاتف','الهاتف','موبايل']],
+ ['stat',['الحاله الاجتماعيه','الحاله']],['hid',['رقم الهويه','الهويه','رقم هويه']],['head',['الاسم رباعي','اسم الزوج','اسم رب الاسره','رب الاسره','الاسم الرباعي','الاسم']],['origin',['المحافظه','المنطقه الاصليه','السكن الاصلي','البلد']],['housing',['نوع السكن']],['place',['مكان الاقامه','مكان السكن','العنوان']],['campn',['اسم المخيم','المخيم']],
+ ['tent',['رقم الخيمه','الخيمه']],['u5',['تحت 5','تحت ٥','اطفال']],['old',['كبار السن','مسن']],['preg',['حوامل','مرضعات']],['dis',['اعاقه','مرض مزمن','امراض مزمنه']],['notes',['ملاحظات','ملاحظه']],['skip',['م','العدد','الرقم','#','ت']]];
+const CM_FL=()=>({head:X('اسم رب الأسرة','Head of family'),hid:X('رقم الهوية','ID number'),wife:X('اسم الزوجة','Wife'),hid2:X('رقم هوية الزوجة','Wife ID'),stat:X('الحالة الاجتماعية','Status'),size:X('عدد الأفراد','Family size'),phone:X('الجوال','Phone'),origin:X('المحافظة / من وين','Origin'),housing:X('نوع السكن','Housing'),place:X('مكان الإقامة','Location'),campn:X('اسم المخيم','Camp'),tent:X('رقم الخيمة','Tent'),u5:X('أطفال تحت ٥','Under 5'),old:X('كبار سن','Elderly'),preg:X('حوامل ومرضعات','Pregnant/nursing'),dis:X('إعاقة / مرض مزمن','Disability'),notes:X('ملاحظات','Notes'),skip:X('— تجاهل —','— skip —')});
+const cmH=s=>norm(String(s||'')).replace(/\s+/g,' ').replace(/[()\-_:]/g,'').trim();
+function cmGuess(h,used){const n=cmH(h);if(!n)return 'skip';for(const [f,syn] of CM_F){if(f==='skip'){if(syn.some(x=>n===x))return 'skip';continue}
+  if(syn.some(x=>n===x||(x.length>2&&n.includes(x)))){if(f==='hid'&&used.hid&&used.wife&&!used.hid2)return 'hid2';if(f==='hid'&&used.hid)return used.hid2?'skip':'hid2';if(used[f]&&f!=='notes')continue;return f}}return 'notes'}
+async function cmImport(file){toast(t('xLoading'));let XL;try{XL=await loadXLSX()}catch(e){toast(t('xLibFail'));return}
+ let rows;try{const wb=XL.read(await file.arrayBuffer(),{type:'array'});let best=null;wb.SheetNames.forEach(n=>{const r=XL.utils.sheet_to_json(wb.Sheets[n],{header:1,raw:true,defval:''});if(!best||r.length>best.length)best=r});rows=best||[]}catch(e){toast(t('xBad'));return}
+ let hi=-1,bestN=0;for(let i=0;i<Math.min(12,rows.length);i++){const used={};let n=0;rows[i].forEach(h=>{const g=cmGuess(h,used);if(g!=='notes'&&g!=='skip'){used[g]=1;n++}});if(n>bestN){bestN=n;hi=i}}
+ if(hi<0||bestN<2){toast(X('ما لقيت عناوين أعمدة بالملف','No column headers found'));return}
+ const head=rows[hi],used={},map=head.map(h=>{const g=String(h).trim()?cmGuess(h,used):'skip';if(g!=='skip'&&g!=='notes')used[g]=1;return g});
+ const title=rows.slice(0,hi).map(r=>r.filter(Boolean).join(' ')).join(' ');
+ const data=rows.slice(hi+1).filter(r=>r.some(v=>String(v).trim()!==''));
+ const FL=CM_FL(),opts=v=>Object.keys(FL).map(k=>`<option value="${k}" ${k===v?'selected':''}>${esc(FL[k])}</option>`).join('');
+ const s=sheet(`<h2>${X('استيراد الكشف','Import list')}</h2>${title?`<p class="hint" dir="auto">${esc(title.slice(0,200))}</p>`:''}<p class="hint">${X('هيك فهمت الأعمدة. صحّح أي واحد غلط:','This is how I read the columns. Fix any that are wrong:')}</p>
+  <div class="cmmap">${head.map((h,i)=>String(h).trim()?`<label class="cmmr"><span dir="auto">${esc(String(h).trim())}</span><select class="in" data-i="${i}">${opts(map[i])}</select></label>`:'').join('')}</div>
+  <p class="hint" id="iN"></p><label class="cmmr"><span>${X('إذا رقم الهوية موجود','If ID already exists')}</span><select class="in" id="iM"><option value="up">${X('حدّث بياناتها','Update it')}</option><option value="skip">${X('اتركها زي ما هي','Keep old')}</option></select></label>
+  <div class="acts"><button class="b" id="iNo">${t('cancel')}</button><button class="b pri" id="iGo">${X('استيراد','Import')}</button></div>`);
+ const count=()=>{const ids=new Set(cmL('fam').map(f=>f.hid).filter(Boolean));const hc=map.indexOf('hid');let dup=0;if(hc>-1)data.forEach(r=>{if(ids.has(cmId(r[hc])))dup++});s.querySelector('#iN').textContent=X(data.length+' عيلة بالملف'+(dup?' · '+dup+' موجودين من قبل':''),data.length+' families'+(dup?' · '+dup+' already in list':''))};count();
+ s.querySelectorAll('select[data-i]').forEach(sel=>sel.onchange=()=>{map[+sel.dataset.i]=sel.value;count()});
+ s.querySelector('#iNo').onclick=closeSheet;
+ s.querySelector('#iGo').onclick=()=>{const mode=s.querySelector('#iM').value,byId={};cmL('fam').forEach(f=>{if(f.hid)byId[f.hid]=f});let add=0,up=0,now=Date.now();
+  data.forEach(r=>{const o={};const extra=[];map.forEach((f,i)=>{const v=r[i];if(v===''||v==null||f==='skip'||/^[\s\/\\\-_.،,]*$/.test(String(v)))return;if(f==='notes'){if(String(head[i]).trim()&&cmH(head[i])!=='ملاحظات')extra.push(String(head[i]).trim()+': '+v);else extra.push(String(v))}else if(f==='hid'||f==='hid2')o[f]=cmId(v);else if(f==='phone')o[f]=cmPhone(v);else if(['size','u5','old','preg','dis'].includes(f))o[f]=String(cmNum(v)||'');else o[f]=String(v).trim()});
+   if(extra.length)o.notes=extra.join(' · ');if(!o.head&&!o.hid)return;
+   const ex=o.hid&&byId[o.hid];if(ex){if(mode==='up'){const n=Object.assign({},ex);Object.keys(o).forEach(k=>{if(o[k]!=='')n[k]=o[k]});n.ts=now;Object.assign(ex,n);up++}}
+   else{const rec=Object.assign({id:uid(),ts:now},o);camp.fam.push(rec);if(rec.hid)byId[rec.hid]=rec;add++}});
+  camp.cols=head.map((h,i)=>({h:String(h).trim(),f:map[i]})).filter(c=>c.h&&c.f!=='skip');camp.info.ts=Date.now();
+  cmSave();closeSheet();cmView='fam';render();toast(X('انضاف '+add+(up?' · انحدّث '+up:''),'Added '+add+(up?' · updated '+up:'')))}}
+async function cmExport(){toast(t('xLoading'));let XL;try{XL=await loadXLSX()}catch(e){toast(t('xLibFail'));return}
+ const FL=CM_FL(),order=[];(camp.cols||[]).forEach(c=>{if(c.f!=='notes'&&!order.some(o=>o.f===c.f))order.push({f:c.f,h:c.h})});
+ ['head','hid','stat','wife','hid2','size','phone','origin','housing','place','tent','u5','old','preg','dis','notes'].forEach(f=>{if(!order.some(o=>o.f===f))order.push({f,h:FL[f]})});
+ const rows=[[camp.info.name+' · '+X('المندوب','Rep')+': '+((cmL('com').find(c=>c.role==='المندوب')||{}).name||'')],[X('م','#')].concat(order.map(o=>o.h))];
+ cmL('fam').sort((a,b)=>String(a.head||'').localeCompare(String(b.head||''),'ar')).forEach((f,i)=>rows.push([i+1].concat(order.map(o=>{const v=f[o.f];return ['size','u5','old','preg','dis'].includes(o.f)&&v!==''&&v!=null?cmNum(v):(v||'')}))));
+ const ws=XL.utils.aoa_to_sheet(rows);ws['!cols']=[{wch:4}].concat(order.map(o=>({wch:o.f==='head'||o.f==='wife'?26:o.f==='notes'||o.f==='place'?30:14})));ws['!merges']=[{s:{r:0,c:0},e:{r:0,c:order.length}}];
+ const wb=XL.utils.book_new();XL.utils.book_append_sheet(wb,ws,X('الكشف','List'));wb.Workbook={Views:[{RTL:lang==='ar'}]};
+ const buf=XL.write(wb,{type:'array',bookType:'xlsx'});fileReady(new File([buf],(camp.info.name||'camp')+' - '+ymd(new Date())+'.xlsx',{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}))}
+
+/* ---- views ---- */
+const cmChip=(k,lab,n)=>`<button class="tkpchip ${cmView===k?'on':''}" data-cmv="${k}">${lab}${n?` <small>${n}</small>`:''}</button>`;
+const cmTel=p=>{const tel=telOf(p||'');return tel.replace(/\D/g,'').length>=7?`<a class="mini call" href="tel:${esc(tel)}">${t('call')}</a><a class="mini wa" href="https://wa.me/${esc(waNum(p))}" target="_blank" rel="noopener">WA</a>`:''};
+const cmBadge=(txt,k)=>`<em class="cmtag ${k||''}">${esc(txt)}</em>`;
+const WD=()=>lang==='ar'?['أحد','إثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت']:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+function campHome(){cmFix();const st=cmStats(),q=norm(query.trim());
+ const chips=`<div class="rpchips cmchips">${cmChip('home',X('اللوحة','Board'))}${cmChip('fam',X('العائلات','Families'),st.fam)}${cmChip('com',X('اللجنة','Committee'))}${cmChip('org',X('المنظمات','Organizations'))}${cmChip('dist',X('التوزيعات','Distributions'))}${cmChip('need',X('الاحتياجات','Needs'),st.open)}${cmChip('rep',X('التقرير','Report'))}</div>`;
+ const head=`<div class="cd tape wide cmhead${lang==='ar'?' arx':''}"><div><b>${esc(camp.info.name)}</b><span>${esc(camp.info.area||'')}</span></div>${cmCan()?`<button class="mini" data-cminfo="1">${X('تعديل','Edit')}</button>`:''}</div>`;
+ const sync=camp.cid&&cmOn()?`<button class="cloud" id="cmSync" data-cmsync="1"><i></i><span></span></button>`:'';
+ $('#info').innerHTML='';
+ let body='';const v=q&&cmView!=='fam'&&cmView!=='dist1'?'fam':cmView;
+ if(v==='home')body=cmHomeV(st);else if(v==='fam')body=cmFamV(q);else if(v==='com')body=cmComV();else if(v==='org')body=cmOrgV();else if(v==='dist')body=cmDistV();else if(v==='dist1')body=cmDist1V(q);else if(v==='need')body=cmNeedV();else body=cmRepV(st);
+ $('#grid').innerHTML=sync+head+chips+body;if(sync)cmSt(cmState||'ok');
+ if(camp.cid&&cmOn()&&Date.now()-cmLast>60000)cmKick(300);
+ const fb=$('#fab');if(fb)fb.hidden=!cmCan()||v==='home'||v==='rep'}
+function cmHomeV(st){const m=(n,l,k)=>`<div class="${k||''}"><b>${cmAr(n)}</b><span>${l}</span></div>`;
+ const wd=new Date().getDay(),today=cmL('org').filter(o=>(o.days||[]).indexOf(wd)>-1),urgent=cmL('need').filter(n=>n.st!=='done'&&n.kind!=='move').sort((a,b)=>(a.pr||2)-(b.pr||2)).slice(0,3);
+ let h=`<div class="cd tape wide"><div class="cmg">${m(st.fam,X('عائلة','families'))}${m(st.ppl,X('فرد','people'))}${m(st.u5,X('طفل تحت ٥','under 5'),'w')}${m(st.old,X('كبار سن','elderly'),'w')}${m(st.preg,X('حوامل ومرضعات','pregnant/nursing'),'w')}${m(st.dis,X('إعاقة أو مرض مزمن','disability'),'w')}</div>
+  ${st.mv?`<p class="hint">${X('حركة آخر ٧ أيام: ','Last 7 days movement: ')}${st.mv>0?'+':''}${cmAr(st.mv)} ${X('عيلة','families')}</p>`:''}
+  ${st.fam&&st.noTent?`<p class="hint">${X(cmAr(st.noTent)+' عيلة ناقصها رقم الخيمة أو الحالات الخاصة. عبّيها مع الوقت حتى تطلع الأرقام صح.',st.noTent+' families have no tent number yet.')}</p>`:''}
+  ${!st.fam?`<p class="hint">${X('ابدأ باستيراد كشف العائلات من إكسل.','Start by importing the family list from Excel.')}</p>${cmCan()?`<button class="mini" data-cmimp="1" style="width:100%;justify-content:center">${X('استيراد كشف إكسل','Import Excel list')}</button>`:''}`:''}</div>`;
+ if(today.length)h+=`<div class="cd tape wide"><div class="rphead">${X('اليوم','Today')}</div>${today.map(o=>`<div class="trow"><div class="m"><b>${esc(o.name)}</b><span>${esc(o.service||'')}</span></div>${cmTel(o.phone)}</div>`).join('')}</div>`;
+ if(urgent.length)h+=`<div class="cd tape wide"><div class="rphead">${X('مشاكل مفتوحة','Open issues')}</div>${urgent.map(cmNeedRow).join('')}</div>`;
+ h+=cmShareCard();return h}
+function cmShareCard(){let b='';
+ if(!CLD.ok)return '';
+ if(!au)b=`<p class="hint">${X('حتى جبريل وباقي اللجنة يشوفوا نفس الكشف، سجّل دخولك بحسابك أول.','Sign in so your committee can share this list.')}</p><button class="mini" data-cmacct="1" style="width:100%;justify-content:center">${X('تسجيل الدخول','Sign in')}</button>`;
+ else if(camp.pend)b=`<p class="hint">${X('طلبك بانتظار موافقة المندوب.','Waiting for the rep to approve you.')}</p><div class="pact" style="gap:8px"><button class="mini" data-cmsync="1" style="flex:1;justify-content:center">${X('تحقّق','Check')}</button><button class="mini" data-cmcancel="1" style="flex:1;justify-content:center">${t('cancel')}</button></div>`;
+ else if(!camp.cid)b=`<p class="hint">${X('شارك الكشف مع اللجنة: كل عضو بحسابه، وأنت بتقرر مين بيعدّل ومين بس بيشوف.','Share with your committee: each member with their own account; you decide who edits.')}</p><div class="pact" style="gap:8px"><button class="mini" data-cmnew="1" style="flex:1;justify-content:center">${X('شارك مع اللجنة','Share')}</button><button class="mini" data-cmjoin="1" style="flex:1;justify-content:center">${X('انضم بكود','Join with code')}</button></div>`;
+ else{const n=Object.keys(camp.mroles||{}).length||1;b=`<p class="hint">${X('مشترك مع '+cmAr(n)+' من اللجنة · دورك: ','Shared with '+n+' · your role: ')}${{admin:X('مسؤول','admin'),edit:X('بيعدّل','editor'),view:X('بس بيشوف','viewer')}[camp.role]||''}</p><button class="mini" data-cmmem="1" style="width:100%;justify-content:center">${X('الأعضاء','Members')}${camp.reqN&&camp.role==='admin'?' · '+cmAr(camp.reqN)+X(' طلب جديد',' new'):''}</button>`}
+ return `<div class="cd tape wide"><div class="rphead">${X('اللجنة على التطبيق','Committee sharing')}</div>${b}</div>`}
+function cmFamRow(f){const tags=[];if(cmNum(f.u5))tags.push(cmBadge(cmAr(f.u5)+X(' تحت ٥',' <5'),'a'));if(cmNum(f.old))tags.push(cmBadge(X('مسن','elderly'),'a'));if(cmNum(f.preg))tags.push(cmBadge(X('حامل/مرضع','pregnant'),'a'));if(cmNum(f.dis))tags.push(cmBadge(X('إعاقة','disability'),'r'));
+ const sub=[f.tent?X('خيمة ','Tent ')+f.tent:'',f.size?cmAr(cmNum(f.size))+X(' أفراد',' people'):'',f.origin||''].filter(Boolean).join(' · ');
+ return `<div class="trow tap" data-cmfam="${f.id}" role="button" tabindex="0"><span class="tth cmtent">${esc(f.tent||'—')}</span><div class="m"><b>${hl(f.head||f.wife||'')}</b><span>${hl(sub)}</span>${tags.length?`<div>${tags.join('')}</div>`:''}</div></div>`}
+function cmFamV(q){let f=cmL('fam');if(q)f=f.filter(x=>norm([x.head,x.wife,x.hid,x.hid2,x.tent,x.phone,x.origin].join(' ')).includes(q));f.sort((a,b)=>String(a.head||'').localeCompare(String(b.head||''),'ar'));
+ const tools=`<div class="pact" style="gap:8px;margin-bottom:8px">${cmCan()?`<button class="mini" data-cmimp="1" style="flex:1;justify-content:center">${X('استيراد إكسل','Import Excel')}</button>`:''}<button class="mini" data-cmexp="1" style="flex:1;justify-content:center">${X('تصدير إكسل','Export Excel')}</button></div>`;
+ return `<div class="cd tape wide">${tools}${q?`<p class="hint">${t('found',{n:f.length})}</p>`:''}${f.length?f.map(cmFamRow).join(''):`<p class="hint">${q?esc(t('none',{q:query.trim()})):X('لسا ما في عائلات. استورد الكشف أو اضغط +','No families yet. Import a list or tap +')}</p>`}</div>`}
+function cmComV(){const c=cmL('com'),filled=new Set(c.map(x=>x.role));
+ const rows=c.slice().sort((a,b)=>{const ia=CM_ROLES.indexOf(a.role),ib=CM_ROLES.indexOf(b.role);return (ia<0?99:ia)-(ib<0?99:ib)}).map(m=>`<div class="trow tap" data-cmcom="${m.id}" role="button" tabindex="0"><div class="m"><b>${esc(m.name)}</b><span>${esc(m.role||'')}</span></div>${cmTel(m.phone)}</div>`).join('');
+ const empty=CM_ROLES.filter(r=>!filled.has(r)).map(r=>`<div class="trow tap ghost" data-cmrole="${esc(r)}" role="button" tabindex="0"><div class="m"><b>${X('فاضي · اضغط للإضافة','Empty · tap to add')}</b><span>${esc(r)}</span></div><span class="amt">+</span></div>`).join('');
+ const mt=cmL('meet').sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(m=>`<div class="trow tap" data-cmmeet="${m.id}" role="button" tabindex="0"><div class="m"><b>${esc(m.date?tkDate(m.date,lang==='ar'?'ar':'en'):'')}</b><span>${esc(String(m.text||'').split('\n')[0].slice(0,80))}</span></div></div>`).join('');
+ return `<div class="cd tape wide"><div class="rphead">${X('أعضاء اللجنة','Committee')}</div>${rows}${cmCan()?empty:''}</div><div class="cd tape wide"><div class="rphead">${X('الاجتماعات والقرارات','Meetings and decisions')}</div>${mt||`<p class="hint">${X('اكتب بعد كل اجتماع: شو قررتوا ومين مسؤول عن شو.','After each meeting write what you decided and who does what.')}</p>`}${cmCan()?`<button class="mini" data-cmnewmeet="1" style="width:100%;justify-content:center;margin-top:6px">+ ${X('اجتماع جديد','New meeting')}</button>`:''}</div>`}
+function cmOrgV(){const o=cmL('org').sort((a,b)=>String(a.name).localeCompare(String(b.name),'ar')),W=WD();
+ return `<div class="cd tape wide">${o.length?o.map(x=>`<div class="trow tap" data-cmorg="${x.id}" role="button" tabindex="0"><div class="m"><b>${esc(x.name)}</b><span>${esc([x.service,(x.days||[]).map(d=>W[d]).join('، '),x.last?X('آخر زيارة ','last visit ')+tkDate(x.last,lang==='ar'?'ar':'en').replace(/ \d{4}$/,''):''].filter(Boolean).join(' · '))}</span></div>${cmTel(x.phone)}</div>`).join(''):`<p class="hint">${X('سجّل كل منظمة أو جمعية بتخدم المخيم: شو بتقدّم، وبأي أيام، ورقم المسؤول. اضغط +','Add every organization serving the camp. Tap +')}</p>`}</div>`}
+function cmDistV(){const d=cmL('dist').sort((a,b)=>(b.date||'').localeCompare(a.date||'')||b.ts-a.ts),n=cmL('fam').length;
+ return `<div class="cd tape wide">${d.length?d.map(x=>{const g=(x.got||[]).length;return `<div class="trow tap" data-cmdist="${x.id}" role="button" tabindex="0"><div class="m"><b>${esc(x.what)}${x.org?' · '+esc(x.org):''}</b><span>${esc(x.date?tkDate(x.date,lang==='ar'?'ar':'en'):'')}</span></div>${cmBadge(cmAr(g)+X(' من ',' of ')+cmAr(n),g>=n&&n?'g':'a')}</div>`}).join(''):`<p class="hint">${X('كل ما يجي توزيع (طرود، بطانيات، مي…) اعمله هون وأشّر على كل عيلة استلمت. هيك بتعرف مين لسا ما أخذ.','Record each distribution and tick who received.')}</p>`}</div>`}
+function cmDist1V(q){const d=camp.dist.find(x=>x.id===cmDistId&&!x.del);if(!d){cmView='dist';return cmDistV()}const got=new Set(d.got||[]);let f=cmL('fam');if(q)f=f.filter(x=>norm([x.head,x.wife,x.hid,x.tent].join(' ')).includes(q));
+ f.sort((a,b)=>String(a.tent||'').localeCompare(String(b.tent||''),'ar',{numeric:true})||String(a.head||'').localeCompare(String(b.head||''),'ar'));
+ const miss=cmL('fam').filter(x=>!got.has(x.id)).length;
+ return `<div class="cd tape wide"><div class="cmhead" style="margin:0 0 6px"><div><b>${esc(d.what)}</b><span>${esc((d.org?d.org+' · ':'')+(d.date?tkDate(d.date,lang==='ar'?'ar':'en'):''))}</span></div><button class="mini" data-cmv="dist">${X('رجوع','Back')}</button></div>
+  <p class="hint">${X('استلموا '+cmAr(got.size)+' · لسا '+cmAr(miss),got.size+' received · '+miss+' left')}</p>
+  <div class="pact" style="gap:8px;margin-bottom:6px"><button class="mini" data-cmmiss="1" style="flex:1;justify-content:center">${X('شارك مين لسا ما استلم','Share who is missing')}</button>${cmCan()?`<button class="mini" data-cmdedit="1" style="flex:1;justify-content:center">${X('تعديل','Edit')}</button>`:''}</div>
+  ${f.map(x=>`<div class="trow tap ${got.has(x.id)?'gotit':''}" data-cmgot="${x.id}" role="button" tabindex="0"><span class="cmchk ${got.has(x.id)?'on':''}">${got.has(x.id)?CHK(14):''}</span><div class="m"><b>${hl(x.head||x.wife||'')}</b><span>${esc([x.tent?X('خيمة ','Tent ')+x.tent:'',x.size?cmAr(cmNum(x.size))+X(' أفراد',' people'):''].filter(Boolean).join(' · '))}</span></div></div>`).join('')}</div>`}
+const CM_PR=()=>({1:X('عاجل','Urgent'),2:X('متوسط','Medium'),3:X('بيستنى','Can wait')});
+function cmNeedRow(n){const done=n.st==='done',mv=n.kind==='move';return `<div class="trow tap" data-cmneed="${n.id}" role="button" tabindex="0"><div class="m"><b>${esc(mv?(n.dir==='out'?X('طلعت ','Left: '):X('وصلت ','Arrived: '))+cmAr(cmNum(n.n)||1)+X(' عيلة',' families')+(n.title?' · '+n.title:''):n.title)}</b><span>${esc([mv?'':CM_PR()[n.pr||2],dlabel(n.ts0||n.ts)].filter(Boolean).join(' · '))}</span></div>${mv?cmBadge(X('حركة','move'),''):cmBadge(done?X('انحلّت','Solved'):X('مفتوحة','Open'),done?'g':'r')}</div>`}
+function cmNeedV(){const n=cmL('need'),open=n.filter(x=>x.st!=='done'&&x.kind!=='move').sort((a,b)=>(a.pr||2)-(b.pr||2)||b.ts-a.ts),mv=n.filter(x=>x.kind==='move').sort((a,b)=>(b.ts0||b.ts)-(a.ts0||a.ts)).slice(0,20),done=n.filter(x=>x.st==='done'&&x.kind!=='move').sort((a,b)=>b.ts-a.ts).slice(0,20);
+ return `<div class="cd tape wide"><div class="rphead">${X('مفتوحة','Open')}</div>${open.length?open.map(cmNeedRow).join(''):`<p class="hint">${X('ما في مشاكل مفتوحة.','No open issues.')}</p>`}</div>
+ <div class="cd tape wide"><div class="rphead">${X('حركة العائلات','Family movement')}</div><p class="hint">${X('سجّل كل عيلة بتوصل أو بتطلع. المنظمات بتسأل عنها، خصوصاً لما تتحرك ١٠ عائلات أو أكثر.','Log arrivals and departures; organizations ask for this.')}</p>${mv.map(cmNeedRow).join('')}${cmCan()?`<button class="mini" data-cmmove="1" style="width:100%;justify-content:center;margin-top:6px">+ ${X('سجّل حركة','Log movement')}</button>`:''}</div>
+ ${done.length?`<div class="cd tape wide"><div class="rphead">${X('انحلّت','Solved')}</div>${done.map(cmNeedRow).join('')}</div>`:''}`}
+function cmTop3(){return cmL('need').filter(n=>n.st!=='done'&&n.kind!=='move').sort((a,b)=>(a.pr||2)-(b.pr||2)||b.ts-a.ts).slice(0,3).map(n=>n.title)}
+function cmRepText(st){const A=lang==='ar',d=tkDate(ymd(new Date()),A?'ar':'en'),rep=(cmL('com').find(c=>c.role==='المندوب')||{}),dist=cmL('dist').sort((a,b)=>(b.date||'').localeCompare(a.date||'')).slice(0,3),n=cmL('fam').length;
+ return [X('تقرير ','Report · ')+camp.info.name,camp.info.area||'',d,'',X('العائلات: ','Families: ')+st.fam+X(' · الأفراد: ',' · People: ')+st.ppl,X('أطفال تحت ٥: ','Under 5: ')+st.u5+X(' · كبار سن: ',' · Elderly: ')+st.old,X('حوامل ومرضعات: ','Pregnant/nursing: ')+st.preg+X(' · إعاقة أو مرض مزمن: ',' · Disability: ')+st.dis,
+  st.mv?X('حركة آخر ٧ أيام: ','Movement (7 days): ')+(st.mv>0?'+':'')+st.mv+X(' عيلة',' families'):'',
+  cmTop3().length?'\n'+X('أهم الاحتياجات:','Top needs:')+'\n'+cmTop3().map((x,i)=>(i+1)+'. '+x).join('\n'):'',
+  dist.length?'\n'+X('آخر التوزيعات:','Latest distributions:')+'\n'+dist.map(x=>'• '+x.what+(x.org?' ('+x.org+')':'')+' · '+(x.got||[]).length+'/'+n).join('\n'):'',
+  '',X('المندوب: ','Rep: ')+(rep.name||'')+(rep.phone?' · '+rep.phone:'')].filter(x=>x!=='').join('\n')}
+function cmRepV(st){const txt=cmRepText(st);return `<div class="cd tape wide"><div class="rphead">${X('تقرير المخيم','Camp report')}</div><div class="cmrep" dir="auto">${esc(txt)}</div>
+ <div class="pact" style="gap:8px;margin-top:10px"><button class="mini wa" data-cmrep="1" style="flex:1;justify-content:center">${X('إرسال التقرير','Send report')}</button><button class="mini" data-cmexp="1" style="flex:1;justify-content:center">${X('الكشف إكسل','Excel list')}</button></div></div>`}
+function cmRepShare(){const st=cmStats(),A=lang==='ar',W=WD();
+ const cf=()=>drawReport(X('تقرير المخيم','Camp report'),camp.info.name+' · '+tkDate(ymd(new Date()),A?'ar':'en'),[{v:st.fam,label:X('عائلة','families')},{v:st.ppl,label:X('فرد','people')},{v:st.u5,label:X('تحت ٥','under 5')}],
+  [{head:X('الفئات الخاصة','Vulnerable'),rows:[{k:X('كبار سن','Elderly'),v:st.old},{k:X('حوامل ومرضعات','Pregnant/nursing'),v:st.preg},{k:X('إعاقة أو مرض مزمن','Disability'),v:st.dis}]}].concat(cmTop3().length?[{head:X('أهم الاحتياجات','Top needs'),rows:cmTop3().map((x,i)=>({k:(i+1)+'. '+x,v:''}))}]:[]));
+ shareBoth(cmRepText(st),cf,X('تقرير المخيم','Camp report'))}
+
+/* ---- forms ---- */
+const cmF=(id,lab,val,opt)=>`<label class="fld">${lab}<input class="in cmin" id="${id}" dir="${(opt&&opt.dir)||'auto'}" ${opt&&opt.num?'inputmode="numeric"':''} ${opt&&opt.type?'type="'+opt.type+'"':''} value="${esc(val==null?'':val)}" ${opt&&opt.ph?'placeholder="'+esc(opt.ph)+'"':''}></label>`;
+const cmV=(s,id)=>{const e=s.querySelector('#'+id);return e?e.value.trim():''};
+function cmFam(id){const ex=id?camp.fam.find(x=>x.id===id):null,f=ex?clone(ex):{id:uid()},ro=!cmCan(),FL=CM_FL();
+ const n2=(a,b)=>`<div class="cm2">${a}${b}</div>`;
+ const s=sheet(`<h2>${ex?esc(f.head||f.wife||''):X('عيلة جديدة','New family')}</h2>${ex&&f.phone?`<div class="pact" style="gap:8px">${cmTel(f.phone)}</div>`:''}
+  ${cmF('fH',FL.head,f.head)}${n2(cmF('fI',FL.hid,f.hid,{num:1,dir:'ltr'}),cmF('fS',FL.stat,f.stat))}${n2(cmF('fW',FL.wife,f.wife),cmF('fI2',FL.hid2,f.hid2,{dir:'ltr'}))}
+  ${n2(cmF('fZ',FL.size,f.size,{num:1}),cmF('fT',FL.tent,f.tent))}${n2(cmF('fP',FL.phone,f.phone,{num:1,dir:'ltr',type:'tel'}),cmF('fO',FL.origin,f.origin))}${n2(cmF('fHo',FL.housing,f.housing),cmF('fPl',FL.place,f.place))}
+  <div class="rphead" style="margin:4px 0 0">${X('الحالات الخاصة (عدد)','Vulnerable (count)')}</div>${n2(cmF('fU',FL.u5,f.u5,{num:1}),cmF('fOl',FL.old,f.old,{num:1}))}${n2(cmF('fPr',FL.preg,f.preg,{num:1}),cmF('fD',FL.dis,f.dis,{num:1}))}
+  <label class="fld">${FL.notes}<textarea class="in cmin" id="fN" dir="auto" rows="2">${esc(f.notes||'')}</textarea></label>
+  ${ro?`<button class="b" id="iClose">${t('close')}</button>`:`<div class="acts"><button class="b" id="iClose">${t('cancel')}</button><button class="b pri" id="fOk">${t('save')}</button></div>${ex?`<button class="b dng" id="fDel">${t('del')}</button>`:''}`}`);
+ if(ro)s.querySelectorAll('input,textarea').forEach(e=>e.readOnly=true);
+ s.querySelector('#iClose').onclick=closeSheet;if(ro)return;
+ s.querySelector('#fOk').onclick=()=>{const g=k=>cmV(s,k);f.head=g('fH');f.hid=cmId(g('fI'));f.stat=g('fS');f.wife=g('fW');f.hid2=cmId(g('fI2'));f.size=String(cmNum(g('fZ'))||'');f.tent=g('fT');f.phone=cmPhone(g('fP'));f.origin=g('fO');f.housing=g('fHo');f.place=g('fPl');['u5','old','preg','dis'].forEach((k,i)=>f[k]=String(cmNum(g(['fU','fOl','fPr','fD'][i]))||''));f.notes=s.querySelector('#fN').value.trim();
+  if(!f.head&&!f.wife){s.querySelector('#fH').focus();return}if(f.hid&&cmL('fam').some(x=>x.hid===f.hid&&x.id!==f.id)){toast(X('رقم الهوية هذا موجود لعيلة ثانية','This ID belongs to another family'));return}cmPut('fam',f);closeSheet();render();toast(t('saved'))};
+ const dl=s.querySelector('#fDel');if(dl)dl.onclick=()=>confirmSheet(t('del'),X('حذف هذه العيلة من الكشف؟','Delete this family?'),t('yesDel'),()=>{cmDel('fam',f.id);render()})}
+function cmCom(id,role){const ex=id?camp.com.find(x=>x.id===id):null,m=ex?clone(ex):{id:uid(),role:role||''},ro=!cmCan();
+ const s=sheet(`<h2>${ex?esc(m.name):X('عضو لجنة','Committee member')}</h2>${cmF('mN',X('الاسم','Name'),m.name)}<label class="fld">${X('الدور','Role')}<input class="in cmin" id="mR" list="cmRoles" dir="auto" value="${esc(m.role||'')}"><datalist id="cmRoles">${CM_ROLES.map(r=>`<option value="${esc(r)}">`).join('')}</datalist></label>${cmF('mP',X('الجوال','Phone'),m.phone,{num:1,dir:'ltr',type:'tel'})}
+  ${ro?`<button class="b" id="iClose">${t('close')}</button>`:`<div class="acts"><button class="b" id="iClose">${t('cancel')}</button><button class="b pri" id="mOk">${t('save')}</button></div>${ex?`<button class="b dng" id="mDel">${t('del')}</button>`:''}`}`);
+ if(ro)s.querySelectorAll('input').forEach(e=>e.readOnly=true);s.querySelector('#iClose').onclick=closeSheet;if(ro)return;
+ s.querySelector('#mOk').onclick=()=>{m.name=cmV(s,'mN');m.role=cmV(s,'mR');m.phone=cmPhone(cmV(s,'mP'));if(!m.name){s.querySelector('#mN').focus();return}cmPut('com',m);closeSheet();render();toast(t('saved'))};
+ const dl=s.querySelector('#mDel');if(dl)dl.onclick=()=>{cmDel('com',m.id);closeSheet();render()}}
+function cmMeet(id){const ex=id?camp.meet.find(x=>x.id===id):null,m=ex?clone(ex):{id:uid(),date:ymd(new Date()),text:''},ro=!cmCan();
+ const s=sheet(`<h2>${X('اجتماع اللجنة','Committee meeting')}</h2>${cmF('eD',X('التاريخ','Date'),m.date,{type:'date'})}<label class="fld">${X('شو قررتوا ومين مسؤول عن شو','Decisions and who does what')}<textarea class="in cmin" id="eT" dir="auto" rows="7" placeholder="${X('١. جبريل يتابع مع منظمة المي\n٢. …','1. …')}">${esc(m.text||'')}</textarea></label>
+  ${ro?`<button class="b" id="iClose">${t('close')}</button>`:`<div class="acts"><button class="b" id="iClose">${t('cancel')}</button><button class="b pri" id="eOk">${t('save')}</button></div>`}${ex?`<button class="b wa" id="eSh">${t('share')}</button>`:''}${ex&&!ro?`<button class="b dng" id="eDel">${t('del')}</button>`:''}`);
+ if(ro)s.querySelectorAll('input,textarea').forEach(e=>e.readOnly=true);s.querySelector('#iClose').onclick=closeSheet;
+ const sh=s.querySelector('#eSh');if(sh)sh.onclick=()=>{closeSheet();shareRaw(X('اجتماع لجنة ','Meeting · ')+camp.info.name+' · '+tkDate(m.date,lang==='ar'?'ar':'en')+'\n\n'+m.text)};if(ro)return;
+ s.querySelector('#eOk').onclick=()=>{m.date=cmV(s,'eD')||ymd(new Date());m.text=s.querySelector('#eT').value.trim();if(!m.text){s.querySelector('#eT').focus();return}cmPut('meet',m);closeSheet();render();toast(t('saved'))};
+ const dl=s.querySelector('#eDel');if(dl)dl.onclick=()=>{cmDel('meet',m.id);closeSheet();render()}}
+function cmOrg(id){const ex=id?camp.org.find(x=>x.id===id):null,o=ex?clone(ex):{id:uid(),days:[]},ro=!cmCan(),W=WD();if(!Array.isArray(o.days))o.days=[];
+ const s=sheet(`<h2>${ex?esc(o.name):X('منظمة جديدة','New organization')}</h2>${ex&&o.phone?`<div class="pact" style="gap:8px">${cmTel(o.phone)}</div>`:''}${cmF('oN',X('اسم المنظمة أو الجمعية','Name'),o.name)}${cmF('oS',X('شو بتقدّم','Service'),o.service,{ph:X('مي، طرود، تكية، نظافة…','Water, food parcels…')})}
+  <div class="fld">${X('أيام الزيارة','Visit days')}<div class="cmdays">${W.map((d,i)=>`<button class="tkpchip ${o.days.indexOf(i)>-1?'on':''}" data-d="${i}">${d}</button>`).join('')}</div></div>
+  <div class="cm2">${cmF('oC',X('اسم المسؤول','Contact'),o.contact)}${cmF('oP',X('جواله','Phone'),o.phone,{num:1,dir:'ltr',type:'tel'})}</div>${cmF('oL',X('آخر زيارة','Last visit'),o.last,{type:'date'})}
+  <label class="fld">${X('ملاحظات','Notes')}<textarea class="in cmin" id="oNo" dir="auto" rows="2">${esc(o.notes||'')}</textarea></label>
+  ${ro?`<button class="b" id="iClose">${t('close')}</button>`:`<button class="b" id="oToday">${X('زارتنا اليوم','Visited today')}</button><div class="acts"><button class="b" id="iClose">${t('cancel')}</button><button class="b pri" id="oOk">${t('save')}</button></div>${ex?`<button class="b dng" id="oDel">${t('del')}</button>`:''}`}`);
+ if(ro)s.querySelectorAll('input,textarea').forEach(e=>e.readOnly=true);s.querySelector('#iClose').onclick=closeSheet;if(ro)return;
+ s.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const d=+b.dataset.d,i=o.days.indexOf(d);if(i>-1)o.days.splice(i,1);else o.days.push(d);b.classList.toggle('on')});
+ s.querySelector('#oToday').onclick=()=>{s.querySelector('#oL').value=ymd(new Date())};
+ s.querySelector('#oOk').onclick=()=>{o.name=cmV(s,'oN');o.service=cmV(s,'oS');o.contact=cmV(s,'oC');o.phone=cmPhone(cmV(s,'oP'));o.last=cmV(s,'oL');o.notes=s.querySelector('#oNo').value.trim();o.days.sort();if(!o.name){s.querySelector('#oN').focus();return}cmPut('org',o);closeSheet();render();toast(t('saved'))};
+ const dl=s.querySelector('#oDel');if(dl)dl.onclick=()=>confirmSheet(t('del'),X('حذف المنظمة؟','Delete organization?'),t('yesDel'),()=>{cmDel('org',o.id);render()})}
+function cmDist(id){const ex=id?camp.dist.find(x=>x.id===id):null,d=ex?clone(ex):{id:uid(),date:ymd(new Date()),got:[]},orgs=cmL('org');
+ const s=sheet(`<h2>${ex?X('تعديل التوزيع','Edit distribution'):X('توزيع جديد','New distribution')}</h2>${cmF('dW',X('شو انوزّع','What'),d.what,{ph:X('طرود غذائية، بطانيات، فرشات…','Food parcels, blankets…')})}<label class="fld">${X('من أي منظمة','From')}<input class="in cmin" id="dO" list="cmOrgs" dir="auto" value="${esc(d.org||'')}"><datalist id="cmOrgs">${orgs.map(o=>`<option value="${esc(o.name)}">`).join('')}</datalist></label>${cmF('dD',X('التاريخ','Date'),d.date,{type:'date'})}
+  <div class="acts"><button class="b" id="iClose">${t('cancel')}</button><button class="b pri" id="dOk">${ex?t('save'):X('ابدأ التأشير','Start ticking')}</button></div>${ex?`<button class="b dng" id="dDel">${t('del')}</button>`:''}`);
+ s.querySelector('#iClose').onclick=closeSheet;
+ s.querySelector('#dOk').onclick=()=>{d.what=cmV(s,'dW');d.org=cmV(s,'dO');d.date=cmV(s,'dD')||ymd(new Date());if(!d.what){s.querySelector('#dW').focus();return}cmPut('dist',d);closeSheet();cmDistId=d.id;cmView='dist1';render()};
+ const dl=s.querySelector('#dDel');if(dl)dl.onclick=()=>confirmSheet(t('del'),X('حذف هذا التوزيع؟','Delete distribution?'),t('yesDel'),()=>{cmDel('dist',d.id);cmView='dist';render()})}
+function cmNeed(id,kind){const ex=id?camp.need.find(x=>x.id===id):null,n=ex?clone(ex):{id:uid(),kind:kind||'need',pr:2,st:'open',dir:'in',ts0:Date.now()},ro=!cmCan(),mv=n.kind==='move',P=CM_PR();
+ const s=sheet(`<h2>${mv?X('حركة عائلات','Family movement'):(ex?X('مشكلة / احتياج','Issue / need'):X('مشكلة أو احتياج جديد','New issue or need'))}</h2>
+  ${mv?`<div class="tkseg cmseg"><button class="${n.dir!=='out'?'on':''}" data-dir="in">${X('وصلت','Arrived')}</button><button class="${n.dir==='out'?'on':''}" data-dir="out">${X('طلعت','Left')}</button></div>${cmF('nN',X('كم عيلة','How many families'),n.n||'1',{num:1})}${cmF('nT',X('ملاحظة (اسم، من وين…)','Note'),n.title)}`
+  :`${cmF('nT',X('شو المشكلة أو الاحتياج','What is it'),n.title,{ph:X('خيمة ١٤ انهدت من المطر','Tent 14 collapsed in the rain')})}<div class="fld">${X('الأولوية','Priority')}<div class="tkseg cmseg">${[1,2,3].map(p=>`<button class="${(n.pr||2)===p?'on':''}" data-pr="${p}">${P[p]}</button>`).join('')}</div></div>
+   <label class="fld">${X('تفاصيل','Details')}<textarea class="in cmin" id="nD" dir="auto" rows="3">${esc(n.notes||'')}</textarea></label>`}
+  ${ro?`<button class="b" id="iClose">${t('close')}</button>`:`${ex&&!mv?`<button class="b ${n.st==='done'?'':'pri'}" id="nSt">${n.st==='done'?X('رجّعها مفتوحة','Reopen'):X('انحلّت','Mark solved')}</button>`:''}<div class="acts"><button class="b" id="iClose">${t('cancel')}</button><button class="b ${ex&&!mv?'':'pri'}" id="nOk">${t('save')}</button></div>${ex?`<button class="b dng" id="nDel">${t('del')}</button>`:''}`}`);
+ if(ro)s.querySelectorAll('input,textarea').forEach(e=>e.readOnly=true);s.querySelector('#iClose').onclick=closeSheet;if(ro)return;
+ s.querySelectorAll('[data-pr]').forEach(b=>b.onclick=()=>{n.pr=+b.dataset.pr;s.querySelectorAll('[data-pr]').forEach(x=>x.classList.toggle('on',x===b))});
+ s.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>{n.dir=b.dataset.dir;s.querySelectorAll('[data-dir]').forEach(x=>x.classList.toggle('on',x===b))});
+ const sv_=()=>{n.title=cmV(s,'nT');if(mv)n.n=String(cmNum(cmV(s,'nN'))||1);else n.notes=s.querySelector('#nD').value.trim();if(!mv&&!n.title){s.querySelector('#nT').focus();return false}cmPut('need',n);return true};
+ s.querySelector('#nOk').onclick=()=>{if(sv_()){closeSheet();render();toast(t('saved'))}};
+ const st=s.querySelector('#nSt');if(st)st.onclick=()=>{n.st=n.st==='done'?'open':'done';if(sv_()){closeSheet();render()}};
+ const dl=s.querySelector('#nDel');if(dl)dl.onclick=()=>{cmDel('need',n.id);closeSheet();render()}}
+function cmInfo(){const s=sheet(`<h2>${X('بيانات المخيم','Camp details')}</h2>${cmF('kN',X('اسم المخيم','Camp name'),camp.info.name)}${cmF('kA',X('المكان','Location'),camp.info.area)}<div class="acts"><button class="b" id="iClose">${t('cancel')}</button><button class="b pri" id="kOk">${t('save')}</button></div>`);
+ s.querySelector('#iClose').onclick=closeSheet;s.querySelector('#kOk').onclick=()=>{const n=cmV(s,'kN');if(!n)return;camp.info={name:n,area:cmV(s,'kA'),ts:Date.now()};cmSave();closeSheet();render()}}
+function cmAdd(){if(!cmCan())return;if(cmView==='com')cmCom(null);else if(cmView==='org')cmOrg(null);else if(cmView==='dist'||cmView==='dist1')cmDist(null);else if(cmView==='need')cmNeed(null,'need');else cmFam(null)}
+function cmMissing(){const d=camp.dist.find(x=>x.id===cmDistId);if(!d)return;const got=new Set(d.got||[]),miss=cmL('fam').filter(x=>!got.has(x.id)).sort((a,b)=>String(a.tent||'').localeCompare(String(b.tent||''),'ar',{numeric:true}));
+ shareRaw([d.what+(d.org?' · '+d.org:'')+' · '+tkDate(d.date,lang==='ar'?'ar':'en'),X('لسا ما استلموا ('+miss.length+'):','Not received yet ('+miss.length+'):'),'',...miss.map((x,i)=>(i+1)+'. '+(x.head||x.wife)+(x.tent?X(' · خيمة ',' · tent ')+x.tent:'')+(x.phone?' · '+x.phone:''))].join('\n'))}
+function cmPick(){const i=document.createElement('input');i.type='file';i.accept='.xlsx,.xls,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel';i.onchange=()=>{const f=i.files&&i.files[0];if(f)cmImport(f)};i.click()}
+$('#grid').addEventListener('click',e=>{if(tab!==7)return;const g=(a)=>e.target.closest('['+a+']');let b;
+ if((b=g('data-cmv'))){cmView=b.dataset.cmv;render();return}
+ if((b=g('data-cmfam'))){cmFam(b.dataset.cmfam);return}
+ if((b=g('data-cmcom'))){cmCom(b.dataset.cmcom);return}
+ if((b=g('data-cmrole'))){cmCom(null,b.dataset.cmrole);return}
+ if((b=g('data-cmmeet'))){cmMeet(b.dataset.cmmeet);return}
+ if(g('data-cmnewmeet')){cmMeet(null);return}
+ if((b=g('data-cmorg'))){if(e.target.closest('a'))return;cmOrg(b.dataset.cmorg);return}
+ if((b=g('data-cmdist'))){cmDistId=b.dataset.cmdist;cmView='dist1';render();return}
+ if((b=g('data-cmgot'))){if(!cmCan())return;const d=camp.dist.find(x=>x.id===cmDistId);if(!d)return;d.got=d.got||[];const i=d.got.indexOf(b.dataset.cmgot);if(i>-1)d.got.splice(i,1);else d.got.push(b.dataset.cmgot);d.ts=Date.now();cmSave();const y=window.scrollY;render();window.scrollTo(0,y);return}
+ if(g('data-cmmiss')){cmMissing();return}
+ if(g('data-cmdedit')){cmDist(cmDistId);return}
+ if((b=g('data-cmneed'))){cmNeed(b.dataset.cmneed);return}
+ if(g('data-cmmove')){cmNeed(null,'move');return}
+ if(g('data-cmimp')){cmPick();return}
+ if(g('data-cmexp')){cmExport();return}
+ if(g('data-cmrep')){cmRepShare();return}
+ if(g('data-cminfo')){cmInfo();return}
+ if(g('data-cmacct')){acctScreen('in');return}
+ if(g('data-cmnew')){confirmSheet(X('شارك مع اللجنة','Share with committee'),X('بنعمل نسخة مشتركة من كشف المخيم على حسابك، وبيطلعلك كود تبعته للجنة. أي حدا بدّه ينضم، لازم توافق عليه أنت.','A shared copy is made on your account and you get a code for the committee. You approve everyone who joins.'),X('يلا','Go'),cmCreate);return}
+ if(g('data-cmjoin')){cmJoinSheet();return}
+ if(g('data-cmcancel')){camp.pend='';camp.pcode='';S.set('camp',camp);render();return}
+ if(g('data-cmmem')){cmMembers();return}
+ if(g('data-cmsync')){cmSync(true);return}
+});
+
+cmLoad();
 /* start */
 applyLang();
 S.get('probe',0);try{localStorage.setItem('pn_probe','1')}catch(e){storeOK=false}
 showLock(S.get('pin','')?'enter':'create');
-idbOpen().then(loadImgs).then(()=>{if(!$('#app').hidden)render()});
+const imgsReady=idbOpen().then(loadImgs).then(()=>{if(!$('#app').hidden)render()});
 if('serviceWorker' in navigator&&hosted){navigator.serviceWorker.register('sw.js').catch(()=>{})}
 })();
 </script>
