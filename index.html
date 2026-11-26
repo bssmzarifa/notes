@@ -562,6 +562,13 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
 .fm span{display:block;font-size:11.5px;color:#8a8880;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ftags{margin-top:4px;display:flex;flex-wrap:wrap}
 .fchev{flex:none;color:#C9C7BE;font-size:22px;font-weight:700;padding:0 2px}
+.famscr .fsHd{flex:none;background:#F4F3EF;border-bottom:.5px solid #E0DED5;padding-bottom:8px}
+.famscr .fsList{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:0 12px}
+.famscr .fsFoot{flex:none;display:flex;align-items:center;gap:10px;padding:10px 12px;border-top:.5px solid #E0DED5;background:#fff}
+.famscr .fsfab{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom,0px));inset-inline-start:18px;width:54px;height:54px;border-radius:50%;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);font-size:30px;line-height:1;display:flex;align-items:center;justify-content:center;z-index:6;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.fchk{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid #C9C7BE;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px}
+.fchk.on{background:#0C447C;border-color:#0C447C}
+.frow.selr{background:#EAF2FB}
 .fchips{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;scrollbar-width:none}
 .fchips::-webkit-scrollbar{display:none}
 .fchip{flex:none;border-radius:999px;padding:6px 13px;font-size:12.5px;background:#E6E4DC;color:#444441;font-weight:600;white-space:nowrap}
@@ -1914,6 +1921,46 @@ function rosterImport(c,onDone){const A=lang==='ar';let inp=document.getElementB
   tkSave();onDone&&onDone();toast(added?(A?('استوردنا '+added+' عائلة'):('Imported '+added+' families')):(A?'ما في أسماء جديدة لإضافتها.':'No new names to add.'))};
  inp.click()}
 
+/* ---------- Families: a dedicated full-screen list (app-style, own scroll) ---------- */
+function cmFamScreen(){const A=lang==='ar';let selMode=false;const sel=new Set();
+ const w=document.createElement('div');w.className='tkp famscr';
+ const fchip=(k,lab)=>`<button class="fchip ${cmFF===k?'on':''}" data-ff="${k}">${lab}</button>`;
+ const schip=(k,lab)=>`<button class="fchip sm ${cmFS===k?'on':''}" data-fs="${k}">${lab}</button>`;
+ w.innerHTML=`<div class="fsHd">`
+  +`<div class="tkbar"><button class="sbt" id="fsBack">${A?'رجوع':'Back'}</button><b id="fsTitle"></b><button class="sbt" id="fsSel"></button></div>`
+  +`<input class="in" id="cmfq" dir="auto" autocomplete="off" placeholder="${A?'ابحث باسم أو رقم هوية…':'Search name or ID…'}" value="${esc(cmFQ)}" style="margin:0 10px 8px;width:calc(100% - 20px)">`
+  +`<div class="fchips" style="padding:0 10px">${fchip('all',A?'الكل':'All')}${fchip('widow',A?'أرامل':'Widows')}${fchip('dis',A?'إعاقة':'Disability')}${fchip('u5',A?'أطفال <٥':'Kids<5')}${fchip('old',A?'كبار سن':'Elderly')}${fchip('preg',A?'حوامل':'Pregnant')}${fchip('noid',A?'بدون هوية':'No ID')}</div>`
+  +`<div class="fchips" style="padding:0 10px;margin-top:6px"><span class="fsort">${A?'ترتيب':'Sort'}:</span>${schip('name',A?'أبجدي':'A-Z')}${schip('big',A?'الأكبر عائلة':'Largest')}${schip('small',A?'الأصغر':'Smallest')}</div>`
+  +`<div class="fcount" id="fsCnt" style="margin:8px 10px 6px;display:none"></div></div>`
+  +`<div class="fsList" id="cmflist"></div>`
+  +`<button class="fsfab" id="fsAdd" aria-label="${A?'إضافة':'Add'}">+</button>`
+  +`<div class="fsFoot" id="fsFoot" hidden><button class="b" id="fsAll" style="flex:none">${A?'تحديد الكل':'Select all'}</button><span id="fsCount" style="flex:1;text-align:center;font-weight:700;font-size:13px"></span><button class="b dng" id="fsDel" style="flex:none">${A?'حذف':'Delete'}</button></div>`;
+ document.body.appendChild(w);
+ const fit=panelFit(w),listEl=w.querySelector('#cmflist');
+ const rowHTML=f=>{const sz=cmNum(f.size),sub=[f.origin||'',f.hid?'#'+esc(f.hid):''].filter(Boolean).join(' · '),ck=sel.has(f.id);
+  return `<div class="frow${ck?' selr':''}" data-fid="${f.id}" role="button" tabindex="0">${selMode?`<span class="fchk${ck?' on':''}">${ck?'✓':''}</span>`:`<span class="fsz">${sz?cmAr(sz):'—'}</span>`}<div class="fm"><b>${esc(f.head||f.wife||'')}</b>${sub?`<span>${sub}</span>`:''}</div>${selMode?'':`<span class="fchev">${A?'‹':'›'}</span>`}</div>`};
+ function renderList(){const f=cmFamFiltered();const active=cmFF!=='all'||cmFQ.trim();const cc=w.querySelector('#fsCnt');
+  if(active){const ppl=f.reduce((a,x)=>a+cmNum(x.size),0);cc.style.display='';cc.textContent=(cmFLabel()?cmFLabel()+' — ':'')+cmAr(f.length)+' عائلة فيهم '+cmAr(ppl)+' فرد'}else cc.style.display='none';
+  listEl.innerHTML=f.length?f.map(rowHTML).join(''):`<p class="hint" style="text-align:center;padding:26px">${active?(A?'ما في نتائج':'No results'):(A?'لسا ما في عائلات. استورد الكشف من اللوحة.':'No families yet.')}</p>`;
+  updFoot()}
+ function updHd(){w.querySelector('#fsTitle').textContent=(A?'العائلات':'Families')+' ('+cmAr(cmL('fam').length)+')';w.querySelector('#fsSel').textContent=selMode?(A?'تم':'Done'):(A?'تحديد':'Select');w.querySelector('#fsAdd').style.display=selMode?'none':''}
+ function updFoot(){const ft=w.querySelector('#fsFoot');ft.hidden=!selMode;if(selMode)w.querySelector('#fsCount').textContent=(A?'محدّد: ':'Selected: ')+cmAr(sel.size)}
+ function setSel(on){selMode=on;if(!on)sel.clear();updHd();renderList()}
+ renderList();updHd();
+ function close(){window.__famRefresh=null;window.visualViewport&&visualViewport.removeEventListener('resize',fit);w.classList.remove('open');setTimeout(()=>w.remove(),350);render()}
+ w.querySelector('#fsBack').onclick=close;
+ w.querySelector('#fsSel').onclick=()=>setSel(!selMode);
+ w.querySelector('#fsAdd').onclick=()=>{if(cmCan())cmFam(null)};
+ listEl.addEventListener('click',e=>{const r=e.target.closest('[data-fid]');if(!r)return;const id=r.dataset.fid;
+  if(selMode){if(sel.has(id))sel.delete(id);else sel.add(id);renderList()}else cmFam(id)});
+ w.querySelector('#fsAll').onclick=()=>{const f=cmFamFiltered();if(sel.size>=f.length)sel.clear();else f.forEach(x=>sel.add(x.id));renderList()};
+ w.querySelector('#fsDel').onclick=()=>{if(!sel.size)return;confirmSheet(A?'حذف المحدّد':'Delete selected',A?('رح يتحذف '+cmAr(sel.size)+' عائلة من الكشف. ما في تراجع.'):('Delete '+sel.size+' families? This cannot be undone.'),A?'نعم، احذف':'Yes, delete',()=>{const now=Date.now();sel.forEach(id=>{const i=camp.fam.findIndex(x=>x.id===id);if(i>-1)camp.fam[i]={id,ts:now,del:1}});cmSave();sel.clear();selMode=false;updHd();renderList();toast(A?'تم الحذف':'Deleted')})};
+ w.querySelector('#cmfq').addEventListener('input',e=>{cmFQ=e.target.value;renderList()});
+ w.querySelectorAll('[data-ff]').forEach(c=>c.onclick=()=>{cmFF=c.dataset.ff;w.querySelectorAll('[data-ff]').forEach(x=>x.classList.toggle('on',x===c));renderList()});
+ w.querySelectorAll('[data-fs]').forEach(c=>c.onclick=()=>{cmFS=c.dataset.fs;w.querySelectorAll('[data-fs]').forEach(x=>x.classList.toggle('on',x===c));renderList()});
+ window.__famRefresh=()=>{updHd();renderList()};
+ requestAnimationFrame(()=>w.classList.add('open'))}
+
 function menu(){
  const s=sheet(`<h2>${t('menu')}</h2><p class="hint">${t('about')}</p>
  ${CLD.ok?`<button class="mi" id="mAcct">${t('acT')}${au?' · '+esc(au.name||au.email):''}</button>`:''}
@@ -2183,6 +2230,7 @@ const cmChip=(k,lab,n)=>`<button class="tkpchip ${cmView===k?'on':''}" data-cmv=
 const cmTel=p=>{const tel=telOf(p||'');return tel.replace(/\D/g,'').length>=7?`<a class="mini call" href="tel:${esc(tel)}">${t('call')}</a><a class="mini wa" href="https://wa.me/${esc(waNum(p))}" target="_blank" rel="noopener">WA</a>`:''};
 const cmBadge=(txt,k)=>`<em class="cmtag ${k||''}">${esc(txt)}</em>`;
 const WD=()=>lang==='ar'?['أحد','إثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت']:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+function cmSizeList(){const L=document.getElementById('cmflist');if(!L)return;L.style.overflowY='auto';L.style.webkitOverflowScrolling='touch';L.style.overscrollBehavior='contain';const set=()=>{const L2=document.getElementById('cmflist');if(!L2)return;const top=L2.getBoundingClientRect().top;const vh=(window.visualViewport?window.visualViewport.height:window.innerHeight);const h=vh-top-124;L2.style.height=(h>150?h:150)+'px'};requestAnimationFrame(()=>requestAnimationFrame(set));if(!window.__cmResize){window.__cmResize=1;const r=()=>{if(tab===7&&cmView==='fam')set()};window.addEventListener('resize',r);window.visualViewport&&window.visualViewport.addEventListener('resize',r)}}
 function campHome(){cmFix();const st=cmStats(),q=norm(query.trim());
  const chips=`<div class="rpchips cmchips">${cmChip('home',X('اللوحة','Board'))}${cmChip('fam',X('العائلات','Families'),st.fam)}${cmChip('com',X('اللجنة','Committee'))}${cmChip('org',X('المنظمات','Organizations'))}${cmChip('dist',X('التوزيعات','Distributions'))}${cmChip('need',X('الاحتياجات','Needs'),st.open)}${cmChip('rep',X('التقرير','Report'))}</div>`;
  const head=`<div class="cd tape wide cmhead${lang==='ar'?' arx':''}"><div><b>${esc(camp.info.name)}</b><span>${esc(camp.info.area||'')}</span></div>${cmCan()?`<button class="mini" data-cminfo="1">${X('تعديل','Edit')}</button>`:''}</div>`;
@@ -2190,7 +2238,7 @@ function campHome(){cmFix();const st=cmStats(),q=norm(query.trim());
  $('#info').innerHTML='';
  let body='';const v=q&&cmView!=='fam'&&cmView!=='dist1'?'fam':cmView;
  if(v==='home')body=cmHomeV(st);else if(v==='fam')body=cmFamV(q);else if(v==='com')body=cmComV();else if(v==='org')body=cmOrgV();else if(v==='dist')body=cmDistV();else if(v==='dist1')body=cmDist1V(q);else if(v==='need')body=cmNeedV();else body=cmRepV(st);
- $('#grid').innerHTML=sync+head+chips+body;if(sync)cmSt(cmState||'ok');
+ $('#grid').innerHTML=sync+head+chips+body;if(sync)cmSt(cmState||'ok');if(v==='fam')cmSizeList();
  if(camp.cid&&cmOn()&&Date.now()-cmLast>60000)cmKick(300);
  const fb=$('#fab');if(fb)fb.hidden=!cmCan()||v==='home'||v==='rep'}
 function cmHomeV(st){const m=(n,l,k)=>`<div class="${k||''}"><b>${cmAr(n)}</b><span>${l}</span></div>`;
@@ -2228,14 +2276,13 @@ function cmFamFiltered(qarg){let f=cmL('fam');const F=cmFF;
  return f}
 function cmFamListHTML(qarg){const f=cmFamFiltered(qarg);const active=cmFF!=='all'||cmFQ.trim();const ppl=f.reduce((a,x)=>a+cmNum(x.size),0);const cnt=active?`<div class="fcount">${lang==='ar'?(esc(cmFLabel())+' — '+cmAr(f.length)+' عائلة فيهم '+cmAr(ppl)+' فرد'):((cmFLabel()?esc(cmFLabel())+' — ':'')+f.length+' families, '+ppl+' people')}</div>`:'';return cnt+(f.length?f.map(cmFamRow).join(''):`<p class="hint" style="text-align:center;padding:18px">${(cmFQ.trim()||qarg||cmFF!=='all')?X('ما في نتائج بهالبحث','No matches'):X('لسا ما في عائلات. استورد الكشف أو اضغط +','No families yet. Import a list or tap +')}</p>`)}
 function cmFamV(qarg){const st=cmStats();
- const sum=`<div class="cd tape wide"><div class="fsum"><div><b>${cmAr(st.fam)}</b><span>${X('عائلة','families')}</span></div><div><b>${cmAr(st.ppl)}</b><span>${X('فرد','people')}</span></div><div><b>${cmAr(st.u5)}</b><span>${X('طفل تحت ٥','under 5')}</span></div></div></div>`;
  const tools=`<div class="pact" style="gap:8px;margin-bottom:8px">${cmCan()?`<button class="mini" data-cmimp="1" style="flex:1;justify-content:center">${X('استيراد إكسل','Import Excel')}</button>`:''}<button class="mini" data-cmexpf="1" style="flex:1;justify-content:center">${X('تصدير إكسل','Export Excel')}</button></div>`;
  const search=`<input class="in" id="cmfq" data-cmfq dir="auto" autocomplete="off" placeholder="${X('ابحث باسم أو رقم هوية…','Search name or ID…')}" value="${esc(cmFQ)}">`;
  const fchip=(k,lab)=>`<button class="fchip ${cmFF===k?'on':''}" data-cmff="${k}">${lab}</button>`;
  const filters=`<div class="fchips">${fchip('all',X('الكل','All'))}${fchip('widow',X('أرامل','Widows'))}${fchip('dis',X('إعاقة','Disability'))}${fchip('u5',X('أطفال <٥','Kids <5'))}${fchip('old',X('كبار سن','Elderly'))}${fchip('preg',X('حوامل','Pregnant'))}${fchip('noid',X('بدون هوية','No ID'))}</div>`;
  const schip=(k,lab)=>`<button class="fchip sm ${cmFS===k?'on':''}" data-cmfs="${k}">${lab}</button>`;
  const sorts=`<div class="fchips" style="margin-top:6px"><span class="fsort">${X('ترتيب','Sort')}:</span>${schip('name',X('أبجدي','A-Z'))}${schip('big',X('الأكبر عائلة','Largest'))}${schip('small',X('الأصغر','Smallest'))}</div>`;
- return sum+`<div class="cd tape wide">${tools}${search}${filters}${sorts}<div id="cmflist" class="flist" style="margin-top:8px">${cmFamListHTML(qarg)}</div></div>`}
+ return `<div class="cd tape wide">${tools}${search}${filters}${sorts}<div id="cmflist" class="flist" style="margin-top:8px">${cmFamListHTML(qarg)}</div></div>`}
 function cmComV(){const c=cmL('com'),filled=new Set(c.map(x=>x.role));
  const rows=c.slice().sort((a,b)=>{const ia=CM_ROLES.indexOf(a.role),ib=CM_ROLES.indexOf(b.role);return (ia<0?99:ia)-(ib<0?99:ib)}).map(m=>`<div class="trow tap" data-cmcom="${m.id}" role="button" tabindex="0"><div class="m"><b>${esc(m.name)}</b><span>${esc(m.role||'')}</span></div>${cmTel(m.phone)}</div>`).join('');
  const empty=CM_ROLES.filter(r=>!filled.has(r)).map(r=>`<div class="trow tap ghost" data-cmrole="${esc(r)}" role="button" tabindex="0"><div class="m"><b>${X('فاضي · اضغط للإضافة','Empty · tap to add')}</b><span>${esc(r)}</span></div><span class="amt">+</span></div>`).join('');
@@ -2285,13 +2332,14 @@ function cmFam(id){const ex=id?camp.fam.find(x=>x.id===id):null,f=ex?clone(ex):{
   <div class="rphead" style="margin:4px 0 0">${X('الحالات الخاصة (عدد)','Vulnerable (count)')}</div>${n2(cmF('fU',FL.u5,f.u5,{num:1}),cmF('fOl',FL.old,f.old,{num:1}))}${n2(cmF('fPr',FL.preg,f.preg,{num:1}),cmF('fD',FL.dis,f.dis,{num:1}))}
   <label class="fld">${FL.notes}<textarea class="in cmin" id="fN" dir="auto" rows="2">${esc(f.notes||'')}</textarea></label>
   ${ex&&!ro?`<button class="b dng" id="fDel" style="width:100%;margin-top:16px">${t('del')}</button>`:''}</div>`;
+ const y0=window.pageYOffset||document.documentElement.scrollTop||0;
  document.body.appendChild(w);const fit=panelFit(w),s=w.querySelector('#cmfamb');
- function close(){window.visualViewport&&visualViewport.removeEventListener('resize',fit);w.classList.remove('open');setTimeout(()=>w.remove(),350)}
+ function close(){window.visualViewport&&visualViewport.removeEventListener('resize',fit);window.scrollTo(0,y0);w.classList.remove('open');setTimeout(()=>{w.remove();window.scrollTo(0,y0);if(window.__famRefresh)window.__famRefresh()},350)}
  if(ro){s.querySelectorAll('input,textarea').forEach(e=>e.readOnly=true);w.querySelector('#iClose').onclick=close;requestAnimationFrame(()=>w.classList.add('open'));return}
  w.querySelector('#iClose').onclick=close;
  w.querySelector('#fOk').onclick=()=>{const g=k=>cmV(s,k);f.head=g('fH');f.hid=cmId(g('fI'));f.stat=g('fS');f.wife=g('fW');f.hid2=cmId(g('fI2'));f.size=String(cmNum(g('fZ'))||'');f.tent=g('fT');f.phone=cmPhone(g('fP'));f.origin=g('fO');f.housing=g('fHo');f.place=g('fPl');['u5','old','preg','dis'].forEach((k,i)=>f[k]=String(cmNum(g(['fU','fOl','fPr','fD'][i]))||''));f.notes=s.querySelector('#fN').value.trim();
-  if(!f.head&&!f.wife){s.querySelector('#fH').focus();return}if(f.hid&&cmL('fam').some(x=>x.hid===f.hid&&x.id!==f.id)){toast(X('رقم الهوية هذا موجود لعيلة ثانية','This ID belongs to another family'));return}const y=window.pageYOffset;cmPut('fam',f);close();render();window.scrollTo(0,y);toast(t('saved'))};
- const dl=w.querySelector('#fDel');if(dl)dl.onclick=()=>confirmSheet(t('del'),X('حذف هذه العيلة من الكشف؟','Delete this family?'),t('yesDel'),()=>{const y=window.pageYOffset;cmDel('fam',f.id);close();render();window.scrollTo(0,y)});
+  if(!f.head&&!f.wife){s.querySelector('#fH').focus();return}if(f.hid&&cmL('fam').some(x=>x.hid===f.hid&&x.id!==f.id)){toast(X('رقم الهوية هذا موجود لعيلة ثانية','This ID belongs to another family'));return}cmPut('fam',f);render();close();toast(t('saved'))};
+ const dl=w.querySelector('#fDel');if(dl)dl.onclick=()=>confirmSheet(t('del'),X('حذف هذه العيلة من الكشف؟','Delete this family?'),t('yesDel'),()=>{cmDel('fam',f.id);render();close()});
  requestAnimationFrame(()=>w.classList.add('open'))}
 function cmCom(id,role){const ex=id?camp.com.find(x=>x.id===id):null,m=ex?clone(ex):{id:uid(),role:role||''},ro=!cmCan();
  const s=sheet(`<h2>${ex?esc(m.name):X('عضو لجنة','Committee member')}</h2>${cmF('mN',X('الاسم','Name'),m.name)}<label class="fld">${X('الدور','Role')}<input class="in cmin" id="mR" list="cmRoles" dir="auto" value="${esc(m.role||'')}"><datalist id="cmRoles">${CM_ROLES.map(r=>`<option value="${esc(r)}">`).join('')}</datalist></label>${cmF('mP',X('الجوال','Phone'),m.phone,{num:1,dir:'ltr',type:'tel'})}
@@ -2345,7 +2393,7 @@ function cmPick(){const i=document.createElement('input');i.type='file';i.accept
 $('#grid').addEventListener('click',e=>{if(tab!==7)return;const g=(a)=>e.target.closest('['+a+']');let b;
  if((b=g('data-cmff'))){cmFF=b.dataset.cmff;b.parentNode.querySelectorAll('.fchip').forEach(c=>c.classList.toggle('on',c===b));const L=document.getElementById('cmflist');if(L)L.innerHTML=cmFamListHTML();return}
  if((b=g('data-cmfs'))){cmFS=b.dataset.cmfs;b.parentNode.querySelectorAll('.fchip').forEach(c=>c.classList.toggle('on',c===b));const L=document.getElementById('cmflist');if(L)L.innerHTML=cmFamListHTML();return}
- if((b=g('data-cmv'))){cmView=b.dataset.cmv;render();return}
+ if((b=g('data-cmv'))){if(b.dataset.cmv==='fam'){cmFamScreen();return}cmView=b.dataset.cmv;render();return}
  if((b=g('data-cmfam'))){cmFam(b.dataset.cmfam);return}
  if((b=g('data-cmcom'))){cmCom(b.dataset.cmcom);return}
  if((b=g('data-cmrole'))){cmCom(null,b.dataset.cmrole);return}
