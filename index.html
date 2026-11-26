@@ -847,9 +847,8 @@ function openApp(msg){fixOld();$('#lock').hidden=true;$('#app').hidden=false;ren
 /* ---------- sheets ---------- */
 const ov=$('#ov');
 let ovGen=0;
-let __sy=null;function lockScroll(){if(__sy!=null)return;__sy=window.pageYOffset||document.documentElement.scrollTop||0;const b=document.body.style;b.position='fixed';b.top=(-__sy)+'px';b.left='0';b.right='0';b.width='100%'}function unlockScroll(){if(__sy==null)return;const y=__sy;__sy=null;const b=document.body.style;b.position='';b.top='';b.left='';b.right='';b.width='';window.scrollTo(0,y)}
-function sheet(html){lockScroll();ovGen++;ov.classList.remove('out');ov.innerHTML=`<div class="sheet" role="dialog" aria-modal="true">${html}</div>`;ov.hidden=false;return ov.firstElementChild}
-function closeSheet(){if(ov.hidden)return;unlockScroll();const g=++ovGen;ov.classList.add('out');setTimeout(()=>{if(g!==ovGen)return;ov.hidden=true;ov.innerHTML='';ov.classList.remove('out')},220)}
+function sheet(html){ovGen++;ov.classList.remove('out');ov.innerHTML=`<div class="sheet" role="dialog" aria-modal="true">${html}</div>`;ov.hidden=false;return ov.firstElementChild}
+function closeSheet(){if(ov.hidden)return;const g=++ovGen;ov.classList.add('out');setTimeout(()=>{if(g!==ovGen)return;ov.hidden=true;ov.innerHTML='';ov.classList.remove('out')},220)}
 ov.addEventListener('click',e=>{if(e.target===ov)closeSheet()});
 function confirmSheet(title,body,yes,fn){const s=sheet(`<h2>${esc(title)}</h2><p class="hint">${esc(body)}</p><div class="acts"><button class="b" id="cNo">${t('keep')}</button><button class="b dng" id="cYes">${esc(yes)}</button></div>`);s.querySelector('#cNo').onclick=closeSheet;s.querySelector('#cYes').onclick=()=>{closeSheet();fn()}}
 
@@ -1297,9 +1296,14 @@ function popMenu(r,rows,cb,fromLongPress){const m=document.createElement('div');
  let armed=!fromLongPress;m.addEventListener('pointerdown',()=>{armed=true});m.addEventListener('contextmenu',e=>e.preventDefault());
  m.addEventListener('click',e=>{if(!armed)return;const b=e.target.closest('[data-a]');m.classList.remove('open');setTimeout(()=>m.remove(),200);if(b)cb(b.dataset.a)})}
 function fileReady(file){let can=false;try{can=!!(navigator.canShare&&navigator.canShare({files:[file]}))}catch(e){}
- const s=sheet(`<h2>${t('fReady')}</h2><p class="hint" style="text-align:center;font-size:15px;color:var(--ink)" dir="auto">${esc(file.name)}</p>${can?`<button class="b pri" id="fS">${t('fShare')}</button>`:''}${hosted?`<button class="b" id="fD">${t('fSave')}</button>`:''}${(!can&&!hosted)?`<p class="hint">${t('fNoSave')}</p>`:''}<button class="b" id="iClose">${t('close')}</button>`);
- s.querySelector('#iClose').onclick=closeSheet;const a=s.querySelector('#fS');if(a)a.onclick=()=>{navigator.share({files:[file]}).then(closeSheet).catch(()=>{})};
- const d=s.querySelector('#fD');if(d)d.onclick=()=>{try{const u=URL.createObjectURL(file),l=document.createElement('a');l.href=u;l.download=file.name;document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}catch(e){}}}
+ const sh=!!(navigator.share),st=navigator.standalone===true||(window.matchMedia&&matchMedia('(display-mode: standalone)').matches);
+ const doShare=()=>{try{navigator.share({files:[file]}).then(closeSheet).catch(e=>{if(e&&e.name!=='AbortError')toast(t('fNoSave'))})}catch(e){toast(t('fNoSave'))}};
+ const doSave=()=>{try{const u=URL.createObjectURL(file),l=document.createElement('a');l.href=u;l.download=file.name;document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);closeSheet()}catch(e){if(sh)doShare();else toast(t('fNoSave'))}};
+ const shareBtn=can||sh,saveBtn=hosted&&!st;
+ const s=sheet(`<h2>${t('fReady')}</h2><p class="hint" style="text-align:center;font-size:15px;color:var(--ink)" dir="auto">${esc(file.name)}</p>${shareBtn?`<button class="b pri" id="fS">${t('fShare')}</button>`:''}${saveBtn?`<button class="b" id="fD">${t('fSave')}</button>`:''}${(!shareBtn&&!saveBtn)?`<p class="hint">${t('fNoSave')}</p>`:''}<button class="b" id="iClose">${t('close')}</button>`);
+ s.querySelector('#iClose').onclick=closeSheet;
+ const aB=s.querySelector('#fS');if(aB)aB.onclick=doShare;
+ const dB=s.querySelector('#fD');if(dB)dB.onclick=doSave}
 async function shareCanvas(cv,title,name){const blob=await new Promise(r=>{try{cv.toBlob(r,'image/png')}catch(e){r(null)}});let file=null;
  if(blob&&window.File&&navigator.canShare){try{const f=new File([blob],(name||'pocket-notes')+'.png',{type:'image/png'});if(navigator.canShare({files:[f]}))file=f}catch(e){}}
  let url='';try{url=cv.toDataURL('image/png')}catch(e){}
@@ -2273,17 +2277,22 @@ const cmF=(id,lab,val,opt)=>`<label class="fld">${lab}<input class="in cmin" id=
 const cmV=(s,id)=>{const e=s.querySelector('#'+id);return e?e.value.trim():''};
 function cmFam(id){const ex=id?camp.fam.find(x=>x.id===id):null,f=ex?clone(ex):{id:uid()},ro=!cmCan(),FL=CM_FL();
  const n2=(a,b)=>`<div class="cm2">${a}${b}</div>`;
- const s=sheet(`<h2>${ex?esc(f.head||f.wife||''):X('عيلة جديدة','New family')}</h2>${ex&&f.phone?`<div class="pact" style="gap:8px">${cmTel(f.phone)}</div>`:''}
+ const title=ex?esc(f.head||f.wife||''):X('عيلة جديدة','New family');
+ const w=document.createElement('div');w.className='tkp';
+ w.innerHTML=`<div class="tkbar"><button class="sbt" id="iClose">${ro?t('close'):t('cancel')}</button><b style="flex:1;text-align:center;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 6px">${title}</b>${ro?'<span style="width:56px"></span>':`<button class="sbt" id="fOk" style="font-weight:700">${t('save')}</button>`}</div><div class="tkb" id="cmfamb">${ex&&f.phone?`<div class="pact" style="gap:8px;margin-bottom:10px">${cmTel(f.phone)}</div>`:''}
   ${cmF('fH',FL.head,f.head)}${n2(cmF('fI',FL.hid,f.hid,{num:1,dir:'ltr'}),cmF('fS',FL.stat,f.stat))}${n2(cmF('fW',FL.wife,f.wife),cmF('fI2',FL.hid2,f.hid2,{dir:'ltr'}))}
   ${n2(cmF('fZ',FL.size,f.size,{num:1}),cmF('fT',FL.tent,f.tent))}${n2(cmF('fP',FL.phone,f.phone,{num:1,dir:'ltr',type:'tel'}),cmF('fO',FL.origin,f.origin))}${n2(cmF('fHo',FL.housing,f.housing),cmF('fPl',FL.place,f.place))}
   <div class="rphead" style="margin:4px 0 0">${X('الحالات الخاصة (عدد)','Vulnerable (count)')}</div>${n2(cmF('fU',FL.u5,f.u5,{num:1}),cmF('fOl',FL.old,f.old,{num:1}))}${n2(cmF('fPr',FL.preg,f.preg,{num:1}),cmF('fD',FL.dis,f.dis,{num:1}))}
   <label class="fld">${FL.notes}<textarea class="in cmin" id="fN" dir="auto" rows="2">${esc(f.notes||'')}</textarea></label>
-  ${ro?`<button class="b" id="iClose">${t('close')}</button>`:`<div class="acts"><button class="b" id="iClose">${t('cancel')}</button><button class="b pri" id="fOk">${t('save')}</button></div>${ex?`<button class="b dng" id="fDel">${t('del')}</button>`:''}`}`);
- if(ro)s.querySelectorAll('input,textarea').forEach(e=>e.readOnly=true);
- s.querySelector('#iClose').onclick=closeSheet;if(ro)return;
- s.querySelector('#fOk').onclick=()=>{const g=k=>cmV(s,k);f.head=g('fH');f.hid=cmId(g('fI'));f.stat=g('fS');f.wife=g('fW');f.hid2=cmId(g('fI2'));f.size=String(cmNum(g('fZ'))||'');f.tent=g('fT');f.phone=cmPhone(g('fP'));f.origin=g('fO');f.housing=g('fHo');f.place=g('fPl');['u5','old','preg','dis'].forEach((k,i)=>f[k]=String(cmNum(g(['fU','fOl','fPr','fD'][i]))||''));f.notes=s.querySelector('#fN').value.trim();
-  if(!f.head&&!f.wife){s.querySelector('#fH').focus();return}if(f.hid&&cmL('fam').some(x=>x.hid===f.hid&&x.id!==f.id)){toast(X('رقم الهوية هذا موجود لعيلة ثانية','This ID belongs to another family'));return}cmPut('fam',f);closeSheet();render();toast(t('saved'))};
- const dl=s.querySelector('#fDel');if(dl)dl.onclick=()=>confirmSheet(t('del'),X('حذف هذه العيلة من الكشف؟','Delete this family?'),t('yesDel'),()=>{cmDel('fam',f.id);render()})}
+  ${ex&&!ro?`<button class="b dng" id="fDel" style="width:100%;margin-top:16px">${t('del')}</button>`:''}</div>`;
+ document.body.appendChild(w);const fit=panelFit(w),s=w.querySelector('#cmfamb');
+ function close(){window.visualViewport&&visualViewport.removeEventListener('resize',fit);w.classList.remove('open');setTimeout(()=>w.remove(),350)}
+ if(ro){s.querySelectorAll('input,textarea').forEach(e=>e.readOnly=true);w.querySelector('#iClose').onclick=close;requestAnimationFrame(()=>w.classList.add('open'));return}
+ w.querySelector('#iClose').onclick=close;
+ w.querySelector('#fOk').onclick=()=>{const g=k=>cmV(s,k);f.head=g('fH');f.hid=cmId(g('fI'));f.stat=g('fS');f.wife=g('fW');f.hid2=cmId(g('fI2'));f.size=String(cmNum(g('fZ'))||'');f.tent=g('fT');f.phone=cmPhone(g('fP'));f.origin=g('fO');f.housing=g('fHo');f.place=g('fPl');['u5','old','preg','dis'].forEach((k,i)=>f[k]=String(cmNum(g(['fU','fOl','fPr','fD'][i]))||''));f.notes=s.querySelector('#fN').value.trim();
+  if(!f.head&&!f.wife){s.querySelector('#fH').focus();return}if(f.hid&&cmL('fam').some(x=>x.hid===f.hid&&x.id!==f.id)){toast(X('رقم الهوية هذا موجود لعيلة ثانية','This ID belongs to another family'));return}const y=window.pageYOffset;cmPut('fam',f);close();render();window.scrollTo(0,y);toast(t('saved'))};
+ const dl=w.querySelector('#fDel');if(dl)dl.onclick=()=>confirmSheet(t('del'),X('حذف هذه العيلة من الكشف؟','Delete this family?'),t('yesDel'),()=>{const y=window.pageYOffset;cmDel('fam',f.id);close();render();window.scrollTo(0,y)});
+ requestAnimationFrame(()=>w.classList.add('open'))}
 function cmCom(id,role){const ex=id?camp.com.find(x=>x.id===id):null,m=ex?clone(ex):{id:uid(),role:role||''},ro=!cmCan();
  const s=sheet(`<h2>${ex?esc(m.name):X('عضو لجنة','Committee member')}</h2>${cmF('mN',X('الاسم','Name'),m.name)}<label class="fld">${X('الدور','Role')}<input class="in cmin" id="mR" list="cmRoles" dir="auto" value="${esc(m.role||'')}"><datalist id="cmRoles">${CM_ROLES.map(r=>`<option value="${esc(r)}">`).join('')}</datalist></label>${cmF('mP',X('الجوال','Phone'),m.phone,{num:1,dir:'ltr',type:'tel'})}
   ${ro?`<button class="b" id="iClose">${t('close')}</button>`:`<div class="acts"><button class="b" id="iClose">${t('cancel')}</button><button class="b pri" id="mOk">${t('save')}</button></div>${ex?`<button class="b dng" id="mDel">${t('del')}</button>`:''}`}`);
