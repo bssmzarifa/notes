@@ -548,7 +548,28 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
 .trow .mini{flex:none;padding:4px 10px;font-size:12px}
 .cmtent{background:#E6E4DC;font-family:var(--ui);font-size:13px;font-weight:700;color:#444441}
 .cmtag{font-style:normal;display:inline-block;font-size:10px;padding:1px 7px;border-radius:999px;background:#E6E4DC;color:#444441;margin:3px 0 0 4px;flex:none}
-.cmtag.a{background:#FAEEDA;color:#633806}.cmtag.r{background:#FCEBEB;color:#791F1F}.cmtag.g{background:#EAF3DE;color:#27500A}
+.cmtag.a{background:#FAEEDA;color:#633806}.cmtag.r{background:#FCEBEB;color:#791F1F}
+.fsum{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center}
+.fsum>div{background:#E6F1FB;border-radius:12px;padding:11px 4px}
+.fsum b{display:block;font-size:22px;font-weight:700;color:#0C447C;line-height:1.1}
+.fsum span{font-size:10.5px;color:#185FA5}
+.flist{margin:2px 0}
+.frow{display:flex;align-items:center;gap:11px;padding:11px 6px;border-bottom:.5px solid #ECE9E0;cursor:pointer}
+.frow:last-child{border-bottom:0}.frow:active{background:#F3F1EA}
+.fsz{flex:none;width:40px;height:40px;border-radius:50%;background:#E6F1FB;color:#0C447C;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.fm{flex:1;min-width:0}
+.fm b{display:block;font-size:14.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#1F1F1F}
+.fm span{display:block;font-size:11.5px;color:#8a8880;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ftags{margin-top:4px;display:flex;flex-wrap:wrap}
+.fchev{flex:none;color:#C9C7BE;font-size:22px;font-weight:700;padding:0 2px}
+.fchips{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;scrollbar-width:none}
+.fchips::-webkit-scrollbar{display:none}
+.fchip{flex:none;border-radius:999px;padding:6px 13px;font-size:12.5px;background:#E6E4DC;color:#444441;font-weight:600;white-space:nowrap}
+.fchip.on{background:#0C447C;color:#fff}
+.fchip.sm{font-size:11.5px;padding:5px 11px}
+.fsort{flex:none;align-self:center;font-size:11px;color:#8a8880;margin-inline-end:2px}
+.fcount{font-size:12.5px;color:#0C447C;font-weight:700;background:#E6F1FB;border-radius:8px;padding:7px 10px;margin-bottom:8px;text-align:center}
+#cmfq{width:100%;margin-top:2px}.cmtag.g{background:#EAF3DE;color:#27500A}
 .cmchk{width:24px;height:24px;border-radius:50%;border:1.5px solid #B4B2A9;flex:none;display:flex;align-items:center;justify-content:center;color:#fff}
 .cmchk.on{background:#3B6D11;border-color:#3B6D11}
 .cm2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -826,8 +847,9 @@ function openApp(msg){fixOld();$('#lock').hidden=true;$('#app').hidden=false;ren
 /* ---------- sheets ---------- */
 const ov=$('#ov');
 let ovGen=0;
-function sheet(html){ovGen++;ov.classList.remove('out');ov.innerHTML=`<div class="sheet" role="dialog" aria-modal="true">${html}</div>`;ov.hidden=false;return ov.firstElementChild}
-function closeSheet(){if(ov.hidden)return;const g=++ovGen;ov.classList.add('out');setTimeout(()=>{if(g!==ovGen)return;ov.hidden=true;ov.innerHTML='';ov.classList.remove('out')},220)}
+let __sy=null;function lockScroll(){if(__sy!=null)return;__sy=window.pageYOffset||document.documentElement.scrollTop||0;const b=document.body.style;b.position='fixed';b.top=(-__sy)+'px';b.left='0';b.right='0';b.width='100%'}function unlockScroll(){if(__sy==null)return;const y=__sy;__sy=null;const b=document.body.style;b.position='';b.top='';b.left='';b.right='';b.width='';window.scrollTo(0,y)}
+function sheet(html){lockScroll();ovGen++;ov.classList.remove('out');ov.innerHTML=`<div class="sheet" role="dialog" aria-modal="true">${html}</div>`;ov.hidden=false;return ov.firstElementChild}
+function closeSheet(){if(ov.hidden)return;unlockScroll();const g=++ovGen;ov.classList.add('out');setTimeout(()=>{if(g!==ovGen)return;ov.hidden=true;ov.innerHTML='';ov.classList.remove('out')},220)}
 ov.addEventListener('click',e=>{if(e.target===ov)closeSheet()});
 function confirmSheet(title,body,yes,fn){const s=sheet(`<h2>${esc(title)}</h2><p class="hint">${esc(body)}</p><div class="acts"><button class="b" id="cNo">${t('keep')}</button><button class="b dng" id="cYes">${esc(yes)}</button></div>`);s.querySelector('#cNo').onclick=closeSheet;s.querySelector('#cYes').onclick=()=>{closeSheet();fn()}}
 
@@ -2027,6 +2049,7 @@ const X=(a,e)=>lang==='ar'?a:e;
 const CM_KEYS=['fam','com','org','dist','need','meet'];
 const CM_ROLES=['المندوب','نائب المندوب','أمين السجلات','مسؤول التوزيع','مسؤولة النساء','الشباب والنظافة والمي','الحالات الخاصة'];
 let camp=null,cmView='home',cmDistId='',cmBusy=false,cmLast=0,cmT=0,cmState='';
+let cmFQ='',cmFF='all',cmFS='name';
 function cmDefault(){return{v:1,info:{name:'مخيم منتزه الحياة',area:'مواصي خانيونس · جنوب النص',ts:1},cid:'',code:'',role:'admin',pend:'',pcode:'',cols:null,reqN:0,members:{},
  fam:[],com:[{id:'c_rep',ts:1,name:'أبو ليلى',role:'المندوب',phone:''},{id:'c_dep',ts:1,name:'جبريل طبش',role:'نائب المندوب',phone:''}],org:[],dist:[],need:[],meet:[]}}
 function cmFix(){if(!camp||typeof camp!=='object')camp=cmDefault();const d=cmDefault();CM_KEYS.forEach(k=>{if(!Array.isArray(camp[k]))camp[k]=d[k]});if(!camp.info||typeof camp.info!=='object')camp.info=d.info;if(!camp.members||typeof camp.members!=='object')camp.members={};['cid','code','pend','pcode'].forEach(k=>{if(typeof camp[k]!=='string')camp[k]=''});if(!camp.role)camp.role='admin'}
@@ -2142,14 +2165,14 @@ async function cmImport(file){toast(t('xLoading'));let XL;try{XL=await loadXLSX(
    else{const rec=Object.assign({id:uid(),ts:now},o);camp.fam.push(rec);if(rec.hid)byId[rec.hid]=rec;add++}});
   camp.cols=head.map((h,i)=>({h:String(h).trim(),f:map[i]})).filter(c=>c.h&&c.f!=='skip');camp.info.ts=Date.now();
   cmSave();closeSheet();cmView='fam';render();toast(X('انضاف '+add+(up?' · انحدّث '+up:''),'Added '+add+(up?' · updated '+up:'')))}}
-async function cmExport(){toast(t('xLoading'));let XL;try{XL=await loadXLSX()}catch(e){toast(t('xLibFail'));return}
+async function cmExport(subset,suffix){toast(t('xLoading'));let XL;try{XL=await loadXLSX()}catch(e){toast(t('xLibFail'));return}
  const FL=CM_FL(),order=[];(camp.cols||[]).forEach(c=>{if(c.f!=='notes'&&!order.some(o=>o.f===c.f))order.push({f:c.f,h:c.h})});
  ['head','hid','stat','wife','hid2','size','phone','origin','housing','place','tent','u5','old','preg','dis','notes'].forEach(f=>{if(!order.some(o=>o.f===f))order.push({f,h:FL[f]})});
  const rows=[[camp.info.name+' · '+X('المندوب','Rep')+': '+((cmL('com').find(c=>c.role==='المندوب')||{}).name||'')],[X('م','#')].concat(order.map(o=>o.h))];
- cmL('fam').sort((a,b)=>String(a.head||'').localeCompare(String(b.head||''),'ar')).forEach((f,i)=>rows.push([i+1].concat(order.map(o=>{const v=f[o.f];return ['size','u5','old','preg','dis'].includes(o.f)&&v!==''&&v!=null?cmNum(v):(v||'')}))));
+ (subset||cmL('fam')).slice().sort((a,b)=>String(a.head||'').localeCompare(String(b.head||''),'ar')).forEach((f,i)=>rows.push([i+1].concat(order.map(o=>{const v=f[o.f];return ['size','u5','old','preg','dis'].includes(o.f)&&v!==''&&v!=null?cmNum(v):(v||'')}))));
  const ws=XL.utils.aoa_to_sheet(rows);ws['!cols']=[{wch:4}].concat(order.map(o=>({wch:o.f==='head'||o.f==='wife'?26:o.f==='notes'||o.f==='place'?30:14})));ws['!merges']=[{s:{r:0,c:0},e:{r:0,c:order.length}}];
  const wb=XL.utils.book_new();XL.utils.book_append_sheet(wb,ws,X('الكشف','List'));wb.Workbook={Views:[{RTL:lang==='ar'}]};
- const buf=XL.write(wb,{type:'array',bookType:'xlsx'});fileReady(new File([buf],(camp.info.name||'camp')+' - '+ymd(new Date())+'.xlsx',{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}))}
+ const buf=XL.write(wb,{type:'array',bookType:'xlsx'});fileReady(new File([buf],(camp.info.name||'camp')+(suffix?' - '+suffix:'')+' - '+ymd(new Date())+'.xlsx',{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}))}
 
 /* ---- views ---- */
 const cmChip=(k,lab,n)=>`<button class="tkpchip ${cmView===k?'on':''}" data-cmv="${k}">${lab}${n?` <small>${n}</small>`:''}</button>`;
@@ -2182,12 +2205,33 @@ function cmShareCard(){let b='';
  else if(!camp.cid)b=`<p class="hint">${X('شارك الكشف مع اللجنة: كل عضو بحسابه، وأنت بتقرر مين بيعدّل ومين بس بيشوف.','Share with your committee: each member with their own account; you decide who edits.')}</p><div class="pact" style="gap:8px"><button class="mini" data-cmnew="1" style="flex:1;justify-content:center">${X('شارك مع اللجنة','Share')}</button><button class="mini" data-cmjoin="1" style="flex:1;justify-content:center">${X('انضم بكود','Join with code')}</button></div>`;
  else{const n=Object.keys(camp.mroles||{}).length||1;b=`<p class="hint">${X('مشترك مع '+cmAr(n)+' من اللجنة · دورك: ','Shared with '+n+' · your role: ')}${{admin:X('مسؤول','admin'),edit:X('بيعدّل','editor'),view:X('بس بيشوف','viewer')}[camp.role]||''}</p><button class="mini" data-cmmem="1" style="width:100%;justify-content:center">${X('الأعضاء','Members')}${camp.reqN&&camp.role==='admin'?' · '+cmAr(camp.reqN)+X(' طلب جديد',' new'):''}</button>`}
  return `<div class="cd tape wide"><div class="rphead">${X('اللجنة على التطبيق','Committee sharing')}</div>${b}</div>`}
-function cmFamRow(f){const tags=[];if(cmNum(f.u5))tags.push(cmBadge(cmAr(f.u5)+X(' تحت ٥',' <5'),'a'));if(cmNum(f.old))tags.push(cmBadge(X('مسن','elderly'),'a'));if(cmNum(f.preg))tags.push(cmBadge(X('حامل/مرضع','pregnant'),'a'));if(cmNum(f.dis))tags.push(cmBadge(X('إعاقة','disability'),'r'));
- const sub=[f.tent?X('خيمة ','Tent ')+f.tent:'',f.size?cmAr(cmNum(f.size))+X(' أفراد',' people'):'',f.origin||''].filter(Boolean).join(' · ');
- return `<div class="trow tap" data-cmfam="${f.id}" role="button" tabindex="0"><span class="tth cmtent">${esc(f.tent||'—')}</span><div class="m"><b>${hl(f.head||f.wife||'')}</b><span>${hl(sub)}</span>${tags.length?`<div>${tags.join('')}</div>`:''}</div></div>`}
-function cmFamV(q){let f=cmL('fam');if(q)f=f.filter(x=>norm([x.head,x.wife,x.hid,x.hid2,x.tent,x.phone,x.origin].join(' ')).includes(q));f.sort((a,b)=>String(a.head||'').localeCompare(String(b.head||''),'ar'));
- const tools=`<div class="pact" style="gap:8px;margin-bottom:8px">${cmCan()?`<button class="mini" data-cmimp="1" style="flex:1;justify-content:center">${X('استيراد إكسل','Import Excel')}</button>`:''}<button class="mini" data-cmexp="1" style="flex:1;justify-content:center">${X('تصدير إكسل','Export Excel')}</button></div>`;
- return `<div class="cd tape wide">${tools}${q?`<p class="hint">${t('found',{n:f.length})}</p>`:''}${f.length?f.map(cmFamRow).join(''):`<p class="hint">${q?esc(t('none',{q:query.trim()})):X('لسا ما في عائلات. استورد الكشف أو اضغط +','No families yet. Import a list or tap +')}</p>`}</div>`}
+function cmFamRow(f){const tags=[];if(cmNum(f.u5))tags.push(cmBadge(cmAr(cmNum(f.u5))+X(' تحت ٥',' <5'),'a'));if(cmNum(f.old))tags.push(cmBadge(X('مسن','elderly'),'a'));if(cmNum(f.preg))tags.push(cmBadge(X('حامل/مرضع','pregnant'),'a'));if(cmNum(f.dis))tags.push(cmBadge(X('إعاقة','disability'),'r'));
+ const sz=cmNum(f.size),sub=[f.tent?X('خيمة ','Tent ')+f.tent:'',f.origin||'',f.hid?'#'+esc(f.hid):''].filter(Boolean).join(' · ');
+ return `<div class="frow" data-cmfam="${f.id}" role="button" tabindex="0"><span class="fsz">${sz?cmAr(sz):'—'}</span><div class="fm"><b>${hl(f.head||f.wife||'')}</b>${sub?`<span>${hl(sub)}</span>`:''}${tags.length?`<div class="ftags">${tags.join('')}</div>`:''}</div><span class="fchev">${lang==='ar'?'‹':'›'}</span></div>`}
+function cmFLabel(){const L={widow:X('الأرامل','Widows'),dis:X('ذوي الإعاقة','Disability'),u5:X('أطفال تحت ٥','Under 5'),old:X('كبار السن','Elderly'),preg:X('حوامل ومرضعات','Pregnant/nursing'),noid:X('بدون هوية','No ID')};return L[cmFF]||(cmFQ.trim()?X('نتيجة البحث','Search result'):'')}
+function cmFamFiltered(qarg){let f=cmL('fam');const F=cmFF;
+ if(F==='widow')f=f.filter(x=>/أرمل|ارمل|أرامل/.test(String(x.stat||'')));
+ else if(F==='dis')f=f.filter(x=>cmNum(x.dis)>0);
+ else if(F==='u5')f=f.filter(x=>cmNum(x.u5)>0);
+ else if(F==='old')f=f.filter(x=>cmNum(x.old)>0);
+ else if(F==='preg')f=f.filter(x=>cmNum(x.preg)>0);
+ else if(F==='noid')f=f.filter(x=>!String(x.hid||'').trim());
+ const q=(cmFQ.trim()||qarg||'');if(q){const nq=norm(q);f=f.filter(x=>norm([x.head,x.wife,x.hid,x.hid2,x.tent,x.phone,x.origin].join(' ')).includes(nq))}
+ const byName=(a,b)=>String(a.head||a.wife||'').localeCompare(String(b.head||b.wife||''),'ar');
+ if(cmFS==='big')f=f.slice().sort((a,b)=>cmNum(b.size)-cmNum(a.size)||byName(a,b));
+ else if(cmFS==='small')f=f.slice().sort((a,b)=>cmNum(a.size)-cmNum(b.size)||byName(a,b));
+ else f=f.slice().sort(byName);
+ return f}
+function cmFamListHTML(qarg){const f=cmFamFiltered(qarg);const active=cmFF!=='all'||cmFQ.trim();const ppl=f.reduce((a,x)=>a+cmNum(x.size),0);const cnt=active?`<div class="fcount">${lang==='ar'?(esc(cmFLabel())+' — '+cmAr(f.length)+' عائلة فيهم '+cmAr(ppl)+' فرد'):((cmFLabel()?esc(cmFLabel())+' — ':'')+f.length+' families, '+ppl+' people')}</div>`:'';return cnt+(f.length?f.map(cmFamRow).join(''):`<p class="hint" style="text-align:center;padding:18px">${(cmFQ.trim()||qarg||cmFF!=='all')?X('ما في نتائج بهالبحث','No matches'):X('لسا ما في عائلات. استورد الكشف أو اضغط +','No families yet. Import a list or tap +')}</p>`)}
+function cmFamV(qarg){const st=cmStats();
+ const sum=`<div class="cd tape wide"><div class="fsum"><div><b>${cmAr(st.fam)}</b><span>${X('عائلة','families')}</span></div><div><b>${cmAr(st.ppl)}</b><span>${X('فرد','people')}</span></div><div><b>${cmAr(st.u5)}</b><span>${X('طفل تحت ٥','under 5')}</span></div></div></div>`;
+ const tools=`<div class="pact" style="gap:8px;margin-bottom:8px">${cmCan()?`<button class="mini" data-cmimp="1" style="flex:1;justify-content:center">${X('استيراد إكسل','Import Excel')}</button>`:''}<button class="mini" data-cmexpf="1" style="flex:1;justify-content:center">${X('تصدير إكسل','Export Excel')}</button></div>`;
+ const search=`<input class="in" id="cmfq" data-cmfq dir="auto" autocomplete="off" placeholder="${X('ابحث باسم أو رقم هوية…','Search name or ID…')}" value="${esc(cmFQ)}">`;
+ const fchip=(k,lab)=>`<button class="fchip ${cmFF===k?'on':''}" data-cmff="${k}">${lab}</button>`;
+ const filters=`<div class="fchips">${fchip('all',X('الكل','All'))}${fchip('widow',X('أرامل','Widows'))}${fchip('dis',X('إعاقة','Disability'))}${fchip('u5',X('أطفال <٥','Kids <5'))}${fchip('old',X('كبار سن','Elderly'))}${fchip('preg',X('حوامل','Pregnant'))}${fchip('noid',X('بدون هوية','No ID'))}</div>`;
+ const schip=(k,lab)=>`<button class="fchip sm ${cmFS===k?'on':''}" data-cmfs="${k}">${lab}</button>`;
+ const sorts=`<div class="fchips" style="margin-top:6px"><span class="fsort">${X('ترتيب','Sort')}:</span>${schip('name',X('أبجدي','A-Z'))}${schip('big',X('الأكبر عائلة','Largest'))}${schip('small',X('الأصغر','Smallest'))}</div>`;
+ return sum+`<div class="cd tape wide">${tools}${search}${filters}${sorts}<div id="cmflist" class="flist" style="margin-top:8px">${cmFamListHTML(qarg)}</div></div>`}
 function cmComV(){const c=cmL('com'),filled=new Set(c.map(x=>x.role));
  const rows=c.slice().sort((a,b)=>{const ia=CM_ROLES.indexOf(a.role),ib=CM_ROLES.indexOf(b.role);return (ia<0?99:ia)-(ib<0?99:ib)}).map(m=>`<div class="trow tap" data-cmcom="${m.id}" role="button" tabindex="0"><div class="m"><b>${esc(m.name)}</b><span>${esc(m.role||'')}</span></div>${cmTel(m.phone)}</div>`).join('');
  const empty=CM_ROLES.filter(r=>!filled.has(r)).map(r=>`<div class="trow tap ghost" data-cmrole="${esc(r)}" role="button" tabindex="0"><div class="m"><b>${X('فاضي · اضغط للإضافة','Empty · tap to add')}</b><span>${esc(r)}</span></div><span class="amt">+</span></div>`).join('');
@@ -2290,6 +2334,8 @@ function cmMissing(){const d=camp.dist.find(x=>x.id===cmDistId);if(!d)return;con
  shareRaw([d.what+(d.org?' · '+d.org:'')+' · '+tkDate(d.date,lang==='ar'?'ar':'en'),X('لسا ما استلموا ('+miss.length+'):','Not received yet ('+miss.length+'):'),'',...miss.map((x,i)=>(i+1)+'. '+(x.head||x.wife)+(x.tent?X(' · خيمة ',' · tent ')+x.tent:'')+(x.phone?' · '+x.phone:''))].join('\n'))}
 function cmPick(){const i=document.createElement('input');i.type='file';i.accept='.xlsx,.xls,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel';i.onchange=()=>{const f=i.files&&i.files[0];if(f)cmImport(f)};i.click()}
 $('#grid').addEventListener('click',e=>{if(tab!==7)return;const g=(a)=>e.target.closest('['+a+']');let b;
+ if((b=g('data-cmff'))){cmFF=b.dataset.cmff;b.parentNode.querySelectorAll('.fchip').forEach(c=>c.classList.toggle('on',c===b));const L=document.getElementById('cmflist');if(L)L.innerHTML=cmFamListHTML();return}
+ if((b=g('data-cmfs'))){cmFS=b.dataset.cmfs;b.parentNode.querySelectorAll('.fchip').forEach(c=>c.classList.toggle('on',c===b));const L=document.getElementById('cmflist');if(L)L.innerHTML=cmFamListHTML();return}
  if((b=g('data-cmv'))){cmView=b.dataset.cmv;render();return}
  if((b=g('data-cmfam'))){cmFam(b.dataset.cmfam);return}
  if((b=g('data-cmcom'))){cmCom(b.dataset.cmcom);return}
@@ -2304,6 +2350,7 @@ $('#grid').addEventListener('click',e=>{if(tab!==7)return;const g=(a)=>e.target.
  if((b=g('data-cmneed'))){cmNeed(b.dataset.cmneed);return}
  if(g('data-cmmove')){cmNeed(null,'move');return}
  if(g('data-cmimp')){cmPick();return}
+ if(g('data-cmexpf')){cmExport(cmFamFiltered(),cmFLabel());return}
  if(g('data-cmexp')){cmExport();return}
  if(g('data-cmrep')){cmRepShare();return}
  if(g('data-cminfo')){cmInfo();return}
@@ -2314,6 +2361,7 @@ $('#grid').addEventListener('click',e=>{if(tab!==7)return;const g=(a)=>e.target.
  if(g('data-cmmem')){cmMembers();return}
  if(g('data-cmsync')){cmSync(true);return}
 });
+$('#grid').addEventListener('input',e=>{if(tab!==7)return;const b=e.target.closest('[data-cmfq]');if(b){cmFQ=b.value;const L=document.getElementById('cmflist');if(L)L.innerHTML=cmFamListHTML()}});
 
 cmLoad();
 /* start */
