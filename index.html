@@ -569,6 +569,21 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
 .fchk{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid #C9C7BE;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px}
 .fchk.on{background:#0C447C;border-color:#0C447C}
 .frow.selr{background:#EAF2FB}
+.famscr .sbt.sm{font-size:12.5px;padding:5px 11px;flex:none}
+.memadd{display:flex;gap:6px;align-items:center;margin:2px 0 8px;flex-wrap:wrap}
+.memadd .in{flex:1;min-width:120px}
+.sxt{display:flex;border:1.5px solid #D9D7CE;border-radius:10px;overflow:hidden;flex:none}
+.sxb{padding:8px 11px;background:#fff;font-size:12.5px;border:0;color:#6B6960}
+.sxb.on{background:#0C447C;color:#fff;font-weight:700}
+.memlist{display:flex;flex-direction:column;gap:6px}
+.memr{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #ECEAE1;border-radius:10px;padding:7px 9px}
+.memn{display:flex;flex-direction:column;min-width:0;flex:none;max-width:42%}
+.memn b{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.memn span{font-size:11px;color:#8A887F}
+.memf{display:flex;gap:4px;flex:1;flex-wrap:wrap;justify-content:flex-end}
+.mfl{font-size:10.5px;padding:3px 8px;border-radius:999px;border:1px solid #D9D7CE;background:#fff;color:#9A988F}
+.mfl.on{background:#E6F1FB;border-color:#185FA5;color:#0C447C;font-weight:700}
+.memx{flex:none;width:27px;height:27px;border-radius:50%;border:0;background:#F3E1E1;color:#B4453B;font-size:18px;line-height:1}
 .fchips{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;scrollbar-width:none}
 .fchips::-webkit-scrollbar{display:none}
 .fchip{flex:none;border-radius:999px;padding:6px 13px;font-size:12.5px;background:#E6E4DC;color:#444441;font-weight:600;white-space:nowrap}
@@ -681,7 +696,7 @@ let tab=0,query='',lastTab=0;
 let migrate=true;
 
 function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.classList.toggle('ar',lang==='ar');
- $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v29';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
+ $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v30';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
 function toggleLang(){lang=lang==='ar'?'en':'ar';S.set('lang',lang);applyLang();if(!$('#app').hidden)render();else lockText();}
 $('#langBtn').onclick=toggleLang;$('#lockLang').onclick=toggleLang;
 
@@ -1931,28 +1946,45 @@ function cmFamScreen(){const A=lang==='ar';let selMode=false;const sel=new Set()
   +`<input class="in" id="cmfq" dir="auto" autocomplete="off" placeholder="${A?'ابحث باسم أو رقم هوية…':'Search name or ID…'}" value="${esc(cmFQ)}" style="margin:0 10px 8px;width:calc(100% - 20px)">`
   +`<div class="fchips" style="padding:0 10px">${fchip('all',A?'الكل':'All')}${fchip('widow',A?'أرامل':'Widows')}${fchip('dis',A?'إعاقة':'Disability')}${fchip('u5',A?'أطفال <٥':'Kids<5')}${fchip('old',A?'كبار سن':'Elderly')}${fchip('preg',A?'حوامل':'Pregnant')}${fchip('noid',A?'بدون هوية':'No ID')}</div>`
   +`<div class="fchips" style="padding:0 10px;margin-top:6px"><span class="fsort">${A?'ترتيب':'Sort'}:</span>${schip('name',A?'أبجدي':'A-Z')}${schip('big',A?'الأكبر عائلة':'Largest')}${schip('small',A?'الأصغر':'Smallest')}</div>`
+  +`<div class="fchips" style="padding:6px 10px 0;align-items:center"><span class="fsort">${A?'عرض':'View'}:</span>`
+    +`<button class="fchip ${cmMode==='fam'?'on':''}" data-mode="fam">${A?'عائلات':'Families'}</button>`
+    +`<button class="fchip ${cmMode==='ppl'?'on':''}" data-mode="ppl">${A?'أفراد':'People'}</button>`
+    +`<span style="flex:1"></span><button class="sbt sm" id="fsImp">${A?'استيراد':'Import'}</button><button class="sbt sm" id="fsExp">${A?'تصدير':'Export'}</button></div>`
   +`<div class="fcount" id="fsCnt" style="margin:8px 10px 6px;display:none"></div></div>`
   +`<div class="fsList" id="cmflist"></div>`
   +`<button class="fsfab" id="fsAdd" aria-label="${A?'إضافة':'Add'}">+</button>`
   +`<div class="fsFoot" id="fsFoot" hidden><button class="b" id="fsAll" style="flex:none">${A?'تحديد الكل':'Select all'}</button><span id="fsCount" style="flex:1;text-align:center;font-weight:700;font-size:13px"></span><button class="b dng" id="fsDel" style="flex:none">${A?'حذف':'Delete'}</button></div>`;
  document.body.appendChild(w);
  const fit=panelFit(w),listEl=w.querySelector('#cmflist');
- const rowHTML=f=>{const sz=cmNum(f.size),sub=[f.origin||'',f.hid?'#'+esc(f.hid):''].filter(Boolean).join(' · '),ck=sel.has(f.id);
+ const famRow=f=>{const sz=cmNum(f.size),sub=[f.origin||'',f.hid?'#'+esc(f.hid):''].filter(Boolean).join(' · '),ck=sel.has(f.id);
   return `<div class="frow${ck?' selr':''}" data-fid="${f.id}" role="button" tabindex="0">${selMode?`<span class="fchk${ck?' on':''}">${ck?'✓':''}</span>`:`<span class="fsz">${sz?cmAr(sz):'—'}</span>`}<div class="fm"><b>${esc(f.head||f.wife||'')}</b>${sub?`<span>${sub}</span>`:''}</div>${selMode?'':`<span class="fchev">${A?'‹':'›'}</span>`}</div>`};
- function renderList(){const f=cmFamFiltered();const active=cmFF!=='all'||cmFQ.trim();const cc=w.querySelector('#fsCnt');
-  if(active){const ppl=f.reduce((a,x)=>a+cmNum(x.size),0);cc.style.display='';cc.textContent=(cmFLabel()?cmFLabel()+' — ':'')+cmAr(f.length)+' عائلة فيهم '+cmAr(ppl)+' فرد'}else cc.style.display='none';
-  listEl.innerHTML=f.length?f.map(rowHTML).join(''):`<p class="hint" style="text-align:center;padding:26px">${active?(A?'ما في نتائج':'No results'):(A?'لسا ما في عائلات. استورد الكشف من اللوحة.':'No families yet.')}</p>`;
+ const pplRow=o=>{const m=o.m,sub=[o.f.head||'',o.f.tent?(A?'خيمة '+esc(o.f.tent):'tent '+esc(o.f.tent)):''].filter(Boolean).join(' · ');
+  return `<div class="frow" data-pfid="${o.f.id}" role="button" tabindex="0"><span class="fsz">${cmAr(cmAge(m))}</span><div class="fm"><b>${esc(m.name||'—')}</b><span>${m.sex==='f'?(A?'أنثى':'F'):(A?'ذكر':'M')}${sub?' · '+sub:''}</span></div><span class="fchev">${A?'‹':'›'}</span></div>`};
+ function renderList(){const ppl=cmMode==='ppl';const cc=w.querySelector('#fsCnt');const active=cmFF!=='all'||cmFQ.trim();
+  if(ppl){const r=cmIndividuals();const gaps=cmMemGaps();
+   cc.style.display='';cc.textContent=(cmFLabel()?cmFLabel()+' — ':'')+cmNA(r.length)+' فرد بالأسماء'+(gaps?'، و'+cmNA(gaps)+' عائلة لسا بدون أسماء':'');
+   listEl.innerHTML=r.length?r.map(pplRow).join(''):`<p class="hint" style="text-align:center;padding:26px">${A?'ما في أفراد مُدخلين بالأسماء ضمن هالفئة. افتح العائلة وأضف أفرادها.':'No named members in this category yet.'}</p>`}
+  else{const f=cmFamFiltered();
+   if(active){const ppl2=f.reduce((a,x)=>a+cmNum(x.size),0);cc.style.display='';cc.textContent=(cmFLabel()?cmFLabel()+' — ':'')+cmNA(f.length)+' عائلة فيهم '+cmNA(ppl2)+' فرد'}else cc.style.display='none';
+   listEl.innerHTML=f.length?f.map(famRow).join(''):`<p class="hint" style="text-align:center;padding:26px">${active?(A?'ما في نتائج':'No results'):(A?'لسا ما في عائلات. استورد الكشف.':'No families yet.')}</p>`}
   updFoot()}
- function updHd(){w.querySelector('#fsTitle').textContent=(A?'العائلات':'Families')+' ('+cmAr(cmL('fam').length)+')';w.querySelector('#fsSel').textContent=selMode?(A?'تم':'Done'):(A?'تحديد':'Select');w.querySelector('#fsAdd').style.display=selMode?'none':''}
+ function updHd(){const ppl=cmMode==='ppl';w.querySelector('#fsTitle').textContent=(A?'العائلات':'Families')+' ('+cmAr(cmL('fam').length)+')';
+  const sb=w.querySelector('#fsSel');sb.style.visibility=ppl?'hidden':'';sb.textContent=selMode?(A?'تم':'Done'):(A?'تحديد':'Select');
+  w.querySelector('#fsAdd').style.display=selMode?'none':''}
  function updFoot(){const ft=w.querySelector('#fsFoot');ft.hidden=!selMode;if(selMode)w.querySelector('#fsCount').textContent=(A?'محدّد: ':'Selected: ')+cmAr(sel.size)}
  function setSel(on){selMode=on;if(!on)sel.clear();updHd();renderList()}
+ function setMode(mode){cmMode=mode;if(selMode){selMode=false;sel.clear()}w.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('on',x.dataset.mode===mode));updHd();renderList()}
  renderList();updHd();
  function close(){window.__famRefresh=null;window.visualViewport&&visualViewport.removeEventListener('resize',fit);w.classList.remove('open');setTimeout(()=>w.remove(),350);render()}
  w.querySelector('#fsBack').onclick=close;
  w.querySelector('#fsSel').onclick=()=>setSel(!selMode);
  w.querySelector('#fsAdd').onclick=()=>{if(cmCan())cmFam(null)};
- listEl.addEventListener('click',e=>{const r=e.target.closest('[data-fid]');if(!r)return;const id=r.dataset.fid;
-  if(selMode){if(sel.has(id))sel.delete(id);else sel.add(id);renderList()}else cmFam(id)});
+ w.querySelector('#fsExp').onclick=()=>{cmMode==='ppl'?cmExportMem():cmExport(cmFamFiltered(),cmFLabel())};
+ w.querySelector('#fsImp').onclick=()=>{if(cmCan())cmPick()};
+ w.querySelectorAll('[data-mode]').forEach(c=>c.onclick=()=>setMode(c.dataset.mode));
+ listEl.addEventListener('click',e=>{let r;
+  if((r=e.target.closest('[data-pfid]'))){cmFam(r.dataset.pfid);return}
+  if((r=e.target.closest('[data-fid]'))){const id=r.dataset.fid;if(selMode){sel.has(id)?sel.delete(id):sel.add(id);renderList()}else cmFam(id)}});
  w.querySelector('#fsAll').onclick=()=>{const f=cmFamFiltered();if(sel.size>=f.length)sel.clear();else f.forEach(x=>sel.add(x.id));renderList()};
  w.querySelector('#fsDel').onclick=()=>{if(!sel.size)return;confirmSheet(A?'حذف المحدّد':'Delete selected',A?('رح يتحذف '+cmAr(sel.size)+' عائلة من الكشف. ما في تراجع.'):('Delete '+sel.size+' families? This cannot be undone.'),A?'نعم، احذف':'Yes, delete',()=>{const now=Date.now();sel.forEach(id=>{const i=camp.fam.findIndex(x=>x.id===id);if(i>-1)camp.fam[i]={id,ts:now,del:1}});cmSave();sel.clear();selMode=false;updHd();renderList();toast(A?'تم الحذف':'Deleted')})};
  w.querySelector('#cmfq').addEventListener('input',e=>{cmFQ=e.target.value;renderList()});
@@ -1960,6 +1992,62 @@ function cmFamScreen(){const A=lang==='ar';let selMode=false;const sel=new Set()
  w.querySelectorAll('[data-fs]').forEach(c=>c.onclick=()=>{cmFS=c.dataset.fs;w.querySelectorAll('[data-fs]').forEach(x=>x.classList.toggle('on',x===c));renderList()});
  window.__famRefresh=()=>{updHd();renderList()};
  requestAnimationFrame(()=>w.classList.add('open'))}
+
+/* ---------- Family members (individuals) : entry, auto-counts, by-name lists ---------- */
+let cmMode='fam';
+function cmNA(n){return '⁨'+cmAr(n)+'⁩'}
+function cmAge(m){const cy=new Date().getFullYear();const by=cmNum(m.by);if(by>0&&by<=cy)return cy-by;return cmNum(m.age)||0}
+function cmMemDerive(f){if(f.mem&&f.mem.length){const M=f.mem;f.size=String(M.length);f.u5=String(M.filter(m=>cmAge(m)<5).length);f.old=String(M.filter(m=>cmAge(m)>=60).length);f.preg=String(M.filter(m=>m.preg).length);f.dis=String(M.filter(m=>m.dis).length)}}
+function cmMemRow(m){const A=lang==='ar',age=cmAge(m);const fl=(k,lab)=>`<button type="button" class="mfl${m[k]?' on':''}" data-mf="${k}" data-mid="${m.id}">${lab}</button>`;
+ return `<div class="memr" data-mid="${m.id}"><div class="memn"><b>${esc(m.name||'—')}</b><span>${A?cmNA(age)+' سنة · '+(m.sex==='f'?'أنثى':'ذكر'):age+'y · '+(m.sex==='f'?'F':'M')}</span></div><div class="memf">${fl('dis',A?'إعاقة':'Dis')}${fl('chr',A?'مزمن':'Chronic')}${m.sex==='f'?fl('preg',A?'حامل/مرضع':'Preg'):''}${fl('orph',A?'يتيم':'Orphan')}</div><button type="button" class="memx" data-mdel="${m.id}">×</button></div>`}
+function cmMemSection(f){const A=lang==='ar',M=f.mem||[];
+ return `<div class="rphead" style="margin:16px 0 6px">${A?'أفراد الأسرة':'Members'} <span id="memCount" style="color:#0C447C">(${cmAr(M.length)})</span></div>`
+ +`<div class="memadd"><input class="in" id="maN" placeholder="${A?'اسم الفرد':'Name'}" dir="auto"><input class="in" id="maA" placeholder="${A?'العمر':'Age'}" inputmode="numeric" style="max-width:64px;flex:none"><div class="sxt" id="maSx"><button type="button" class="sxb on" data-sx="m">${A?'ذكر':'M'}</button><button type="button" class="sxb" data-sx="f">${A?'أنثى':'F'}</button></div><button type="button" class="b" id="maAdd" style="flex:none">${A?'أضف':'Add'}</button></div>`
+ +`<div class="memlist" id="memList">${M.map(cmMemRow).join('')}</div>`
+ +`<p class="hint" id="memHint" style="margin:6px 2px 0;font-size:11.5px">${A?'لما تدخل الأفراد بأعمارهم، التطبيق بيحسب الحجم وتحت ٥ وكبار السن تلقائياً.':'Entering members auto-computes the counts.'}</p>`}
+function cmMemWire(w,f){f.mem=f.mem||[];const $=s=>w.querySelector(s);
+ function counts(){cmMemDerive(f);const on=f.mem.length>0;
+  const set=(id,v)=>{const el=$('#'+id);if(el){if(on){el.value=cmNum(v)||0;el.readOnly=true;el.style.opacity='.6'}else{el.readOnly=false;el.style.opacity=''}}};
+  set('fZ',f.size);set('fU',f.u5);set('fOl',f.old);set('fPr',f.preg);set('fD',f.dis);
+  const c=$('#memCount');if(c)c.textContent='('+cmAr(f.mem.length)+')';
+  const h=$('#memHint');if(h)h.style.display=on?'none':''}
+ function redraw(){const L=$('#memList');if(L)L.innerHTML=f.mem.map(cmMemRow).join('');counts()}
+ w.querySelectorAll('#maSx .sxb').forEach(b=>b.onclick=()=>w.querySelectorAll('#maSx .sxb').forEach(x=>x.classList.toggle('on',x===b)));
+ $('#maAdd').onclick=()=>{const nm=$('#maN').value.trim(),age=cmNum($('#maA').value),sx=($('#maSx .sxb.on')||{dataset:{}}).dataset.sx||'m',cy=new Date().getFullYear();
+  if(!nm){$('#maN').focus();return}f.mem.push({id:uid(),name:nm,sex:sx,by:age?cy-age:0});$('#maN').value='';$('#maA').value='';$('#maN').focus();redraw()};
+ $('#memList').addEventListener('click',e=>{let b;if((b=e.target.closest('[data-mdel]'))){f.mem=f.mem.filter(m=>m.id!==b.dataset.mdel);redraw();return}
+  if((b=e.target.closest('[data-mf]'))){const m=f.mem.find(x=>x.id===b.dataset.mid);if(m){m[b.dataset.mf]=!m[b.dataset.mf];b.classList.toggle('on',!!m[b.dataset.mf]);counts()}}});
+ counts()}
+/* flattened individuals for by-name lists/exports, honoring the active filter + search */
+function cmIndividuals(){const F=cmFF;let fams=cmL('fam');
+ if(F==='widow')fams=fams.filter(x=>/أرمل|ارمل|أرامل/.test(String(x.stat||'')));
+ else if(F==='dis')fams=fams.filter(x=>cmNum(x.dis)>0||(x.mem||[]).some(m=>m.dis));
+ else if(F==='u5')fams=fams.filter(x=>(x.mem||[]).some(m=>cmAge(m)<5)||cmNum(x.u5)>0);
+ else if(F==='old')fams=fams.filter(x=>(x.mem||[]).some(m=>cmAge(m)>=60)||cmNum(x.old)>0);
+ else if(F==='preg')fams=fams.filter(x=>(x.mem||[]).some(m=>m.preg)||cmNum(x.preg)>0);
+ else if(F==='noid')fams=fams.filter(x=>!String(x.hid||'').trim());
+ const q=norm((cmFQ||'').trim());let out=[];
+ fams.forEach(f=>(f.mem||[]).forEach(m=>out.push({m,f})));
+ if(F==='u5')out=out.filter(o=>cmAge(o.m)<5);else if(F==='old')out=out.filter(o=>cmAge(o.m)>=60);
+ else if(F==='dis')out=out.filter(o=>o.m.dis);else if(F==='preg')out=out.filter(o=>o.m.preg);
+ if(q)out=out.filter(o=>norm([o.m.name,o.f.head,o.f.hid,o.f.tent].join(' ')).includes(q));
+ out.sort((a,b)=>String(a.m.name||'').localeCompare(String(b.m.name||''),'ar'));return out}
+function cmMemGaps(){const F=cmFF;let fams=cmL('fam');
+ if(F==='dis')fams=fams.filter(x=>cmNum(x.dis)>0);else if(F==='u5')fams=fams.filter(x=>cmNum(x.u5)>0);
+ else if(F==='old')fams=fams.filter(x=>cmNum(x.old)>0);else if(F==='preg')fams=fams.filter(x=>cmNum(x.preg)>0);
+ else if(F==='widow')fams=fams.filter(x=>/أرمل|ارمل|أرامل/.test(String(x.stat||'')));
+ return fams.filter(x=>!(x.mem&&x.mem.length)).length}
+async function cmExportMem(){toast(t('xLoading'));let XL;try{XL=await loadXLSX()}catch(e){toast(t('xLibFail'));return}
+ const A=lang==='ar',rows=cmIndividuals();
+ const head=[camp.info.name+' · '+(A?'كشف أفراد':'Members list')+(cmFLabel()?' - '+cmFLabel():'')];
+ const cols=[A?'م':'#',A?'الاسم':'Name',A?'الجنس':'Sex',A?'العمر':'Age',A?'الحالة':'Status',A?'رب الأسرة':'Head',A?'الخيمة':'Tent',A?'هوية الأسرة':'Family ID',A?'المنطقة':'Origin'];
+ const aoa=[head,cols];
+ rows.forEach((o,i)=>{const m=o.m,f=o.f,fl=[m.dis&&(A?'إعاقة':'Dis'),m.chr&&(A?'مرض مزمن':'Chronic'),m.preg&&(A?'حامل/مرضع':'Preg'),m.orph&&(A?'يتيم':'Orphan')].filter(Boolean).join('، ');
+  aoa.push([i+1,m.name||'',m.sex==='f'?(A?'أنثى':'F'):(A?'ذكر':'M'),cmAge(m),fl,f.head||'',f.tent||'',f.hid||'',f.origin||''])});
+ const gaps=cmMemGaps();if(gaps)aoa.push([],['',A?('ملاحظة: '+cmAr(gaps)+' عائلة ضمن هالفئة لسا ما أُدخلت أسماء أفرادها'):(gaps+' families in this category have no member names yet')]);
+ const ws=XL.utils.aoa_to_sheet(aoa);ws['!cols']=[{wch:4},{wch:24},{wch:7},{wch:6},{wch:18},{wch:22},{wch:8},{wch:14},{wch:12}];ws['!merges']=[{s:{r:0,c:0},e:{r:0,c:8}}];
+ const wb=XL.utils.book_new();XL.utils.book_append_sheet(wb,ws,A?'الأفراد':'Members');wb.Workbook={Views:[{RTL:lang==='ar'}]};
+ const buf=XL.write(wb,{type:'array',bookType:'xlsx'});fileReady(new File([buf],(camp.info.name||'camp')+' - '+(A?'أفراد':'members')+(cmFLabel()?' - '+cmFLabel():'')+' - '+ymd(new Date())+'.xlsx',{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}))}
 
 function menu(){
  const s=sheet(`<h2>${t('menu')}</h2><p class="hint">${t('about')}</p>
@@ -2190,7 +2278,7 @@ async function cmMembers(){if(!camp.cid)return;await cmSync();const roles=camp.m
 const CM_F=[['hid2',['رقم الهوية2','رقم هوية الزوجه','هوية الزوجه','رقم هويه الزوجه']],['wife',['اسم الزوجه','الزوجه']],['size',['عدد الافراد','اجمالي عدد الافراد','عدد افراد','الافراد']],['phone',['رقم الجوال','الجوال','جوال','رقم الهاتف','الهاتف','موبايل']],
  ['stat',['الحاله الاجتماعيه','الحاله']],['hid',['رقم الهويه','الهويه','رقم هويه']],['head',['الاسم رباعي','اسم الزوج','اسم رب الاسره','رب الاسره','الاسم الرباعي','الاسم']],['origin',['المحافظه','المنطقه الاصليه','السكن الاصلي','البلد']],['housing',['نوع السكن']],['place',['مكان الاقامه','مكان السكن','العنوان']],['campn',['اسم المخيم','المخيم']],
  ['tent',['رقم الخيمه','الخيمه']],['u5',['تحت 5','تحت ٥','اطفال']],['old',['كبار السن','مسن']],['preg',['حوامل','مرضعات']],['dis',['اعاقه','مرض مزمن','امراض مزمنه']],['notes',['ملاحظات','ملاحظه']],['skip',['م','العدد','الرقم','#','ت']]];
-const CM_FL=()=>({head:X('اسم رب الأسرة','Head of family'),hid:X('رقم الهوية','ID number'),wife:X('اسم الزوجة','Wife'),hid2:X('رقم هوية الزوجة','Wife ID'),stat:X('الحالة الاجتماعية','Status'),size:X('عدد الأفراد','Family size'),phone:X('الجوال','Phone'),origin:X('المحافظة / من وين','Origin'),housing:X('نوع السكن','Housing'),place:X('مكان الإقامة','Location'),campn:X('اسم المخيم','Camp'),tent:X('رقم الخيمة','Tent'),u5:X('أطفال تحت ٥','Under 5'),old:X('كبار سن','Elderly'),preg:X('حوامل ومرضعات','Pregnant/nursing'),dis:X('إعاقة / مرض مزمن','Disability'),notes:X('ملاحظات','Notes'),skip:X('— تجاهل —','— skip —')});
+const CM_FL=()=>({head:X('اسم رب الأسرة','Head of family'),hid:X('رقم الهوية','ID number'),wife:X('اسم الزوجة','Wife'),hid2:X('رقم هوية الزوجة','Wife ID'),stat:X('الحالة الاجتماعية','Status'),size:X('عدد الأفراد','Family size'),phone:X('الجوال','Phone'),origin:X('المحافظة / من وين','Origin'),housing:X('نوع السكن','Housing'),place:X('مكان الإقامة','Location'),campn:X('اسم المخيم','Camp'),tent:X('رقم الخيمة','Tent'),u5:X('أطفال دون الخامسة','Under 5'),old:X('كبار سن','Elderly'),preg:X('حوامل ومرضعات','Pregnant/nursing'),dis:X('إعاقة / مرض مزمن','Disability'),notes:X('ملاحظات','Notes'),skip:X('— تجاهل —','— skip —')});
 const cmH=s=>norm(String(s||'')).replace(/\s+/g,' ').replace(/[()\-_:]/g,'').trim();
 function cmGuess(h,used){const n=cmH(h);if(!n)return 'skip';for(const [f,syn] of CM_F){if(f==='skip'){if(syn.some(x=>n===x))return 'skip';continue}
   if(syn.some(x=>n===x||(x.length>2&&n.includes(x)))){if(f==='hid'&&used.hid&&used.wife&&!used.hid2)return 'hid2';if(f==='hid'&&used.hid)return used.hid2?'skip':'hid2';if(used[f]&&f!=='notes')continue;return f}}return 'notes'}
@@ -2260,7 +2348,7 @@ function cmShareCard(){let b='';
 function cmFamRow(f){const tags=[];if(cmNum(f.u5))tags.push(cmBadge(cmAr(cmNum(f.u5))+X(' تحت ٥',' <5'),'a'));if(cmNum(f.old))tags.push(cmBadge(X('مسن','elderly'),'a'));if(cmNum(f.preg))tags.push(cmBadge(X('حامل/مرضع','pregnant'),'a'));if(cmNum(f.dis))tags.push(cmBadge(X('إعاقة','disability'),'r'));
  const sz=cmNum(f.size),sub=[f.tent?X('خيمة ','Tent ')+f.tent:'',f.origin||'',f.hid?'#'+esc(f.hid):''].filter(Boolean).join(' · ');
  return `<div class="frow" data-cmfam="${f.id}" role="button" tabindex="0"><span class="fsz">${sz?cmAr(sz):'—'}</span><div class="fm"><b>${hl(f.head||f.wife||'')}</b>${sub?`<span>${hl(sub)}</span>`:''}${tags.length?`<div class="ftags">${tags.join('')}</div>`:''}</div><span class="fchev">${lang==='ar'?'‹':'›'}</span></div>`}
-function cmFLabel(){const L={widow:X('الأرامل','Widows'),dis:X('ذوي الإعاقة','Disability'),u5:X('أطفال تحت ٥','Under 5'),old:X('كبار السن','Elderly'),preg:X('حوامل ومرضعات','Pregnant/nursing'),noid:X('بدون هوية','No ID')};return L[cmFF]||(cmFQ.trim()?X('نتيجة البحث','Search result'):'')}
+function cmFLabel(){const L={widow:X('الأرامل','Widows'),dis:X('ذوي الإعاقة','Disability'),u5:X('أطفال دون الخامسة','Under 5'),old:X('كبار السن','Elderly'),preg:X('حوامل ومرضعات','Pregnant/nursing'),noid:X('بدون هوية','No ID')};return L[cmFF]||(cmFQ.trim()?X('نتيجة البحث','Search result'):'')}
 function cmFamFiltered(qarg){let f=cmL('fam');const F=cmFF;
  if(F==='widow')f=f.filter(x=>/أرمل|ارمل|أرامل/.test(String(x.stat||'')));
  else if(F==='dis')f=f.filter(x=>cmNum(x.dis)>0);
@@ -2330,14 +2418,14 @@ function cmFam(id){const ex=id?camp.fam.find(x=>x.id===id):null,f=ex?clone(ex):{
   ${cmF('fH',FL.head,f.head)}${n2(cmF('fI',FL.hid,f.hid,{num:1,dir:'ltr'}),cmF('fS',FL.stat,f.stat))}${n2(cmF('fW',FL.wife,f.wife),cmF('fI2',FL.hid2,f.hid2,{dir:'ltr'}))}
   ${n2(cmF('fZ',FL.size,f.size,{num:1}),cmF('fT',FL.tent,f.tent))}${n2(cmF('fP',FL.phone,f.phone,{num:1,dir:'ltr',type:'tel'}),cmF('fO',FL.origin,f.origin))}${n2(cmF('fHo',FL.housing,f.housing),cmF('fPl',FL.place,f.place))}
   <div class="rphead" style="margin:4px 0 0">${X('الحالات الخاصة (عدد)','Vulnerable (count)')}</div>${n2(cmF('fU',FL.u5,f.u5,{num:1}),cmF('fOl',FL.old,f.old,{num:1}))}${n2(cmF('fPr',FL.preg,f.preg,{num:1}),cmF('fD',FL.dis,f.dis,{num:1}))}
-  <label class="fld">${FL.notes}<textarea class="in cmin" id="fN" dir="auto" rows="2">${esc(f.notes||'')}</textarea></label>
+  ${cmMemSection(f)}<label class="fld">${FL.notes}<textarea class="in cmin" id="fN" dir="auto" rows="2">${esc(f.notes||'')}</textarea></label>
   ${ex&&!ro?`<button class="b dng" id="fDel" style="width:100%;margin-top:16px">${t('del')}</button>`:''}</div>`;
  const y0=window.pageYOffset||document.documentElement.scrollTop||0;
  document.body.appendChild(w);const fit=panelFit(w),s=w.querySelector('#cmfamb');
  function close(){window.visualViewport&&visualViewport.removeEventListener('resize',fit);window.scrollTo(0,y0);w.classList.remove('open');setTimeout(()=>{w.remove();window.scrollTo(0,y0);if(window.__famRefresh)window.__famRefresh()},350)}
- if(ro){s.querySelectorAll('input,textarea').forEach(e=>e.readOnly=true);w.querySelector('#iClose').onclick=close;requestAnimationFrame(()=>w.classList.add('open'));return}
+ if(ro){s.querySelectorAll('input,textarea').forEach(e=>e.readOnly=true);const _ma=w.querySelector('.memadd');if(_ma)_ma.style.display='none';w.querySelector('#iClose').onclick=close;requestAnimationFrame(()=>w.classList.add('open'));return}
  w.querySelector('#iClose').onclick=close;
- w.querySelector('#fOk').onclick=()=>{const g=k=>cmV(s,k);f.head=g('fH');f.hid=cmId(g('fI'));f.stat=g('fS');f.wife=g('fW');f.hid2=cmId(g('fI2'));f.size=String(cmNum(g('fZ'))||'');f.tent=g('fT');f.phone=cmPhone(g('fP'));f.origin=g('fO');f.housing=g('fHo');f.place=g('fPl');['u5','old','preg','dis'].forEach((k,i)=>f[k]=String(cmNum(g(['fU','fOl','fPr','fD'][i]))||''));f.notes=s.querySelector('#fN').value.trim();
+ cmMemWire(w,f);w.querySelector('#fOk').onclick=()=>{const g=k=>cmV(s,k);f.head=g('fH');f.hid=cmId(g('fI'));f.stat=g('fS');f.wife=g('fW');f.hid2=cmId(g('fI2'));f.size=String(cmNum(g('fZ'))||'');f.tent=g('fT');f.phone=cmPhone(g('fP'));f.origin=g('fO');f.housing=g('fHo');f.place=g('fPl');['u5','old','preg','dis'].forEach((k,i)=>f[k]=String(cmNum(g(['fU','fOl','fPr','fD'][i]))||''));f.notes=s.querySelector('#fN').value.trim();cmMemDerive(f);
   if(!f.head&&!f.wife){s.querySelector('#fH').focus();return}if(f.hid&&cmL('fam').some(x=>x.hid===f.hid&&x.id!==f.id)){toast(X('رقم الهوية هذا موجود لعيلة ثانية','This ID belongs to another family'));return}cmPut('fam',f);render();close();toast(t('saved'))};
  const dl=w.querySelector('#fDel');if(dl)dl.onclick=()=>confirmSheet(t('del'),X('حذف هذه العيلة من الكشف؟','Delete this family?'),t('yesDel'),()=>{cmDel('fam',f.id);render();close()});
  requestAnimationFrame(()=>w.classList.add('open'))}
