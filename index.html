@@ -595,6 +595,17 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
 .ltbl .lidx{color:#8A887F;text-align:center;background:#FAF9F5}
 .ltbl .lx button{border:0;background:#F3E1E1;color:#B4453B;border-radius:50%;width:22px;height:22px;font-size:14px;line-height:1}
 .famscr .fsFoot .b,.lprev .fsFoot .b{font-size:12.5px;padding:9px 10px}
+.ceov{position:fixed;inset:0;z-index:95;background:rgba(0,0,0,.34);display:flex;align-items:flex-start;justify-content:center;padding:13vh 18px 0;opacity:0;transition:opacity .18s;color-scheme:light;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.ceov.on{opacity:1}
+.cecard{width:100%;max-width:380px;background:#FBFAF7;border-radius:20px;padding:18px 18px 16px;box-shadow:0 18px 50px rgba(0,0,0,.28);transform:translateY(-8px);transition:transform .18s}
+.ceov.on .cecard{transform:translateY(0)}
+.celab{font-size:15px;font-weight:700;color:#0C447C;text-align:center;margin-bottom:12px}
+.cein{width:100%;box-sizing:border-box;font-size:16px;padding:12px 13px;border:1px solid #D9D7CE;border-radius:12px;background:#fff;color:#1C1C1E;-webkit-text-fill-color:#1C1C1E;caret-color:#0C447C;outline:none;color-scheme:light}
+.cein:focus{border-color:#185FA5;box-shadow:0 0 0 3px rgba(24,95,165,.15)}
+.cebtns{display:flex;gap:10px;margin-top:16px}
+.cebtn{flex:1;padding:12px;border:0;border-radius:13px;font-size:15.5px;font-weight:600;background:#ECEAE3;color:#0C447C}
+.cebtn.ok{background:#0C447C;color:#fff}
+.cebtn:active{opacity:.85}
 .fchips{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;scrollbar-width:none}
 .fchips::-webkit-scrollbar{display:none}
 .fchip{flex:none;border-radius:999px;padding:6px 13px;font-size:12.5px;background:#E6E4DC;color:#444441;font-weight:600;white-space:nowrap}
@@ -707,7 +718,7 @@ let tab=0,query='',lastTab=0;
 let migrate=true;
 
 function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.classList.toggle('ar',lang==='ar');
- $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v33';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
+ $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v34';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
 function toggleLang(){lang=lang==='ar'?'en':'ar';S.set('lang',lang);applyLang();if(!$('#app').hidden)render();else lockText();}
 $('#langBtn').onclick=toggleLang;$('#lockLang').onclick=toggleLang;
 
@@ -2101,15 +2112,18 @@ function cmSaveList(o){camp.lists=camp.lists||[];const rec={id:o.id||uid(),ts:Da
  const i=camp.lists.findIndex(x=>x.id===rec.id);if(i>-1)camp.lists[i]=rec;else camp.lists.push(rec);cmSave();return rec.id}
 /* small top-centered editor for one cell (16px input → no iOS zoom, stays above keyboard) */
 function cmCellEdit(label,val,cb){const A=lang==='ar';
- const ov=document.createElement('div');ov.style.cssText='position:fixed;inset:0;z-index:95;background:rgba(0,0,0,.42);display:flex;align-items:flex-start;justify-content:center;padding:13vh 16px 0';
- ov.innerHTML=`<div style="background:#fff;border-radius:16px;padding:16px;width:100%;max-width:430px;box-shadow:0 12px 34px rgba(0,0,0,.25)"><div style="font-weight:700;color:#0C447C;margin-bottom:8px">${esc(label||'')}</div><input id="ceIn" dir="auto" value="${esc(String(val==null?'':val))}" style="width:100%;box-sizing:border-box;font-size:16px;padding:11px;border:1.5px solid #D9D7CE;border-radius:10px"><div style="display:flex;gap:8px;margin-top:12px"><button class="b" id="ceCancel" style="flex:1">${A?'إلغاء':'Cancel'}</button><button class="b pri" id="ceOk" style="flex:1">${A?'حفظ':'Save'}</button></div></div>`;
+ const ov=document.createElement('div');ov.className='ceov';
+ ov.innerHTML=`<div class="cecard"><div class="celab">${esc(label||'')}</div>`
+  +`<input id="ceIn" class="cein" dir="auto" autocomplete="off" autocorrect="off" autocapitalize="sentences" spellcheck="false" value="${esc(String(val==null?'':val))}">`
+  +`<div class="cebtns"><button type="button" class="cebtn" id="ceCancel">${A?'إلغاء':'Cancel'}</button><button type="button" class="cebtn ok" id="ceOk">${A?'حفظ':'Save'}</button></div></div>`;
  document.body.appendChild(ov);const inp=ov.querySelector('#ceIn');
- const close=()=>ov.remove();
+ const close=()=>{ov.classList.remove('on');setTimeout(()=>ov.remove(),180)};
  ov.addEventListener('click',e=>{if(e.target===ov)close()});
  ov.querySelector('#ceCancel').onclick=close;
  ov.querySelector('#ceOk').onclick=()=>{cb(inp.value);close()};
- inp.addEventListener('keydown',e=>{if(e.key==='Enter'){cb(inp.value);close()}});
- setTimeout(()=>{inp.focus();try{inp.setSelectionRange(inp.value.length,inp.value.length)}catch(e){}},60)}
+ inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();cb(inp.value);close()}});
+ requestAnimationFrame(()=>ov.classList.add('on'));
+ setTimeout(()=>{inp.focus();try{inp.setSelectionRange(inp.value.length,inp.value.length)}catch(e){}},70)}
 /* full-screen preview: edit cells, drop rows, then share or save */
 function cmPreviewList(meta){const A=lang==='ar';let head=meta.head.slice(),rows=meta.rows.map(r=>r.slice()),title=meta.title,savedId=meta.listId||null;
  const w=document.createElement('div');w.className='tkp lprev';w.style.zIndex='70';
