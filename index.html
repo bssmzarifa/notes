@@ -606,6 +606,19 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
 .cebtn{flex:1;padding:12px;border:0;border-radius:13px;font-size:15.5px;font-weight:600;background:#ECEAE3;color:#0C447C}
 .cebtn.ok{background:#0C447C;color:#fff}
 .cebtn:active{opacity:.85}
+.lmore{flex:none;border:0;background:transparent;color:#9A988F;font-size:24px;font-weight:700;width:38px;height:38px;line-height:1;border-radius:50%}
+.lmore:active{background:#ECEAE1}
+.asov{position:fixed;inset:0;z-index:96;background:rgba(0,0,0,.35);display:flex;flex-direction:column;justify-content:flex-end;padding:10px;opacity:0;transition:opacity .2s;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);color-scheme:light}
+.asov.on{opacity:1}
+.assheet{transform:translateY(24px);transition:transform .2s}
+.asov.on .assheet{transform:translateY(0)}
+.asgrp{background:#FBFAF7;border-radius:16px;overflow:hidden;margin-bottom:8px}
+.astitle{text-align:center;font-size:12.5px;color:#8A887F;padding:12px 14px}
+.asbtn{display:block;width:100%;border:0;background:#FBFAF7;padding:15px;font-size:16px;color:#0C447C;border-top:.5px solid #ECEAE1}
+.asbtn:active{background:#F0EEE8}
+.asbtn.del{color:#C0392B;font-weight:600}
+.ascancel{width:100%;border:0;background:#fff;padding:15px;font-size:16px;font-weight:700;color:#0C447C;border-radius:16px}
+.ascancel:active{background:#F0EEE8}
 .fchips{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;scrollbar-width:none}
 .fchips::-webkit-scrollbar{display:none}
 .fchip{flex:none;border-radius:999px;padding:6px 13px;font-size:12.5px;background:#E6E4DC;color:#444441;font-weight:600;white-space:nowrap}
@@ -718,7 +731,7 @@ let tab=0,query='',lastTab=0;
 let migrate=true;
 
 function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.classList.toggle('ar',lang==='ar');
- $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v35';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
+ $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v36';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
 function toggleLang(){lang=lang==='ar'?'en':'ar';S.set('lang',lang);applyLang();if(!$('#app').hidden)render();else lockText();}
 $('#langBtn').onclick=toggleLang;$('#lockLang').onclick=toggleLang;
 
@@ -2160,16 +2173,36 @@ function cmPreviewList(meta){const A=lang==='ar';let head=meta.head.slice(),rows
  w.querySelector('#lpSave').onclick=()=>{cmSaveList({id:savedId,title:title.trim()||cmListTitle(),kind:meta.kind,head,rows});savedId=savedId||1;toast(A?'تم الحفظ في الكشوفات':'Saved');if(window.__listsRefresh)window.__listsRefresh()};
  const dl=w.querySelector('#lpDel');if(dl)dl.onclick=()=>confirmSheet(A?'حذف الكشف':'Delete report',A?'رح يتحذف الكشف المحفوظ. متأكد؟':'Delete this saved report?',A?'نعم، احذف':'Delete',()=>{const i=camp.lists.findIndex(x=>x.id===meta.listId);if(i>-1)camp.lists[i]={id:meta.listId,ts:Date.now(),del:1};cmSave();if(window.__listsRefresh)window.__listsRefresh();close()});
  requestAnimationFrame(()=>w.classList.add('open'))}
+/* iOS-style bottom action sheet */
+function cmActionSheet(title,actions){const A=lang==='ar';
+ const ov=document.createElement('div');ov.className='asov';
+ ov.innerHTML=`<div class="assheet"><div class="asgrp">${title?`<div class="astitle">${esc(title)}</div>`:''}${actions.map((a,i)=>`<button type="button" class="asbtn ${a.cls||''}" data-ai="${i}">${esc(a.label)}</button>`).join('')}</div><button type="button" class="ascancel" id="asCancel">${A?'إلغاء':'Cancel'}</button></div>`;
+ document.body.appendChild(ov);
+ const close=()=>{ov.classList.remove('on');setTimeout(()=>ov.remove(),200)};
+ ov.addEventListener('click',e=>{if(e.target===ov)close()});
+ ov.querySelector('#asCancel').onclick=close;
+ ov.querySelectorAll('[data-ai]').forEach(btn=>btn.onclick=()=>{const a=actions[+btn.dataset.ai];close();setTimeout(()=>a&&a.onClick&&a.onClick(),130)});
+ requestAnimationFrame(()=>ov.classList.add('on'))}
+/* options menu for one saved report */
+function cmListMenu(l,refresh){const A=lang==='ar';
+ cmActionSheet(l.title,[
+  {label:A?'مشاركة PDF':'Share PDF',onClick:()=>cmPrintPDF(l.title,l.head,l.rows)},
+  {label:A?'مشاركة إكسل':'Share Excel',onClick:()=>cmXlsx(l.title,l.head,l.rows)},
+  {label:A?'فتح ومعاينة':'Open & preview',onClick:()=>cmPreviewList({title:l.title,kind:l.kind,head:l.head,rows:l.rows,listId:l.id})},
+  {label:A?'حذف الكشف':'Delete report',cls:'del',onClick:()=>confirmSheet(A?'حذف الكشف':'Delete report',A?('رح يتحذف «'+l.title+'» نهائياً. متأكد؟'):'Delete this report permanently?',A?'نعم، احذف':'Yes, delete',()=>{camp.lists=camp.lists||[];const i=camp.lists.findIndex(x=>x.id===l.id);if(i>-1)camp.lists[i]={id:l.id,ts:Date.now(),del:1};cmSave();refresh&&refresh();toast(A?'تم حذف الكشف':'Report deleted')})}
+ ])}
 /* full-screen list of saved reports */
 function cmListsScreen(){const A=lang==='ar';const w=document.createElement('div');w.className='tkp famscr';
  w.innerHTML=`<div class="fsHd"><div class="tkbar"><button class="sbt" id="lsBack">${A?'رجوع':'Back'}</button><b>${A?'الكشوفات المحفوظة':'Saved reports'}</b><span style="width:46px"></span></div></div><div class="fsList" id="lsBody"></div>`;
  document.body.appendChild(w);const fit=panelFit(w),body=w.querySelector('#lsBody');
  function draw(){const L=cmLists().slice().sort((a,b)=>b.ts-a.ts);
-  body.innerHTML=L.length?L.map(l=>`<div class="frow" data-lid="${l.id}" role="button"><span class="fsz" style="font-size:12px">${cmNA(l.n)}</span><div class="fm"><b>${esc(l.title)}</b><span>${l.kind==='ppl'?(A?'أفراد':'People'):(A?'عائلات':'Families')} · ${ymd(new Date(l.ts))}</span></div><span class="fchev">${A?'‹':'›'}</span></div>`).join(''):`<p class="hint" style="text-align:center;padding:28px">${A?'ما في كشوفات محفوظة بعد.<br>من شاشة العائلات: فلتر أو حدّد، اضغط تصدير، وبعدها احفظ في الكشوفات.':'No saved reports yet.'}</p>`}
+  body.innerHTML=L.length?L.map(l=>`<div class="frow" data-lid="${l.id}" role="button"><span class="fsz" style="font-size:12px">${cmNA(l.n)}</span><div class="fm"><b>${esc(l.title)}</b><span>${l.kind==='ppl'?(A?'أفراد':'People'):(A?'عائلات':'Families')} · ${ymd(new Date(l.ts))}</span></div><button type="button" class="lmore" data-lmenu="${l.id}" aria-label="options">⋯</button></div>`).join(''):`<p class="hint" style="text-align:center;padding:28px">${A?'ما في كشوفات محفوظة بعد.<br>من شاشة العائلات: فلتر أو حدّد، اضغط تصدير، وبعدها احفظ في الكشوفات.':'No saved reports yet.'}</p>`}
  draw();
  function close(){window.__listsRefresh=null;window.visualViewport&&visualViewport.removeEventListener('resize',fit);w.classList.remove('open');setTimeout(()=>w.remove(),350)}
  w.querySelector('#lsBack').onclick=close;
- body.addEventListener('click',e=>{const r=e.target.closest('[data-lid]');if(!r)return;const l=cmLists().find(x=>x.id===r.dataset.lid);if(l)cmPreviewList({title:l.title,kind:l.kind,head:l.head,rows:l.rows,listId:l.id})});
+ body.addEventListener('click',e=>{const mb=e.target.closest('[data-lmenu]');
+  if(mb){const l=cmLists().find(x=>x.id===mb.dataset.lmenu);if(l)cmListMenu(l,draw);return}
+  const r=e.target.closest('[data-lid]');if(!r)return;const l=cmLists().find(x=>x.id===r.dataset.lid);if(l)cmPreviewList({title:l.title,kind:l.kind,head:l.head,rows:l.rows,listId:l.id})});
  window.__listsRefresh=draw;
  requestAnimationFrame(()=>w.classList.add('open'))}
 
