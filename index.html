@@ -622,6 +622,8 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
 .msend{flex:none;border:0;border-radius:10px;background:#0C447C;color:#fff;font-size:13px;font-weight:600;padding:9px 14px;min-width:70px}
 .msend:active{opacity:.85}
 .msend.sent{background:#2E9E5B}
+.mdel{flex:none;width:30px;height:30px;border-radius:50%;border:0;background:#F3E1E1;color:#B4453B;font-size:19px;line-height:1;margin-inline-start:4px}
+.mdel:active{background:#EBC9C9}
 .fsz[data-flag]{cursor:pointer;transition:transform .1s,background .15s}
 .fsz[data-flag]:active{transform:scale(.88)}
 .fsz.fl1{background:#2E9E5B;color:#fff}
@@ -739,7 +741,7 @@ let tab=0,query='',lastTab=0;
 let migrate=true;
 
 function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.classList.toggle('ar',lang==='ar');
- $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v40';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
+ $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v41';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
 function toggleLang(){lang=lang==='ar'?'en':'ar';S.set('lang',lang);applyLang();if(!$('#app').hidden)render();else lockText();}
 $('#langBtn').onclick=toggleLang;$('#lockLang').onclick=toggleLang;
 
@@ -2257,12 +2259,13 @@ function cmMsgScreen(list){const A=lang==='ar';
   +`<div class="tkbar"><button class="sbt" id="mBack">${A?'رجوع':'Back'}</button><b>${A?'مراسلة العائلات':'Message families'}</b><span style="width:46px"></span></div>`
   +`<textarea class="in" id="mMsg" dir="auto" rows="3" placeholder="${A?'اكتب الرسالة هنا… تقدر تكتب {اسم} لينكتب اسم العائلة تلقائياً':'Message… use {name}'}" style="margin:0 10px 8px;width:calc(100% - 20px);resize:none"></textarea>`
   +`<div class="fchips" style="padding:0 10px;align-items:center"><span class="fsort">${A?'القناة':'Channel'}:</span><button class="fchip on" data-ch="wa">${A?'واتساب':'WhatsApp'}</button><button class="fchip" data-ch="sms">${A?'رسالة SMS':'SMS'}</button><span style="flex:1"></span><button class="sbt sm" id="mCopy">${A?'نسخ الأرقام':'Copy #'}</button></div>`
-  +`<p class="hint" style="margin:6px 12px 2px;font-size:11px">${A?'الإرسال لكل عائلة لحالها (واتساب ما بيسمح بإرسال جماعي). اضغط «إرسال» جنب الاسم، بتفتح المحادثة والرسالة جاهزة، ابعتها وارجع للتالي.':'One by one.'}</p>`
+  +`<button type="button" class="b pri" id="mAll" style="margin:8px 10px 2px;width:calc(100% - 20px);padding:12px">${A?'📨 إرسال للكل دفعة واحدة':'Send to all'}</button>`
+  +`<p class="hint" style="margin:6px 12px 2px;font-size:11px">${A?'«إرسال للكل» بفتح رسالة SMS وحدة لكل الأرقام مرة وحدة. أو اضغط «إرسال» جنب كل اسم لواتساب (واحد واحد). زر × بيشيل الاسم من القائمة.':'Send-all opens one SMS to everyone; × removes from list.'}</p>`
   +`<div class="fcount" id="mCnt" style="margin:4px 10px 6px"></div></div>`
   +`<div class="fsList" id="mList"></div>`;
  document.body.appendChild(w);const fit=panelFit(w),listEl=w.querySelector('#mList');
  const msgFor=f=>(w.querySelector('#mMsg').value||'').replace(/\{اسم\}|\{name\}/g,f.head||f.wife||'');
- const row=f=>{const s=sent.has(f.id);return `<div class="frow"><button type="button" class="msend${s?' sent':''}" data-send="${f.id}">${s?'✓ '+(A?'تم':'sent'):(A?'إرسال':'Send')}</button><div class="fm"><b>${esc(f.head||f.wife||'')}</b><span dir="ltr" style="text-align:right">${esc(f.phone||'')}</span></div></div>`};
+ const row=f=>{const s=sent.has(f.id);return `<div class="frow"><button type="button" class="msend${s?' sent':''}" data-send="${f.id}">${s?'✓ '+(A?'تم':'sent'):(A?'إرسال':'Send')}</button><div class="fm"><b>${esc(f.head||f.wife||'')}</b><span dir="ltr" style="text-align:right">${esc(f.phone||'')}</span></div><button type="button" class="mdel" data-mdel="${f.id}" aria-label="remove">×</button></div>`};
  function cnt(){w.querySelector('#mCnt').textContent=(A?'عدد الأرقام: ':'Numbers: ')+cmNA(fams.length)+(sent.size?(A?'   —   تم إرسال ':'   sent ')+cmNA(sent.size):'')}
  function draw(){listEl.innerHTML=fams.length?fams.map(row).join(''):`<p class="hint" style="text-align:center;padding:26px">${A?'ما في عائلات معها أرقام ضمن هالتحديد.<br>تأكد إنه خانة الجوال متعبّية.':'No phone numbers here.'}</p>`;cnt()}
  draw();
@@ -2270,7 +2273,16 @@ function cmMsgScreen(list){const A=lang==='ar';
  w.querySelector('#mBack').onclick=close;
  w.querySelectorAll('[data-ch]').forEach(b=>b.onclick=()=>{chan=b.dataset.ch;w.querySelectorAll('[data-ch]').forEach(x=>x.classList.toggle('on',x===b))});
  w.querySelector('#mCopy').onclick=()=>{const nums=fams.map(f=>f.phone).filter(Boolean).join('\n');if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(nums).then(()=>toast(A?'تم نسخ كل الأرقام':'Copied')).catch(()=>toast(A?'ما قدرت أنسخ':'copy failed'))}else toast(A?'ما قدرت أنسخ':'copy failed')};
- listEl.addEventListener('click',e=>{const b=e.target.closest('[data-send]');if(!b)return;const f=fams.find(x=>x.id===b.dataset.send);if(!f)return;
+ w.querySelector('#mAll').onclick=()=>{if(!fams.length){toast(A?'ما في أرقام':'No numbers');return}
+  if(chan!=='sms'){toast(A?'الإرسال للكل بيشتغل عبر SMS. لواتساب انسخ الأرقام واعمل Broadcast List.':'Bulk is via SMS.');return}
+  const base=(w.querySelector('#mMsg').value||'').replace(/\{اسم\}|\{name\}/g,'').trim();
+  const nums=fams.map(f=>String(f.phone||'').replace(/\s/g,'')).filter(Boolean);
+  if(!nums.length)return;
+  const url='sms:/open?addresses='+nums.join(',')+(base?'&body='+encodeURIComponent(base):'');
+  const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();setTimeout(()=>a.remove(),100);
+  fams.forEach(f=>sent.add(f.id));draw()};
+ listEl.addEventListener('click',e=>{const d=e.target.closest('[data-mdel]');if(d){const i=fams.findIndex(x=>x.id===d.dataset.mdel);if(i>-1)fams.splice(i,1);sent.delete(d.dataset.mdel);draw();return}
+  const b=e.target.closest('[data-send]');if(!b)return;const f=fams.find(x=>x.id===b.dataset.send);if(!f)return;
   const txt=encodeURIComponent(msgFor(f));let url;
   if(chan==='wa'){const n=cmWaNum(f.phone);if(!n){toast(A?'رقم غير صالح':'bad number');return}url='https://wa.me/'+n+(txt?'?text='+txt:'')}
   else url='sms:'+String(f.phone).replace(/\s/g,'')+(txt?'&body='+txt:'');
