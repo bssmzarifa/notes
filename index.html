@@ -569,6 +569,9 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
 .fchk{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid #C9C7BE;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px}
 .fchk.on{background:#0C447C;border-color:#0C447C}
 .frow.selr{background:#EAF2FB}
+.dchk{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid #C9C7BE;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px}
+.dchk.on{background:#2E9E5B;border-color:#2E9E5B}
+.famscr .frow.gotit{background:#EAF6EE}
 .famscr .sbt.sm{font-size:12.5px;padding:5px 11px;flex:none}
 .memadd{display:flex;gap:6px;align-items:center;margin:2px 0 8px;flex-wrap:wrap}
 .memadd .in{flex:1;min-width:120px}
@@ -741,7 +744,7 @@ let tab=0,query='',lastTab=0;
 let migrate=true;
 
 function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.classList.toggle('ar',lang==='ar');
- $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v41';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
+ $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v45';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
 function toggleLang(){lang=lang==='ar'?'en':'ar';S.set('lang',lang);applyLang();if(!$('#app').hidden)render();else lockText();}
 $('#langBtn').onclick=toggleLang;$('#lockLang').onclick=toggleLang;
 
@@ -2156,7 +2159,7 @@ function loadH2P(){if(window.html2pdf)return Promise.resolve(window.html2pdf);
 async function cmPrintPDF(title,head,rows){const A=lang==='ar';toast(A?'جاري تجهيز PDF…':'Preparing PDF…');
  let H;try{H=await loadH2P()}catch(e){toast(A?'ما قدرت أجهّز ملف PDF':'PDF library failed');return}
  const e2=t=>String(t==null?'':t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
- const rep=(cmL('com').find(c=>c.role==='المندوب')||{}).name||'';
+ const repO=(cmL('com').find(c=>c.role==='المندوب')||{}),rep=repO.name||'';
  const land=head.length>7;
  const st=document.createElement('style');st.id='pdfcss';
  st.textContent=`#pdfdoc{color:#2C2C2A;background:#fff}#pdfdoc *{font-family:'Noto Naskh Arabic','Geeza Pro','Segoe UI',Tahoma,serif;box-sizing:border-box}`
@@ -2166,15 +2169,17 @@ async function cmPrintPDF(title,head,rows){const A=lang==='ar';toast(A?'جاري
  document.head.appendChild(st);
  const th='<th>#</th>'+head.map(h=>`<th>${e2(h)}</th>`).join('');
  const trs=rows.map((r,i)=>`<tr><td class="n">${cmAr(i+1)}</td>${r.map(c=>`<td>${e2(c)}</td>`).join('')}</tr>`).join('');
- const el=document.createElement('div');el.id='pdfdoc';el.dir=A?'rtl':'ltr';el.style.cssText=`position:fixed;top:0;left:-20000px;width:${land?1120:760}px;padding:18px;background:#fff`;
- el.innerHTML=`<h1>${e2(camp.info.name||'')}</h1><div class="sub">${e2(title)}${rep?' — '+(A?'المندوب':'Rep')+': '+e2(rep):''} — ${ymd(new Date())}</div>`
+ const repLine=rep?('  —  '+(A?'المندوب: ':'Rep: ')+e2(rep)+(repO.phone?(A?'  جوال: ':'  Tel: ')+e2(repO.phone):'')):'';
+ const ov=document.createElement('div');ov.style.cssText='position:fixed;inset:0;z-index:92;background:#fff;overflow:auto;display:flex;justify-content:center';
+ const el=document.createElement('div');el.id='pdfdoc';el.dir=A?'rtl':'ltr';el.style.cssText=`width:${land?1120:760}px;padding:18px;background:#fff;color:#2C2C2A;flex:none`;
+ el.innerHTML=`<h1>${e2(camp.info.name||'')}</h1><div class="sub">${e2(title)}${repLine} — ${ymd(new Date())}</div>`
   +`<table><thead><tr>${th}</tr></thead><tbody>${trs}</tbody></table><div class="ft">${A?'العدد: ':'Count: '}${cmAr(rows.length)}</div>`;
- document.body.appendChild(el);
- const opt={margin:[8,8,10,8],image:{type:'jpeg',quality:.96},html2canvas:{scale:2,backgroundColor:'#ffffff',windowWidth:el.scrollWidth,logging:false},jsPDF:{unit:'mm',format:'a4',orientation:land?'landscape':'portrait'},pagebreak:{mode:['css','legacy']}};
- try{const worker=H().set(opt).from(el);await worker.toPdf();const pdf=await worker.get('pdf');const blob=pdf.output('blob');
-  fileReady(new File([blob],title.replace(/[\\/:*?"<>|]/g,' ')+'.pdf',{type:'application/pdf'}))}
+ ov.appendChild(el);document.body.appendChild(ov);void el.offsetHeight;
+ const opt={margin:[8,8,10,8],image:{type:'jpeg',quality:.95},html2canvas:{scale:2,backgroundColor:'#ffffff',useCORS:true,scrollX:0,scrollY:0,windowWidth:(land?1120:760)+40,logging:false},jsPDF:{unit:'mm',format:'a4',orientation:land?'landscape':'portrait'},pagebreak:{mode:['css','legacy']}};
+ try{await new Promise(r=>setTimeout(r,80));const worker=H().set(opt).from(el);await worker.toPdf();const pdf=await worker.get('pdf');const blob=pdf.output('blob');
+  if(!blob||blob.size<800){toast(A?'تعذّر إنشاء PDF، جرّب مرة ثانية':'PDF failed, retry')}else fileReady(new File([blob],title.replace(/[\\/:*?"<>|()\[\]]/g,' ').replace(/\s+/g,' ').trim()+'.pdf',{type:'application/pdf'}))}
  catch(e){toast(A?'تعذّر إنشاء PDF':'PDF failed')}
- finally{el.remove();st.remove()}}
+ finally{ov.remove();st.remove()}}
 function cmSaveList(o){camp.lists=camp.lists||[];const rec={id:o.id||uid(),ts:Date.now(),title:o.title,kind:o.kind||'fam',head:o.head,rows:o.rows,n:o.rows.length};
  const i=camp.lists.findIndex(x=>x.id===rec.id);if(i>-1)camp.lists[i]=rec;else camp.lists.push(rec);cmSave();return rec.id}
 /* small top-centered editor for one cell (16px input → no iOS zoom, stays above keyboard) */
@@ -2193,7 +2198,7 @@ function cmCellEdit(label,val,cb){const A=lang==='ar';
  setTimeout(()=>{inp.focus();try{inp.setSelectionRange(inp.value.length,inp.value.length)}catch(e){}},70)}
 /* full-screen preview: edit cells, drop rows, then share or save */
 function cmPreviewList(meta){const A=lang==='ar';let head=meta.head.slice(),rows=meta.rows.map(r=>r.slice()),title=meta.title,savedId=meta.listId||null;
- const w=document.createElement('div');w.className='tkp lprev';w.style.zIndex='70';
+ const w=document.createElement('div');w.className='tkp lprev';w.style.zIndex='38';
  const tbl=()=>`<table class="ltbl"><thead><tr><th>#</th>${head.map(h=>`<th>${esc(h)}</th>`).join('')}<th></th></tr></thead><tbody>${rows.map((r,i)=>`<tr data-ri="${i}"><td class="lidx">${cmAr(i+1)}</td>${r.map((c,ci)=>`<td class="led" data-ci="${ci}">${esc(String(c==null?'':c))}</td>`).join('')}<td class="lx"><button type="button" data-rx="${i}">×</button></td></tr>`).join('')}</tbody></table>`;
  w.innerHTML=`<div class="fsHd"><div class="tkbar"><button class="sbt" id="lpBack">${A?'رجوع':'Back'}</button><b>${A?'معاينة الكشف':'Preview'}</b>${savedId?`<button class="sbt" id="lpDel" style="color:#B4453B">${A?'حذف':'Delete'}</button>`:'<span style="width:46px"></span>'}</div>`
   +`<input class="in" id="lpTitle" dir="auto" value="${esc(title)}" style="margin:0 10px 6px;width:calc(100% - 20px);font-weight:700">`
@@ -2288,6 +2293,36 @@ function cmMsgScreen(list){const A=lang==='ar';
   else url='sms:'+String(f.phone).replace(/\s/g,'')+(txt?'&body='+txt:'');
   const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();setTimeout(()=>a.remove(),100);
   sent.add(f.id);b.classList.add('sent');b.textContent='✓ '+(A?'تم':'sent');cnt()});
+ requestAnimationFrame(()=>w.classList.add('open'))}
+
+/* ---------- Distribution detail as a dedicated full-screen (contained scroll, no page jump) ---------- */
+function cmDistScreen(id){const A=lang==='ar';cmDistId=id;
+ const d=camp.dist.find(x=>x.id===id&&!x.del);if(!d){toast(A?'التوزيع غير موجود':'Not found');return}
+ let q='';
+ const w=document.createElement('div');w.className='tkp famscr';
+ w.innerHTML=`<div class="fsHd">`
+  +`<div class="tkbar"><button class="sbt" id="dBack">${A?'رجوع':'Back'}</button><b>${esc(d.what||'')}</b>${cmCan()?`<button class="sbt" id="dEdit">${A?'تعديل':'Edit'}</button>`:'<span style="width:46px"></span>'}</div>`
+  +`<div class="fcount" id="dCnt" style="margin:0 10px 6px"></div>`
+  +`<input class="in" id="dq" dir="auto" autocomplete="off" placeholder="${A?'ابحث باسم أو رقم خيمة…':'Search name or tent…'}" style="margin:0 10px 8px;width:calc(100% - 20px)">`
+  +`<button type="button" class="sbt sm" id="dMiss" style="margin:0 10px 6px;width:calc(100% - 20px)">${A?'مشاركة مين لسا ما استلم':'Share who is missing'}</button></div>`
+  +`<div class="fsList" id="dList"></div>`;
+ document.body.appendChild(w);const fit=panelFit(w),listEl=w.querySelector('#dList');
+ function fams(){let f=cmL('fam');const nq=norm(q.trim());if(nq)f=f.filter(x=>norm([x.head,x.wife,x.hid,x.tent].join(' ')).includes(nq));
+  return f.sort((a,b)=>String(a.tent||'').localeCompare(String(b.tent||''),'ar',{numeric:true})||String(a.head||'').localeCompare(String(b.head||''),'ar'))}
+ const rowHTML=x=>{const got=(d.got||[]).includes(x.id),sub=[x.tent?(A?'خيمة ':'Tent ')+x.tent:'',x.size?cmNA(cmNum(x.size))+(A?' أفراد':' ppl'):''].filter(Boolean).join(' · ');
+  return `<div class="frow${got?' gotit':''}" data-got="${x.id}" role="button" tabindex="0"><span class="dchk${got?' on':''}">${got?'✓':''}</span><div class="fm"><b>${esc(x.head||x.wife||'')}</b>${sub?`<span>${sub}</span>`:''}</div></div>`};
+ function cnt(){const got=(d.got||[]).length,miss=cmL('fam').length-got;w.querySelector('#dCnt').textContent=(A?'استلموا ':'Received ')+cmNA(got)+(A?'   —   لسا ':'   left ')+cmNA(miss)}
+ function draw(){const f=fams();listEl.innerHTML=f.length?f.map(rowHTML).join(''):`<p class="hint" style="text-align:center;padding:24px">${A?'ما في نتائج':'No results'}</p>`;cnt()}
+ draw();
+ function close(){window.__distRefresh=null;window.visualViewport&&visualViewport.removeEventListener('resize',fit);w.classList.remove('open');setTimeout(()=>w.remove(),350);render()}
+ w.querySelector('#dBack').onclick=close;
+ const ed=w.querySelector('#dEdit');if(ed)ed.onclick=()=>{if(cmCan())cmDist(d.id)};
+ w.querySelector('#dMiss').onclick=()=>cmMissing();
+ w.querySelector('#dq').addEventListener('input',e=>{q=e.target.value;draw()});
+ listEl.addEventListener('click',e=>{const b=e.target.closest('[data-got]');if(!b)return;if(!cmCan()){toast(A?'ما عندك صلاحية':'No permission');return}
+  d.got=d.got||[];const fid=b.dataset.got,i=d.got.indexOf(fid);if(i>-1)d.got.splice(i,1);else d.got.push(fid);d.ts=Date.now();cmSave();
+  const got=d.got.includes(fid);b.classList.toggle('gotit',got);const c=b.querySelector('.dchk');if(c){c.classList.toggle('on',got);c.textContent=got?'✓':''}cnt()});
+ window.__distRefresh=draw;
  requestAnimationFrame(()=>w.classList.add('open'))}
 
 function menu(){
@@ -2544,7 +2579,7 @@ async function cmImport(file){toast(t('xLoading'));let XL;try{XL=await loadXLSX(
    const ex=o.hid&&byId[o.hid];if(ex){if(mode==='up'){const n=Object.assign({},ex);Object.keys(o).forEach(k=>{if(o[k]!=='')n[k]=o[k]});n.ts=now;Object.assign(ex,n);up++}}
    else{const rec=Object.assign({id:uid(),ts:now},o);camp.fam.push(rec);if(rec.hid)byId[rec.hid]=rec;add++}});
   camp.cols=head.map((h,i)=>({h:String(h).trim(),f:map[i]})).filter(c=>c.h&&c.f!=='skip');camp.info.ts=Date.now();
-  cmSave();closeSheet();cmView='fam';render();toast(X('انضاف '+add+(up?' · انحدّث '+up:''),'Added '+add+(up?' · updated '+up:'')))}}
+  cmSave();closeSheet();render();cmFamScreen();toast(X('انضاف '+add+(up?' · انحدّث '+up:''),'Added '+add+(up?' · updated '+up:'')))}}
 async function cmExport(subset,suffix){toast(t('xLoading'));let XL;try{XL=await loadXLSX()}catch(e){toast(t('xLibFail'));return}
  const FL=CM_FL(),order=[];(camp.cols||[]).forEach(c=>{if(c.f!=='notes'&&!order.some(o=>o.f===c.f))order.push({f:c.f,h:c.h})});
  ['head','hid','stat','wife','hid2','size','phone','origin','housing','place','tent','u5','old','preg','dis','notes'].forEach(f=>{if(!order.some(o=>o.f===f))order.push({f,h:FL[f]})});
@@ -2698,7 +2733,7 @@ function cmDist(id){const ex=id?camp.dist.find(x=>x.id===id):null,d=ex?clone(ex)
  const s=sheet(`<h2>${ex?X('تعديل التوزيع','Edit distribution'):X('توزيع جديد','New distribution')}</h2>${cmF('dW',X('شو انوزّع','What'),d.what,{ph:X('طرود غذائية، بطانيات، فرشات…','Food parcels, blankets…')})}<label class="fld">${X('من أي منظمة','From')}<input class="in cmin" id="dO" list="cmOrgs" dir="auto" value="${esc(d.org||'')}"><datalist id="cmOrgs">${orgs.map(o=>`<option value="${esc(o.name)}">`).join('')}</datalist></label>${cmF('dD',X('التاريخ','Date'),d.date,{type:'date'})}
   <div class="acts"><button class="b" id="iClose">${t('cancel')}</button><button class="b pri" id="dOk">${ex?t('save'):X('ابدأ التأشير','Start ticking')}</button></div>${ex?`<button class="b dng" id="dDel">${t('del')}</button>`:''}`);
  s.querySelector('#iClose').onclick=closeSheet;
- s.querySelector('#dOk').onclick=()=>{d.what=cmV(s,'dW');d.org=cmV(s,'dO');d.date=cmV(s,'dD')||ymd(new Date());if(!d.what){s.querySelector('#dW').focus();return}cmPut('dist',d);closeSheet();cmDistId=d.id;cmView='dist1';render()};
+ s.querySelector('#dOk').onclick=()=>{d.what=cmV(s,'dW');d.org=cmV(s,'dO');d.date=cmV(s,'dD')||ymd(new Date());if(!d.what){s.querySelector('#dW').focus();return}cmPut('dist',d);closeSheet();cmDistId=d.id;render();cmDistScreen(d.id)};
  const dl=s.querySelector('#dDel');if(dl)dl.onclick=()=>confirmSheet(t('del'),X('حذف هذا التوزيع؟','Delete distribution?'),t('yesDel'),()=>{cmDel('dist',d.id);cmView='dist';render()})}
 function cmNeed(id,kind){const ex=id?camp.need.find(x=>x.id===id):null,n=ex?clone(ex):{id:uid(),kind:kind||'need',pr:2,st:'open',dir:'in',ts0:Date.now()},ro=!cmCan(),mv=n.kind==='move',P=CM_PR();
  const s=sheet(`<h2>${mv?X('حركة عائلات','Family movement'):(ex?X('مشكلة / احتياج','Issue / need'):X('مشكلة أو احتياج جديد','New issue or need'))}</h2>
@@ -2729,7 +2764,7 @@ $('#grid').addEventListener('click',e=>{if(tab!==7)return;const g=(a)=>e.target.
  if((b=g('data-cmmeet'))){cmMeet(b.dataset.cmmeet);return}
  if(g('data-cmnewmeet')){cmMeet(null);return}
  if((b=g('data-cmorg'))){if(e.target.closest('a'))return;cmOrg(b.dataset.cmorg);return}
- if((b=g('data-cmdist'))){cmDistId=b.dataset.cmdist;cmView='dist1';render();return}
+ if((b=g('data-cmdist'))){cmDistScreen(b.dataset.cmdist);return}
  if((b=g('data-cmgot'))){if(!cmCan())return;const d=camp.dist.find(x=>x.id===cmDistId);if(!d)return;d.got=d.got||[];const i=d.got.indexOf(b.dataset.cmgot);if(i>-1)d.got.splice(i,1);else d.got.push(b.dataset.cmgot);d.ts=Date.now();cmSave();const y=window.scrollY;render();window.scrollTo(0,y);return}
  if(g('data-cmmiss')){cmMissing();return}
  if(g('data-cmdedit')){cmDist(cmDistId);return}
