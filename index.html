@@ -619,6 +619,11 @@ body.ar .fab.cam{right:auto;left:calc(84px + env(safe-area-inset-left,0px))}
 .asbtn.del{color:#C0392B;font-weight:600}
 .ascancel{width:100%;border:0;background:#fff;padding:15px;font-size:16px;font-weight:700;color:#0C447C;border-radius:16px}
 .ascancel:active{background:#F0EEE8}
+.fsz[data-flag]{cursor:pointer;transition:transform .1s,background .15s}
+.fsz[data-flag]:active{transform:scale(.88)}
+.fsz.fl1{background:#2E9E5B;color:#fff}
+.fsz.fl2{background:#C0392B;color:#fff}
+.fsz.fl3{background:#F1C40F;color:#3A2E00}
 .fchips{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;scrollbar-width:none}
 .fchips::-webkit-scrollbar{display:none}
 .fchip{flex:none;border-radius:999px;padding:6px 13px;font-size:12.5px;background:#E6E4DC;color:#444441;font-weight:600;white-space:nowrap}
@@ -731,7 +736,7 @@ let tab=0,query='',lastTab=0;
 let migrate=true;
 
 function applyLang(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.classList.toggle('ar',lang==='ar');
- $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v36';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
+ $('#appName').textContent=t('appName');$('#tagline').textContent=t('tagline')+' · v37';$('#langBtn').textContent=t('langOther');$('#lockLang').textContent=t('langOther');$('#forgotBtn').textContent=t('forgot');$('#cancelPin').textContent=t('cancel');$('#q').placeholder=t('search');$('#storeWarn').textContent=t('storeWarn');}
 function toggleLang(){lang=lang==='ar'?'en':'ar';S.set('lang',lang);applyLang();if(!$('#app').hidden)render();else lockText();}
 $('#langBtn').onclick=toggleLang;$('#lockLang').onclick=toggleLang;
 
@@ -1992,7 +1997,7 @@ function cmFamScreen(){const A=lang==='ar';let selMode=false;const sel=new Set()
  document.body.appendChild(w);
  const fit=panelFit(w),listEl=w.querySelector('#cmflist');
  const famRow=f=>{const sz=cmNum(f.size),sub=[f.origin||'',f.hid?'#'+esc(f.hid):''].filter(Boolean).join(' · '),ck=sel.has(f.id);
-  return `<div class="frow${ck?' selr':''}" data-fid="${f.id}" role="button" tabindex="0">${selMode?`<span class="fchk${ck?' on':''}">${ck?'✓':''}</span>`:`<span class="fsz">${sz?cmAr(sz):'—'}</span>`}<div class="fm"><b>${esc(f.head||f.wife||'')}</b>${sub?`<span>${sub}</span>`:''}</div>${selMode?'':`<span class="fchev">${A?'‹':'›'}</span>`}</div>`};
+  return `<div class="frow${ck?' selr':''}" data-fid="${f.id}" role="button" tabindex="0">${selMode?`<span class="fchk${ck?' on':''}">${ck?'✓':''}</span>`:`<span class="fsz fl${f.flag||0}" data-flag="${f.id}">${sz?cmAr(sz):'—'}</span>`}<div class="fm"><b>${esc(f.head||f.wife||'')}</b>${sub?`<span>${sub}</span>`:''}</div>${selMode?'':`<span class="fchev">${A?'‹':'›'}</span>`}</div>`};
  const pplRow=o=>{const m=o.m,sub=[o.f.head||'',o.f.tent?(A?'خيمة '+esc(o.f.tent):'tent '+esc(o.f.tent)):''].filter(Boolean).join(' · ');
   return `<div class="frow" data-pfid="${o.f.id}" role="button" tabindex="0"><span class="fsz">${cmAr(cmAge(m))}</span><div class="fm"><b>${esc(m.name||'—')}</b><span>${m.sex==='f'?(A?'أنثى':'F'):(A?'ذكر':'M')}${sub?' · '+sub:''}</span></div><span class="fchev">${A?'‹':'›'}</span></div>`};
  function renderList(){const ppl=cmMode==='ppl';const cc=w.querySelector('#fsCnt');const active=cmFF!=='all'||cmFQ.trim();
@@ -2019,6 +2024,8 @@ function cmFamScreen(){const A=lang==='ar';let selMode=false;const sel=new Set()
  w.querySelector('#fsImp').onclick=()=>{if(cmCan())cmPick()};
  w.querySelectorAll('[data-mode]').forEach(c=>c.onclick=()=>setMode(c.dataset.mode));
  listEl.addEventListener('click',e=>{let r;
+  const fb=e.target.closest('[data-flag]');
+  if(fb&&!selMode&&cmMode==='fam'){const fam=camp.fam.find(x=>x.id===fb.dataset.flag);if(fam){fam.flag=((fam.flag||0)+1)%4;fam.ts=Date.now();cmSave();fb.className='fsz fl'+fam.flag}return}
   if((r=e.target.closest('[data-pfid]'))){cmFam(r.dataset.pfid);return}
   if((r=e.target.closest('[data-fid]'))){const id=r.dataset.fid;if(selMode){sel.has(id)?sel.delete(id):sel.add(id);renderList()}else cmFam(id)}});
  w.querySelector('#fsAll').onclick=()=>{const f=cmFamFiltered();if(sel.size>=f.length)sel.clear();else f.forEach(x=>sel.add(x.id));renderList()};
